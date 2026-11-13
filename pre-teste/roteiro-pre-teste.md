@@ -4,22 +4,21 @@
 > **Por quê:** é exigido pelo enunciado (§3.4) e é um atributo desejável dos ACM SIGSOFT Empirical Standards, que pedem validar itens, layout, duração e tecnologia e relatar como o instrumento evoluiu.
 > **Saída:** a Tabela 6 do protocolo preenchida, com a mediana de duração e as mudanças feitas.
 
-## 1. Participantes (de 3 a 5, fora da amostra)
+## 1. Participantes (de 3 a 5, que não responderão à coleta oficial)
 
 | Código | Perfil | Critério |
 |---|---|---|
-| P1 a P4 | Profissional de TI **já atuando no mercado** (por exemplo, desenvolvedor ou analista), de preferência com formações diferentes (CC, ES, ADS, SI) | Já passou pelo aprendizado de programação e **não** pertence à população-alvo, porque não é estudante dos períodos iniciais nem estagiário |
+| P1 a P4 | Profissional de TI **já atuando no mercado** (por exemplo, desenvolvedor ou analista), de preferência com formações diferentes (CC, ES, ADS, SI) e que **use IA** ao programar | Já passou pelo aprendizado de programação e consegue julgar os itens. Como também faria parte da população, **não deve responder à coleta oficial** |
 | P5 (opcional) | Mais um profissional, com formação ou tempo de mercado diferente | Amplia a diversidade de perfis no pré-teste |
 
 > **Não** use colegas da disciplina MEES. Peça a quem fez o pré-teste que **não responda** à coleta oficial.
 
 ### Como os profissionais devem responder
 
-O formulário encerra para quem está fora da população, então combine antes com cada participante:
-- **Pergunta 1 (curso):** marcar o curso que fez ou o mais parecido. "Outro" encerra o formulário.
-- **Pergunta 2 (etapa):** marcar **"1º ao 4º período"**, pensando em quando estava no início da graduação. Assim ele percorre todas as perguntas.
-- **Pergunta 5 (frequência de uso de IA):** escolher uma opção diferente de "Nunca". "Nunca" pula direto para a pergunta aberta.
-- **Demais perguntas:** responder pensando no início da graduação e avaliar se a redação faz sentido para um estudante.
+O formulário não tem ramificações: todas as perguntas aparecem juntas, e responder é direto.
+- Responder com a **situação real** de cada um (formado há até 3 anos ou há mais de 3 anos).
+- Incluir ao menos **um participante que não use IA** (ou pedir a um participante que simule o caminho "Não uso IA"), para testar as colunas e opções "Não uso IA".
+- Avaliar especialmente se as grades **CON (entender conceitos)** e **PRA (praticar a escrita)** são distintas e claras.
 
 ## 2. Procedimento (de 15 a 20 minutos por participante)
 
@@ -35,7 +34,7 @@ O formulário encerra para quem está fora da população, então combine antes 
 2. Faltou alguma opção de resposta em alguma pergunta?
 3. A duração pareceu adequada? Em que ponto você ficou cansado(a)?
 4. Alguma pergunta pareceu invasiva ou desconfortável?
-5. As grades de dificuldade (DIF), dependência da IA (DEP) e aprendizado com IA (APR) representam bem cada ideia? Algum aspecto importante do uso de IA ficou de fora?
+5. As grades de aprendizado de conceitos (CON) e prática de escrita (PRA) representam bem cada ideia? Ficou claro o que significa "Não uso IA"? Algum aspecto importante do uso de IA ficou de fora?
 
 ## 3. Regra de decisão
 

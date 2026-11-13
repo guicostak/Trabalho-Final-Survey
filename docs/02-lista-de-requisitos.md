@@ -52,7 +52,7 @@
 |---|---|---|---|---|
 | RE-15 | Cada item ligado a **uma QP e uma métrica** | OBR | Tabela 5 | ✅ |
 | RE-16 | **Escala declarada** por item (nominal, ordinal, intervalar ou razão) | OBR | Tabela 5, coluna *Escala* | ✅ |
-| RE-17 | Construtos medidos por **mais de um item** | OBR | DIF (4), DEP (4) e APR (3), com itens invertidos em DIF e DEP | ✅ |
+| RE-17 | Construtos medidos por **mais de um item** | OBR | CON (3 itens) e PRA (4 itens, 1 invertido) | ✅ |
 | RE-18 | **Pergunta de atenção** | OBR | ATN1 + regra E5 | ✅ |
 
 ### A.5 Seção 4: Pré-teste
@@ -101,7 +101,7 @@
 |---|---|---|---|
 | RE-P2-01 | Mínimo de **50 respostas válidas** | Meta 50 + contingência (§8) | 🔜 |
 | RE-P2-02 | Dashboard **lê os dados brutos** | §5.7 + `codebook.csv` | 🔜 |
-| RE-P2-03 | Respostas descartadas **com o motivo** | Tabela 7 (E1–E6) | 🔜 |
+| RE-P2-03 | Respostas descartadas **com o motivo** | Tabela 7 (E1–E5) | 🔜 |
 | RE-P2-04 | Likert em **barras divergentes** | §5.4 | 🔜 |
 | RE-P2-05 | QP respondida com teste, *p*, efeito e margem | §5.5 e Tabela 8 | 🔜 |
 | RE-P2-06 | **Filtros por segmento** | M8 (período), M10 (curso), M3 (experiência); supressão de n < 5 | 🔜 |
@@ -120,10 +120,10 @@
 | ES-01 | Identifica a população-alvo e define a estratégia de amostragem | OBR | §2 | ✅ |
 | ES-02 | Descreve como o instrumento foi criado | OBR | §3 + quadro "Origem dos itens" em `questionario.md` | ✅ |
 | ES-03 | Descreve como os participantes são selecionados e recrutados | OBR | §2.2 + §8 | ✅ |
-| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | DIF, DEP e APR com validade de conteúdo no pré-teste e α de Cronbach *ex post* | ✅ |
+| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | CON e PRA com validade de conteúdo no pré-teste e α de Cronbach *ex post* | ✅ |
 | ES-05 | Descreve o monitoramento das respostas e a contingência para não resposta | OBR | §8 (lembretes e contingência) | ✅ |
 | ES-06 | Explica o tratamento de dados ausentes | OBR | §5.2 | ✅ |
-| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E6 e Tabela 8 | ✅ |
+| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E5 e Tabela 8 | ✅ |
 | ES-08 | Analisa a taxa de resposta | OBR | Link aberto: taxa não calculável (aceito pelo padrão); relatam-se respostas por dia (§5.1) | ✅ |
 | ES-09 | Avalia a suficiência do número de participantes (poder) | OBR | Tabela 4 | ✅ |
 | ES-10 | Reconhece ameaças à generalização | OBR | Tabela 9 | ✅ |
@@ -135,11 +135,11 @@
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
 | ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/` (scripts e dados na Parte 2) | ✅ |
-| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E5 (tempo), ATN1, E4, inspeção de ABR | ✅ |
+| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E4 (tempo), ATN1, E3, inspeção de ABR | ✅ |
 | ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E3 | ✅ |
-| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, ETA, EXP, IAF | ✅ |
+| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, SIT, MOM, IAF | ✅ |
 | ES-D05 | Considera princípios de ética em pesquisa | §6 | ✅ |
-| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (10 perguntas com base em estudos sobre IA no ensino de programação) | ✅ |
+| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (10 perguntas, sem ramificações, com base em estudos sobre IA no ensino de programação) | ✅ |
 | ES-D07 | Valida itens, layout, duração e tecnologia (piloto) | §4 | ⏳ |
 | ES-D08 | Relata como o instrumento evoluiu na validação | Tabela 6 | ⏳ |
 | ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Vários canais, docentes parceiros e 2 lembretes | ✅ |
@@ -168,7 +168,7 @@
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
 | SA-01 | Explica o objetivo da amostragem (diversidade de cursos e instituições, sem pretensão de representatividade) | §2.2 | ✅ |
-| SA-02 | Explica a estratégia e as etapas de filtragem | §2.2 + ACE, CUR, ETA | ✅ |
+| SA-02 | Explica a estratégia e as etapas de filtragem | §2.2 + ACE, CUR, SIT | ✅ |
 | SA-03 | Justifica por que a estratégia é razoável | §2.2 (não existe quadro amostral nacional) | ✅ |
 | SA-04 | Informa o tamanho da amostra | §2.3 | ✅ |
 | SA-05 | Define a população teórica | §2.1 | ✅ |

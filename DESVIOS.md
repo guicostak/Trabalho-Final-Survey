@@ -14,5 +14,5 @@
 - Canais de divulgação novos ou diferentes dos previstos no §8 do protocolo.
 - Extensão do período de coleta (contingência: até 11/12).
 - Item ou construto com α < 0,60 analisado separadamente.
-- Agrupamento de cursos em bacharelados × tecnólogo (análise condicional ii).
+- Agrupamento de finalidades de uso ou de situações (análise condicional i e ii).
 - Qualquer mudança de teste estatístico, limiar ou regra de exclusão.
