@@ -1,12 +1,12 @@
 # Termo de Consentimento Livre e Esclarecido (TCLE)
 
-> Texto exibido na **primeira página** do formulário, antes de qualquer pergunta. Os campos entre colchetes devem ser preenchidos pelo grupo antes da coleta.
+> Texto exibido na **primeira página** do formulário, antes de qualquer pergunta.
 
 ---
 
 **Pesquisa:** Fatores associados à dificuldade percebida no aprendizado de programação
 **Responsáveis:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias, estudantes de Engenharia de Software da Pontifícia Universidade Católica de Minas Gerais (PUC Minas), Unidade Lourdes, na disciplina Medição e Experimentação em Engenharia de Software
-**Professor orientador:** [Nome do professor], [e-mail institucional do professor]
+**Professor orientador:** Danilo de Quadros Maia Filho, 1514571@pucminas.edu.br
 
 Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a experiência de estudantes de Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas e Sistemas de Informação com o aprendizado de programação. Podem participar estudantes do 1º ao 4º período e estudantes de qualquer período que façam estágio na área de TI.
 
@@ -22,6 +22,6 @@ Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a e
 
 **Requisito.** Para participar, você precisa ter **18 anos ou mais**.
 
-**Dúvidas.** Entre em contato pelo e-mail [e-mail do grupo] ou com o professor orientador.
+**Dúvidas.** Entre em contato pelo e-mail 1334415@pucminas.edu.br ou com o professor orientador.
 
 Ao marcar "Sim, concordo em participar", você declara que leu e entendeu este termo e que aceita participar voluntariamente.
