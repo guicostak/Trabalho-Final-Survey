@@ -11,8 +11,8 @@
 ### Exemplos do que deve ser registrado
 
 - Mudança no instrumento após a abertura da coleta.
-- Turmas incluídas ou excluídas fora do sorteio, como a contingência de censo dos conglomerados.
+- Canais de divulgação novos ou diferentes dos previstos no §8 do protocolo.
 - Extensão do período de coleta (contingência: até 11/12).
 - Item ou construto com α < 0,60 analisado separadamente.
-- Agrupamento de períodos (análise condicional ii).
+- Agrupamento de cursos em bacharelados × tecnólogo (análise condicional ii).
 - Qualquer mudança de teste estatístico, limiar ou regra de exclusão.

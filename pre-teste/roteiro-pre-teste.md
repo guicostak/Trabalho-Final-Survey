@@ -8,11 +8,11 @@
 
 | Código | Perfil | Critério |
 |---|---|---|
-| P1 a P3 | Estudante do 5º período ou posterior de CC ou ES | Cursou as disciplinas introdutórias recentemente e **não** pertence à população-alvo |
+| P1 a P3 | Estudante do 5º período ou posterior **sem estágio** de CC, ES, ADS ou SI, de preferência de cursos diferentes | Cursou as disciplinas introdutórias recentemente e **não** pertence à população-alvo |
 | P4 | Docente de programação introdutória | Revisão de conteúdo por especialista: os itens medem o que pretendem? |
-| P5 (opcional) | Estudante de outra instituição no 1º–4º período | Parecido com o público-alvo, mas fora do quadro amostral |
+| P5 (opcional) | Mais um estudante fora da população (ex.: de ADS) | Amplia a diversidade de cursos no pré-teste |
 
-> **Não** use colegas da disciplina MEES nem estudantes das turmas que podem ser sorteadas.
+> **Não** use colegas da disciplina MEES. Peça a quem fez o pré-teste que **não responda** à coleta oficial.
 
 ## 2. Procedimento (de 15 a 20 minutos por participante)
 

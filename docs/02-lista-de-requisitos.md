@@ -20,10 +20,11 @@
 
 | ID | Requisito | Prioridade | Onde | Status |
 |---|---|---|---|---|
-| RE-01 | Protocolo em **PDF** | OBR | `protocolo/protocolo.pdf` | ✅ |
+| RE-00 | Grupo de **3 a 4 integrantes** | OBR | O grupo tem **5** integrantes | ⚠️ confirmar com o professor |
+| RE-01 | Protocolo em **PDF**, entregue no Canvas (**é o único arquivo da Parte 1**) | OBR | `protocolo/protocolo.pdf` | ✅ |
 | RE-02 | **Até 6 páginas** | OBR | PDF com exatamente 6 páginas | ✅ (reconferir após preencher) |
 | RE-03 | As **8 seções** na ordem pedida | OBR | Seções 1–8 do PDF | ✅ |
-| RE-04 | Data de entrega **comprovada** e **anterior à 1ª resposta** | OBR | Tag `protocolo-v1.0` no GitHub e envio na plataforma (13/11); coleta a partir de 18/11 | ⏳ fazer o commit e o envio |
+| RE-04 | Data de entrega **comprovada** e **anterior à 1ª resposta** | OBR | Envio no Canvas (13/11), que já basta, e tag `protocolo-v1.0` no GitHub como reforço; coleta a partir de 18/11 | ⏳ enviar no Canvas |
 
 ### A.2 Seção 1: Objetivo e questões de pesquisa
 
@@ -37,13 +38,13 @@
 | ID | Requisito | Prioridade | Onde | Status |
 |---|---|---|---|---|
 | RE-07 | População-alvo definida | OBR | §2.1 | ✅ |
-| RE-08 | Origem dos contatos | OBR | §2.2 (quadro de turmas da coordenação) | ✅ |
-| RE-09 | Estratégia de amostragem (probabilística, conveniência ou bola de neve) | OBR | §2.2: probabilística estratificada por conglomerados | ✅ |
+| RE-08 | Origem dos contatos | OBR | §2.2: docentes de outras instituições, centros acadêmicos, grupos de estudantes, redes sociais e respondentes | ✅ |
+| RE-09 | Estratégia de amostragem (probabilística, conveniência ou bola de neve) | OBR | §2.2: conveniência com bola de neve e metas por segmento | ✅ |
 | RE-10 | Tamanho de amostra pretendido | OBR | §2.3: 100 respostas (mínimo 50) | ✅ |
-| RE-11 | Margem de erro correspondente | OBR | Tabela 4: ±9,8 p.p. | ✅ |
+| RE-11 | Margem de erro correspondente | OBR | Tabela 4: ±9,8 p.p. (nominal, por ser amostra não probabilística) | ✅ |
 | RE-12 | Justificativa de estudantes como população | OBR (§05 do enunciado) | §2.1 | ✅ |
-| RE-13 | Colegas da turma não contam como amostra | OBR (§05) | §2.1 (exclusão de MEES e do grupo) | ✅ |
-| RE-14 | Tamanho da população N | OBR | §2.1, onde N ≈ 400 é uma estimativa | ⏳ confirmar com a coordenação |
+| RE-13 | Colegas da turma não contam como amostra | OBR (§05) | §2.1 (colegas de MEES e o grupo não recebem o convite) | ✅ |
+| RE-14 | Estimativa do tamanho da população N | DES | §2.1 (campo pendente) | ⏳ estimar (ex.: Censo da Educação Superior do INEP) |
 
 ### A.4 Seção 3: Questionário com rastreabilidade
 
@@ -122,8 +123,8 @@
 | ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | AUT e ANS adaptadas de escalas validadas; DIF com validade de conteúdo no pré-teste e α *ex post* | ✅ |
 | ES-05 | Descreve o monitoramento das respostas e a contingência para não resposta | OBR | §8 (lembretes e contingência) | ✅ |
 | ES-06 | Explica o tratamento de dados ausentes | OBR | §5.2 | ✅ |
-| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Script com semente, regras E1–E8 e Tabela 8 | ✅ |
-| ES-08 | Analisa a taxa de resposta | OBR | Planejada por turma (§5.1) | 🔜 |
+| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E8 e Tabela 8 | ✅ |
+| ES-08 | Analisa a taxa de resposta | OBR | Link aberto: taxa não calculável (aceito pelo padrão); relatam-se respostas por canal (§5.1) | ✅ |
 | ES-09 | Avalia a suficiência do número de participantes (poder) | OBR | Tabela 4 | ✅ |
 | ES-10 | Reconhece ameaças à generalização | OBR | Tabela 9 | ✅ |
 | ES-11 | Disponibiliza o instrumento | OBR | `instrumento/questionario.md` | ✅ |
@@ -133,7 +134,7 @@
 
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
-| ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/`, `scripts/` | ✅ |
+| ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/` (scripts e dados na Parte 2) | ✅ |
 | ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E7 (tempo), ATN1, inspeção de ABR1 | ✅ |
 | ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E5 | ✅ |
 | ES-D04 | Caracteriza a população-alvo | §2.1 + bloco PER | ✅ |
@@ -141,9 +142,9 @@
 | ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 | ✅ |
 | ES-D07 | Valida itens, layout, duração e tecnologia (piloto) | §4 | ⏳ |
 | ES-D08 | Relata como o instrumento evoluiu na validação | Tabela 6 | ⏳ |
-| ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Aplicação presencial + 2 lembretes | ✅ |
-| ES-D10 | Descreve a estratificação da análise | §2.2 + análise condicional (§5.5) | ✅ |
-| ES-D11 | Define e estima o tamanho dos estratos | `quadro_turmas` (coordenação) | ⏳ |
+| ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Vários canais, docentes parceiros e 2 lembretes | ✅ |
+| ES-D10 | Descreve a estratificação da análise | Metas por segmento (§2.2) + análise condicional (§5.5) | ✅ |
+| ES-D11 | Define e estima o tamanho dos estratos | Estimativa por curso (Censo INEP) | ⏳ |
 | ES-D12 | Distingue evidência de interpretação | Exigência para a Parte 2 | 🔜 |
 
 ---
@@ -166,13 +167,13 @@
 
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
-| SA-01 | Explica o objetivo da amostragem (representatividade na instituição) | §2.2 | ✅ |
+| SA-01 | Explica o objetivo da amostragem (diversidade de cursos e instituições, sem pretensão de representatividade) | §2.2 | ✅ |
 | SA-02 | Explica a estratégia e as etapas de filtragem | §2.2 + TRI/PER | ✅ |
-| SA-03 | Justifica por que a estratégia é razoável | §2.2 (turma como conglomerado natural) | ✅ |
+| SA-03 | Justifica por que a estratégia é razoável | §2.2 (não existe quadro amostral nacional) | ✅ |
 | SA-04 | Informa o tamanho da amostra | §2.3 | ✅ |
 | SA-05 | Define a população teórica | §2.1 | ✅ |
-| SA-06 | Fornece um relato **algorítmico** e replicável de como obter a mesma amostra | `scripts/sorteio_turmas.py` (semente 20261113) | ✅ |
-| SA-07 | Argumenta a representatividade (IC e margem) | Tabela 4 | ✅ |
+| SA-06 | Relato replicável de como a amostra foi obtida | Canais, metas e cronograma (§2.2 e §8); canal registrado em PER5 | ✅ |
+| SA-07 | Argumenta a representatividade | Não é objetivo; margem declarada como nominal (§2.3) | ✅ |
 | SA-08 | Explica como a amostra pode ser enviesada | Tabela 9 | ✅ |
 | SA-09 | Informa o tamanho da população e do quadro amostral | §2.1 (N estimado) | ⏳ |
 
@@ -182,11 +183,12 @@
 
 | # | Ação | Requisitos | Prazo |
 |---|---|---|---|
-| 1 | Preencher **nomes e instituição** no PDF e no TCLE (a URL do repositório já está no PDF) | — | 13/11 |
-| 2 | Confirmar **N** e a lista de turmas com a coordenação (ou estimar pelo quadro de horários) | RE-14, ES-D11, SA-09 | 13/11 |
+| 0 | Confirmar com o professor se o grupo de **5 integrantes** é aceito | RE-00 | 13/11 |
+| 1 | Preencher a **instituição** no PDF e no TCLE (nomes e URL já estão no PDF) | — | 13/11 |
+| 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
 | 3 | Montar o formulário conforme `instrumento/questionario.md` | — | 13/11 |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |
 | 5 | Atualizar a Tabela 6 e a mediana de duração; recompilar o PDF (≤ 6 páginas) | RE-02 | 13/11 |
 | 6 | Confirmar com o professor se há norma institucional adicional (CEP) | RE-29 | 13/11 |
-| 7 | **Commit + tag `protocolo-v1.0` + push** e **envio do PDF na plataforma** | RE-04, RR-06 | **13/11 às 23:59** |
-| 8 | Rodar o sorteio com o quadro real e publicar `turmas_sorteadas.csv` | ES-07 | 16/11 |
+| 7 | **Enviar o PDF no Canvas**; como reforço, commit + tag `protocolo-v1.0` + push | RE-04, RR-06 | **13/11 às 23:59** |
+| 8 | Contatar docentes e centros acadêmicos de outras instituições | ES-03 | 16/11 e 17/11 |

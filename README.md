@@ -1,16 +1,32 @@
 # Survey pré-registrado: dificuldade percebida no aprendizado de programação
 
 **Disciplina:** Medição e Experimentação em Engenharia de Software, 2º/2026
-**Tema:** fatores associados à dificuldade percebida no aprendizado de programação entre estudantes dos períodos iniciais de Ciência da Computação e Engenharia de Software
-**Entrega 1 (Planejamento):** 13/11/2026 às 23:59, com o protocolo em PDF de até 6 páginas
+**Grupo:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros, Jonas Rafael Martins e Vinícius Dias
+**Entrega 1 (Planejamento):** 13/11/2026 às 23:59, no Canvas
 
 | | |
 |---|---|
 | **Método** | Survey transversal por questionário on-line (descritivo e correlacional) |
-| **Amostragem** | Probabilística, estratificada (curso × período) por conglomerados (turmas sorteadas) |
-| **Amostra** | Alvo de 100 respostas válidas (mínimo 50); margem de ±9,8 p.p. |
-| **QPs** | 4 QPs e 7 hipóteses confirmatórias, com α = 0,05 e correção de Holm |
+| **População** | Estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI |
+| **Amostragem** | Não probabilística: conveniência com bola de neve, em vários canais e com metas por segmento |
+| **Amostra** | Alvo de 100 respostas válidas (mínimo 50); margem nominal de ±9,8 p.p. |
+| **QPs** | 4 QPs e 8 hipóteses confirmatórias, com α = 0,05 e correção de Holm |
 | **Coleta** | 18/11 a 04/12/2026 |
+
+---
+
+## O que entregar no Canvas hoje (Parte 1)
+
+**Apenas o arquivo [`protocolo/protocolo.pdf`](protocolo/protocolo.pdf)**, com até 6 páginas e as 8 seções do enunciado. O envio no Canvas já comprova a data. A tag no GitHub é um reforço opcional.
+
+Antes de enviar:
+- [ ] **Aplicar o pré-teste** com 3 a 5 pessoas ([`pre-teste/roteiro-pre-teste.md`](pre-teste/roteiro-pre-teste.md)) e preencher a Tabela 6 com as mudanças **reais**.
+- [ ] Preencher os campos em **laranja** do PDF: instituição, N estimado e dados do pré-teste.
+- [ ] Recompilar e conferir que o PDF continua com **até 6 páginas**.
+- [ ] Confirmar com o professor o grupo de **5 integrantes**: o enunciado pede de 3 a 4.
+- [ ] Só abrir o formulário **depois** do envio.
+
+Os demais arquivos não são entregues no Canvas. Eles servem para montar o formulário, fazer o pré-teste, divulgar o survey e preparar a Parte 2.
 
 ---
 
@@ -31,27 +47,10 @@ Trabalho-Final-Survey/
 │   ├── questionario.md            ← questionário completo e configuração do formulário
 │   ├── tcle.md                    ← Termo de Consentimento Livre e Esclarecido
 │   ├── codebook.csv               ← livro de códigos (variáveis, escalas e regras de limpeza)
-│   └── convites.md                ← textos de divulgação (sala, ambiente virtual e lembretes)
-├── pre-teste/
-│   └── roteiro-pre-teste.md       ← procedimento e formulário de registro do pré-teste
-└── scripts/
-    ├── sorteio_turmas.py          ← sorteio reprodutível das turmas (semente 20261113)
-    └── quadro_turmas_MODELO.csv   ← modelo do quadro amostral (dados fictícios)
+│   └── convites.md                ← textos de divulgação (docentes, grupos, redes e lembretes)
+└── pre-teste/
+    └── roteiro-pre-teste.md       ← procedimento e formulário de registro do pré-teste
 ```
-
-## Por onde começar
-
-1. Leia [`docs/01-guia-padroes-survey.md`](docs/01-guia-padroes-survey.md) para entender o padrão científico seguido.
-2. Abra [`protocolo/protocolo.pdf`](protocolo/protocolo.pdf). Os campos em **laranja** são pendências que o grupo precisa preencher.
-3. Siga a seção **E** de [`docs/02-lista-de-requisitos.md`](docs/02-lista-de-requisitos.md), que lista as pendências em ordem.
-
-## O que falta fazer hoje (13/11)
-
-- [ ] Preencher nomes, instituição, N estimado, ambiente virtual e data de exclusão dos dados (campos laranja em `protocolo.tex` e `tcle.md`).
-- [ ] Montar o formulário no Microsoft Forms conforme `instrumento/questionario.md`.
-- [ ] **Aplicar o pré-teste** com 3 a 5 pessoas (`pre-teste/roteiro-pre-teste.md`) e registrar as mudanças **reais** na Tabela 6.
-- [ ] Recompilar o PDF e conferir que tem **até 6 páginas**.
-- [ ] Registrar: commit + tag + push no GitHub **e** envio do PDF na plataforma até as 23:59.
 
 ## Como recompilar o PDF
 
@@ -65,11 +64,15 @@ Também funciona com `xelatex protocolo.tex` ou no Overleaf, com o compilador **
 grep -n '\\pend{' protocolo/protocolo.tex
 ```
 
-## Como registrar o protocolo com data verificável
+Para conferir o número de páginas:
 
-O repositório **público** já está criado e configurado: <https://github.com/guicostak/Trabalho-Final-Survey>. Qualquer pessoa, inclusive o professor, pode verificar a data dos commits e da tag.
+```bash
+pdfinfo protocolo/protocolo.pdf | grep Pages
+```
 
-Depois de preencher os campos pendentes e fazer o pré-teste:
+## Registro no GitHub (reforço opcional da data)
+
+O repositório público é <https://github.com/guicostak/Trabalho-Final-Survey>. Depois de preencher tudo:
 
 ```bash
 git add -A && git commit -m "Protocolo do survey v1.0 (pré-registro)"
@@ -82,13 +85,3 @@ git tag -a protocolo-v1.0 -m "Pré-registro do protocolo, Parte 1"
 ```bash
 git push && git push origin protocolo-v1.0
 ```
-
-> A data do commit e da tag precisa ser **anterior à primeira resposta** (coleta a partir de 18/11). Não abra o formulário antes de registrar.
-
-## Como sortear as turmas (16/11)
-
-```bash
-python3 scripts/sorteio_turmas.py quadro_turmas.csv --saida turmas_sorteadas.csv
-```
-
-O `quadro_turmas.csv` real segue o formato do modelo. Mantenha a semente pré-registrada (`20261113`); qualquer mudança vai para o `DESVIOS.md`.

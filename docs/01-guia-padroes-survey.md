@@ -12,11 +12,11 @@
 | **ACM SIGSOFT Empirical Standards: Questionnaire Surveys** (Ralph et al.) | Atributos **essenciais**, **desejáveis** e **extraordinários** de um survey, além de críticas inválidas e desvios aceitáveis | Checklist de qualidade (ver [`02-lista-de-requisitos.md`](02-lista-de-requisitos.md)) |
 | **Empirical Standards: General Standard** | Atributos comuns a qualquer estudo empírico, como propósito, motivação, método nomeado e limitações | Estrutura geral do texto |
 | **Empirical Standards: Registered Reports (suplemento)** | O que um plano pré-registrado (fase RR1) deve e **não deve** conter, e como justificar desvios | Formato do protocolo e do `DESVIOS.md` |
-| **Empirical Standards: Sampling (suplemento)** | Como descrever população, quadro amostral, estratégia e representatividade | Seção 2 do protocolo e script de sorteio |
+| **Empirical Standards: Sampling (suplemento)** | Como descrever população, quadro amostral, estratégia e representatividade | Seção 2 do protocolo |
 | **Kitchenham & Pfleeger (2008)**, *Personal Opinion Surveys* | Processo clássico de survey em ES e regras de redação de itens | Processo e redação do questionário |
 | **Linåker et al. (2015)**, *Guidelines for Conducting Surveys in SE* (Lund) | Guia passo a passo: abordagem em equipe, definição do que medir, alinhamento das perguntas aos objetivos, amostragem e pré-teste | Ordem das etapas |
 | **Molléri, Petersen & Mendes (2020)**, *An empirically evaluated checklist for surveys in SE* (IST) | Checklist validado empiricamente para planejar e relatar surveys | Conferência final |
-| **Baltes & Ralph (2022)**, *Sampling in SE research* (EMSE) | Taxonomia de estratégias de amostragem e antipadrões | Justificativa da amostragem por conglomerados |
+| **Baltes & Ralph (2022)**, *Sampling in SE research* (EMSE) | Taxonomia de estratégias de amostragem e antipadrões | Justificativa da amostragem por conveniência com bola de neve |
 | **Wohlin et al. (2012)** | Classificação das ameaças à validade (construto, interna, externa e de conclusão) | Tabela de ameaças |
 | **Basili, Caldiera & Rombach (1994)**, GQM | Template de objetivo: *Analisar… com o propósito de… com respeito a… do ponto de vista de… no contexto de…* | Seção 1 do protocolo |
 | **Resolução CNS 510/2016** e **LGPD (Lei 13.709/2018)** | Ética em pesquisas com pessoas nas ciências humanas e sociais; proteção de dados | Seção 6 do protocolo |
@@ -42,7 +42,7 @@ O processo de Kitchenham & Pfleeger (2008) e Linåker et al. (2015) segue as eta
 | 1 | Definir objetivos e questões de pesquisa | Objetivo GQM, QPs e hipóteses | Protocolo, §1 |
 | 2 | Definir o que será medido | Construtos, métricas e escalas | Protocolo, Tabela 3 |
 | 3 | Definir a população e o quadro amostral | População-alvo, quadro e critérios de exclusão | Protocolo, §2.1–2.2 |
-| 4 | Planejar a amostra | Estratégia, tamanho, margem de erro e poder | Protocolo, §2.3 e `scripts/` |
+| 4 | Planejar a amostra | Estratégia, tamanho, margem de erro e poder | Protocolo, §2.2–2.3 |
 | 5 | Construir o instrumento | Questionário com rastreabilidade | Protocolo, §3 e `instrumento/` |
 | 6 | Pré-testar | Registro do pré-teste e mudanças feitas | Protocolo, §4 e `pre-teste/` |
 | 7 | Planejar a análise | Limpeza, testes, tamanho de efeito e correções | Protocolo, §5 |

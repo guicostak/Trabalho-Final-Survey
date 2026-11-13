@@ -1,9 +1,10 @@
 # Instrumento de coleta: questionário completo
 
 > **Estudo:** Fatores associados à dificuldade percebida no aprendizado de programação
+> **População:** estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI, com 18 anos ou mais.
 > **Versão do instrumento:** 1.0, registrada com o protocolo em 13/11/2026. Mudanças feitas após o pré-teste exigem nova versão e registro em `DESVIOS.md`.
-> **Plataforma:** Microsoft Forms (conta institucional), com 36 itens e duração estimada de 9 minutos.
-> **Rastreabilidade:** cada ID abaixo é o nome da variável no `codebook.csv` e na matriz da Tabela 5 do protocolo.
+> **Plataforma:** Microsoft Forms (conta institucional), com 37 itens e duração estimada de 9 minutos.
+> **Rastreabilidade:** cada ID abaixo é o nome da variável no `codebook.csv` e na Tabela 5 do protocolo.
 
 ---
 
@@ -11,14 +12,16 @@
 
 | Configuração | Valor | Motivo |
 |---|---|---|
-| Quem pode responder | **Qualquer pessoa com o link** | Evita login e, portanto, a identificação do respondente |
+| Quem pode responder | **Qualquer pessoa com o link** | O link circula entre várias instituições e não exige login |
 | Registrar nome | **Desativado** | Anonimização na origem (protocolo, §6) |
 | Uma resposta por pessoa | **Desativado** (exige login) | Duplicatas são controladas por TRI3 e pela regra E8 |
 | Ordem dos itens | Fixa, idêntica para todos | Comparabilidade entre respondentes |
 | Itens fechados | Obrigatórios | Ausência só por desenho (protocolo, §5.2) |
-| ABR1 | Opcional | Pergunta aberta, sem obrigatoriedade |
+| ABR1 | Opcional | Pergunta aberta |
 | Ramificação | Conforme as marcações **→ encerra** | Triagem da população |
-| Mensagem de agradecimento | "Obrigado! Sua resposta foi registrada de forma anônima." | — |
+| Mensagem final | "Obrigado! Sua resposta foi registrada de forma anônima. Se puder, repasse o link a colegas de CC, ES, ADS ou SI." | Bola de neve |
+
+> **Se usarem o Google Forms:** ele não registra a hora de início, então a regra E7 (tempo mínimo) não funciona e precisa ser declarada como desvio.
 
 ---
 
@@ -34,58 +37,72 @@ Exibir o texto integral de [`tcle.md`](tcle.md).
 - ( ) Sim
 - ( ) Não → **encerra**
 
-**TRI3.** Você já respondeu a este questionário em outra turma?
+**TRI3.** Você já respondeu a este questionário antes?
 - ( ) Não
 - ( ) Sim → **encerra** (mensagem: "Obrigado! Cada pessoa responde apenas uma vez.")
 
 ---
 
-## Bloco A: Perfil
+## Bloco A: Perfil e elegibilidade
 
 **PER1.** Qual é o seu curso?
 - ( ) Ciência da Computação
 - ( ) Engenharia de Software
+- ( ) Análise e Desenvolvimento de Sistemas (ADS)
+- ( ) Sistemas de Informação
 - ( ) Outro → **encerra**
 
 **PER2.** Em qual período você está? (Se cursa disciplinas de períodos diferentes, considere o período da maioria delas.)
-- ( ) 1º  ( ) 2º  ( ) 3º  ( ) 4º
-- ( ) 5º ou posterior → **encerra**
+- ( ) 1º  ( ) 2º  ( ) 3º  ( ) 4º  ( ) 5º ou posterior
 
-**PER3.** Código da turma em que você recebeu este convite (informado pela equipe no slide ou na mensagem):
-- Lista suspensa: `T01` … `Tnn` (preencher após o sorteio) | ( ) Recebi o link por outro meio
+**PER3.** Você faz estágio na área de TI atualmente?
+- ( ) Sim
+- ( ) Não → se PER2 = *5º ou posterior*, **encerra** (mensagem: "Obrigado! Este estudo é voltado a estudantes do 1º ao 4º período ou em estágio de TI.")
 
-**PER4.** Faixa etária:
+> No Microsoft Forms, faça a ramificação assim: PER2 = 5º ou posterior leva a uma seção com a pergunta PER3 em que "Não" encerra. PER2 = 1º a 4º leva a uma seção com PER3 sem encerramento.
+
+**PER4.** Sua instituição de ensino é:
+- ( ) Pública  ( ) Privada
+
+**PER5.** Por onde você recebeu este convite?
+- ( ) Professor(a) ou aula
+- ( ) Grupo de WhatsApp, Discord ou Telegram
+- ( ) Centro ou diretório acadêmico
+- ( ) LinkedIn ou Instagram
+- ( ) Indicação de colega
+- ( ) Outro
+
+**PER6.** Faixa etária:
 - ( ) 18–19  ( ) 20–22  ( ) 23–25  ( ) 26–30  ( ) 31 ou mais
 
-**PER5.** Antes de ingressar no curso, você já havia programado (em curso livre, ensino técnico, sozinho etc.)?
-- ( ) Sim  ( ) Não (se *Não*, pular PER6)
+**PER7.** Antes de ingressar no curso, você já havia programado (em curso livre, ensino técnico, sozinho etc.)?
+- ( ) Sim  ( ) Não (se *Não*, pular PER8)
 
-**PER6.** Por quanto tempo você programou antes de ingressar no curso?
+**PER8.** Por quanto tempo você programou antes de ingressar no curso?
 - ( ) Menos de 6 meses  ( ) De 6 meses a 1 ano  ( ) De 1 a 2 anos  ( ) Mais de 2 anos
 
-**PER7.** Você cursou ensino médio técnico em informática ou área afim?
+**PER9.** Você cursou ensino médio técnico em informática ou área afim?
 - ( ) Sim  ( ) Não
 
-**PER8.** Qual é a sua situação de trabalho atual?
-- ( ) Não trabalho  ( ) Estágio  ( ) Trabalho até 30 horas semanais  ( ) Trabalho mais de 30 horas semanais
-
-**PER9.** Você já teve reprovação em alguma disciplina de programação neste curso?
+**PER10.** Você já teve reprovação em alguma disciplina de programação neste curso?
 - ( ) Sim  ( ) Não  ( ) Prefiro não responder
 
 ---
 
 ## Bloco B: Dificuldade percebida (construto DIF)
 
-*Instrução:* "Pensando nas disciplinas de programação que você cursou ou está cursando, indique o quanto concorda com cada afirmação."
+*Instrução:* "Pensando em todo o seu aprendizado de programação até agora, indique o quanto concorda com cada afirmação."
 
 Escala (todos os pontos rotulados): **1** Discordo totalmente · **2** Discordo · **3** Nem concordo nem discordo · **4** Concordo · **5** Concordo totalmente
 
 | ID | Afirmação |
 |---|---|
-| DIF1 | Aprender a programar tem sido difícil para mim. |
-| DIF2 | Costumo precisar de muito mais tempo do que o previsto para resolver exercícios de programação. |
+| DIF1 | Tenho dificuldade para compreender novos conceitos de programação. |
+| DIF2 | Tenho dificuldade para transformar a lógica de uma solução em código. |
 | DIF3 | Com frequência, não sei por onde começar a resolver um problema de programação. |
 | DIF4 ᴿ | Consigo acompanhar o ritmo das disciplinas de programação sem grandes dificuldades. *(codificação invertida: 6 − x)* |
+
+> DIF1 e DIF2 vieram da versão preliminar do grupo. Os itens dessa versão sobre depuração e sobre resolver exercícios sem ajuda ficaram de fora porque repetem AUT2 e AUT4. Mantê-los inflaria artificialmente a correlação testada em H3a.
 
 ---
 
@@ -110,7 +127,7 @@ Escala: **1** Muito fácil · **2** Fácil · **3** Moderado · **4** Difícil �
 
 ## Bloco D: Autoeficácia em programação (construto AUT) e verificação de atenção
 
-*Instrução:* "Pensando nas disciplinas de programação que você cursa agora, indique o quanto concorda." A escala é a mesma do Bloco B.
+*Instrução:* "Pensando nas suas habilidades de programação hoje, indique o quanto concorda." A escala é a mesma do Bloco B.
 
 | ID | Afirmação |
 |---|---|
@@ -120,7 +137,7 @@ Escala: **1** Muito fácil · **2** Fácil · **3** Moderado · **4** Difícil �
 | ATN1 | **Para confirmar que você está lendo com atenção, marque "Discordo totalmente" nesta linha.** |
 | AUT4 | Consigo concluir um exercício de programação sem ajuda de colegas, monitores ou ferramentas de IA. |
 
-> ATN1 fica entre os itens AUT para não ser percebida como pergunta isolada. A resposta correta é **1**, e qualquer outro valor descarta a resposta pela regra **E5**.
+> A resposta correta de ATN1 é **1**. Qualquer outro valor descarta a resposta pela regra **E5**.
 
 ---
 
@@ -138,7 +155,7 @@ A escala é a mesma do Bloco B.
 
 ## Bloco F: Hábitos de estudo
 
-**HAB1.** Em uma semana típica deste semestre, quantas horas você dedica a programar **fora do horário de aula**? (número inteiro de 0 a 40)
+**HAB1.** Em uma semana típica deste semestre, quantas horas você dedica a programar **fora do horário de aula e do estágio**? (número inteiro de 0 a 40)
 
 **HAB2.** Com que frequência você usa assistentes de IA generativa (por exemplo, ChatGPT, GitHub Copilot, Gemini) ao estudar programação?
 - ( ) 1 Nunca  ( ) 2 Raramente  ( ) 3 Às vezes  ( ) 4 Frequentemente  ( ) 5 Sempre
@@ -154,7 +171,7 @@ A escala é a mesma do Bloco B.
 
 ## Bloco G: Questão aberta (opcional)
 
-**ABR1.** Na sua opinião, o que mais dificulta, ou o que mais ajudou, o seu aprendizado de programação? *(Não escreva nomes de pessoas, professores ou turmas.)*
+**ABR1.** Na sua opinião, o que mais dificulta, ou o que mais ajudou, o seu aprendizado de programação? *(Não escreva nomes de pessoas, professores ou instituições.)*
 
 ---
 
@@ -162,7 +179,7 @@ A escala é a mesma do Bloco B.
 
 | Construto | Base | Adaptação |
 |---|---|---|
-| DIF | Elaborado pelo grupo, com base em Robins, Rountree e Rountree (2003) e Lahtinen, Ala-Mutka e Järvinen (2005) | Validade de conteúdo verificada no pré-teste com especialista |
-| TOP | Lista de tópicos de Lahtinen, Ala-Mutka e Järvinen (2005) | Tradução livre; tópicos ajustados às ementas dos períodos iniciais |
+| DIF | Elaborado pelo grupo (DIF1 e DIF2 vêm da versão preliminar), com base em Robins, Rountree e Rountree (2003) e Lahtinen, Ala-Mutka e Järvinen (2005) | Validade de conteúdo verificada no pré-teste com especialista |
+| TOP | Lista de tópicos de Lahtinen, Ala-Mutka e Järvinen (2005) | Tradução livre; tópicos ajustados às ementas iniciais |
 | AUT | Ramalingam e Wiedenbeck (1998); Tsai, Wang e Hsu (2018) | Tradução livre e redução para 4 itens |
 | ANS | Connolly, Murphy e Moore (2009) | Tradução livre e redução para 3 itens |
