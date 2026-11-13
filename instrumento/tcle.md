@@ -10,11 +10,11 @@
 
 Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a experiência de estudantes de Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas e Sistemas de Informação com o aprendizado de programação. Podem participar estudantes do 1º ao 4º período e estudantes de qualquer período que façam estágio na área de TI.
 
-**O que você fará.** Responderá a um questionário on-line de cerca de **9 minutos** sobre o seu perfil acadêmico, a sua experiência com programação e os seus hábitos de estudo.
+**O que você fará.** Responderá a um questionário on-line de **5 perguntas** (cerca de **2 minutos**) sobre o seu curso, a sua experiência com programação e o uso de IA nos estudos, além de uma pergunta aberta opcional.
 
 **Participação voluntária.** A participação não é obrigatória, **não tem relação com notas ou avaliações** e não oferece recompensa. Você pode desistir a qualquer momento antes de enviar, bastando fechar a página. Como as respostas são anônimas, depois do envio não é possível localizar e remover uma resposta específica.
 
-**Anonimato.** Não coletamos nome, e-mail, matrícula, nome da instituição nem qualquer dado que identifique você. A idade é perguntada em faixas, e os resultados são apresentados apenas de forma agregada, nunca para grupos com menos de 5 pessoas. Na pergunta aberta, não escreva nomes de pessoas ou instituições.
+**Anonimato.** Não coletamos nome, e-mail, matrícula, nome da instituição nem qualquer dado que identifique você. Os resultados são apresentados apenas de forma agregada, nunca para grupos com menos de 5 pessoas. Na pergunta aberta, não escreva nomes de pessoas ou instituições.
 
 **Riscos e benefícios.** O risco é mínimo: algum desconforto ao refletir sobre dificuldades no curso. Você pode deixar a pergunta aberta em branco. Não há benefício direto, mas os resultados podem ajudar a entender e melhorar o ensino de programação.
 
@@ -24,4 +24,4 @@ Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a e
 
 **Dúvidas.** Entre em contato pelo e-mail 1334415@pucminas.edu.br ou com o professor orientador.
 
-Ao marcar "Sim, concordo em participar", você declara que leu e entendeu este termo e que aceita participar voluntariamente.
+Ao marcar "Sim, concordo em participar", você declara que leu e entendeu este termo, que tem 18 anos ou mais e que aceita participar voluntariamente.

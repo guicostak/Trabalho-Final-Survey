@@ -52,7 +52,7 @@
 |---|---|---|---|---|
 | RE-15 | Cada item ligado a **uma QP e uma métrica** | OBR | Tabela 5 | ✅ |
 | RE-16 | **Escala declarada** por item (nominal, ordinal, intervalar ou razão) | OBR | Tabela 5, coluna *Escala* | ✅ |
-| RE-17 | Construtos medidos por **mais de um item** | OBR | DIF (4), AUT (4), ANS (3) | ✅ |
+| RE-17 | Construtos medidos por **mais de um item** | OBR | DIF (4 itens, 1 invertido) | ✅ |
 | RE-18 | **Pergunta de atenção** | OBR | ATN1 + regra E5 | ✅ |
 
 ### A.5 Seção 4: Pré-teste
@@ -67,7 +67,7 @@
 | ID | Requisito | Prioridade | Onde | Status |
 |---|---|---|---|---|
 | RE-21 | Estatística descritiva | OBR | §5.4 | ✅ |
-| RE-22 | Testes **coerentes com as escalas** | OBR | Tabela 8 (Mann-Whitney, χ², Spearman, Kruskal-Wallis) | ✅ |
+| RE-22 | Testes **coerentes com as escalas** | OBR | Tabela 8 (Mann-Whitney, Kruskal-Wallis, χ², Spearman) | ✅ |
 | RE-23 | **Tamanho de efeito** | OBR | Tabela 8 (δ de Cliff, V de Cramér, ρ, ε²) | ✅ |
 | RE-24 | **Correção para múltiplas comparações** | OBR | §5.5 (Holm) | ✅ |
 | RE-25 | Codificação das **respostas abertas** | OBR | §5.6 (análise temática, κ de Cohen) | ✅ |
@@ -101,7 +101,7 @@
 |---|---|---|---|
 | RE-P2-01 | Mínimo de **50 respostas válidas** | Alvo 100 + contingência (§8) | 🔜 |
 | RE-P2-02 | Dashboard **lê os dados brutos** | §5.7 + `codebook.csv` | 🔜 |
-| RE-P2-03 | Respostas descartadas **com o motivo** | Tabela 7 (E1–E8) | 🔜 |
+| RE-P2-03 | Respostas descartadas **com o motivo** | Tabela 7 (E1–E6) | 🔜 |
 | RE-P2-04 | Likert em **barras divergentes** | §5.4 | 🔜 |
 | RE-P2-05 | QP respondida com teste, *p*, efeito e margem | §5.5 e Tabela 8 | 🔜 |
 | RE-P2-06 | **Filtros por segmento** | M8 (período), M10 (curso), M3 (experiência); supressão de n < 5 | 🔜 |
@@ -120,11 +120,11 @@
 | ES-01 | Identifica a população-alvo e define a estratégia de amostragem | OBR | §2 | ✅ |
 | ES-02 | Descreve como o instrumento foi criado | OBR | §3 + quadro "Origem dos itens" em `questionario.md` | ✅ |
 | ES-03 | Descreve como os participantes são selecionados e recrutados | OBR | §2.2 + §8 | ✅ |
-| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | AUT e ANS adaptadas de escalas validadas; DIF com validade de conteúdo no pré-teste e α *ex post* | ✅ |
+| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | DIF com validade de conteúdo no pré-teste e α de Cronbach *ex post* | ✅ |
 | ES-05 | Descreve o monitoramento das respostas e a contingência para não resposta | OBR | §8 (lembretes e contingência) | ✅ |
 | ES-06 | Explica o tratamento de dados ausentes | OBR | §5.2 | ✅ |
-| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E8 e Tabela 8 | ✅ |
-| ES-08 | Analisa a taxa de resposta | OBR | Link aberto: taxa não calculável (aceito pelo padrão); relatam-se respostas por canal (§5.1) | ✅ |
+| ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E6 e Tabela 8 | ✅ |
+| ES-08 | Analisa a taxa de resposta | OBR | Link aberto: taxa não calculável (aceito pelo padrão); relatam-se respostas por dia (§5.1) | ✅ |
 | ES-09 | Avalia a suficiência do número de participantes (poder) | OBR | Tabela 4 | ✅ |
 | ES-10 | Reconhece ameaças à generalização | OBR | Tabela 9 | ✅ |
 | ES-11 | Disponibiliza o instrumento | OBR | `instrumento/questionario.md` | ✅ |
@@ -135,11 +135,11 @@
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
 | ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/` (scripts e dados na Parte 2) | ✅ |
-| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E7 (tempo), ATN1, inspeção de ABR1 | ✅ |
-| ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E5 | ✅ |
-| ES-D04 | Caracteriza a população-alvo | §2.1 + bloco PER | ✅ |
+| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E5 (tempo), ATN1, inspeção de ABR | ✅ |
+| ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E3 | ✅ |
+| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, ETA, EXP | ✅ |
 | ES-D05 | Considera princípios de ética em pesquisa | §6 | ✅ |
-| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 | ✅ |
+| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (instrumento enxuto, de 5 perguntas, para elevar a adesão) | ✅ |
 | ES-D07 | Valida itens, layout, duração e tecnologia (piloto) | §4 | ⏳ |
 | ES-D08 | Relata como o instrumento evoluiu na validação | Tabela 6 | ⏳ |
 | ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Vários canais, docentes parceiros e 2 lembretes | ✅ |
@@ -168,11 +168,11 @@
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
 | SA-01 | Explica o objetivo da amostragem (diversidade de cursos e instituições, sem pretensão de representatividade) | §2.2 | ✅ |
-| SA-02 | Explica a estratégia e as etapas de filtragem | §2.2 + TRI/PER | ✅ |
+| SA-02 | Explica a estratégia e as etapas de filtragem | §2.2 + ACE, CUR, ETA | ✅ |
 | SA-03 | Justifica por que a estratégia é razoável | §2.2 (não existe quadro amostral nacional) | ✅ |
 | SA-04 | Informa o tamanho da amostra | §2.3 | ✅ |
 | SA-05 | Define a população teórica | §2.1 | ✅ |
-| SA-06 | Relato replicável de como a amostra foi obtida | Canais, metas e cronograma (§2.2 e §8); canal registrado em PER5 | ✅ |
+| SA-06 | Relato replicável de como a amostra foi obtida | Canais, metas e cronograma (§2.2 e §8); capturas datadas das postagens | ✅ |
 | SA-07 | Argumenta a representatividade | Não é objetivo; margem declarada como nominal (§2.3) | ✅ |
 | SA-08 | Explica como a amostra pode ser enviesada | Tabela 9 | ✅ |
 | SA-09 | Informa o tamanho da população e do quadro amostral | §2.1 (N estimado) | ⏳ |
@@ -185,7 +185,7 @@
 |---|---|---|---|
 | 1 | ~~Preencher a instituição no PDF e no TCLE~~ (feito: PUC Minas, Unidade Lourdes) | — | ✅ |
 | 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
-| 3 | Montar o formulário conforme `instrumento/questionario.md` | — | 13/11 |
+| 3 | ~~Montar o formulário~~ (feito no Microsoft Forms: aceite + 5 perguntas + aberta) | — | ✅ |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |
 | 5 | Atualizar a Tabela 6 e a mediana de duração; recompilar o PDF (≤ 6 páginas) | RE-02 | 13/11 |
 | 6 | Confirmar com o professor se há norma institucional adicional (CEP) | RE-29 | 13/11 |

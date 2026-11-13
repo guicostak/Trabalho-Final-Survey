@@ -28,7 +28,7 @@
 2. Faltou alguma opção de resposta em alguma pergunta?
 3. A duração pareceu adequada? Em que ponto você ficou cansado(a)?
 4. Alguma pergunta pareceu invasiva ou desconfortável?
-5. *(Somente P4)* Os itens de dificuldade (DIF), autoeficácia (AUT) e ansiedade (ANS) representam bem cada conceito? Algum aspecto importante ficou de fora?
+5. *(Somente P4)* Os 4 itens de dificuldade (DIF1–DIF4) representam bem o conceito de dificuldade percebida? Algum aspecto importante ficou de fora?
 
 ## 3. Regra de decisão
 

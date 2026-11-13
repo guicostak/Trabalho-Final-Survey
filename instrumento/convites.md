@@ -5,11 +5,11 @@
 
 ## C1: Mensagem para docentes de outras instituições
 
-> Olá, professor(a) [nome]! Somos estudantes de Engenharia de Software da PUC Minas (Unidade Lourdes), na disciplina de Medição e Experimentação em Engenharia de Software, e estamos fazendo uma pesquisa acadêmica anônima sobre **a experiência de estudantes com o aprendizado de programação**. Poderia repassar o link abaixo às suas turmas de CC, ES, ADS ou SI? Se for possível, abrir 10 minutos da aula para a resposta ajuda muito. Público: estudantes com 18 anos ou mais, do 1º ao 4º período ou em estágio de TI. Leva cerca de 9 minutos e não tem relação com notas. Link: [link] · Coleta até 04/12. Muito obrigado!
+> Olá, professor(a) [nome]! Somos estudantes de Engenharia de Software da PUC Minas (Unidade Lourdes), na disciplina de Medição e Experimentação em Engenharia de Software, e estamos fazendo uma pesquisa acadêmica anônima sobre **a experiência de estudantes com o aprendizado de programação**. Poderia repassar o link abaixo às suas turmas de CC, ES, ADS ou SI? Se for possível, abrir alguns minutos da aula para a resposta ajuda muito. Público: estudantes com 18 anos ou mais, do 1º ao 4º período ou em estágio de TI. Leva cerca de 2 minutos e não tem relação com notas. Link: [link] · Coleta até 04/12. Muito obrigado!
 
 ## C2 e C3: Postagem em grupos, centros acadêmicos e redes sociais
 
-> **Pesquisa anônima sobre aprendizado de programação (9 min)**
+> **Pesquisa anônima sobre aprendizado de programação (2 min)**
 >
 > Somos estudantes de Engenharia de Software da PUC Minas, na disciplina de Medição e Experimentação em Engenharia de Software, e queremos entender a **experiência de quem estuda programação**. Se você cursa **CC, ES, ADS ou SI**, tem 18 anos ou mais e está **do 1º ao 4º período ou faz estágio em TI**, sua resposta ajuda muito!
 >
@@ -22,4 +22,4 @@
 
 ## C4: Lembretes (25/11 e 02/12)
 
-> **Lembrete:** a pesquisa anônima sobre aprendizado de programação fica aberta até **04/12 às 23:59**. Se você cursa CC, ES, ADS ou SI (1º ao 4º período ou estágio em TI) e ainda não respondeu, leva cerca de 9 minutos: [link]. Se já respondeu, obrigado, e não é preciso responder de novo!
+> **Lembrete:** a pesquisa anônima sobre aprendizado de programação fica aberta até **04/12 às 23:59**. Se você cursa CC, ES, ADS ou SI (1º ao 4º período ou estágio em TI) e ainda não respondeu, leva cerca de 2 minutos: [link]. Se já respondeu, obrigado, e não é preciso responder de novo!

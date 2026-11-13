@@ -1,43 +1,16 @@
-variavel,bloco,construto,descricao,escala,valores,codificacao,metrica,qp,obrigatorio,regra_limpeza
-TRI1,0-Triagem,,Concorda com o TCLE,nominal,"Sim, concordo; Não concordo",1=Sim; 0=Não,M13,QP1-QP4,sim,E1 se 0
-TRI2,0-Triagem,,Tem 18 anos ou mais,nominal,Sim; Não,1=Sim; 0=Não,M13,QP1-QP4,sim,E2 se 0
-TRI3,0-Triagem,,Já respondeu antes,nominal,Não; Sim,0=Não; 1=Sim,M13,QP1-QP4,sim,E3 se 1
-PER1,A-Perfil,,Curso,nominal,CC; ES; ADS; SI; Outro,CC; ES; ADS; SI; OUTRO,M10,QP4,sim,E4 se OUTRO
-PER2,A-Perfil,,Período em curso,ordinal,1º; 2º; 3º; 4º; 5º ou posterior,1; 2; 3; 4; 5,M8,QP4 (exploratória),sim,E4 se 5 e PER3=0
-PER3,A-Perfil,,Faz estágio em TI atualmente,nominal,Sim; Não,1=Sim; 0=Não,M11,QP4,sim,E4 se 0 e PER2=5
-PER4,A-Perfil,,Tipo de instituição,nominal,Pública; Privada,PUB; PRIV,M12,QP1-QP4,sim,
-PER5,A-Perfil,,Canal do convite,nominal,Professor/aula; Grupo WhatsApp/Discord/Telegram; Centro acadêmico; LinkedIn/Instagram; Indicação; Outro,PROF; GRUPO; CA; REDE; INDIC; OUTRO,M12,QP1-QP4,sim,
-PER6,A-Perfil,,Faixa etária,ordinal,18–19; 20–22; 23–25; 26–30; 31+,1; 2; 3; 4; 5,M12,QP1-QP4,sim,
-PER7,A-Perfil,,Programava antes do ingresso,nominal,Sim; Não,1=Sim; 0=Não,M3,QP2,sim,
-PER8,A-Perfil,,Tempo de experiência prévia,ordinal,<6 meses; 6m–1 ano; 1–2 anos; >2 anos,1; 2; 3; 4 (NA se PER7=0),M3,QP2,condicional,
-PER9,A-Perfil,,Ensino médio técnico em informática,nominal,Sim; Não,1=Sim; 0=Não,M3,QP2,sim,
-PER10,A-Perfil,,Reprovação prévia em disciplina de programação,nominal,Sim; Não; Prefiro não responder,1=Sim; 0=Não; NA,M9,QP2,sim,
-DIF1,B-Dificuldade,DIF,Dificuldade para compreender novos conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP1-QP4,sim,
-DIF2,B-Dificuldade,DIF,Dificuldade para transformar lógica em código,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP1-QP4,sim,
-DIF3,B-Dificuldade,DIF,Não sei por onde começar a resolver um problema,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP1-QP4,sim,
-DIF4,B-Dificuldade,DIF,Acompanho o ritmo sem grandes dificuldades (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,6 - x,M1,QP1-QP4,sim,
-TOP1,C-Tópicos,TOP,Estruturas condicionais,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP2,C-Tópicos,TOP,Estruturas de repetição,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP3,C-Tópicos,TOP,Vetores e matrizes,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP4,C-Tópicos,TOP,Funções/métodos e parâmetros,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP5,C-Tópicos,TOP,Recursão,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP6,C-Tópicos,TOP,"Ponteiros, referências e memória",ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP7,C-Tópicos,TOP,Depuração,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-TOP8,C-Tópicos,TOP,Orientação a objetos,ordinal (5 pts),Muito fácil..Muito difícil; Ainda não estudei,1..5; NA,M2,QP1,sim,
-AUT1,D-Autoeficácia,AUT,Escrevo programa para problema simples,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M4,QP3,sim,
-AUT2,D-Autoeficácia,AUT,Localizo e corrijo erros no meu programa,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M4,QP3,sim,
-AUT3,D-Autoeficácia,AUT,Entendo programa escrito por outra pessoa,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M4,QP3,sim,
-ATN1,D-Autoeficácia,,Verificação de atenção (correto = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente,1 = acerto; 2..5 = erro,M13,QP1-QP4,sim,E5 se != 1
-AUT4,D-Autoeficácia,AUT,Concluo exercício sem ajuda de colegas ou IA,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M4,QP3,sim,
-ANS1,E-Ansiedade,ANS,Nervosismo ao programar em avaliações,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M5,QP3,sim,
-ANS2,E-Ansiedade,ANS,Desânimo com erros que não consigo resolver,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M5,QP3,sim,
-ANS3,E-Ansiedade,ANS,Evito tarefas por receio de não concluir,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M5,QP3,sim,
-HAB1,F-Hábitos,,Horas semanais programando fora da aula e do estágio,razão,0..40,inteiro; >40 = NA,M6,QP4,sim,
-HAB2,F-Hábitos,,Frequência de uso de IA generativa,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5,M7,QP4,sim,
-HAB3,F-Hábitos,,Principal uso da IA,nominal,Código pronto; Entender conceitos/erros; Revisar meu código; Outro; Não uso,CODIGO; ENTENDER; REVISAR; OUTRO; NAOUSO,M14,QP4,sim,
-ABR1,G-Aberta,,O que mais dificulta ou ajudou o aprendizado,texto livre,,codificação temática (protocolo §5.6),M15,QP1,não,remover identificadores
-_inicio,Metadado,,Hora de início (exportação do Forms),data-hora,,ISO 8601,M13,QP1-QP4,auto,E7
-_fim,Metadado,,Hora de conclusão (exportação do Forms),data-hora,,ISO 8601,M13,QP1-QP4,auto,E7 e E8
+variavel,pergunta_no_forms,construto,descricao,escala,valores,codificacao,metrica,qp,obrigatorio,regra_limpeza
+ACE,Aceite,,Aceite do TCLE e idade de 18 anos ou mais,nominal,"Sim, concordo em participar; Não concordo",1=Sim; 0=Não (encerra),M7,QP1-QP4,sim,E1 se 0
+CUR,1,,Curso,nominal,Ciência da Computação; Engenharia de Software; ADS; Sistemas de Informação; Outro,CC; ES; ADS; SI; OUTRO (encerra),M4,QP3,sim,E2 se OUTRO
+ETA,2,,Etapa do curso,nominal,1º ao 4º período; 5º+ com estágio em TI; 5º+ sem estágio,INICIAL; ESTAGIO; FORA (encerra),M5,QP3,sim,E2 se FORA
+EXP,3,,Programava antes de ingressar no curso,nominal,Sim; Não,1=Sim; 0=Não,M3,QP2; QP3,sim,
+DIF1,4 (linha 1),DIF,Dificuldade para compreender novos conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
+DIF2,4 (linha 2),DIF,Dificuldade para transformar a lógica em código,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
+DIF3,4 (linha 3),DIF,Não sei por onde começar a resolver um problema,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
+DIF4,4 (linha 4),DIF,Acompanho o ritmo sem grandes dificuldades (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,6 - x,M1; M2,QP1-QP4,sim,E4
+ATN1,4 (linha 5),,Verificação de atenção (correta = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente,1 = acerto; 2..5 = erro,M7,QP1-QP4,sim,E3 se != 1
+IAF,5,,Frequência de uso de IA generativa ao estudar,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5,M6,QP4,sim,
+ABR,Aberta,,O que mais dificulta ou ajudou o aprendizado,texto livre,,codificação temática (protocolo §5.6),M8,QP1,não,remover identificadores
+_inicio,Metadado,,Hora de início (exportação do Forms),data-hora,,ISO 8601,M7,QP1-QP4,auto,E5
+_fim,Metadado,,Hora de conclusão (exportação do Forms),data-hora,,ISO 8601,M7,QP1-QP4,auto,E5 e E6
 M1_DIF,Derivada,DIF,Escore de dificuldade percebida,ordinal (escore),1..5,média de DIF1–DIF3 e DIF4 invertido,M1,QP1-QP4,derivada,
-M4_AUT,Derivada,AUT,Escore de autoeficácia,ordinal (escore),1..5,média de AUT1–AUT4,M4,QP3,derivada,
-M5_ANS,Derivada,ANS,Escore de ansiedade,ordinal (escore),1..5,média de ANS1–ANS3,M5,QP3,derivada,
+ETA2,Derivada,,Etapa em dois grupos para H3b,nominal,INICIAL; ESTAGIO,recodificação de ETA,M5,QP3,derivada,

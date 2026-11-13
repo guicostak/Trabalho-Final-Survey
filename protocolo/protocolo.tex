@@ -90,17 +90,17 @@
 \textbf{Método:} survey por questionário autoadministrado on-line, descritivo e correlacional, de corte transversal \textbullet\
 \textbf{População:} estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI \textbullet\
 \textbf{Amostragem:} não probabilística, por conveniência com bola de neve, em vários canais e com metas por segmento \textbullet\
+\textbf{Instrumento:} aceite do TCLE e 5 perguntas, mais 1 pergunta aberta opcional (cerca de 2 minutos) \textbullet\
 \textbf{Amostra:} alvo de 100 respostas válidas (mínimo de 50); margem de erro nominal de ±9,8 p.p. \textbullet\
-\textbf{Hipóteses confirmatórias:} 8, testadas com $\alpha=0{,}05$ e correção de Holm \textbullet\
-\textbf{Coleta:} 18/11 a 04/12/2026 \textbullet\
-\textbf{Materiais:} instrumento completo, livro de códigos e TCLE no repositório do grupo.
+\textbf{Hipóteses confirmatórias:} 5, testadas com $\alpha=0{,}05$ e correção de Holm \textbullet\
+\textbf{Coleta:} 18/11 a 04/12/2026.
 O protocolo segue o padrão \emph{Questionnaire Surveys} e o suplemento \emph{Registered Reports} dos ACM SIGSOFT Empirical Standards \citep{ralph} e foi registrado \emph{antes} da primeira resposta. Qualquer desvio será datado, justificado e registrado em \texttt{DESVIOS.md}.
 \end{tcolorbox}
 
 % =====================================================================
 \Needspace{5\baselineskip}\section{Objetivo e questões de pesquisa}
 
-Disciplinas introdutórias de programação têm reprovação elevada: a taxa média de aprovação fica próxima de dois terços \citep{watson}. A literatura relaciona a dificuldade de aprender a programar a fatores de \emph{entrada} (experiência prévia), \emph{psicológicos} (autoeficácia e ansiedade) e de \emph{conteúdo} (tópicos como recursão e ponteiros) \citep{robins,lahtinen,ramalingam,connolly}. Além disso, os assistentes de IA generativa mudaram a forma como os iniciantes estudam \citep{becker}. Este estudo caracteriza a dificuldade \emph{percebida} (a percepção do estudante, não o seu desempenho) em quatro cursos de tecnologia e compara estudantes dos períodos iniciais com estagiários, que já aplicam programação em contexto profissional. O objetivo segue o template GQM \citep{basili} (Tabela~\ref{tab:gqm}); as questões de pesquisa (QP) e as hipóteses estão na Tabela~\ref{tab:qp}, e as métricas na Tabela~\ref{tab:met}.
+Disciplinas introdutórias de programação têm reprovação elevada: a taxa média de aprovação fica próxima de dois terços \citep{watson}. A literatura relaciona a dificuldade de aprender a programar a fatores de \emph{entrada}, como a experiência prévia, a fatores \emph{psicológicos}, como autoeficácia e ansiedade, e ao \emph{conteúdo} estudado \citep{robins,lahtinen,ramalingam,connolly}. Além disso, os assistentes de IA generativa mudaram a forma como os iniciantes estudam \citep{becker}. Este estudo caracteriza a dificuldade \emph{percebida} (a percepção do estudante, não o seu desempenho) em quatro cursos de tecnologia e testa a sua associação com experiência prévia, curso, etapa do curso (períodos iniciais ou estágio) e uso de IA. Para favorecer a adesão, o instrumento foi reduzido a 5 perguntas, mantendo um construto medido por vários itens. O objetivo segue o template GQM \citep{basili} (Tabela~\ref{tab:gqm}); as questões de pesquisa (QP) e as hipóteses estão na Tabela~\ref{tab:qp}, e as métricas na Tabela~\ref{tab:met}.
 
 \begin{table}[H]
 \centering\small
@@ -120,52 +120,44 @@ Disciplinas introdutórias de programação têm reprovação elevada: a taxa m�
 \begin{table}[H]
 \centering\small
 \caption{Questões de pesquisa e hipóteses (bilaterais; direção esperada entre parênteses).}\label{tab:qp}
-\begin{tabularx}{\textwidth}{@{}L{0.75cm}L{5.9cm}Y@{}}
+\begin{tabularx}{\textwidth}{@{}L{0.75cm}L{6.2cm}Y@{}}
 \toprule
 \thead{QP} & \thead{Pergunta} & \thead{Hipóteses} \\
 \midrule
-QP1 & Qual é o nível de dificuldade percebida no aprendizado de programação e quais tópicos são percebidos como mais difíceis? & Descritiva, sem hipótese. \\
-QP2 & A dificuldade percebida difere entre estudantes com e sem experiência prévia em programação? & H2a: M1 difere entre os grupos (maior sem experiência).\newline H2b: reprovação prévia está associada à experiência prévia. \\
-QP3 & A dificuldade percebida está associada à autoeficácia e à ansiedade em programação? & H3a: $\rho(\text{M1},\text{M4})\neq0$ (negativa).\newline H3b: $\rho(\text{M1},\text{M5})\neq0$ (positiva). \\
-QP4 & A dificuldade percebida varia conforme o curso, a realização de estágio e os hábitos de estudo? & H4a: M1 difere entre os cursos.\newline H4b: M1 difere entre estagiários e não estagiários (menor entre estagiários).\newline H4c: $\rho(\text{M1},\text{M6})\neq0$.\newline H4d: $\rho(\text{M1},\text{M7})\neq0$ (sem direção esperada). \\
+QP1 & Qual é o nível de dificuldade percebida no aprendizado de programação? & Descritiva, sem hipótese. \\
+QP2 & A dificuldade percebida difere entre estudantes com e sem experiência prévia em programação? & H2: M1 difere entre os grupos (maior sem experiência). \\
+QP3 & A dificuldade percebida varia conforme o curso e a etapa do curso? & H3a: M1 difere entre os cursos.\newline H3b: M1 difere entre períodos iniciais e estagiários (menor entre estagiários).\newline H3c: a experiência prévia está associada ao curso. \\
+QP4 & A dificuldade percebida está associada ao uso de IA generativa nos estudos? & H4: $\rho(\text{M1},\text{M6})\neq0$ (sem direção esperada). \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-{\small
-\begin{longtable}{@{}L{0.65cm}L{3.0cm}L{8.55cm}L{2.45cm}L{1.55cm}@{}}
-\caption{Métricas: definição operacional, escala de medição e QP atendida.}\label{tab:met}\\
+\vspace{-1ex}
+\begin{table}[H]
+\centering\small
+\caption{Métricas: definição operacional, escala de medição e QP atendida.}\label{tab:met}
+\begin{tabularx}{\textwidth}{@{}L{0.65cm}L{3.0cm}YL{2.45cm}L{1.55cm}@{}}
 \toprule
 \thead{ID} & \thead{Métrica} & \thead{Definição operacional} & \thead{Escala} & \thead{QP} \\
-\midrule\endfirsthead
-\toprule
-\thead{ID} & \thead{Métrica} & \thead{Definição operacional} & \thead{Escala} & \thead{QP} \\
-\midrule\endhead
+\midrule
 M1 & Dificuldade percebida & Média de DIF1–DIF4 (DIF4 invertido), de 1 a 5 & Ordinal (escore)\textsuperscript{a} & QP1–QP4 \\
-M2 & Dificuldade por tópico & \% de respostas \emph{difícil} ou \emph{muito difícil} em cada TOP1–TOP8 & Razão (proporção) & QP1 \\
-M3 & Experiência prévia & Programava antes do ingresso (PER7); tempo (PER8); ensino técnico (PER9) & Nominal; ordinal & QP2 \\
-M4 & Autoeficácia & Média de AUT1–AUT4, de 1 a 5 & Ordinal (escore)\textsuperscript{a} & QP3 \\
-M5 & Ansiedade em programação & Média de ANS1–ANS3, de 1 a 5 & Ordinal (escore)\textsuperscript{a} & QP3 \\
-M6 & Prática semanal & Horas semanais de programação fora da aula (HAB1) & Razão & QP4 \\
-M7 & Uso de IA generativa & Frequência de uso de IA ao estudar (HAB2), de 1 a 5 & Ordinal & QP4 \\
-M8 & Período & Período em curso (PER2) & Ordinal & QP4 (expl.) \\
-M9 & Reprovação prévia & Já teve reprovação em disciplina de programação (PER10) & Nominal & QP2 \\
-M10 & Curso & CC, ES, ADS ou SI (PER1) & Nominal & QP4 \\
-M11 & Estágio & Faz estágio em TI atualmente (PER3) & Nominal & QP4 \\
-M12 & Composição da amostra & Tipo de instituição (PER4), canal de convite (PER5) e faixa etária (PER6) & Nominal; ordinal & QP1–QP4\textsuperscript{b} \\
-M13 & Qualidade das respostas & \% de respostas válidas e descartes por motivo (TRI1–TRI3, ATN1; regras E1–E8) & Razão (proporção) & QP1–QP4\textsuperscript{b} \\
-M14 & Modo de uso da IA & Principal uso da IA ao estudar (HAB3) & Nominal & QP4 \\
-M15 & Temas da questão aberta & Frequência de cada tema codificado em ABR1 & Nominal & QP1 \\
+M2 & Concordância por item & \% de \emph{concordo} ou \emph{concordo totalmente} em cada item DIF & Razão (proporção) & QP1 \\
+M3 & Experiência prévia & Programava antes de ingressar no curso (EXP) & Nominal & QP2, QP3 \\
+M4 & Curso & CC, ES, ADS ou SI (CUR) & Nominal & QP3 \\
+M5 & Etapa do curso & 1º ao 4º período ou estagiário do 5º período em diante (ETA) & Nominal & QP3 \\
+M6 & Uso de IA generativa & Frequência de uso de IA ao estudar (IAF), de 1 a 5 & Ordinal & QP4 \\
+M7 & Qualidade das respostas & \% de respostas válidas e descartes por motivo (ACE, ATN1; regras E1–E6) & Razão (proporção) & QP1–QP4\textsuperscript{b} \\
+M8 & Temas da questão aberta & Frequência de cada tema codificado em ABR & Nominal & QP1 \\
 \bottomrule
-\multicolumn{5}{@{}l}{\footnotesize\textsuperscript{a}Itens Likert são ordinais; o escore médio entra no $\alpha$ de Cronbach, mas só é analisado com testes de postos. \textsuperscript{b}Validade e generalização de todas as QPs.}
-\end{longtable}
-}
+\multicolumn{5}{@{}l}{\footnotesize\textsuperscript{a}Itens Likert são ordinais; o escore médio entra no $\alpha$ de Cronbach, mas só é analisado com testes de postos. \textsuperscript{b}Validade de todas as QPs.}
+\end{tabularx}
+\end{table}
 
 % =====================================================================
 \Needspace{5\baselineskip}\section{População e amostragem}
 
 \subsection{População-alvo}
-São estudantes de graduação em CC, ES, ADS e SI de instituições brasileiras, públicas ou privadas, com 18 anos ou mais, que estejam (a) do 1º ao 4º período ou (b) em qualquer período, fazendo estágio em TI. Estudantes formam a população de interesse, e não um substituto por conveniência: a dificuldade de aprender a programar se manifesta nos períodos iniciais, e os estagiários permitem contrastar quem já aplica programação em contexto profissional. Não existe lista nacional desses estudantes, e o tamanho da população é estimado em $N\approx$ \pend{N}. Ficam de fora os menores de 18 anos, que exigiriam autorização do responsável. Os colegas da disciplina MEES e os integrantes do grupo não recebem o convite e são orientados a não responder, porque conhecem as hipóteses do estudo.
+São estudantes de graduação em CC, ES, ADS e SI de instituições brasileiras, públicas ou privadas, com 18 anos ou mais, que estejam (a) do 1º ao 4º período ou (b) do 5º período em diante, fazendo estágio em TI. Estudantes formam a população de interesse, e não um substituto por conveniência: a dificuldade de aprender a programar se manifesta nos períodos iniciais, e os estagiários permitem contrastar quem já aplica programação em contexto profissional. Não existe lista nacional desses estudantes, e o tamanho da população é estimado em $N\approx$ \pend{N}. Ficam de fora os menores de 18 anos, que exigiriam autorização do responsável. Os colegas da disciplina MEES e os integrantes do grupo não recebem o convite e são orientados a não responder, porque conhecem as hipóteses do estudo.
 
 \subsection{Origem dos contatos e estratégia}
 Como não há quadro amostral, a amostragem é \emph{não probabilística, por conveniência com bola de neve} \citep{baltes}. O convite parte de cinco fontes:
@@ -173,8 +165,8 @@ Como não há quadro amostral, a amostragem é \emph{não probabilística, por c
 (ii) centros e diretórios acadêmicos;
 (iii) grupos de estudantes de tecnologia (WhatsApp, Discord, Telegram), com permissão dos administradores;
 (iv) perfis dos integrantes no LinkedIn e no Instagram;
-(v) os próprios respondentes, convidados a repassar o link.
-O formulário registra o canal de chegada (PER5) e o tipo de instituição (PER4), mas não o nome da instituição, o que reduz o risco de reidentificação. Para que as comparações sejam viáveis, há \textbf{metas mínimas por segmento}: 15 respostas por curso e 20 estagiários. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (Bloco 0 e itens PER1–PER3).
+(v) os próprios respondentes, convidados a repassar o link na mensagem final do formulário.
+Para que as comparações sejam viáveis, há \textbf{metas mínimas por segmento}: 15 respostas por curso e 20 estagiários. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (ACE, CUR e ETA).
 
 \subsection{Tamanho da amostra, margem de erro e poder}
 O alvo é de \textbf{100 respostas válidas}, acima do mínimo de 50 exigido. A margem de erro de uma proporção com 95\% de confiança é $e = 1{,}96\sqrt{p(1-p)/n}$, no pior caso $p=0{,}5$, sem correção para população finita, porque a população é grande e de tamanho desconhecido. Como a amostra não é probabilística, essa margem é \textbf{nominal}: indica a precisão que uma amostra aleatória do mesmo tamanho teria e não garante representatividade (Seção~7). O poder estatístico é de 80\% com $\alpha=0{,}05$ bilateral (Tabela~\ref{tab:me}).
@@ -197,60 +189,36 @@ O alvo é de \textbf{100 respostas válidas}, acima do mínimo de 50 exigido. A 
 % =====================================================================
 \Needspace{5\baselineskip}\section{Questionário com rastreabilidade}
 
-O instrumento tem 37 itens em oito blocos e deve levar cerca de 9 minutos. Ele será aplicado no Microsoft Forms, aberto a qualquer pessoa com o link e configurado para \emph{não registrar nome nem e-mail}. A plataforma registra o início e o fim de cada resposta, o que permite detectar respostas rápidas demais. A ordem dos itens é fixa. Todas as escalas Likert têm 5 pontos rotulados (1 = \emph{discordo totalmente} … 5 = \emph{concordo totalmente}), com ponto neutro. O instrumento segue as recomendações de Kitchenham e Pfleeger (2008) para a redação de itens. Os itens de autoeficácia foram adaptados de Ramalingam e Wiedenbeck (1998) e de Tsai, Wang e Hsu (2018); os de ansiedade, de Connolly, Murphy e Moore (2009); e a lista de tópicos, de Lahtinen, Ala-Mutka e Järvinen (2005). Os itens de dificuldade percebida foram elaborados pelo grupo, evitando sobreposição com os de autoeficácia, e terão o conteúdo validado no pré-teste (Seção~4). As instruções pedem que o estudante considere todo o seu aprendizado de programação até agora. Cada construto é medido por 3 ou 4 itens, e DIF4 é invertido para reduzir a aquiescência. O item ATN1 é a \textbf{pergunta de atenção}. A redação completa, as opções e as regras de ramificação estão em \texttt{instrumento/questionario.md}. A Tabela~\ref{tab:inst} liga cada item a uma escala, a uma métrica e a uma QP.
+O instrumento foi enxugado para favorecer a adesão: um aceite que funciona como porteira, \textbf{5 perguntas} e uma pergunta aberta opcional, com duração estimada de 2 minutos. Ele é aplicado no Microsoft Forms, aberto a qualquer pessoa com o link e configurado como \emph{resposta anônima} (não registra nome nem e-mail). A plataforma registra o início e o fim de cada resposta, o que permite detectar respostas rápidas demais. As escalas Likert têm 5 pontos rotulados (1 = \emph{discordo totalmente} … 5 = \emph{concordo totalmente}), com ponto neutro. A redação segue as recomendações de Kitchenham e Pfleeger (2008). O construto \textbf{dificuldade percebida} (DIF) é medido por 4 itens, apresentados em uma única grade Likert: DIF1 e DIF2 cobrem conceitos e tradução da lógica em código, DIF3 cobre o início da resolução de problemas e DIF4 é invertido para reduzir a aquiescência. A \textbf{pergunta de atenção} (ATN1) é uma linha da mesma grade. Respostas que indicam inelegibilidade encerram o formulário por ramificação. A redação completa está em \texttt{instrumento/questionario.md}, e a Tabela~\ref{tab:inst} liga cada item a uma escala, a uma métrica e a uma QP.
 
-{\footnotesize
-\begin{longtable}{@{}L{1.05cm}L{8.75cm}L{2.45cm}L{1.15cm}L{1.95cm}@{}}
-\caption{Matriz de rastreabilidade do questionário (item → escala → métrica → QP). \textsuperscript{R} = item de codificação invertida.}\label{tab:inst}\\
+\begin{table}[H]
+\centering\small
+\caption{Matriz de rastreabilidade do questionário (item → escala → métrica → QP). \textsuperscript{R} = item de codificação invertida.}\label{tab:inst}
+\begin{tabularx}{\textwidth}{@{}L{1.05cm}YL{2.5cm}L{1.15cm}L{1.6cm}@{}}
 \toprule
-\thead{ID} & \thead{Item (redação resumida)} & \thead{Escala} & \thead{Métrica} & \thead{QP} \\
-\midrule\endfirsthead
-\toprule
-\thead{ID} & \thead{Item (redação resumida)} & \thead{Escala} & \thead{Métrica} & \thead{QP} \\
-\midrule\endhead
-\blockrow{5}{Bloco 0 — Consentimento e triagem (respostas que indicam inelegibilidade encerram o formulário)}
-TRI1 & Li o Termo de Consentimento e concordo em participar & Nominal & M13 & QP1–QP4 \\
-TRI2 & Tenho 18 anos ou mais & Nominal & M13 & QP1–QP4 \\
-TRI3 & Já respondi a este questionário antes & Nominal & M13 & QP1–QP4 \\
-\blockrow{5}{Bloco A — Perfil e elegibilidade}
-PER1 & Curso (CC, ES, ADS, SI ou outro; \emph{outro} encerra) & Nominal & M10 & QP4 \\
-PER2 & Período em curso (1º, 2º, 3º, 4º, 5º ou posterior) & Ordinal & M8 & QP4 (expl.) \\
-PER3 & Faz estágio em TI atualmente (5º período ou posterior sem estágio encerra) & Nominal & M11 & QP4 \\
-PER4 & Tipo de instituição (pública ou privada) & Nominal & M12 & QP1–QP4 \\
-PER5 & Canal pelo qual recebeu o convite & Nominal & M12 & QP1–QP4 \\
-PER6 & Faixa etária (18–19, 20–22, 23–25, 26–30, 31+) & Ordinal & M12 & QP1–QP4 \\
-PER7 & Programava antes de ingressar no curso & Nominal & M3 & QP2 \\
-PER8 & Tempo de experiência prévia (<6 meses … >2 anos; condicional a PER7) & Ordinal & M3 & QP2 \\
-PER9 & Cursou ensino médio técnico em informática ou área afim & Nominal & M3 & QP2 \\
-PER10 & Já teve reprovação em disciplina de programação no curso (opção \emph{prefiro não responder}) & Nominal & M9 & QP2 \\
-\blockrow{5}{Bloco B — Dificuldade percebida (construto DIF)}
-DIF1 & Tenho dificuldade para compreender novos conceitos de programação & Ordinal (Likert 5) & M1 & QP1–QP4 \\
-DIF2 & Tenho dificuldade para transformar a lógica de uma solução em código & Ordinal (Likert 5) & M1 & QP1–QP4 \\
-DIF3 & Com frequência não sei por onde começar a resolver um problema de programação & Ordinal (Likert 5) & M1 & QP1–QP4 \\
-DIF4\textsuperscript{R} & Consigo acompanhar o ritmo das disciplinas de programação sem grandes dificuldades & Ordinal (Likert 5) & M1 & QP1–QP4 \\
-\blockrow{5}{Bloco C — Dificuldade por tópico (1 = muito fácil … 5 = muito difícil; \emph{ainda não estudei} = ausente)}
-TOP1–2 & Estruturas condicionais; estruturas de repetição & Ordinal (5 pts) & M2 & QP1 \\
-TOP3–4 & Vetores e matrizes; funções/métodos e passagem de parâmetros & Ordinal (5 pts) & M2 & QP1 \\
-TOP5–6 & Recursão; ponteiros, referências e gerenciamento de memória & Ordinal (5 pts) & M2 & QP1 \\
-TOP7–8 & Depuração (localizar e corrigir erros); orientação a objetos & Ordinal (5 pts) & M2 & QP1 \\
-\blockrow{5}{Bloco D — Autoeficácia em programação (construto AUT) e verificação de atenção}
-AUT1 & Consigo escrever um programa que resolva um problema simples proposto em aula & Ordinal (Likert 5) & M4 & QP3 \\
-AUT2 & Consigo localizar e corrigir erros em um programa de minha autoria & Ordinal (Likert 5) & M4 & QP3 \\
-AUT3 & Consigo entender um programa escrito por outra pessoa, de complexidade compatível com a disciplina & Ordinal (Likert 5) & M4 & QP3 \\
-AUT4 & Consigo concluir um exercício sem ajuda de colegas, monitores ou ferramentas de IA & Ordinal (Likert 5) & M4 & QP3 \\
-ATN1 & \textbf{Atenção:} ``Para confirmar que está lendo, marque \emph{Discordo totalmente} nesta linha'' & Nominal (acerto) & M13 & QP1–QP4 \\
-\blockrow{5}{Bloco E — Ansiedade em programação (construto ANS)}
-ANS1 & Sinto nervosismo quando preciso programar em provas ou atividades avaliativas & Ordinal (Likert 5) & M5 & QP3 \\
-ANS2 & Sinto desânimo quando meu código apresenta erros que não consigo resolver & Ordinal (Likert 5) & M5 & QP3 \\
-ANS3 & Evito iniciar tarefas de programação por receio de não conseguir concluí-las & Ordinal (Likert 5) & M5 & QP3 \\
-\blockrow{5}{Bloco F — Hábitos de estudo e bloco G — questão aberta}
-HAB1 & Horas por semana dedicadas a programar fora da aula (inteiro, 0–40) & Razão & M6 & QP4 \\
-HAB2 & Frequência de uso de IA generativa ao estudar (nunca … sempre) & Ordinal (5 pts) & M7 & QP4 \\
-HAB3 & Principal uso da IA (código pronto, entender conceitos/erros, revisar código, outro, não uso) & Nominal & M14 & QP4 \\
-ABR1 & O que mais dificulta ou mais ajudou o seu aprendizado de programação? (opcional) & Texto → nominal & M15 & QP1 \\
+\thead{ID} & \thead{Item} & \thead{Escala} & \thead{Métrica} & \thead{QP} \\
+\midrule
+\blockrow{5}{Aceite (porteira, antes das perguntas)}
+ACE & Li o termo acima, tenho 18 anos ou mais e concordo em participar (\emph{não concordo} encerra) & Nominal & M7 & QP1–QP4 \\
+\blockrow{5}{Pergunta 1 — Curso}
+CUR & Qual é o seu curso? CC, ES, ADS, SI ou \emph{outro} (\emph{outro} encerra) & Nominal & M4 & QP3 \\
+\blockrow{5}{Pergunta 2 — Etapa do curso}
+ETA & 1º ao 4º período; 5º período ou posterior com estágio em TI; 5º período ou posterior sem estágio (encerra) & Nominal & M5 & QP3 \\
+\blockrow{5}{Pergunta 3 — Experiência prévia}
+EXP & Antes de ingressar no curso, você já havia programado (curso livre, ensino técnico, sozinho etc.)? & Nominal & M3 & QP2, QP3 \\
+\blockrow{5}{Pergunta 4 — Grade Likert de dificuldade percebida (construto DIF) com verificação de atenção}
+DIF1 & Tenho dificuldade para compreender novos conceitos de programação & Ordinal (Likert 5) & M1, M2 & QP1–QP4 \\
+DIF2 & Tenho dificuldade para transformar a lógica de uma solução em código & Ordinal (Likert 5) & M1, M2 & QP1–QP4 \\
+DIF3 & Com frequência, não sei por onde começar a resolver um problema de programação & Ordinal (Likert 5) & M1, M2 & QP1–QP4 \\
+DIF4\textsuperscript{R} & Consigo acompanhar o ritmo das disciplinas de programação sem grandes dificuldades & Ordinal (Likert 5) & M1, M2 & QP1–QP4 \\
+ATN1 & \textbf{Atenção:} ``Para confirmar que você está lendo com atenção, marque \emph{Discordo totalmente} nesta linha'' & Nominal (acerto) & M7 & QP1–QP4 \\
+\blockrow{5}{Pergunta 5 — Uso de IA generativa}
+IAF & Com que frequência você usa assistentes de IA generativa ao estudar programação? (nunca, raramente, às vezes, frequentemente, sempre) & Ordinal (5 pts) & M6 & QP4 \\
+\blockrow{5}{Pergunta aberta opcional}
+ABR & O que mais dificulta, ou o que mais ajudou, o seu aprendizado de programação? & Texto → nominal & M8 & QP1 \\
 \bottomrule
-\end{longtable}
-}
+\end{tabularx}
+\end{table}
 
 % =====================================================================
 \Needspace{5\baselineskip}\section{Pré-teste}
@@ -271,42 +239,40 @@ O pré-teste será aplicado em 13/11/2026 a \pend{4} pessoas que \emph{não} faz
 \end{tabularx}
 \end{table}
 \vspace{-1ex}
-A duração mediana observada no pré-teste foi de \pend{X} min. O valor de referência usado na regra E7 (Seção~5) é a mediana da amostra real.
+A duração mediana observada no pré-teste foi de \pend{X} min. O valor de referência usado na regra E5 (Seção~5) é a mediana da amostra real.
 
 % =====================================================================
 \Needspace{5\baselineskip}\section{Plano de análise}
 
 \subsection{Limpeza}
-As regras da Tabela~\ref{tab:limpeza} são aplicadas nesta ordem, e cada descarte é registrado com o seu motivo para alimentar o perfil da amostra no dashboard. Como o link é aberto, a taxa de resposta não pode ser calculada, o que os Empirical Standards aceitam para surveys abertos. Em seu lugar, relatam-se as respostas por canal (PER5) e por tipo de instituição (PER4). Os registros descartados permanecem no arquivo bruto, para auditoria.
+As regras da Tabela~\ref{tab:limpeza} são aplicadas nesta ordem, e cada descarte é registrado com o seu motivo para alimentar o perfil da amostra no dashboard. Os registros descartados permanecem no arquivo bruto, para auditoria. Como o link é aberto, a taxa de resposta não pode ser calculada, o que os Empirical Standards aceitam para surveys abertos; em seu lugar, relata-se o número de respostas recebidas por dia de coleta.
 
 \begin{table}[H]
 \centering\small
 \caption{Regras de exclusão de respostas, na ordem de aplicação.}\label{tab:limpeza}
-\begin{tabularx}{\textwidth}{@{}L{0.9cm}L{4.0cm}YL{2.2cm}@{}}
+\begin{tabularx}{\textwidth}{@{}L{0.9cm}L{4.0cm}YL{2.0cm}@{}}
 \toprule
 \thead{Regra} & \thead{Motivo do descarte} & \thead{Critério operacional} & \thead{Itens} \\
 \midrule
-E1 & Sem consentimento & Não concordou com o TCLE & TRI1 \\
-E2 & Menor de 18 anos & Declarou ter menos de 18 anos & TRI2 \\
-E3 & Resposta repetida declarada & Declarou já ter respondido antes & TRI3 \\
-E4 & Fora da população & Curso \emph{outro}, ou 5º período ou posterior sem estágio em TI & PER1–PER3 \\
-E5 & Falha na atenção & Qualquer resposta diferente de \emph{Discordo totalmente} & ATN1 \\
-E6 & Resposta retilínea & Variância zero nos 11 itens Likert, que têm sentidos opostos & DIF, AUT, ANS \\
-E7 & Resposta rápida demais & Duração menor que 1/3 da mediana das durações & Início/fim \\
-E8 & Duplicata técnica & Itens fechados idênticos enviados com menos de 5 min de diferença (mantém-se a primeira) & Todos \\
+E1 & Sem aceite ou menor de 18 & Não concordou com o termo & ACE \\
+E2 & Fora da população & Curso \emph{outro}, ou 5º período ou posterior sem estágio & CUR, ETA \\
+E3 & Falha na atenção & Qualquer resposta diferente de \emph{Discordo totalmente} & ATN1 \\
+E4 & Resposta retilínea incoerente & DIF1–DIF4 todos em 1 ou todos em 5, o que contradiz o item invertido DIF4 & DIF \\
+E5 & Resposta rápida demais & Duração menor que 1/3 da mediana das durações & Início/fim \\
+E6 & Duplicata técnica & Respostas idênticas enviadas com menos de 5 min de diferença (mantém-se a primeira) & Todos \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \vspace{-1ex}
 \subsection{Codificação e dados ausentes}
-Os itens Likert são codificados de 1 a 5, e DIF4 é invertido ($6-x$). Os escores M1, M4 e M5 são a média dos itens do construto. Como os itens fechados são obrigatórios, só há ausência por desenho: \emph{ainda não estudei} (TOP), \emph{prefiro não responder} (PER10) e ABR1, que é opcional. Esses casos são tratados por exclusão par a par, sem imputação. Valores de HAB1 acima de 40 são considerados implausíveis e tratados como ausentes.
+Os itens Likert são codificados de 1 a 5, e DIF4 é invertido ($6-x$). O escore M1 é a média dos 4 itens DIF. Como todas as perguntas fechadas são obrigatórias, só há ausência na pergunta aberta (ABR), que é opcional; nenhuma imputação é feita. Para H3b, ETA é recodificada em dois grupos: períodos iniciais e estagiários.
 
 \subsection{Confiabilidade}
-Calcula-se o $\alpha$ de Cronbach de DIF, AUT e ANS, com a correlação item-total. Os critérios são: ${\alpha \geq 0{,}70}$ adequado; de 0,60 a 0,70 aceitável com ressalva; abaixo de 0,60 os itens passam a ser analisados separadamente, o que é declarado como desvio.
+Calcula-se o $\alpha$ de Cronbach dos 4 itens DIF, com a correlação item-total. Os critérios são: ${\alpha \geq 0{,}70}$ adequado; de 0,60 a 0,70 aceitável com ressalva; abaixo de 0,60, os itens passam a ser analisados separadamente, o que é declarado como desvio.
 
 \subsection{Estatística descritiva e testes}
-O relatório inclui frequências, mediana e intervalo interquartil, gráficos de barras divergentes para os itens Likert e proporções com IC de 95\% (Wilson) acompanhadas da margem de erro. Nenhum teste supõe normalidade. Os testes e os tamanhos de efeito estão na Tabela~\ref{tab:testes}.
+O relatório inclui frequências, mediana e intervalo interquartil, gráfico de barras divergentes para os itens Likert e proporções com IC de 95\% (Wilson) acompanhadas da margem de erro. Nenhum teste supõe normalidade. Os testes e os tamanhos de efeito estão na Tabela~\ref{tab:testes}.
 
 \begin{table}[H]
 \centering\small
@@ -316,12 +282,11 @@ O relatório inclui frequências, mediana e intervalo interquartil, gráficos de
 \thead{Hipótese} & \thead{Variáveis (escalas)} & \thead{Teste} & \thead{Tamanho de efeito (pequeno/médio/grande)} \\
 \midrule
 QP1 & M1, M2 (ordinal; proporção) & Descritiva; IC de 95\% de Wilson & Proporção ± margem de erro \\
-H2a & M1 × M3 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \citep{romano} \\
-H2b & M3 × M9 (nominal × nominal) & $\chi^2$ de independência\textsuperscript{d} & V de Cramér: 0,1/0,3/0,5 \citep{cohen} \\
-H3a, H3b & M1 × M4; M1 × M5 (ordinal × ordinal) & Correlação de Spearman & $\rho$ com IC bootstrap (2.000 reamostras): 0,1/0,3/0,5 \\
-H4a & M1 × M10 (ordinal × 4 grupos) & Kruskal-Wallis; post hoc de Dunn & $\varepsilon^2$: 0,01/0,08/0,26 \citep{tomczak} \\
-H4b & M1 × M11 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \\
-H4c, H4d & M1 × M6 (razão); M1 × M7 (ordinal) & Correlação de Spearman & $\rho$: 0,1/0,3/0,5 \\
+H2 & M1 × M3 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \citep{romano} \\
+H3a & M1 × M4 (ordinal × 4 grupos) & Kruskal-Wallis; post hoc de Dunn & $\varepsilon^2$: 0,01/0,08/0,26 \citep{tomczak} \\
+H3b & M1 × M5 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \\
+H3c & M3 × M4 (nominal × nominal) & $\chi^2$ de independência\textsuperscript{d} & V de Cramér: 0,1/0,3/0,5 \citep{cohen} \\
+H4 & M1 × M6 (ordinal × ordinal) & Correlação de Spearman & $\rho$ com IC bootstrap (2.000 reamostras): 0,1/0,3/0,5 \\
 \bottomrule
 \multicolumn{4}{@{}l}{\footnotesize\textsuperscript{d}Teste exato de Fisher quando alguma frequência esperada for menor que 5.}
 \end{tabularx}
@@ -329,25 +294,25 @@ H4c, H4d & M1 × M6 (razão); M1 × M7 (ordinal) & Correlação de Spearman & $\
 
 \vspace{-1.5ex}
 \subsection{Decisão e múltiplas comparações}
-O nível de significância é $\alpha=0{,}05$, com testes bilaterais. A \textbf{correção de Holm} \citep{holm} é aplicada à família das oito hipóteses confirmatórias (H2a–H4d), e também, separadamente, às comparações post hoc de Dunn. Para cada hipótese são relatados a estatística, o $p$ ajustado, o tamanho de efeito com IC e a margem de erro.
-\textbf{Análise condicional (definida antes da coleta):} (i) se algum grupo de H2a ou H4b tiver $n<10$, a hipótese é relatada apenas de forma descritiva; (ii) se algum curso tiver $n<5$, os cursos são agrupados em bacharelados (CC, ES, SI) e tecnólogo (ADS), e H4a passa a usar Mann-Whitney; (iii) se o $\alpha$ de um construto for menor que 0,60, aplica-se a regra da Seção~5.3.
-\textbf{Análises exploratórias (rotuladas como tal):} H4b repetida apenas com estudantes do 1º ao 4º período, para separar o efeito do estágio do avanço no curso; comparação por período (M8); comparação dos resultados entre canais de convite (sensibilidade à autosseleção).
+O nível de significância é $\alpha=0{,}05$, com testes bilaterais. A \textbf{correção de Holm} \citep{holm} é aplicada à família das cinco hipóteses confirmatórias (H2, H3a, H3b, H3c e H4), e também, separadamente, às comparações post hoc de Dunn. Para cada hipótese são relatados a estatística, o $p$ ajustado, o tamanho de efeito com IC e a margem de erro.
+\textbf{Análise condicional (definida antes da coleta):} (i) se algum grupo de H2 ou H3b tiver $n<10$, a hipótese é relatada apenas de forma descritiva; (ii) se algum curso tiver $n<5$, os cursos são agrupados em bacharelados (CC, ES, SI) e tecnólogo (ADS), e H3a passa a usar Mann-Whitney; (iii) se o $\alpha$ de DIF for menor que 0,60, aplica-se a regra da Seção~5.3.
+\textbf{Análises exploratórias (rotuladas como tal):} uso de IA por curso e por etapa; H3b repetida apenas com quem não tinha experiência prévia, para separar o efeito do estágio do efeito da experiência.
 
 \subsection{Respostas abertas}
-ABR1 é analisada por codificação aberta indutiva (análise temática \citep{braun}). Dois integrantes codificam de forma independente 20\% das respostas, calcula-se o $\kappa$ de Cohen (com meta ${\geq 0{,}60}$), as divergências são resolvidas por consenso e o livro de códigos é consolidado. Em seguida, o restante é codificado e relata-se a frequência de cada tema (M15). Trechos que possam identificar alguém são removidos.
+ABR é analisada por codificação aberta indutiva (análise temática \citep{braun}). Dois integrantes codificam de forma independente 20\% das respostas, calcula-se o $\kappa$ de Cohen (com meta ${\geq 0{,}60}$), as divergências são resolvidas por consenso e o livro de códigos é consolidado. Em seguida, o restante é codificado e relata-se a frequência de cada tema (M8). Trechos que possam identificar alguém são removidos.
 
 \subsection{Ferramentas}
-A análise usa Python 3 (pandas, SciPy, pingouin), com scripts versionados no repositório. O dashboard da Parte 2 lê diretamente o CSV bruto exportado do formulário.
+A análise usa Python 3 (pandas, SciPy, pingouin), com scripts versionados no repositório. O dashboard da Parte 2 lê diretamente o arquivo bruto exportado do formulário.
 
 % =====================================================================
 \Needspace{5\baselineskip}\section{Ética e LGPD}
 
 \begin{itemize}[leftmargin=1em,itemsep=0.3ex]
 \item \textbf{Enquadramento.} Trata-se de pesquisa de opinião com participantes não identificados, que a Resolução CNS nº 510/2016 (art. 1º, parágrafo único, I) dispensa de registro no sistema CEP/CONEP \citep{cns510}. Mesmo assim, o estudo segue as orientações da PUC Minas sobre pesquisas com pessoas e os princípios da resolução. Nenhuma lista de contatos de outras instituições é obtida: o convite circula apenas por intermediários e canais abertos.
-\item \textbf{Consentimento.} A primeira página do formulário apresenta o TCLE (\texttt{instrumento/tcle.md}), que informa: objetivo, duração (cerca de 9 min), caráter voluntário, ausência de vínculo com notas, direito de desistir a qualquer momento antes do envio (após o envio, a resposta anônima não pode ser localizada), riscos mínimos (desconforto ao refletir sobre dificuldades) e contato dos responsáveis e do professor. A concordância é obrigatória para prosseguir (TRI1).
-\item \textbf{Anonimização na origem.} O formulário não coleta nome, e-mail, matrícula, IP nem o nome da instituição; a idade é coletada em faixas. As respostas abertas são revisadas, e qualquer dado identificador é removido. O dashboard \emph{não exibe segmentos com menos de 5 respondentes}.
+\item \textbf{Consentimento.} A abertura do formulário apresenta o TCLE (\texttt{instrumento/tcle.md}), que informa: objetivo, responsáveis, duração (cerca de 2 min), caráter voluntário, ausência de vínculo com notas, direito de desistir antes do envio (após o envio, a resposta anônima não pode ser localizada), riscos mínimos e contatos do grupo e do professor orientador. O aceite (ACE), que também confirma a idade mínima de 18 anos, é obrigatório para prosseguir.
+\item \textbf{Anonimização na origem.} O formulário é configurado como resposta anônima e não coleta nome, e-mail, matrícula, IP nem o nome da instituição. A pergunta aberta pede que não sejam citados nomes, e as respostas são revisadas para remover qualquer dado identificador. O dashboard \emph{não exibe segmentos com menos de 5 respondentes}.
 \item \textbf{LGPD.} Dados anonimizados não são dados pessoais (Lei nº 13.709/2018, art. 12) \citep{lgpd}. Ainda assim, adotam-se o consentimento (art. 7º, I) e os princípios de finalidade, necessidade e segurança (art. 6º). O uso é exclusivamente acadêmico.
-\item \textbf{Armazenamento.} A exportação bruta fica na nuvem institucional, com acesso restrito ao grupo e ao professor, e será excluída logo após a defesa da Parte 2. O repositório público recebe apenas o conjunto anonimizado, sem textos livres não revisados.
+\item \textbf{Armazenamento.} A exportação bruta fica na conta institucional do Microsoft 365, com acesso restrito ao grupo e ao professor, e será excluída logo após a defesa da Parte 2. O repositório público recebe apenas o conjunto anonimizado, sem textos livres não revisados.
 \end{itemize}
 
 % =====================================================================
@@ -360,15 +325,15 @@ A análise usa Python 3 (pandas, SciPy, pingouin), com scripts versionados no re
 \toprule
 \thead{Ameaça} & \thead{Tipo} & \thead{Mitigação} \\
 \midrule
-Autosseleção e rede dos autores & Externa & Convite neutro (``sua experiência com programação''), sem a palavra ``dificuldade''; docentes e centros acadêmicos de outras instituições; registro do canal (PER5) e comparação entre canais. \\
-Não resposta e cobertura & Externa & Dois lembretes; metas por segmento; comparação entre quem respondeu cedo e tarde \citep{armstrong}; distribuição por curso comparada ao Censo da Educação Superior (INEP). \\
+Autosseleção e rede dos autores & Externa & Convite neutro (``sua experiência com programação''), sem a palavra ``dificuldade''; docentes e centros acadêmicos de outras instituições; metas por curso e etapa. \\
+Não resposta e cobertura & Externa & Formulário de 2 minutos para elevar a adesão; dois lembretes; comparação entre quem respondeu cedo e tarde \citep{armstrong}; distribuição por curso comparada ao Censo da Educação Superior (INEP). \\
 Desejabilidade social & Construto & Anonimato; nenhum vínculo com notas; redação neutra; integrantes não avaliam os respondentes. \\
-Aquiescência e descuido & Construto & Item invertido (DIF4); pergunta de atenção (ATN1); regras E5–E7. \\
-Escalas adaptadas e traduzidas & Construto & Itens baseados em escalas validadas; pré-teste com especialista; $\alpha$ de Cronbach. A dificuldade \emph{percebida} não equivale a desempenho (limitação declarada). \\
-Viés de memória & Construto & Instrução para considerar o aprendizado até agora; H4b repetida só com o 1º–4º período (exploratória). \\
-Respostas automatizadas ou geradas por IA & Construto & Sem incentivos; tempo mínimo (E7); atenção (ATN1); duplicatas (E8); inspeção das respostas abertas. \\
-Confusão e causalidade & Interna & Desenho transversal: apenas associações, em linguagem não causal; estágio e período analisados de forma estratificada (exploratória). \\
-Generalização & Externa & Amostra não probabilística: conclusões restritas à amostra, margem nominal e composição descrita (cursos, instituições, canais). \\
+Aquiescência e descuido & Construto & Item invertido (DIF4); pergunta de atenção (ATN1); regras E3–E5. \\
+Construto com poucos itens & Construto & DIF tem 4 itens, o mínimo para estimar o $\alpha$ com estabilidade razoável; validade de conteúdo no pré-teste com especialista. A dificuldade \emph{percebida} não equivale a desempenho (limitação declarada). \\
+Fatores não medidos & Interna & O instrumento curto não mede autoeficácia, ansiedade nem horas de estudo, que também afetam a dificuldade; os resultados são associações parciais, em linguagem não causal. \\
+Confusão entre fatores & Interna & Etapa e experiência prévia tendem a andar juntas; análise exploratória estratificada (Seção~5.5). \\
+Respostas automatizadas ou duplicadas & Construto & Sem incentivos; tempo mínimo (E5); atenção (ATN1); duplicatas (E6); opção do Forms que oculta ``enviar outra resposta''. \\
+Generalização & Externa & Amostra não probabilística: conclusões restritas à amostra, margem nominal e composição descrita (cursos e etapas). \\
 Múltiplos testes, poder e $p$-hacking & Conclusão & Correção de Holm; poder declarado ($|\rho|\geq0{,}28$); hipóteses, testes e regras registrados antes da coleta. \\
 Viés na codificação aberta & Conclusão & Dois codificadores; $\kappa$ de Cohen $\geq 0{,}60$; livro de códigos publicado. \\
 \bottomrule
@@ -378,7 +343,7 @@ Viés na codificação aberta & Conclusão & Dois codificadores; $\kappa$ de Coh
 % =====================================================================
 \Needspace{5\baselineskip}\section{Plano de divulgação}
 
-\textbf{Canais.} (C1) Docentes de programação de outras instituições, que recebem uma mensagem pronta para repassar às turmas e, quando autorizado, abrem 10 minutos da aula para a resposta, com QR code. (C2) Centros e diretórios acadêmicos e grupos de estudantes de tecnologia (WhatsApp, Discord, Telegram), com permissão dos administradores. (C3) Perfis dos integrantes no LinkedIn e no Instagram, com pedido de compartilhamento (bola de neve). (C4) Dois lembretes nos mesmos canais. Cada postagem é registrada com captura de tela datada, como evidência para a Parte 2.
+\textbf{Canais.} (C1) Docentes de programação de outras instituições, que recebem uma mensagem pronta para repassar às turmas e, quando autorizado, abrem alguns minutos da aula para a resposta, com QR code. (C2) Centros e diretórios acadêmicos e grupos de estudantes de tecnologia (WhatsApp, Discord, Telegram), com permissão dos administradores. (C3) Perfis dos integrantes no LinkedIn e no Instagram, com pedido de compartilhamento (bola de neve). (C4) Dois lembretes nos mesmos canais. Cada postagem é registrada com captura de tela datada, como evidência para a Parte 2.
 \textbf{Monitoramento e contingência.} Em 25/11, a composição parcial é comparada às metas (15 respostas por curso e 20 estagiários), e a segunda onda é direcionada aos segmentos abaixo da meta. Se houver menos de 50 respostas válidas em 04/12, a coleta será estendida até 11/12, com novos canais, e a mudança será registrada como desvio.
 
 \begin{table}[H]
@@ -400,6 +365,7 @@ a partir de 07/12 & Limpeza, análise, dashboard e registro de desvios (Parte 2)
 \end{table}
 
 % =====================================================================
+
 {\renewcommand{\section}[2]{}%
 \Needspace{6\baselineskip}\vspace{1.5ex}{\normalfont\bfseries\large Referências}\par\vspace{0.3ex}
 \footnotesize\raggedright
@@ -422,7 +388,6 @@ a partir de 07/12 & Limpeza, análise, dashboard e registro de desvios (Parte 2)
 \bibitem[ROBINS; ROUNTREE; ROUNTREE(2003)]{robins} ROBINS, A.; ROUNTREE, J.; ROUNTREE, N. Learning and teaching programming: a review and discussion. \emph{Computer Science Education}, v. 13, n. 2, p. 137--172, 2003.
 \bibitem[ROMANO et al.(2006)]{romano} ROMANO, J. et al. Appropriate statistics for ordinal level data. In: \emph{Annual Meeting of the Florida Association of Institutional Research}, 2006.
 \bibitem[TOMCZAK; TOMCZAK(2014)]{tomczak} TOMCZAK, M.; TOMCZAK, E. The need to report effect size estimates revisited. \emph{Trends in Sport Sciences}, v. 1, n. 21, p. 19--25, 2014.
-\bibitem[TSAI; WANG; HSU(2018)]{tsai} TSAI, M.-J.; WANG, C.-Y.; HSU, P.-F. Developing the computer programming self-efficacy scale for computer literacy education. \emph{Journal of Educational Computing Research}, 2018. DOI: 10.1177/0735633117746747.
 \bibitem[WATSON; LI(2014)]{watson} WATSON, C.; LI, F. W. B. Failure rates in introductory programming revisited. In: \emph{Proc. ITiCSE '14}. ACM, 2014. DOI: 10.1145/2591708.2591749.
 \bibitem[WOHLIN et al.(2012)]{wohlin} WOHLIN, C. et al. \emph{Experimentation in Software Engineering}. Berlin: Springer, 2012.
 \end{thebibliography}
