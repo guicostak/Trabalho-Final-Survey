@@ -20,7 +20,7 @@
 
 | ID | Requisito | Prioridade | Onde | Status |
 |---|---|---|---|---|
-| RE-00 | Grupo de **3 a 4 integrantes** | OBR | O grupo tem **5** integrantes | ⚠️ confirmar com o professor |
+| RE-00 | Grupo de **3 a 4 integrantes** | OBR | 4 integrantes (cabeçalho do PDF) | ✅ |
 | RE-01 | Protocolo em **PDF**, entregue no Canvas (**é o único arquivo da Parte 1**) | OBR | `protocolo/protocolo.pdf` | ✅ |
 | RE-02 | **Até 6 páginas** | OBR | PDF com exatamente 6 páginas | ✅ (reconferir após preencher) |
 | RE-03 | As **8 seções** na ordem pedida | OBR | Seções 1–8 do PDF | ✅ |
@@ -183,7 +183,6 @@
 
 | # | Ação | Requisitos | Prazo |
 |---|---|---|---|
-| 0 | Confirmar com o professor se o grupo de **5 integrantes** é aceito | RE-00 | 13/11 |
 | 1 | Preencher a **instituição** no PDF e no TCLE (nomes e URL já estão no PDF) | — | 13/11 |
 | 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
 | 3 | Montar o formulário conforme `instrumento/questionario.md` | — | 13/11 |

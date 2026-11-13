@@ -1,7 +1,7 @@
 # Survey pré-registrado: dificuldade percebida no aprendizado de programação
 
 **Disciplina:** Medição e Experimentação em Engenharia de Software, 2º/2026
-**Grupo:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros, Jonas Rafael Martins e Vinícius Dias
+**Grupo:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias
 **Entrega 1 (Planejamento):** 13/11/2026 às 23:59, no Canvas
 
 | | |
@@ -23,7 +23,6 @@ Antes de enviar:
 - [ ] **Aplicar o pré-teste** com 3 a 5 pessoas ([`pre-teste/roteiro-pre-teste.md`](pre-teste/roteiro-pre-teste.md)) e preencher a Tabela 6 com as mudanças **reais**.
 - [ ] Preencher os campos em **laranja** do PDF: instituição, N estimado e dados do pré-teste.
 - [ ] Recompilar e conferir que o PDF continua com **até 6 páginas**.
-- [ ] Confirmar com o professor o grupo de **5 integrantes**: o enunciado pede de 3 a 4.
 - [ ] Só abrir o formulário **depois** do envio.
 
 Os demais arquivos não são entregues no Canvas. Eles servem para montar o formulário, fazer o pré-teste, divulgar o survey e preparar a Parte 2.
