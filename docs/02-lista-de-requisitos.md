@@ -182,7 +182,7 @@
 
 | # | Ação | Requisitos | Prazo |
 |---|---|---|---|
-| 1 | Preencher **nomes, instituição e URL do repositório** no PDF e no TCLE | — | 13/11 |
+| 1 | Preencher **nomes e instituição** no PDF e no TCLE (a URL do repositório já está no PDF) | — | 13/11 |
 | 2 | Confirmar **N** e a lista de turmas com a coordenação (ou estimar pelo quadro de horários) | RE-14, ES-D11, SA-09 | 13/11 |
 | 3 | Montar o formulário conforme `instrumento/questionario.md` | — | 13/11 |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |

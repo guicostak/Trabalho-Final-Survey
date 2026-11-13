@@ -47,7 +47,7 @@ Trabalho-Final-Survey/
 
 ## O que falta fazer hoje (13/11)
 
-- [ ] Preencher nomes, instituição, URL do repositório, N estimado, ambiente virtual e data de exclusão dos dados (campos laranja em `protocolo.tex` e `tcle.md`).
+- [ ] Preencher nomes, instituição, N estimado, ambiente virtual e data de exclusão dos dados (campos laranja em `protocolo.tex` e `tcle.md`).
 - [ ] Montar o formulário no Microsoft Forms conforme `instrumento/questionario.md`.
 - [ ] **Aplicar o pré-teste** com 3 a 5 pessoas (`pre-teste/roteiro-pre-teste.md`) e registrar as mudanças **reais** na Tabela 6.
 - [ ] Recompilar o PDF e conferir que tem **até 6 páginas**.
@@ -67,8 +67,12 @@ grep -n '\\pend{' protocolo/protocolo.tex
 
 ## Como registrar o protocolo com data verificável
 
+O repositório privado já está criado e configurado: <https://github.com/guicostak/Trabalho-Final-Survey>. Como ele é privado, **adicione o professor como colaborador** (Settings → Collaborators) para que ele consiga verificar a data.
+
+Depois de preencher os campos pendentes e fazer o pré-teste:
+
 ```bash
-git init && git add . && git commit -m "Protocolo do survey v1.0 (pré-registro)"
+git add -A && git commit -m "Protocolo do survey v1.0 (pré-registro)"
 ```
 
 ```bash
@@ -76,7 +80,7 @@ git tag -a protocolo-v1.0 -m "Pré-registro do protocolo, Parte 1"
 ```
 
 ```bash
-git remote add origin <URL-DO-REPOSITORIO> && git push -u origin main --tags
+git push && git push origin protocolo-v1.0
 ```
 
 > A data do commit e da tag precisa ser **anterior à primeira resposta** (coleta a partir de 18/11). Não abra o formulário antes de registrar.
