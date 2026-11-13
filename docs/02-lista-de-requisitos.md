@@ -183,7 +183,7 @@
 
 | # | Ação | Requisitos | Prazo |
 |---|---|---|---|
-| 1 | Preencher a **instituição** no PDF e no TCLE (nomes e URL já estão no PDF) | — | 13/11 |
+| 1 | ~~Preencher a instituição no PDF e no TCLE~~ (feito: PUC Minas, Unidade Lourdes) | — | ✅ |
 | 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
 | 3 | Montar o formulário conforme `instrumento/questionario.md` | — | 13/11 |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |

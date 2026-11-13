@@ -1,5 +1,6 @@
 # Survey pré-registrado: dificuldade percebida no aprendizado de programação
 
+**Instituição:** PUC Minas, Unidade Lourdes, Bacharelado em Engenharia de Software
 **Disciplina:** Medição e Experimentação em Engenharia de Software, 2º/2026
 **Grupo:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias
 **Entrega 1 (Planejamento):** 13/11/2026 às 23:59, no Canvas
@@ -21,7 +22,7 @@
 
 Antes de enviar:
 - [ ] **Aplicar o pré-teste** com 3 a 5 pessoas ([`pre-teste/roteiro-pre-teste.md`](pre-teste/roteiro-pre-teste.md)) e preencher a Tabela 6 com as mudanças **reais**.
-- [ ] Preencher os campos em **laranja** do PDF: instituição, N estimado e dados do pré-teste.
+- [ ] Preencher os campos em **laranja** do PDF: N estimado e dados do pré-teste.
 - [ ] Recompilar e conferir que o PDF continua com **até 6 páginas**.
 - [ ] Só abrir o formulário **depois** do envio.
 

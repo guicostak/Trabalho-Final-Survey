@@ -5,7 +5,7 @@
 ---
 
 **Pesquisa:** Fatores associados à dificuldade percebida no aprendizado de programação
-**Responsáveis:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias, estudantes da disciplina Medição e Experimentação em Engenharia de Software da [Instituição]
+**Responsáveis:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias, estudantes de Engenharia de Software da Pontifícia Universidade Católica de Minas Gerais (PUC Minas), Unidade Lourdes, na disciplina Medição e Experimentação em Engenharia de Software
 **Professor orientador:** [Nome do professor], [e-mail institucional do professor]
 
 Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a experiência de estudantes de Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas e Sistemas de Informação com o aprendizado de programação. Podem participar estudantes do 1º ao 4º período e estudantes de qualquer período que façam estágio na área de TI.
