@@ -8,16 +8,17 @@
 
 | Código | Perfil | Critério |
 |---|---|---|
-| P1 a P4 | Profissional de TI **já atuando no mercado** (por exemplo, desenvolvedor ou analista), de preferência com formações diferentes (CC, ES, ADS, SI) e que **use IA** ao programar | Já passou pelo aprendizado de programação e consegue julgar os itens. Como também faria parte da população, **não deve responder à coleta oficial** |
-| P5 (opcional) | Mais um profissional, com formação ou tempo de mercado diferente | Amplia a diversidade de perfis no pré-teste |
+| P1 a P3 | Estudante do 5º período ou posterior de CC, ES, ADS ou SI, de preferência de cursos diferentes | Já cursou as disciplinas introdutórias. Por também integrar a população, **não deve responder à coleta oficial** |
+| P4 | Docente de programação introdutória | Revisão de conteúdo por especialista: os itens medem o que pretendem? |
+| P5 (opcional) | Mais um estudante, de outro curso | Amplia a diversidade de cursos no pré-teste |
 
-> **Não** use colegas da disciplina MEES. Peça a quem fez o pré-teste que **não responda** à coleta oficial.
+> **Não** use colegas da disciplina MEES.
 
-### Como os profissionais devem responder
+### Como os participantes devem responder
 
-O formulário não tem ramificações: todas as perguntas aparecem juntas, e responder é direto.
-- Responder com a **situação real** de cada um (formado há até 3 anos ou há mais de 3 anos).
-- Incluir ao menos **um participante que não use IA** (ou pedir a um participante que simule o caminho "Não uso IA"), para testar as colunas e opções "Não uso IA".
+O formulário não tem ramificações: todas as perguntas aparecem juntas.
+- Estudantes: responder com a **situação real** ("Estudante, do 5º período em diante").
+- Incluir ao menos **um participante que não use IA** (ou pedir a um que simule o caminho "Não uso IA"), para testar essas opções.
 - Avaliar especialmente se as grades **CON (entender conceitos)** e **PRA (praticar a escrita)** são distintas e claras.
 
 ## 2. Procedimento (de 15 a 20 minutos por participante)
@@ -38,7 +39,7 @@ O formulário não tem ramificações: todas as perguntas aparecem juntas, e res
 
 ## 3. Regra de decisão
 
-- O item é **reformulado** quando **2 ou mais participantes** apontam o mesmo problema.
+- O item é **reformulado** quando **2 ou mais participantes**, ou o especialista, apontam o mesmo problema.
 - O item é **removido** apenas se não for possível reformulá-lo sem perder o vínculo com a métrica. Nesse caso, atualize a Tabela 5 do protocolo.
 - Cada mudança gera uma linha na tabela abaixo e na Tabela 6 do protocolo.
 
@@ -51,7 +52,7 @@ O formulário não tem ramificações: todas as perguntas aparecem juntas, e res
 | P1 | | 13/11/2026 | | |
 | P2 | | 13/11/2026 | | |
 | P3 | | 13/11/2026 | | |
-| P4 | | 13/11/2026 | | |
+| P4 | Docente | 13/11/2026 | | |
 
 **Mediana da duração:** ____ min. Copie esse valor para o texto da Seção 4 do protocolo.
 
