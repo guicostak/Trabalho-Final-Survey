@@ -2,20 +2,21 @@ variavel,pergunta_no_forms,construto,descricao,escala,valores,codificacao,metric
 ACE,Aceite (1),,Aceite do TCLE e idade de 18 anos ou mais,nominal,"Sim, concordo em participar",1=Sim (única opção),M10,QP1-QP4,sim,
 CUR,2,,Curso de tecnologia cursado,nominal,CC; ES; ADS; SI; Outro curso de tecnologia; Não cursei,CC; ES; ADS; SI; OUTRO; NENHUM,M9,QP1,sim,E1 se NENHUM
 SIT,3,,Situação atual,nominal,Estudante 1º-4º; Estudante 5º+; Formado até 3 anos; Formado mais de 3 anos,EST14; EST5; FORM3; FORM3MAIS,M7,QP4,sim,
-MOM,4,,Começou a aprender antes ou depois da IA generativa (fim de 2022),nominal,Antes; Depois,ANTES; DEPOIS,M8,QP4,sim,
-IAF,5,,Frequência de uso de IA ao estudar programação,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5,M1,QP1; QP2,sim,
-IAU,6,,Principal finalidade de uso da IA,nominal,Código pronto; Entender conceitos/erros; Revisar meu código; Gerar exemplos/exercícios; Não uso IA,CODIGO; ENTENDER; REVISAR; PRATICAR; NAOUSO,M2,QP1; QP3; QP4,sim,
-CON1,7 (linha 1),CON,A IA me ajuda a entender conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
-CON2,7 (linha 2),CON,Entendo mais rápido por que um código funciona ou falha,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
-CON3,7 (linha 3),CON,A IA me ajuda com mensagens de erro e documentação,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
-PRA1,8 (linha 1),PRA,Escrevo a maior parte do código das atividades,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
-PRA2,8 (linha 2),PRA,Consigo escrever do zero o que a IA me ajudou a fazer,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
-PRA3,8 (linha 3),PRA,Pratico escrevendo código sem ajuda de IA,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
-PRA4,8 (linha 4),PRA,Desde que uso IA escrevo menos código por conta própria (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,6 - x; NA se Não uso IA,M4,QP2-QP4,sim,E3
-ATN1,8 (linha 5),,Verificação de atenção (correta = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente; Não uso IA,1 = acerto; 2..5 = erro,M10,QP1-QP4,sim,E2 se != 1 (Não uso IA também é erro)
-CONF,9,,Confiança para escrever um programa do zero sem IA,ordinal (5 pts),Nada confiante..Muito confiante,1..5,M5,QP3,sim,
-AVG,10,,Efeito geral percebido da IA no aprendizado,ordinal (5 pts),Piorou muito..Melhorou muito; Não uso IA,1..5; NA se Não uso IA,M6,QP1,sim,
-ABR,11,,A IA mudou o equilíbrio entre conceitos e prática?,texto livre,,codificação temática (protocolo §5.6),M11,QP1,não,remover identificadores
+ATU,4,,Já atua profissionalmente na área de tecnologia (inclui estágio),nominal,Sim; Não,SIM; NAO,M12,QP4,sim,
+MOM,5,,Começou a aprender antes ou depois da IA generativa (fim de 2022),nominal,Antes; Depois,ANTES; DEPOIS,M8,QP4,sim,
+IAF,6,,Frequência de uso de IA ao estudar programação,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5,M1,QP1; QP2,sim,
+IAU,7,,Principal finalidade de uso da IA,nominal,Código pronto; Entender conceitos/erros; Revisar meu código; Gerar exemplos/exercícios; Não uso IA,CODIGO; ENTENDER; REVISAR; PRATICAR; NAOUSO,M2,QP1; QP3; QP4,sim,
+CON1,8 (linha 1),CON,A IA me ajuda a entender conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
+CON2,8 (linha 2),CON,Entendo mais rápido por que um código funciona ou falha,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
+CON3,8 (linha 3),CON,A IA me ajuda com mensagens de erro e documentação,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M3,QP1; QP2,sim,
+PRA1,9 (linha 1),PRA,Escrevo a maior parte do código das atividades,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
+PRA2,9 (linha 2),PRA,Consigo escrever do zero o que a IA me ajudou a fazer,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
+PRA3,9 (linha 3),PRA,Pratico escrevendo código sem ajuda de IA,ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,1..5; NA se Não uso IA,M4,QP2-QP4,sim,E3
+PRA4,9 (linha 4),PRA,Desde que uso IA escrevo menos código por conta própria (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente; Não uso IA,6 - x; NA se Não uso IA,M4,QP2-QP4,sim,E3
+ATN1,9 (linha 5),,Verificação de atenção (correta = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente; Não uso IA,1 = acerto; 2..5 = erro,M10,QP1-QP4,sim,E2 se != 1 (Não uso IA também é erro)
+CONF,10,,Confiança para escrever um programa do zero sem IA,ordinal (5 pts),Nada confiante..Muito confiante,1..5,M5,QP3,sim,
+AVG,11,,Efeito geral percebido da IA no aprendizado,ordinal (5 pts),Piorou muito..Melhorou muito; Não uso IA,1..5; NA se Não uso IA,M6,QP1,sim,
+ABR,12,,A IA mudou o equilíbrio entre conceitos e prática?,texto livre,,codificação temática (protocolo §5.6),M11,QP1,não,remover identificadores
 _inicio,Metadado,,Hora de início (exportação do Forms),data-hora,,ISO 8601,M10,QP1-QP4,auto,E4
 _fim,Metadado,,Hora de conclusão (exportação do Forms),data-hora,,ISO 8601,M10,QP1-QP4,auto,E4 e E5
 M3_CON,Derivada,CON,Escore de aprendizado de conceitos com IA,ordinal (escore),1..5,média de CON1–CON3,M3,QP1; QP2,derivada,

@@ -90,9 +90,9 @@
 \textbf{Método:} survey por questionário autoadministrado on-line, descritivo e correlacional, de corte transversal \textbullet\
 \textbf{População:} estudantes e profissionais formados em CC, ES, ADS e SI, de instituições brasileiras, com 18 anos ou mais \textbullet\
 \textbf{Amostragem:} não probabilística, por conveniência com bola de neve, em vários canais e com metas por segmento \textbullet\
-\textbf{Instrumento:} aceite do TCLE e 10 perguntas, a última aberta e opcional (cerca de 4 minutos), sem ramificações \textbullet\
+\textbf{Instrumento:} aceite do TCLE e 11 perguntas, a última aberta e opcional (cerca de 4 minutos), sem ramificações \textbullet\
 \textbf{Amostra:} meta de 50 respostas válidas; margem de erro nominal de ±13,9 p.p. \textbullet\
-\textbf{Hipóteses confirmatórias:} 7, testadas com $\alpha=0{,}05$ e correção de Holm \textbullet\
+\textbf{Hipóteses confirmatórias:} 8, testadas com $\alpha=0{,}05$ e correção de Holm \textbullet\
 \textbf{Coleta:} 18/11 a 04/12/2026.
 O protocolo segue o padrão \emph{Questionnaire Surveys} e o suplemento \emph{Registered Reports} dos ACM SIGSOFT Empirical Standards \citep{ralph} e foi registrado \emph{antes} da primeira resposta. Qualquer desvio será datado, justificado e registrado em \texttt{DESVIOS.md}.
 \end{tcolorbox}
@@ -127,7 +127,7 @@ Aprender a programar sempre foi difícil para muitos iniciantes \citep{robins,wa
 QP1 & Como a IA é usada para aprender programação e como o seu efeito é avaliado? & Descritiva, sem hipótese. \\
 QP2 \textit{(central)} & A IA favorece o aprendizado de conceitos em detrimento da prática de escrita de código? & H2a: M3 difere de M4 (conceitos maior que prática).\newline H2b: $\rho(\text{M1},\text{M3})\neq0$ (positiva).\newline H2c: $\rho(\text{M1},\text{M4})\neq0$ (negativa). \\
 QP3 & A finalidade de uso e a prática de escrita estão associadas à confiança para programar sem IA? & H3a: M4 difere entre finalidades (menor entre quem busca código pronto).\newline H3b: $\rho(\text{M4},\text{M5})\neq0$ (positiva). \\
-QP4 & Quem começou a aprender depois da popularização da IA pratica menos a escrita? & H4a: M4 difere entre quem começou antes e depois (menor depois).\newline H4b: a finalidade (M2) está associada à situação atual (M7). \\
+QP4 & Quem começou a aprender depois da popularização da IA pratica menos a escrita? & H4a: M4 difere entre quem começou antes e depois (menor depois).\newline H4b: M4 difere entre quem já atua na área e quem não atua (M12).\newline H4c: a finalidade (M2) está associada à situação atual (M7). \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -149,6 +149,7 @@ M6 & Efeito geral percebido & AVG, de 1 (piorou muito) a 5 (melhorou muito) & Or
 M7 & Situação atual & SIT: estudante (1º–4º ou 5º+) ou formado (até 3 anos ou mais) & Nominal & QP4 \\
 M8 & Momento de início & MOM: antes ou depois de 2023 & Nominal & QP4 \\
 M9 & Curso & CUR: CC, ES, ADS, SI ou outro & Nominal & QP1 \\
+M12 & Atua na área & ATU: já atua profissionalmente em tecnologia (inclui estágio) ou não & Nominal & QP4 \\
 M10 & Qualidade das respostas & \% de válidas e descartes por motivo (ATN1; E1–E5) & Razão (proporção) & QP1–QP4\textsuperscript{b} \\
 M11 & Temas da questão aberta & Frequência de cada tema codificado em ABR & Nominal & QP1 \\
 \bottomrule
@@ -163,7 +164,7 @@ M11 & Temas da questão aberta & Frequência de cada tema codificado em ABR & No
 São estudantes de graduação e profissionais formados em CC, ES, ADS e SI (ou cursos afins de tecnologia) de instituições brasileiras, públicas ou privadas, com 18 anos ou mais. O recorte inclui formados porque, para estudar o aprendizado de programação depois da IA, é preciso comparar quem aprendeu antes e quem aprendeu depois da sua popularização, e esses grupos estão em todas as etapas da carreira. Não existe lista nacional dessa população, e o tamanho exato é desconhecido, mas grande: o Censo da Educação Superior 2024 registra 10.226.873 matrículas de graduação no país \citep{inep}. Os quatro cursos são apenas uma parte desse total, mas, somando várias instituições, a população supera em muito 2.000 pessoas, e a correção para população finita é desprezível para $n=50$. Ficam de fora os menores de 18 anos e quem não cursou curso de tecnologia. Os colegas da disciplina MEES e os integrantes do grupo não recebem o convite, porque conhecem as hipóteses do estudo.
 
 \subsection{Origem dos contatos e estratégia}
-Como não há quadro amostral, a amostragem é \emph{não probabilística, por conveniência com bola de neve} \citep{baltes}. O convite parte de cinco fontes: (i) docentes de programação de outras instituições, que repassam o convite às turmas; (ii) centros e diretórios acadêmicos; (iii) grupos de estudantes e de profissionais de tecnologia (WhatsApp, Discord, Telegram, LinkedIn), com permissão dos administradores; (iv) perfis dos integrantes no LinkedIn e no Instagram; (v) os próprios respondentes, convidados a repassar o link na mensagem final do formulário. Há \textbf{metas mínimas por segmento}: 8 respostas por curso e 10 formados. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (aceite e CUR).
+Como não há quadro amostral, a amostragem é \emph{não probabilística, por conveniência com bola de neve} \citep{baltes}. O convite parte de cinco fontes: (i) docentes de programação de outras instituições, que repassam o convite às turmas; (ii) centros e diretórios acadêmicos; (iii) grupos de estudantes e de profissionais de tecnologia (WhatsApp, Discord, Telegram, LinkedIn), com permissão dos administradores; (iv) perfis dos integrantes no LinkedIn e no Instagram; (v) os próprios respondentes, convidados a repassar o link na mensagem final do formulário. Há \textbf{metas mínimas por segmento}: 8 respostas por curso e 10 pessoas que já atuam na área. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (aceite e CUR).
 
 \subsection{Tamanho da amostra, margem de erro e poder}
 A meta é de \textbf{50 respostas válidas}, o mínimo exigido, considerada realista para um link aberto sem incentivos. A margem de erro de uma proporção com 95\% de confiança é $e = 1{,}96\sqrt{p(1-p)/n}$, no pior caso $p=0{,}5$. Como a amostra não é probabilística, essa margem é \textbf{nominal}: indica a precisão que uma amostra aleatória do mesmo tamanho teria e não garante representatividade (Seção~7). O poder é de 80\% com $\alpha=0{,}05$ bilateral (Tabela~\ref{tab:me}): com $n=50$, só efeitos grandes são detectáveis, e resultados não significativos não indicam ausência de efeito. As análises de QP2 a QP4 usam apenas quem usa IA, o que pode reduzir o $n$ efetivo.
@@ -186,7 +187,7 @@ A meta é de \textbf{50 respostas válidas}, o mínimo exigido, considerada real
 % =====================================================================
 \Needspace{5\baselineskip}\section{Questionário com rastreabilidade}
 
-O instrumento tem um aceite obrigatório (que também declara 18 anos ou mais) e \textbf{10 perguntas}, a última aberta e opcional, com duração estimada de 4 minutos. Ele é aplicado no Microsoft Forms, aberto a qualquer pessoa com o link, configurado como \emph{resposta anônima} e \textbf{sem ramificações}: todas as perguntas aparecem juntas, e quem não usa IA marca a opção \emph{não uso IA}. A plataforma registra o início e o fim de cada resposta, o que permite detectar respostas rápidas demais. As grades Likert têm 5 pontos rotulados (1 = \emph{discordo totalmente} … 5 = \emph{concordo totalmente}) e uma coluna \emph{não uso IA}. A redação segue Kitchenham e Pfleeger (2008). Dois construtos são medidos por vários itens: \textbf{aprendizado de conceitos com IA} (CON, 3 itens, a partir da percepção de aprendizado em Amoozadeh et al., 2024) e \textbf{prática de escrita de código} (PRA, 4 itens, a partir da observação de que a IA pode reduzir o esforço próprio e produzir ilusão de competência, em Prather et al., 2024). PRA4 é invertido para reduzir a aquiescência, e PRA2 pede que o respondente consiga escrever do zero o que a IA o ajudou a fazer. A \textbf{pergunta de atenção} (ATN1) é uma linha da grade PRA. A redação completa está em \texttt{instrumento/questionario.md}.
+O instrumento tem um aceite obrigatório (que também declara 18 anos ou mais) e \textbf{11 perguntas}, a última aberta e opcional, com duração estimada de 4 minutos. Ele é aplicado no Microsoft Forms, aberto a qualquer pessoa com o link, configurado como \emph{resposta anônima} e \textbf{sem ramificações}: todas as perguntas aparecem juntas, e quem não usa IA marca a opção \emph{não uso IA}. A plataforma registra o início e o fim de cada resposta, o que permite detectar respostas rápidas demais. As grades Likert têm 5 pontos rotulados (1 = \emph{discordo totalmente} … 5 = \emph{concordo totalmente}) e uma coluna \emph{não uso IA}. A redação segue Kitchenham e Pfleeger (2008). Dois construtos são medidos por vários itens: \textbf{aprendizado de conceitos com IA} (CON, 3 itens, a partir da percepção de aprendizado em Amoozadeh et al., 2024) e \textbf{prática de escrita de código} (PRA, 4 itens, a partir da observação de que a IA pode reduzir o esforço próprio e produzir ilusão de competência, em Prather et al., 2024). PRA4 é invertido para reduzir a aquiescência, e PRA2 pede que o respondente consiga escrever do zero o que a IA o ajudou a fazer. A \textbf{pergunta de atenção} (ATN1) é uma linha da grade PRA. A redação completa está em \texttt{instrumento/questionario.md}.
 
 {\footnotesize
 \begin{longtable}{@{}L{1.05cm}L{8.65cm}L{2.45cm}L{1.1cm}L{2.0cm}@{}}
@@ -199,27 +200,28 @@ O instrumento tem um aceite obrigatório (que também declara 18 anos ou mais) e
 \midrule\endhead
 \blockrow{5}{Aceite (obrigatório)}
 ACE & Li o termo, tenho 18 anos ou mais e concordo em participar & Nominal & M10 & QP1–QP4 \\
-\blockrow{5}{Perguntas 1 a 3 — Perfil}
+\blockrow{5}{Perguntas 1 a 4 — Perfil}
 CUR & Qual curso de tecnologia cursa ou cursou (CC, ES, ADS, SI, outro, nenhum) & Nominal & M9 & QP1 \\
 SIT & Situação: estudante do 1º ao 4º período; estudante do 5º em diante; formado há até 3 anos; formado há mais de 3 anos & Nominal & M7 & QP4 \\
+ATU & Já atua profissionalmente na área de tecnologia (inclui estágio): sim ou não & Nominal & M12 & QP4 \\
 MOM & Começou a aprender programação antes ou depois da popularização da IA generativa (fim de 2022) & Nominal & M8 & QP4 \\
-\blockrow{5}{Perguntas 4 e 5 — Uso da IA}
+\blockrow{5}{Perguntas 5 e 6 — Uso da IA}
 IAF & Frequência de uso de IA generativa ao estudar ou aprender programação (nunca … sempre) & Ordinal (5 pts) & M1 & QP1, QP2 \\
 IAU & Principal finalidade: código pronto; entender conceitos ou erros; revisar o próprio código; gerar exemplos ou exercícios; não uso IA & Nominal & M2 & QP1, QP3, QP4 \\
-\blockrow{5}{Pergunta 6 — Grade de aprendizado de conceitos com IA (CON)}
+\blockrow{5}{Pergunta 7 — Grade de aprendizado de conceitos com IA (CON)}
 CON1 & A IA me ajuda a entender conceitos de programação & Ordinal (Likert 5) & M3 & QP1, QP2 \\
 CON2 & Com a IA, entendo mais rápido por que um código funciona ou falha & Ordinal (Likert 5) & M3 & QP1, QP2 \\
 CON3 & A IA me ajuda a compreender mensagens de erro e documentação & Ordinal (Likert 5) & M3 & QP1, QP2 \\
-\blockrow{5}{Pergunta 7 — Grade de prática de escrita de código (PRA) com verificação de atenção}
+\blockrow{5}{Pergunta 8 — Grade de prática de escrita de código (PRA) com verificação de atenção}
 PRA1 & Escrevo eu mesmo(a) a maior parte do código das minhas atividades & Ordinal (Likert 5) & M4 & QP2–QP4 \\
 PRA2 & Consigo escrever do zero, sem IA, um código parecido com o que ela me ajudou a fazer & Ordinal (Likert 5) & M4 & QP2–QP4 \\
 PRA3 & Com frequência, pratico escrevendo código sem nenhuma ajuda de IA & Ordinal (Likert 5) & M4 & QP2–QP4 \\
 PRA4\textsuperscript{R} & Desde que passei a usar IA, escrevo menos código por conta própria & Ordinal (Likert 5) & M4 & QP2–QP4 \\
 ATN1 & \textbf{Atenção:} ``marque \emph{Discordo totalmente} nesta linha'' & Nominal (acerto) & M10 & QP1–QP4 \\
-\blockrow{5}{Perguntas 8 e 9 — Confiança e avaliação geral}
+\blockrow{5}{Perguntas 9 e 10 — Confiança e avaliação geral}
 CONF & Quão confiante se sente para escrever um programa do zero, sem ajuda de IA (nada … muito) & Ordinal (5 pts) & M5 & QP3 \\
 AVG & Como a IA afetou o seu aprendizado (piorou muito … melhorou muito; não uso IA) & Ordinal (5 pts) & M6 & QP1 \\
-\blockrow{5}{Pergunta 10 — Aberta (opcional)}
+\blockrow{5}{Pergunta 11 — Aberta (opcional)}
 ABR & A IA mudou o equilíbrio entre entender conceitos e praticar a escrita de código? Conte como & Texto → nominal & M11 & QP1 \\
 \bottomrule
 \end{longtable}
@@ -291,7 +293,8 @@ H2b, H2c & M1 × M3; M1 × M4 (ordinal × ordinal) & Correlação de Spearman & 
 H3a & M4 × M2 (ordinal × grupos) & Kruskal-Wallis; post hoc de Dunn & $\varepsilon^2$: 0,01/0,08/0,26 \citep{tomczak} \\
 H3b & M4 × M5 (ordinal × ordinal) & Correlação de Spearman & $\rho$: 0,1/0,3/0,5 \\
 H4a & M4 × M8 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \citep{romano} \\
-H4b & M2 × M7 (nominal × nominal) & $\chi^2$ de independência\textsuperscript{d} & V de Cramér: 0,1/0,3/0,5 \\
+H4b & M4 × M12 (ordinal × nominal, 2 grupos) & Mann-Whitney $U$ & $\delta$ de Cliff: 0,147/0,33/0,474 \\
+H4c & M2 × M7 (nominal × nominal) & $\chi^2$ de independência\textsuperscript{d} & V de Cramér: 0,1/0,3/0,5 \\
 \bottomrule
 \multicolumn{4}{@{}l}{\footnotesize\textsuperscript{d}Teste exato de Fisher quando alguma frequência esperada for menor que 5.}
 \end{tabularx}
@@ -299,8 +302,8 @@ H4b & M2 × M7 (nominal × nominal) & $\chi^2$ de independência\textsuperscript
 
 \vspace{-1.5ex}
 \subsection{Decisão e múltiplas comparações}
-O nível de significância é $\alpha=0{,}05$, com testes bilaterais. A \textbf{correção de Holm} \citep{holm} é aplicada à família das sete hipóteses confirmatórias (H2a, H2b, H2c, H3a, H3b, H4a e H4b) e, separadamente, às comparações post hoc de Dunn. Para cada hipótese são relatados a estatística, o $p$ ajustado, o tamanho de efeito com IC e a margem de erro. Em H2a, CON e PRA têm itens diferentes, e os escores não são equivalentes; a comparação indica o \emph{padrão relativo} entre os dois, não uma diferença absoluta.
-\textbf{Análise condicional (definida antes da coleta):} (i) se alguma finalidade tiver $n<5$, IAU é agrupada em \emph{código pronto} e \emph{demais finalidades}, e H3a passa a usar Mann-Whitney; (ii) em H4b, SIT é agrupada em \emph{estudante} e \emph{formado}, e IAU em \emph{código pronto} e \emph{demais}; (iii) se algum grupo de H4a tiver $n<10$, H4a é relatada apenas de forma descritiva; (iv) se o $\alpha$ de um construto for menor que 0,60, aplica-se a regra da Seção~5.3.
+O nível de significância é $\alpha=0{,}05$, com testes bilaterais. A \textbf{correção de Holm} \citep{holm} é aplicada à família das oito hipóteses confirmatórias (H2a, H2b, H2c, H3a, H3b, H4a, H4b e H4c) e, separadamente, às comparações post hoc de Dunn. Para cada hipótese são relatados a estatística, o $p$ ajustado, o tamanho de efeito com IC e a margem de erro. Em H2a, CON e PRA têm itens diferentes, e os escores não são equivalentes; a comparação indica o \emph{padrão relativo} entre os dois, não uma diferença absoluta.
+\textbf{Análise condicional (definida antes da coleta):} (i) se alguma finalidade tiver $n<5$, IAU é agrupada em \emph{código pronto} e \emph{demais finalidades}, e H3a passa a usar Mann-Whitney; (ii) em H4c, SIT é agrupada em \emph{estudante} e \emph{formado}, e IAU em \emph{código pronto} e \emph{demais}; (iii) se algum grupo de H4a ou H4b tiver $n<10$, a hipótese é relatada apenas de forma descritiva; (iv) se o $\alpha$ de um construto for menor que 0,60, aplica-se a regra da Seção~5.3.
 \textbf{Análises exploratórias (rotuladas como tal):} CON e PRA por curso e por situação; AVG por finalidade; confiança (CONF) por momento de início.
 
 \subsection{Respostas abertas}
@@ -351,7 +354,7 @@ Viés na codificação aberta & Conclusão & Dois codificadores; $\kappa$ de Coh
 \Needspace{5\baselineskip}\section{Plano de divulgação}
 
 \textbf{Canais.} (C1) Docentes de programação de outras instituições, que recebem uma mensagem pronta para repassar às turmas e, quando autorizado, abrem alguns minutos da aula para a resposta, com QR code. (C2) Centros e diretórios acadêmicos e grupos de estudantes e de profissionais de tecnologia (WhatsApp, Discord, Telegram, LinkedIn), com permissão dos administradores. (C3) Perfis dos integrantes no LinkedIn e no Instagram, com pedido de compartilhamento (bola de neve). (C4) Dois lembretes nos mesmos canais. Cada postagem é registrada com captura de tela datada, como evidência para a Parte 2.
-\textbf{Monitoramento e contingência.} Em 25/11, a composição parcial é comparada às metas (8 respostas por curso e 10 formados), e a segunda onda é direcionada aos segmentos abaixo da meta. Se houver menos de 50 respostas válidas em 04/12, a coleta será estendida até 11/12, com novos canais, e a mudança será registrada como desvio.
+\textbf{Monitoramento e contingência.} Em 25/11, a composição parcial é comparada às metas (8 respostas por curso e 10 pessoas que já atuam na área), e a segunda onda é direcionada aos segmentos abaixo da meta. Se houver menos de 50 respostas válidas em 04/12, a coleta será estendida até 11/12, com novos canais, e a mudança será registrada como desvio.
 
 \begin{table}[H]
 \centering\small

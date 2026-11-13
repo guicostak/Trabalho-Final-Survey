@@ -11,8 +11,8 @@
 | **População** | Estudantes e profissionais formados em CC, ES, ADS e SI de instituições brasileiras |
 | **Amostragem** | Não probabilística: conveniência com bola de neve, em vários canais e com metas por segmento |
 | **Amostra** | Meta de 50 respostas válidas (mínimo do enunciado); margem nominal de ±13,9 p.p. |
-| **Instrumento** | Aceite + 10 perguntas (a última aberta e opcional), sem ramificações, cerca de 4 min, já montado no Microsoft Forms |
-| **QPs** | 4 QPs (a central: a IA favorece conceitos em detrimento da prática de escrita?) e 7 hipóteses, com α = 0,05 e correção de Holm |
+| **Instrumento** | Aceite + 11 perguntas (a última aberta e opcional), sem ramificações, cerca de 4 min, já montado no Microsoft Forms |
+| **QPs** | 4 QPs (a central: a IA favorece conceitos em detrimento da prática de escrita?) e 8 hipóteses, com α = 0,05 e correção de Holm |
 | **Coleta** | 18/11 a 04/12/2026 |
 
 ---

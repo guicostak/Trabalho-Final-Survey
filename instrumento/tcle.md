@@ -10,7 +10,7 @@
 
 Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre como estudantes e profissionais formados em Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas, Sistemas de Informação e cursos afins aprendem programação, com e sem ferramentas de IA.
 
-**O que você fará.** Responderá a um questionário on-line de **10 perguntas** (cerca de **4 minutos**) sobre o seu curso, o seu momento de aprendizado e o uso de IA para entender conceitos e praticar a escrita de código; a última pergunta é aberta e opcional.
+**O que você fará.** Responderá a um questionário on-line de **11 perguntas** (cerca de **4 minutos**) sobre o seu curso, o seu momento de aprendizado e o uso de IA para entender conceitos e praticar a escrita de código; a última pergunta é aberta e opcional.
 
 **Participação voluntária.** A participação não é obrigatória, **não tem relação com notas ou avaliações** e não oferece recompensa. Você pode desistir a qualquer momento antes de enviar, bastando fechar a página. Como as respostas são anônimas, depois do envio não é possível localizar e remover uma resposta específica.
 

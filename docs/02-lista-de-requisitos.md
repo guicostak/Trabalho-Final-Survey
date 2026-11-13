@@ -137,9 +137,9 @@
 | ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/` (scripts e dados na Parte 2) | ✅ |
 | ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E4 (tempo), ATN1, E3, inspeção de ABR | ✅ |
 | ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E3 | ✅ |
-| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, SIT, MOM, IAF | ✅ |
+| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, SIT, ATU, MOM, IAF | ✅ |
 | ES-D05 | Considera princípios de ética em pesquisa | §6 | ✅ |
-| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (10 perguntas, sem ramificações, com base em estudos sobre IA no ensino de programação) | ✅ |
+| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (11 perguntas, sem ramificações, com base em estudos sobre IA no ensino de programação) | ✅ |
 | ES-D07 | Valida itens, layout, duração e tecnologia (piloto) | §4 | ⏳ |
 | ES-D08 | Relata como o instrumento evoluiu na validação | Tabela 6 | ⏳ |
 | ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Vários canais, docentes parceiros e 2 lembretes | ✅ |
@@ -185,7 +185,7 @@
 |---|---|---|---|
 | 1 | ~~Preencher a instituição no PDF e no TCLE~~ (feito: PUC Minas, Unidade Lourdes) | — | ✅ |
 | 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
-| 3 | ~~Montar o formulário~~ (feito no Microsoft Forms: aceite + 10 perguntas) | — | ✅ |
+| 3 | ~~Montar o formulário~~ (feito no Microsoft Forms: aceite + 11 perguntas) | — | ✅ |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |
 | 5 | Atualizar a Tabela 6 e a mediana de duração; recompilar o PDF (≤ 6 páginas) | RE-02 | 13/11 |
 | 6 | Confirmar com o professor se há norma institucional adicional (CEP) | RE-29 | 13/11 |
