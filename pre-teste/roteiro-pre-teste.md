@@ -2,7 +2,7 @@
 
 > **Quando:** 13/11/2026, **antes** de gerar o PDF final e registrar o protocolo.
 > **Por quê:** é exigido pelo enunciado (§3.4) e é um atributo desejável dos ACM SIGSOFT Empirical Standards, que pedem validar itens, layout, duração e tecnologia e relatar como o instrumento evoluiu.
-> **Saída:** a Tabela 6 do protocolo preenchida, com a mediana de duração e as mudanças feitas.
+> **Saída:** a Quadro 3 do protocolo preenchida, com a mediana de duração e as mudanças feitas.
 
 ## 1. Participantes (de 3 a 5, que não responderão à coleta oficial)
 
@@ -39,8 +39,8 @@ O formulário não tem ramificações: todas as perguntas aparecem juntas.
 ## 3. Regra de decisão
 
 - O item é **reformulado** quando **2 ou mais participantes** apontam o mesmo problema.
-- O item é **removido** apenas se não for possível reformulá-lo sem perder o vínculo com a métrica. Nesse caso, atualize a Tabela 5 do protocolo.
-- Cada mudança gera uma linha na tabela abaixo e na Tabela 6 do protocolo.
+- O item é **removido** apenas se não for possível reformulá-lo sem perder o vínculo com a métrica. Nesse caso, atualize a Quadro 2 do protocolo.
+- Cada mudança gera uma linha na tabela abaixo e na Quadro 3 do protocolo.
 
 ## 4. Registro
 
@@ -65,7 +65,7 @@ O formulário não tem ramificações: todas as perguntas aparecem juntas.
 ### 4.3 Depois do pré-teste
 
 - [ ] Atualizar `instrumento/questionario.md` e o formulário.
-- [ ] Atualizar a Tabela 5 do protocolo, se a redação resumida de algum item mudou.
-- [ ] Preencher a Tabela 6 e a mediana na Seção 4 do protocolo.
+- [ ] Atualizar a Quadro 2 do protocolo, se a redação resumida de algum item mudou.
+- [ ] Preencher a Quadro 3 e a mediana na Seção 4 do protocolo.
 - [ ] Recompilar o PDF e conferir que continua com **até 6 páginas**.
 - [ ] Apagar as respostas de teste do formulário.

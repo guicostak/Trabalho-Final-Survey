@@ -1,6 +1,6 @@
 # Textos de divulgação (canais C1 a C4)
 
-> Redação **neutra** de propósito: os textos falam em "experiência com programação" e não em "dificuldade", para não induzir autosseleção (protocolo, Tabela 9). Não altere a redação sem registrar em `DESVIOS.md`.
+> Redação **neutra** de propósito: os textos falam em "experiência com programação" e não em "dificuldade", para não induzir autosseleção (protocolo, Quadro 5). Não altere a redação sem registrar em `DESVIOS.md`.
 > **Evidência para a Parte 2:** faça uma captura de tela datada de cada postagem, sem mostrar nomes ou telefones de terceiros.
 
 ## C1: Mensagem para docentes de outras instituições

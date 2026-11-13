@@ -40,7 +40,7 @@ O processo de Kitchenham & Pfleeger (2008) e Linåker et al. (2015) segue as eta
 | # | Etapa | Entregável | Onde está no trabalho |
 |---|---|---|---|
 | 1 | Definir objetivos e questões de pesquisa | Objetivo GQM, QPs e hipóteses | Protocolo, §1 |
-| 2 | Definir o que será medido | Construtos, métricas e escalas | Protocolo, Tabela 3 |
+| 2 | Definir o que será medido | Construtos, métricas e escalas | Protocolo, seção 3 |
 | 3 | Definir a população e o quadro amostral | População-alvo, quadro e critérios de exclusão | Protocolo, §2.1–2.2 |
 | 4 | Planejar a amostra | Estratégia, tamanho, margem de erro e poder | Protocolo, §2.2–2.3 |
 | 5 | Construir o instrumento | Questionário com rastreabilidade | Protocolo, §3 e `instrumento/` |
@@ -151,7 +151,7 @@ Decisões de design adotadas no `protocolo.pdf` e por quê:
 - [ ] O PDF tem **até 6 páginas** e o texto não estoura as margens.
 - [ ] As 8 seções estão presentes, na ordem do enunciado.
 - [ ] A matriz de rastreabilidade cobre **todos** os itens do formulário real.
-- [ ] O pré-teste foi feito e a Tabela 6 está preenchida com mudanças **reais**.
+- [ ] O pré-teste foi feito e a Quadro 3 está preenchida com mudanças **reais**.
 - [ ] O formulário está configurado conforme `instrumento/questionario.md` (anônimo, ramificações).
 - [ ] Commit e tag `protocolo-v1.0` foram enviados ao GitHub **e** o PDF foi enviado na plataforma até 13/11 às 23:59.
 - [ ] O formulário só é aberto **depois** do registro.

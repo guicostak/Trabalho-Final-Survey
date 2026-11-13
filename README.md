@@ -19,10 +19,10 @@
 
 ## O que entregar no Canvas hoje (Parte 1)
 
-**Apenas o arquivo [`protocolo/protocolo.pdf`](protocolo/protocolo.pdf)**, com até 6 páginas e as 8 seções do enunciado. O envio no Canvas já comprova a data. A tag no GitHub é um reforço opcional.
+**Apenas o arquivo [`protocolo/protocolo.pdf`](protocolo/protocolo.pdf)**, com 6 páginas, as 8 seções do enunciado e formatação ABNT (Times 12, espaçamento 1,5, margens 3/3/2/2 cm; citações e referências NBR 10520 e 6023). O envio no Canvas já comprova a data. A tag no GitHub é um reforço opcional.
 
 Antes de enviar:
-- [x] **Pré-teste aplicado** com 4 pessoas (13/11): sem problemas apontados; Tabela 6 preenchida.
+- [x] **Pré-teste aplicado** com 4 pessoas (13/11): sem problemas apontados; Quadro 3 preenchida.
 - [x] Campos em laranja preenchidos (nenhum restante).
 - [ ] Recompilar e conferir que o PDF continua com **até 6 páginas**.
 - [ ] Só abrir o formulário **depois** do envio.

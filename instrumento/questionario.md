@@ -6,7 +6,7 @@
 > **Plataforma:** Microsoft Forms (conta PUC Minas), formulário "Experiência de estudantes com o aprendizado de programação". Já está montado; ainda não foi divulgado.
 > **Link de resposta:** https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=ZIEqXraHC0OsawjWIp5wWbdFJRrrPlxBl43UGrMMybJUMVhBRFFDVDM3VzRRQkgzSjBLUlU5QTU2Ti4u
 > **Estrutura:** aceite obrigatório e **11 perguntas**, a última aberta e opcional. **Sem ramificações:** todas as perguntas aparecem juntas. Duração estimada: **cerca de 4 minutos**.
-> **Rastreabilidade:** cada ID abaixo é o nome da variável no `codebook.csv` e na Tabela 5 do protocolo.
+> **Rastreabilidade:** cada ID abaixo é o nome da variável no `codebook.csv` e na Quadro 2 do protocolo.
 
 ---
 
