@@ -10,7 +10,7 @@
 | **Método** | Survey transversal por questionário on-line (descritivo e correlacional) |
 | **População** | Estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI |
 | **Amostragem** | Não probabilística: conveniência com bola de neve, em vários canais e com metas por segmento |
-| **Amostra** | Alvo de 100 respostas válidas (mínimo 50); margem nominal de ±9,8 p.p. |
+| **Amostra** | Meta de 50 respostas válidas (mínimo do enunciado); margem nominal de ±13,9 p.p. |
 | **Instrumento** | Aceite + 5 perguntas + 1 aberta opcional (cerca de 2 min), já montado no Microsoft Forms |
 | **QPs** | 4 QPs e 5 hipóteses confirmatórias, com α = 0,05 e correção de Holm |
 | **Coleta** | 18/11 a 04/12/2026 |

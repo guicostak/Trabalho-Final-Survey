@@ -40,8 +40,8 @@
 | RE-07 | População-alvo definida | OBR | §2.1 | ✅ |
 | RE-08 | Origem dos contatos | OBR | §2.2: docentes de outras instituições, centros acadêmicos, grupos de estudantes, redes sociais e respondentes | ✅ |
 | RE-09 | Estratégia de amostragem (probabilística, conveniência ou bola de neve) | OBR | §2.2: conveniência com bola de neve e metas por segmento | ✅ |
-| RE-10 | Tamanho de amostra pretendido | OBR | §2.3: 100 respostas (mínimo 50) | ✅ |
-| RE-11 | Margem de erro correspondente | OBR | Tabela 4: ±9,8 p.p. (nominal, por ser amostra não probabilística) | ✅ |
+| RE-10 | Tamanho de amostra pretendido | OBR | §2.3: meta de 50 respostas válidas | ✅ |
+| RE-11 | Margem de erro correspondente | OBR | Tabela 4: ±13,9 p.p. (nominal, por ser amostra não probabilística) | ✅ |
 | RE-12 | Justificativa de estudantes como população | OBR (§05 do enunciado) | §2.1 | ✅ |
 | RE-13 | Colegas da turma não contam como amostra | OBR (§05) | §2.1 (colegas de MEES e o grupo não recebem o convite) | ✅ |
 | RE-14 | Estimativa do tamanho da população N | DES | §2.1 (campo pendente) | ⏳ estimar (ex.: Censo da Educação Superior do INEP) |
@@ -99,7 +99,7 @@
 
 | ID | Requisito (Parte 2) | Onde foi preparado | Status |
 |---|---|---|---|
-| RE-P2-01 | Mínimo de **50 respostas válidas** | Alvo 100 + contingência (§8) | 🔜 |
+| RE-P2-01 | Mínimo de **50 respostas válidas** | Meta 50 + contingência (§8) | 🔜 |
 | RE-P2-02 | Dashboard **lê os dados brutos** | §5.7 + `codebook.csv` | 🔜 |
 | RE-P2-03 | Respostas descartadas **com o motivo** | Tabela 7 (E1–E6) | 🔜 |
 | RE-P2-04 | Likert em **barras divergentes** | §5.4 | 🔜 |

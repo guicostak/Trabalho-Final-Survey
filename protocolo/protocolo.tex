@@ -91,7 +91,7 @@
 \textbf{População:} estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI \textbullet\
 \textbf{Amostragem:} não probabilística, por conveniência com bola de neve, em vários canais e com metas por segmento \textbullet\
 \textbf{Instrumento:} aceite do TCLE e 5 perguntas, mais 1 pergunta aberta opcional (cerca de 2 minutos) \textbullet\
-\textbf{Amostra:} alvo de 100 respostas válidas (mínimo de 50); margem de erro nominal de ±9,8 p.p. \textbullet\
+\textbf{Amostra:} meta de 50 respostas válidas; margem de erro nominal de ±13,9 p.p. \textbullet\
 \textbf{Hipóteses confirmatórias:} 5, testadas com $\alpha=0{,}05$ e correção de Holm \textbullet\
 \textbf{Coleta:} 18/11 a 04/12/2026.
 O protocolo segue o padrão \emph{Questionnaire Surveys} e o suplemento \emph{Registered Reports} dos ACM SIGSOFT Empirical Standards \citep{ralph} e foi registrado \emph{antes} da primeira resposta. Qualquer desvio será datado, justificado e registrado em \texttt{DESVIOS.md}.
@@ -166,10 +166,10 @@ Como não há quadro amostral, a amostragem é \emph{não probabilística, por c
 (iii) grupos de estudantes de tecnologia (WhatsApp, Discord, Telegram), com permissão dos administradores;
 (iv) perfis dos integrantes no LinkedIn e no Instagram;
 (v) os próprios respondentes, convidados a repassar o link na mensagem final do formulário.
-Para que as comparações sejam viáveis, há \textbf{metas mínimas por segmento}: 15 respostas por curso e 20 estagiários. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (ACE, CUR e ETA).
+Para que as comparações sejam viáveis, há \textbf{metas mínimas por segmento}: 8 respostas por curso e 10 estagiários. Em 25/11, a composição parcial é verificada, e a divulgação é direcionada aos segmentos abaixo da meta. A elegibilidade é verificada no próprio formulário (ACE, CUR e ETA).
 
 \subsection{Tamanho da amostra, margem de erro e poder}
-O alvo é de \textbf{100 respostas válidas}, acima do mínimo de 50 exigido. A margem de erro de uma proporção com 95\% de confiança é $e = 1{,}96\sqrt{p(1-p)/n}$, no pior caso $p=0{,}5$, sem correção para população finita, porque a população é grande e de tamanho desconhecido. Como a amostra não é probabilística, essa margem é \textbf{nominal}: indica a precisão que uma amostra aleatória do mesmo tamanho teria e não garante representatividade (Seção~7). O poder estatístico é de 80\% com $\alpha=0{,}05$ bilateral (Tabela~\ref{tab:me}).
+A meta é de \textbf{50 respostas válidas}, o mínimo exigido, considerada realista para um link aberto sem incentivos. A margem de erro de uma proporção com 95\% de confiança é $e = 1{,}96\sqrt{p(1-p)/n}$, no pior caso $p=0{,}5$, sem correção para população finita, porque a população é grande e de tamanho desconhecido. Como a amostra não é probabilística, essa margem é \textbf{nominal}: indica a precisão que uma amostra aleatória do mesmo tamanho teria e não garante representatividade (Seção~7). O poder estatístico é de 80\% com $\alpha=0{,}05$ bilateral (Tabela~\ref{tab:me}): com $n=50$, só efeitos grandes ($|\rho|\geq0{,}39$ ou $d\geq0{,}81$) são detectáveis, e resultados não significativos não indicam ausência de efeito. Se a coleta superar a meta, a margem e o poder melhoram.
 
 \begin{table}[H]
 \centering\small
@@ -178,9 +178,9 @@ O alvo é de \textbf{100 respostas válidas}, acima do mínimo de 50 exigido. A 
 \toprule
 \thead{Respostas válidas ($n$)} & \thead{Margem de erro nominal} & \thead{Menor $|\rho|$ detectável} & \thead{Menor $d$ detectável\textsuperscript{c}} \\
 \midrule
-50 (mínimo) & ±13,9 p.p. & 0,39 & 0,81 \\
-\textbf{100 (alvo)} & \textbf{±9,8 p.p.} & \textbf{0,28} & \textbf{0,57} \\
-150 & ±8,0 p.p. & 0,23 & 0,47 \\
+\textbf{50 (meta e mínimo)} & \textbf{±13,9 p.p.} & \textbf{0,39} & \textbf{0,81} \\
+70 & ±11,7 p.p. & 0,33 & 0,68 \\
+100 & ±9,8 p.p. & 0,28 & 0,57 \\
 \bottomrule
 \multicolumn{4}{@{}l}{\footnotesize\textsuperscript{c}Mann-Whitney com grupos de mesmo tamanho (eficiência relativa assintótica de 0,955 em relação ao teste $t$).}
 \end{tabularx}
@@ -334,7 +334,7 @@ Fatores não medidos & Interna & O instrumento curto não mede autoeficácia, an
 Confusão entre fatores & Interna & Etapa e experiência prévia tendem a andar juntas; análise exploratória estratificada (Seção~5.5). \\
 Respostas automatizadas ou duplicadas & Construto & Sem incentivos; tempo mínimo (E5); atenção (ATN1); duplicatas (E6); opção do Forms que oculta ``enviar outra resposta''. \\
 Generalização & Externa & Amostra não probabilística: conclusões restritas à amostra, margem nominal e composição descrita (cursos e etapas). \\
-Múltiplos testes, poder e $p$-hacking & Conclusão & Correção de Holm; poder declarado ($|\rho|\geq0{,}28$); hipóteses, testes e regras registrados antes da coleta. \\
+Múltiplos testes, poder e $p$-hacking & Conclusão & Correção de Holm; poder declarado e limitado a efeitos grandes ($|\rho|\geq0{,}39$); hipóteses, testes e regras registrados antes da coleta. \\
 Viés na codificação aberta & Conclusão & Dois codificadores; $\kappa$ de Cohen $\geq 0{,}60$; livro de códigos publicado. \\
 \bottomrule
 \end{tabularx}
@@ -344,7 +344,7 @@ Viés na codificação aberta & Conclusão & Dois codificadores; $\kappa$ de Coh
 \Needspace{5\baselineskip}\section{Plano de divulgação}
 
 \textbf{Canais.} (C1) Docentes de programação de outras instituições, que recebem uma mensagem pronta para repassar às turmas e, quando autorizado, abrem alguns minutos da aula para a resposta, com QR code. (C2) Centros e diretórios acadêmicos e grupos de estudantes de tecnologia (WhatsApp, Discord, Telegram), com permissão dos administradores. (C3) Perfis dos integrantes no LinkedIn e no Instagram, com pedido de compartilhamento (bola de neve). (C4) Dois lembretes nos mesmos canais. Cada postagem é registrada com captura de tela datada, como evidência para a Parte 2.
-\textbf{Monitoramento e contingência.} Em 25/11, a composição parcial é comparada às metas (15 respostas por curso e 20 estagiários), e a segunda onda é direcionada aos segmentos abaixo da meta. Se houver menos de 50 respostas válidas em 04/12, a coleta será estendida até 11/12, com novos canais, e a mudança será registrada como desvio.
+\textbf{Monitoramento e contingência.} Em 25/11, a composição parcial é comparada às metas (8 respostas por curso e 10 estagiários), e a segunda onda é direcionada aos segmentos abaixo da meta. Se houver menos de 50 respostas válidas em 04/12, a coleta será estendida até 11/12, com novos canais, e a mudança será registrada como desvio.
 
 \begin{table}[H]
 \centering\small
