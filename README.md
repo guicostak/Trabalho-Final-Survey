@@ -22,8 +22,8 @@
 **Apenas o arquivo [`protocolo/protocolo.pdf`](protocolo/protocolo.pdf)**, com até 6 páginas e as 8 seções do enunciado. O envio no Canvas já comprova a data. A tag no GitHub é um reforço opcional.
 
 Antes de enviar:
-- [ ] **Aplicar o pré-teste** com 3 a 5 pessoas ([`pre-teste/roteiro-pre-teste.md`](pre-teste/roteiro-pre-teste.md)) e preencher a Tabela 6 com as mudanças **reais**.
-- [ ] Preencher os campos em **laranja** do PDF: N estimado e dados do pré-teste.
+- [x] **Pré-teste aplicado** com 4 pessoas (13/11): sem problemas apontados; Tabela 6 preenchida.
+- [x] Campos em laranja preenchidos (nenhum restante).
 - [ ] Recompilar e conferir que o PDF continua com **até 6 páginas**.
 - [ ] Só abrir o formulário **depois** do envio.
 
