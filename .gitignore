@@ -1,0 +1,21 @@
+# Sistema
+.DS_Store
+
+# LaTeX (intermediários; o PDF final é versionado)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Dados brutos da coleta: NUNCA versionar (protocolo, §6, Ética e LGPD).
+# Apenas o conjunto anonimizado e revisado vai para o repositório.
+dados/brutos/
+*.xlsx

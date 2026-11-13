@@ -1,0 +1,12 @@
+turma_id,curso,periodo,disciplina,matriculados
+EXEMPLO-01,CC,1,Algoritmos e Estruturas de Dados I (EXEMPLO),40
+EXEMPLO-02,CC,1,Algoritmos e Estruturas de Dados I (EXEMPLO),38
+EXEMPLO-03,CC,1,Algoritmos e Estruturas de Dados I (EXEMPLO),35
+EXEMPLO-04,CC,2,Algoritmos e Estruturas de Dados II (EXEMPLO),36
+EXEMPLO-05,CC,3,Programação Modular (EXEMPLO),33
+EXEMPLO-06,CC,4,Estruturas de Dados (EXEMPLO),30
+EXEMPLO-07,ES,1,Fundamentos de Programação (EXEMPLO),42
+EXEMPLO-08,ES,1,Fundamentos de Programação (EXEMPLO),40
+EXEMPLO-09,ES,2,Programação Orientada a Objetos (EXEMPLO),37
+EXEMPLO-10,ES,3,Algoritmos e Estruturas de Dados (EXEMPLO),34
+EXEMPLO-11,ES,4,Programação Web (EXEMPLO),31
