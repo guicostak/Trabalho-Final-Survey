@@ -4,13 +4,13 @@
 
 ---
 
-**Pesquisa:** Fatores associados à dificuldade percebida no aprendizado de programação
+**Pesquisa:** Aprendizado de programação na era da IA generativa
 **Responsáveis:** Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias, estudantes de Engenharia de Software da Pontifícia Universidade Católica de Minas Gerais (PUC Minas), Unidade Lourdes, na disciplina Medição e Experimentação em Engenharia de Software
 **Professor orientador:** Danilo de Quadros Maia Filho, 1514571@pucminas.edu.br
 
-Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre a experiência de estudantes de Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas e Sistemas de Informação com o aprendizado de programação. Podem participar estudantes do 1º ao 4º período e estudantes de qualquer período que façam estágio na área de TI.
+Você está sendo convidado(a) a participar de uma pesquisa acadêmica sobre como estudantes de Ciência da Computação, Engenharia de Software, Análise e Desenvolvimento de Sistemas e Sistemas de Informação aprendem programação hoje, incluindo o uso de ferramentas de IA. Podem participar estudantes do 1º ao 4º período e estudantes de qualquer período que façam estágio na área de TI.
 
-**O que você fará.** Responderá a um questionário on-line de **5 perguntas** (cerca de **2 minutos**) sobre o seu curso, a sua experiência com programação e o uso de IA nos estudos, além de uma pergunta aberta opcional.
+**O que você fará.** Responderá a um questionário on-line de **10 perguntas** (cerca de **4 minutos**) sobre o seu curso, a sua experiência com programação e o uso de IA nos estudos; a última pergunta é aberta e opcional.
 
 **Participação voluntária.** A participação não é obrigatória, **não tem relação com notas ou avaliações** e não oferece recompensa. Você pode desistir a qualquer momento antes de enviar, bastando fechar a página. Como as respostas são anônimas, depois do envio não é possível localizar e remover uma resposta específica.
 

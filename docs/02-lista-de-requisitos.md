@@ -52,7 +52,7 @@
 |---|---|---|---|---|
 | RE-15 | Cada item ligado a **uma QP e uma métrica** | OBR | Tabela 5 | ✅ |
 | RE-16 | **Escala declarada** por item (nominal, ordinal, intervalar ou razão) | OBR | Tabela 5, coluna *Escala* | ✅ |
-| RE-17 | Construtos medidos por **mais de um item** | OBR | DIF (4 itens, 1 invertido) | ✅ |
+| RE-17 | Construtos medidos por **mais de um item** | OBR | DIF (4), DEP (4) e APR (3), com itens invertidos em DIF e DEP | ✅ |
 | RE-18 | **Pergunta de atenção** | OBR | ATN1 + regra E5 | ✅ |
 
 ### A.5 Seção 4: Pré-teste
@@ -120,7 +120,7 @@
 | ES-01 | Identifica a população-alvo e define a estratégia de amostragem | OBR | §2 | ✅ |
 | ES-02 | Descreve como o instrumento foi criado | OBR | §3 + quadro "Origem dos itens" em `questionario.md` | ✅ |
 | ES-03 | Descreve como os participantes são selecionados e recrutados | OBR | §2.2 + §8 | ✅ |
-| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | DIF com validade de conteúdo no pré-teste e α de Cronbach *ex post* | ✅ |
+| ES-04 | Usa escalas validadas **ou** analisa a validade de construto *ex post* | OBR | DIF, DEP e APR com validade de conteúdo no pré-teste e α de Cronbach *ex post* | ✅ |
 | ES-05 | Descreve o monitoramento das respostas e a contingência para não resposta | OBR | §8 (lembretes e contingência) | ✅ |
 | ES-06 | Explica o tratamento de dados ausentes | OBR | §5.2 | ✅ |
 | ES-07 | Descrição passo a passo, sistemática e **replicável** da coleta e da análise | OBR | Canais, metas e cronograma (§2.2 e §8), regras E1–E6 e Tabela 8 | ✅ |
@@ -135,11 +135,11 @@
 | ID | Atributo | Onde | Status |
 |---|---|---|---|
 | ES-D01 | Materiais suplementares: instrumento, livro de códigos, scripts e dados | `instrumento/` (scripts e dados na Parte 2) | ✅ |
-| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E5 (tempo), ATN1, inspeção de ABR | ✅ |
+| ES-D02 | Mecanismo para detectar respostas automatizadas ou geradas por IA | E5 (tempo), ATN1, E4, inspeção de ABR | ✅ |
 | ES-D03 | Itens de atenção, com exclusão de quem falhar | ATN1 / E3 | ✅ |
-| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, ETA, EXP | ✅ |
+| ES-D04 | Caracteriza a população-alvo | §2.1 + CUR, ETA, EXP, IAF | ✅ |
 | ES-D05 | Considera princípios de ética em pesquisa | §6 | ✅ |
-| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (instrumento enxuto, de 5 perguntas, para elevar a adesão) | ✅ |
+| ES-D06 | Justifica o desenho do instrumento e a escolha das escalas | §3 (10 perguntas com base em estudos sobre IA no ensino de programação) | ✅ |
 | ES-D07 | Valida itens, layout, duração e tecnologia (piloto) | §4 | ⏳ |
 | ES-D08 | Relata como o instrumento evoluiu na validação | Tabela 6 | ⏳ |
 | ES-D09 | Aplica técnicas para aumentar a taxa de resposta | Vários canais, docentes parceiros e 2 lembretes | ✅ |
@@ -185,7 +185,7 @@
 |---|---|---|---|
 | 1 | ~~Preencher a instituição no PDF e no TCLE~~ (feito: PUC Minas, Unidade Lourdes) | — | ✅ |
 | 2 | Estimar **N** (por exemplo, pelo Censo da Educação Superior do INEP) | RE-14, ES-D11, SA-09 | 13/11 |
-| 3 | ~~Montar o formulário~~ (feito no Microsoft Forms: aceite + 5 perguntas + aberta) | — | ✅ |
+| 3 | ~~Montar o formulário~~ (feito no Microsoft Forms: aceite + 10 perguntas) | — | ✅ |
 | 4 | **Aplicar o pré-teste** (3–5 pessoas) e registrar as mudanças **reais** | RE-19, RE-20, ES-D07, ES-D08 | 13/11 |
 | 5 | Atualizar a Tabela 6 e a mediana de duração; recompilar o PDF (≤ 6 páginas) | RE-02 | 13/11 |
 | 6 | Confirmar com o professor se há norma institucional adicional (CEP) | RE-29 | 13/11 |

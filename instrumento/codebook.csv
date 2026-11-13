@@ -1,16 +1,27 @@
 variavel,pergunta_no_forms,construto,descricao,escala,valores,codificacao,metrica,qp,obrigatorio,regra_limpeza
-ACE,Aceite,,Aceite do TCLE e idade de 18 anos ou mais,nominal,"Sim, concordo em participar; Não concordo",1=Sim; 0=Não (encerra),M7,QP1-QP4,sim,E1 se 0
-CUR,1,,Curso,nominal,Ciência da Computação; Engenharia de Software; ADS; Sistemas de Informação; Outro,CC; ES; ADS; SI; OUTRO (encerra),M4,QP3,sim,E2 se OUTRO
-ETA,2,,Etapa do curso,nominal,1º ao 4º período; 5º+ com estágio em TI; 5º+ sem estágio,INICIAL; ESTAGIO; FORA (encerra),M5,QP3,sim,E2 se FORA
-EXP,3,,Programava antes de ingressar no curso,nominal,Sim; Não,1=Sim; 0=Não,M3,QP2; QP3,sim,
-DIF1,4 (linha 1),DIF,Dificuldade para compreender novos conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
-DIF2,4 (linha 2),DIF,Dificuldade para transformar a lógica em código,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
-DIF3,4 (linha 3),DIF,Não sei por onde começar a resolver um problema,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1; M2,QP1-QP4,sim,E4
-DIF4,4 (linha 4),DIF,Acompanho o ritmo sem grandes dificuldades (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,6 - x,M1; M2,QP1-QP4,sim,E4
-ATN1,4 (linha 5),,Verificação de atenção (correta = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente,1 = acerto; 2..5 = erro,M7,QP1-QP4,sim,E3 se != 1
-IAF,5,,Frequência de uso de IA generativa ao estudar,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5,M6,QP4,sim,
-ABR,Aberta,,O que mais dificulta ou ajudou o aprendizado,texto livre,,codificação temática (protocolo §5.6),M8,QP1,não,remover identificadores
-_inicio,Metadado,,Hora de início (exportação do Forms),data-hora,,ISO 8601,M7,QP1-QP4,auto,E5
-_fim,Metadado,,Hora de conclusão (exportação do Forms),data-hora,,ISO 8601,M7,QP1-QP4,auto,E5 e E6
-M1_DIF,Derivada,DIF,Escore de dificuldade percebida,ordinal (escore),1..5,média de DIF1–DIF3 e DIF4 invertido,M1,QP1-QP4,derivada,
-ETA2,Derivada,,Etapa em dois grupos para H3b,nominal,INICIAL; ESTAGIO,recodificação de ETA,M5,QP3,derivada,
+ACE,Aceite (1),,Aceite do TCLE e idade de 18 anos ou mais,nominal,"Sim, concordo em participar; Não concordo",1=Sim; 0=Não (encerra),M10,QP1-QP4,sim,E1 se 0
+CUR,2,,Curso,nominal,Ciência da Computação; Engenharia de Software; ADS; Sistemas de Informação; Outro,CC; ES; ADS; SI; OUTRO (encerra),M9,QP1,sim,E2 se OUTRO
+ETA,3,,Etapa do curso,nominal,1º ao 4º período; 5º+ com estágio em TI; 5º+ sem estágio,INICIAL; ESTAGIO; FORA (encerra),M7,QP4,sim,E2 se FORA
+EXP,4,,Programava antes de ingressar no curso,nominal,Sim; Não,1=Sim; 0=Não,M8,QP4,sim,
+DIF1,5 (linha 1),DIF,Dificuldade para compreender novos conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP3,sim,E4
+DIF2,5 (linha 2),DIF,Dificuldade para transformar a lógica em código,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP3,sim,E4
+DIF3,5 (linha 3),DIF,Não sei por onde começar a resolver um problema,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5,M1,QP3,sim,E4
+DIF4,5 (linha 4),DIF,Acompanho o ritmo sem grandes dificuldades (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,6 - x,M1,QP3,sim,E4
+ATN1,5 (linha 5),,Verificação de atenção (correta = Discordo totalmente),nominal,Discordo totalmente..Concordo totalmente,1 = acerto; 2..5 = erro,M10,QP1-QP4,sim,E3 se != 1
+IAF,6,,Frequência de uso de IA ao estudar programação,ordinal (5 pts),Nunca; Raramente; Às vezes; Frequentemente; Sempre,1..5 (Nunca pula para ABR),M2,QP1; QP4,sim,
+IAU,7,,Principal finalidade de uso da IA,nominal,Código pronto; Entender conceitos/erros; Revisar meu código; Gerar exemplos/exercícios,CODIGO; ENTENDER; REVISAR; PRATICAR (NA se IAF=1),M3,QP1; QP2; QP4,condicional,
+DEP1,8 (linha 1),DEP,Recorro à IA antes de tentar sozinho(a),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M4,QP2; QP3,condicional,E4
+DEP2,8 (linha 2),DEP,Sem IA teria dificuldade para concluir exercícios,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M4,QP2; QP3,condicional,E4
+DEP3,8 (linha 3),DEP,Não conseguiria programar sem a IA,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M4,QP2; QP3,condicional,E4
+DEP4,8 (linha 4),DEP,Resolvo exercícios sem IA quando preciso (INVERTIDO),ordinal (Likert 5),Discordo totalmente..Concordo totalmente,6 - x (NA se IAF=1),M4,QP2; QP3,condicional,E4
+APR1,9 (linha 1),APR,A IA me ajuda a entender conceitos,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M5,QP1; QP2,condicional,
+APR2,9 (linha 2),APR,Com a IA aprendo mais rápido,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M5,QP1; QP2,condicional,
+APR3,9 (linha 3),APR,Consigo explicar o código que a IA ajudou a escrever,ordinal (Likert 5),Discordo totalmente..Concordo totalmente,1..5 (NA se IAF=1),M5,QP1; QP2,condicional,
+AVG,10,,Efeito geral percebido da IA no aprendizado,ordinal (5 pts),Piorou muito; Piorou um pouco; Não mudou; Melhorou um pouco; Melhorou muito,1..5 (NA se IAF=1),M6,QP1,condicional,
+ABR,11,,Como a IA mudou a forma de aprender programação,texto livre,,codificação temática (protocolo §5.6),M11,QP1,não,remover identificadores
+_inicio,Metadado,,Hora de início (exportação do Forms),data-hora,,ISO 8601,M10,QP1-QP4,auto,E5
+_fim,Metadado,,Hora de conclusão (exportação do Forms),data-hora,,ISO 8601,M10,QP1-QP4,auto,E5 e E6
+M1_DIF,Derivada,DIF,Escore de dificuldade percebida,ordinal (escore),1..5,média de DIF1–DIF3 e DIF4 invertido,M1,QP3,derivada,
+M4_DEP,Derivada,DEP,Escore de dependência da IA,ordinal (escore),1..5,média de DEP1–DEP3 e DEP4 invertido,M4,QP2; QP3,derivada,
+M5_APR,Derivada,APR,Escore de aprendizado percebido com IA,ordinal (escore),1..5,média de APR1–APR3,M5,QP1; QP2,derivada,
+ETA2,Derivada,,Etapa em dois grupos para H4a,nominal,INICIAL; ESTAGIO,recodificação de ETA,M7,QP4,derivada,

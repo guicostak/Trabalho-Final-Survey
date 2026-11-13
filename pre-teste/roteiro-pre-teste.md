@@ -18,6 +18,7 @@
 O formulário encerra para quem está fora da população, então combine antes com cada participante:
 - **Pergunta 1 (curso):** marcar o curso que fez ou o mais parecido. "Outro" encerra o formulário.
 - **Pergunta 2 (etapa):** marcar **"1º ao 4º período"**, pensando em quando estava no início da graduação. Assim ele percorre todas as perguntas.
+- **Pergunta 5 (frequência de uso de IA):** escolher uma opção diferente de "Nunca". "Nunca" pula direto para a pergunta aberta.
 - **Demais perguntas:** responder pensando no início da graduação e avaliar se a redação faz sentido para um estudante.
 
 ## 2. Procedimento (de 15 a 20 minutos por participante)
@@ -34,7 +35,7 @@ O formulário encerra para quem está fora da população, então combine antes 
 2. Faltou alguma opção de resposta em alguma pergunta?
 3. A duração pareceu adequada? Em que ponto você ficou cansado(a)?
 4. Alguma pergunta pareceu invasiva ou desconfortável?
-5. Os 4 itens de dificuldade (DIF1–DIF4) representam bem a dificuldade de aprender a programar? Algum aspecto importante ficou de fora?
+5. As grades de dificuldade (DIF), dependência da IA (DEP) e aprendizado com IA (APR) representam bem cada ideia? Algum aspecto importante do uso de IA ficou de fora?
 
 ## 3. Regra de decisão
 

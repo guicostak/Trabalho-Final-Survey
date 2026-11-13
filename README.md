@@ -1,4 +1,4 @@
-# Survey pré-registrado: dificuldade percebida no aprendizado de programação
+# Survey pré-registrado: aprendizado de programação na era da IA generativa
 
 **Instituição:** PUC Minas, Unidade Lourdes, Bacharelado em Engenharia de Software
 **Disciplina:** Medição e Experimentação em Engenharia de Software, 2º/2026
@@ -11,7 +11,7 @@
 | **População** | Estudantes de CC, ES, ADS e SI de instituições brasileiras, do 1º ao 4º período ou em estágio de TI |
 | **Amostragem** | Não probabilística: conveniência com bola de neve, em vários canais e com metas por segmento |
 | **Amostra** | Meta de 50 respostas válidas (mínimo do enunciado); margem nominal de ±13,9 p.p. |
-| **Instrumento** | Aceite + 5 perguntas + 1 aberta opcional (cerca de 2 min), já montado no Microsoft Forms |
+| **Instrumento** | Aceite + 10 perguntas (a última aberta e opcional), cerca de 4 min, já montado no Microsoft Forms |
 | **QPs** | 4 QPs e 5 hipóteses confirmatórias, com α = 0,05 e correção de Holm |
 | **Coleta** | 18/11 a 04/12/2026 |
 
