@@ -67,7 +67,7 @@ grep -n '\\pend{' protocolo/protocolo.tex
 
 ## Como registrar o protocolo com data verificável
 
-O repositório privado já está criado e configurado: <https://github.com/guicostak/Trabalho-Final-Survey>. Como ele é privado, **adicione o professor como colaborador** (Settings → Collaborators) para que ele consiga verificar a data.
+O repositório **público** já está criado e configurado: <https://github.com/guicostak/Trabalho-Final-Survey>. Qualquer pessoa, inclusive o professor, pode verificar a data dos commits e da tag.
 
 Depois de preencher os campos pendentes e fazer o pré-teste:
 
