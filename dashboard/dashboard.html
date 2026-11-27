@@ -5,98 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard do Survey</title>
 <style>
-:root{--ink:#1d1d1b;--ink2:#52514e;--muted:#898781;--grid:#e4e3dd;--line:#c9c8c0;--bg:#f7f7f5;--card:#ffffff;
---azul:#2a78d6;--laranja:#eb6834;--d1:#b3302f;--d2:#e8807f;--d3:#d6d5cf;--d4:#6da7ec;--d5:#1c5cab;--ok:#0c7a0c;--alerta:#a15c00;}
+:root{
+  --bg:#f4f5f7;--card:#fff;--ink:#111418;--ink2:#4b5260;--muted:#8a909c;--grid:#e8eaee;--line:#d9dce2;
+  --azul:#2563eb;--azul-s:#e8effd;--laranja:#e46a2e;--verde:#15803d;--verde-s:#e7f5ec;--ambar:#b45309;--ambar-s:#fdf3e3;
+  --cinza-s:#eef0f3;--vermelho:#b42318;
+  --d1:#b3302f;--d2:#e8807f;--d3:#d6d5cf;--d4:#6da7ec;--d5:#1c5cab;
+  --sombra:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.06);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:var(--card);border-bottom:1px solid var(--grid);padding:20px 24px 12px}
-header h1{margin:0;font-size:22px;letter-spacing:-.01em}
-header .sub{color:var(--ink2);font-size:13px;margin-top:2px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.barra{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:12px}
-.barra label{font-size:12px;color:var(--ink2);display:flex;flex-direction:column;gap:2px}
-select,button{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
-button{cursor:pointer}button:hover{background:#f0efea}
-.acoes{margin-left:auto;display:flex;gap:8px}
-nav{display:flex;flex-wrap:wrap;gap:2px;margin-top:14px}
-nav button{border:none;border-bottom:2px solid transparent;border-radius:0;background:none;padding:8px 12px;color:var(--ink2)}
-nav button.ativo{border-bottom-color:var(--ink);color:var(--ink);font-weight:600}
-main{padding:18px 0 40px}
-section{display:none}section.ativo{display:block}
-h2{font-size:19px;margin:22px 0 6px}h3{font-size:15px;margin:18px 0 6px}
-.card{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:14px 16px;margin:10px 0}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
-.kpi{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:10px 14px}
-.kpi .r{font-size:12px;color:var(--ink2)}.kpi .v{font-size:26px;font-weight:600;line-height:1.2}.kpi .n{font-size:12px;color:var(--muted)}
-.aviso{border-left:4px solid var(--alerta);background:#fff8ec;padding:8px 12px;border-radius:6px;margin:10px 0;font-size:14px}
-.info{border-left:4px solid var(--azul);background:#eef5fd;padding:8px 12px;border-radius:6px;margin:10px 0;font-size:14px}
-table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
-th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
-th{color:var(--ink2);font-weight:600;border-bottom:1px solid var(--line)}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media (max-width:820px){.grid2{grid-template-columns:1fr}}
-.cap{font-size:12px;color:var(--ink2);margin-top:4px}
-.rej{font-weight:600}
-svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-.legenda{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2);margin:4px 0}
-.legenda i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+/* ---------- estrutura: barra lateral fixa + conteúdo ---------- */
+.app{display:grid;grid-template-columns:268px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow:auto;background:#fff;border-right:1px solid var(--grid);padding:22px 18px}
+aside .marca{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+aside h1{font-size:17px;line-height:1.3;margin:6px 0 4px}
+aside .autores{font-size:12px;color:var(--ink2);margin-bottom:16px}
+aside nav a{display:block;padding:6px 10px;border-radius:7px;color:var(--ink2);text-decoration:none;font-size:13.5px}
+aside nav a:hover{background:var(--cinza-s);color:var(--ink)}
+aside nav a.ativo{background:var(--azul-s);color:var(--azul);font-weight:600}
+aside nav .grupo{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 10px 4px;font-weight:600}
+.filtros{margin-top:18px;padding-top:14px;border-top:1px solid var(--grid)}
+.filtros label{display:block;font-size:12px;color:var(--ink2);margin:8px 0 3px}
+select,button{font:inherit;font-size:13px;width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+button{cursor:pointer;font-weight:500}button:hover{background:var(--cinza-s)}
+.btn-prim{background:var(--ink);color:#fff;border-color:var(--ink)}.btn-prim:hover{background:#2b3038}
+.acoes{display:grid;gap:8px;margin-top:16px}
+.fonte{font-size:11.5px;color:var(--muted);margin-top:12px;line-height:1.45}
+main{padding:28px 36px 60px;max-width:1180px;width:100%}
+@media (max-width:980px){.app{grid-template-columns:1fr}aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--grid)}main{padding:20px 16px 40px}}
+/* ---------- seções ---------- */
+section{margin:0 0 40px;scroll-margin-top:16px}
+.eyebrow{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+h2{font-size:22px;line-height:1.25;margin:0 0 4px;letter-spacing:-.01em}
+.lead{color:var(--ink2);margin:0 0 14px;max-width:820px}
+h3{font-size:14.5px;margin:0 0 8px}
+.card{background:var(--card);border-radius:12px;box-shadow:var(--sombra);padding:16px 18px}
+.grade{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.mt{margin-top:14px}
+/* KPIs */
+.kpi .r{font-size:12.5px;color:var(--ink2)}.kpi .v{font-size:30px;font-weight:650;letter-spacing:-.02em;line-height:1.15;margin-top:4px}
+.kpi .n{font-size:12px;color:var(--muted);margin-top:2px}
+.barra-prog{height:6px;background:var(--cinza-s);border-radius:9px;margin-top:10px;overflow:hidden}.barra-prog i{display:block;height:100%;background:var(--azul);border-radius:9px}
+/* achados */
+.achado{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--grid)}
+.achado:first-child{border-top:none;padding-top:2px}
+.achado .qp{font-weight:700;font-size:13px;color:var(--ink2);padding-top:2px}
+.achado .pergunta{font-weight:600;margin-bottom:6px}
+.hip{display:flex;gap:8px;align-items:flex-start;margin:5px 0;font-size:13.5px;color:var(--ink2)}
+.chip{display:inline-block;white-space:nowrap;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;line-height:1.6}
+.chip.ok{background:var(--verde-s);color:var(--verde)}.chip.parcial{background:var(--ambar-s);color:var(--ambar)}
+.chip.nao{background:var(--cinza-s);color:var(--ink2)}.chip.desc{background:var(--azul-s);color:var(--azul)}
+.aviso{background:var(--ambar-s);color:#7a3d06;border-radius:10px;padding:10px 14px;margin:0 0 16px;font-size:13.5px}
+.info{background:var(--azul-s);color:#1e3a8a;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:13.5px}
+/* tabelas */
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+.rej{font-weight:650;color:var(--verde)}
 .scroll{overflow-x:auto}
-#tip{position:fixed;pointer-events:none;background:#1d1d1b;color:#fff;font-size:12px;padding:5px 8px;border-radius:5px;display:none;z-index:9;max-width:280px}
-.tituloimp{display:none}
+details{margin-top:12px}details>summary{cursor:pointer;color:var(--azul);font-weight:600;font-size:13px;list-style:none}
+details>summary::before{content:"▸ ";}details[open]>summary::before{content:"▾ ";}
+details>div{margin-top:10px}
+.cap{font-size:12px;color:var(--muted);margin-top:6px}
+.legenda{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2);margin:2px 0 8px}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.estat{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:13px}.estat dt{color:var(--muted)}.estat dd{margin:0;font-variant-numeric:tabular-nums}
+.citacao{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:10px 0;color:var(--ink2);font-size:13.5px}
+.citacao .t{font-size:11.5px;color:var(--muted);margin-top:2px}
+svg text{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+#tip{position:fixed;pointer-events:none;background:#111418;color:#fff;font-size:12px;padding:6px 9px;border-radius:6px;display:none;z-index:9;max-width:300px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.desvio{padding:12px 0;border-top:1px solid var(--grid)}.desvio:first-child{border-top:none;padding-top:0}
+.desvio b.id{display:inline-block;min-width:32px}
 @media print{
   @page{size:A4;margin:12mm}
-  body{background:#fff;font-size:12px}
-  header{border:none;padding:0 0 6px}
-  .barra .acoes,nav,select,#tip{display:none!important}
-  .barra label{display:none}
-  #filtrostxt{display:block!important}
-  section{display:block!important;break-before:page}
-  section:first-of-type{break-before:auto}
-  .tituloimp{display:block;font-size:17px;font-weight:700;margin:0 0 6px;border-bottom:1px solid #999}
-  .card{border-color:#ccc;break-inside:auto}
-  .kpi,.card:has(svg),tr,li{break-inside:avoid}
-  table{font-size:9.5px}th,td{padding:3px 5px}p,li{font-size:11px}
-  .card{padding:8px 10px;margin:6px 0}
+  body{background:#fff;font-size:11.5px}
+  .app{display:block}aside nav,.filtros select,.acoes,#tip{display:none!important}
+  aside{position:static;height:auto;border:none;padding:0 0 10px}
+  main{padding:0;max-width:none}
+  .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+  .g4{grid-template-columns:repeat(4,1fr)!important}.g2{grid-template-columns:1fr 1fr!important}
+  section{break-before:page}section:first-of-type{break-before:auto}
   .scroll{overflow:visible}
-  .grid2{grid-template-columns:1fr 1fr!important}
-  .soTela{display:none!important}
-  table.compacta{font-size:8px}table.compacta th,table.compacta td{padding:2px 3px}
-  h2{font-size:15px;margin:12px 0 4px}
 }
 </style>
 </head>
 <body>
-<header>
- <div class="wrap">
+<div class="app">
+ <aside>
+  <div class="marca">Survey pré-registrado · 2º/2026</div>
   <h1>Aprendizado de programação na era da IA generativa</h1>
-  <div class="sub">Survey pré-registrado · Medição e Experimentação em Engenharia de Software · PUC Minas, Unidade Lourdes · 2º/2026<br>
-  Grupo: Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias</div>
-  <div class="sub" id="fonte"></div>
-  <div class="barra">
-   <label>Curso<select id="fCUR"></select></label>
-   <label>Situação<select id="fSIT"></select></label>
-   <label>Atuação na área<select id="fATU"></select></label>
-   <label>Começou a aprender<select id="fMOM"></select></label>
-   <span id="filtrostxt" class="cap" style="display:none"></span>
-   <div class="acoes">
-    <button id="btnCarregar" title="Lê uma nova exportação do Microsoft Forms (.xlsx ou .csv) e recalcula tudo">Carregar exportação do Forms</button>
-    <button onclick="window.print()" title="Gera a versão em PDF com todas as abas">Imprimir / PDF</button>
-    <input type="file" id="arquivo" accept=".xlsx,.csv" hidden>
-   </div>
+  <div class="autores">Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias<br>PUC Minas, Unidade Lourdes · Medição e Experimentação em Engenharia de Software</div>
+  <nav id="indice"></nav>
+  <div class="filtros">
+   <div class="eyebrow">Filtros por segmento</div>
+   <label for="fCUR">Curso</label><select id="fCUR"></select>
+   <label for="fSIT">Situação</label><select id="fSIT"></select>
+   <label for="fATU">Atuação na área</label><select id="fATU"></select>
+   <label for="fMOM">Começou a aprender</label><select id="fMOM"></select>
+   <div class="fonte" id="filtrostxt"></div>
   </div>
-  <nav id="abas"></nav>
- </div>
-</header>
-<main class="wrap">
- <div id="alertas"></div>
- <section id="s-perfil" data-nome="Perfil e limpeza"></section>
- <section id="s-likert" data-nome="Itens Likert"></section>
- <section id="s-qp" data-nome="Questões de pesquisa"></section>
- <section id="s-alfa" data-nome="Confiabilidade"></section>
- <section id="s-abr" data-nome="Resposta aberta"></section>
- <section id="s-met" data-nome="Metodologia e desvios"></section>
- <section id="s-dados" data-nome="Dados brutos"></section>
-</main>
+  <div class="acoes">
+   <button id="btnCarregar" class="btn-prim" title="Lê uma nova exportação do Microsoft Forms (.xlsx ou .csv) e recalcula tudo">Carregar exportação do Forms</button>
+   <button onclick="window.print()">Imprimir / salvar PDF</button>
+   <input type="file" id="arquivo" accept=".xlsx,.csv" hidden>
+  </div>
+  <div class="fonte" id="fonte"></div>
+ </aside>
+ <main>
+  <section id="s-visao" data-nome="Visão geral" data-grupo="Resumo"></section>
+  <section id="s-amostra" data-nome="Amostra e limpeza" data-grupo="Dados"></section>
+  <section id="s-likert" data-nome="Itens Likert" data-grupo="Dados"></section>
+  <section id="s-qp1" data-nome="QP1 · Uso da IA" data-grupo="Questões de pesquisa"></section>
+  <section id="s-qp2" data-nome="QP2 · Conceitos × prática" data-grupo="Questões de pesquisa"></section>
+  <section id="s-qp3" data-nome="QP3 · Confiança sem IA" data-grupo="Questões de pesquisa"></section>
+  <section id="s-qp4" data-nome="QP4 · Antes × depois da IA" data-grupo="Questões de pesquisa"></section>
+  <section id="s-sens" data-nome="Sensibilidade" data-grupo="Questões de pesquisa"></section>
+  <section id="s-alfa" data-nome="Confiabilidade (α)" data-grupo="Qualidade"></section>
+  <section id="s-abr" data-nome="Resposta aberta" data-grupo="Qualidade"></section>
+  <section id="s-met" data-nome="Metodologia e desvios" data-grupo="Método"></section>
+  <section id="s-dados" data-nome="Dados brutos" data-grupo="Método"></section>
+ </main>
+</div>
 <div id="tip"></div>
 
 <!-- ======================= DADOS BRUTOS (exportação do Microsoft Forms) ======================= -->
@@ -484,11 +518,10 @@ const S = {};
 if (typeof module !== "undefined") module.exports = S;
 </script>
 
-<!-- ======================= INTERFACE ======================= -->
 <script>
 "use strict";
 const C = S.C, fmt = S.fmt;
-const COR = { azul: "#2a78d6", laranja: "#eb6834", ink: "#1d1d1b", ink2: "#52514e", muted: "#898781", grid: "#e4e3dd", div: ["", "#b3302f", "#e8807f", "#d6d5cf", "#6da7ec", "#1c5cab"] };
+const COR = { azul: "#2563eb", laranja: "#e46a2e", ink: "#111418", ink2: "#4b5260", muted: "#8a909c", grid: "#e8eaee", div: ["", "#b3302f", "#e8807f", "#d6d5cf", "#6da7ec", "#1c5cab"] };
 const MIN_SEG = 5;
 let BASE = null, FONTE = "";
 const pv = p => p == null ? "—" : p < 0.001 ? "< 0,001" : fmt(p, 3);
@@ -496,111 +529,148 @@ const pct = (k, n) => n ? 100 * k / n : 0;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const dataBR = ms => { const d = new Date(ms - 3 * 3600e3); const z = n => String(n).padStart(2, "0"); return `${z(d.getUTCDate())}/${z(d.getUTCMonth() + 1)}/${d.getUTCFullYear()} ${z(d.getUTCHours())}:${z(d.getUTCMinutes())}`; };
 const diaBR = ms => dataBR(ms).slice(0, 5);
-const tip = document.getElementById("tip");
-document.addEventListener("mousemove", e => { const t = e.target.closest("[data-tip]"); if (t) { tip.textContent = t.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.min(e.clientX + 12, innerWidth - 290) + "px"; tip.style.top = (e.clientY + 12) + "px"; } else tip.style.display = "none"; });
+const $ = id => document.getElementById(id);
+const tip = $("tip");
+document.addEventListener("mousemove", e => { const t = e.target.closest("[data-tip]"); if (t) { tip.textContent = t.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.min(e.clientX + 14, innerWidth - 310) + "px"; tip.style.top = (e.clientY + 14) + "px"; } else tip.style.display = "none"; });
+window.addEventListener("beforeprint", () => document.querySelectorAll("details").forEach(d => d.open = true));
 
-// ---------------- gráficos SVG ----------------
-function svgBarrasH(itens, { largura = 520, max = null, cor = COR.azul, sufixo = "", rotLarg = 170, ic = null, alt = 26 } = {}) {
-  const m = max ?? Math.max(...itens.map(i => i.v), 1) * 1.25, W = largura, plotW = W - rotLarg - 70, H = itens.length * alt + 10;
+// ======================= gráficos (SVG, sem bibliotecas) =======================
+function svgBarrasH(itens, { largura = 520, max = null, cor = COR.azul, rotLarg = 170, ic = false, alt = 26 } = {}) {
+  const m = max ?? Math.max(...itens.map(i => i.v), 1) * 1.3, W = largura, plotW = W - rotLarg - 92, H = itens.length * alt + 6;
   let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
   itens.forEach((it, i) => {
-    const y = 5 + i * alt, w = plotW * it.v / m;
-    s += `<text x="${rotLarg - 8}" y="${y + alt / 2 + 4}" text-anchor="end" font-size="12" fill="${COR.ink2}">${esc(it.r)}</text>`;
-    s += `<rect x="${rotLarg}" y="${y + 4}" width="${Math.max(w, 0.5)}" height="${alt - 9}" rx="3" fill="${cor}" data-tip="${esc(it.tip || it.r + ": " + fmt(it.v, 1) + sufixo)}"/>`;
+    const y = 3 + i * alt, w = plotW * it.v / m, yc = y + alt / 2;
+    s += `<text x="${rotLarg - 10}" y="${yc + 4}" text-anchor="end" font-size="12.5" fill="${COR.ink2}">${esc(it.r)}</text>`;
+    s += `<rect x="${rotLarg}" y="${y + 5}" width="${plotW}" height="${alt - 10}" rx="4" fill="#f1f3f6"/>`;
+    s += `<rect x="${rotLarg}" y="${y + 5}" width="${Math.max(w, 1)}" height="${alt - 10}" rx="4" fill="${it.cor || cor}" data-tip="${esc(it.tip || it.r)}"/>`;
     let fim = rotLarg + w;
-    if (ic && it.ic) { const x1 = rotLarg + plotW * it.ic[0] / m, x2 = rotLarg + plotW * it.ic[1] / m, yc = y + alt / 2; s += `<line x1="${x1}" x2="${x2}" y1="${yc}" y2="${yc}" stroke="${COR.ink}" stroke-width="1.2"/><line x1="${x1}" x2="${x1}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}"/><line x1="${x2}" x2="${x2}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}"/>`; fim = Math.max(fim, x2); }
-    s += `<text x="${fim + 6}" y="${y + alt / 2 + 4}" font-size="12" fill="${COR.ink}">${esc(it.rv ?? fmt(it.v, 0) + sufixo)}</text>`;
+    if (ic && it.ic) { const x1 = rotLarg + plotW * it.ic[0] / m, x2 = rotLarg + plotW * it.ic[1] / m; s += `<line x1="${x1}" x2="${x2}" y1="${yc}" y2="${yc}" stroke="${COR.ink}" stroke-width="1.3" opacity=".7"/><line x1="${x1}" x2="${x1}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}" opacity=".7"/><line x1="${x2}" x2="${x2}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}" opacity=".7"/>`; }
+    s += `<text x="${rotLarg + plotW + 10}" y="${yc + 4}" font-size="12.5" font-weight="600" fill="${COR.ink}">${esc(it.rv)}</text>`;
   });
   return s + "</svg>";
 }
-function svgDivergente(linhas, rotulos = C.LIKERT_ROT, { rotLarg = 280 } = {}) {
-  const W = 760, plotW = W - rotLarg - 10, alt = 30, H = linhas.length * alt + 28, cx = rotLarg + plotW / 2, esc1 = plotW / 200;
+// Likert: barras divergentes centradas no zero, neutro dividido ao meio e totais de cada lado (Robbins e Heiberger)
+function svgDivergente(linhas, { rotLarg = 290, W = 840 } = {}) {
+  const totL = 46, plotW = W - rotLarg - 2 * totL, alt = 34, H = linhas.length * alt + 26, cx = rotLarg + totL + plotW / 2, u = plotW / 200;
   let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
-  [-100, -50, 0, 50, 100].forEach(t => { const x = cx + t * esc1; s += `<line x1="${x}" x2="${x}" y1="0" y2="${H - 20}" stroke="${t ? COR.grid : "#9a9990"}" stroke-width="${t ? 1 : 1.2}"/><text x="${x}" y="${H - 6}" text-anchor="middle" font-size="11" fill="${COR.muted}">${Math.abs(t)}%</text>`; });
+  [-100, -50, 50, 100].forEach(t => s += `<line x1="${cx + t * u}" x2="${cx + t * u}" y1="0" y2="${H - 22}" stroke="${COR.grid}"/>`);
+  [-100, -50, 0, 50, 100].forEach(t => s += `<text x="${cx + t * u}" y="${H - 6}" text-anchor="middle" font-size="11" fill="${COR.muted}">${Math.abs(t)}%</text>`);
+  s += `<text x="${rotLarg + totL - 6}" y="12" text-anchor="end" font-size="10.5" fill="${COR.muted}">discorda</text><text x="${W - totL + 6}" y="12" font-size="10.5" fill="${COR.muted}">concorda</text>`;
   linhas.forEach((l, i) => {
-    const y = i * alt + 4, n = l.vals.length, p = k => pct(l.vals.filter(v => v === k).length, n);
-    s += `<text x="${rotLarg - 8}" y="${y + alt / 2 + 2}" text-anchor="end" font-size="12" fill="${COR.ink2}">${esc(l.r)}</text>`;
-    let x = cx - (p(1) + p(2) + p(3) / 2) * esc1;
+    const y = 18 + i * alt, n = l.vals.length, c = k => l.vals.filter(v => v === k).length, p = k => pct(c(k), n);
+    s += `<text x="${rotLarg - 10}" y="${y + alt / 2 + 1}" text-anchor="end" font-size="12.5" fill="${COR.ink}">${esc(l.r)}</text>`;
+    s += `<text x="${rotLarg + totL - 6}" y="${y + alt / 2 + 1}" text-anchor="end" font-size="12.5" font-weight="600" fill="${COR.div[1]}">${Math.round(p(1) + p(2))}%</text>`;
+    s += `<text x="${W - totL + 6}" y="${y + alt / 2 + 1}" font-size="12.5" font-weight="600" fill="${COR.div[5]}">${Math.round(p(4) + p(5))}%</text>`;
+    let x = cx - (p(1) + p(2) + p(3) / 2) * u;
     for (let k = 1; k <= 5; k++) {
-      const w = p(k) * esc1; if (w <= 0) continue;
-      s += `<rect x="${x}" y="${y + 3}" width="${Math.max(w - 1.5, 0.5)}" height="${alt - 10}" fill="${COR.div[k]}" data-tip="${esc(l.r + " · " + rotulos[k] + ": " + fmt(p(k), 1) + "% (" + l.vals.filter(v => v === k).length + " de " + n + ")")}"/>`;
-      if (p(k) >= 8) s += `<text x="${x + w / 2}" y="${y + alt / 2 + 2}" text-anchor="middle" font-size="11" fill="${k === 1 || k === 5 ? "#fff" : COR.ink}" pointer-events="none">${Math.round(p(k))}%</text>`;
+      const w = p(k) * u; if (w <= 0) continue;
+      s += `<rect x="${x}" y="${y + 5}" width="${Math.max(w - 1.5, .5)}" height="${alt - 14}" fill="${COR.div[k]}" data-tip="${esc(`${l.r} · ${l.rot[k]}: ${fmt(p(k), 1)}% (${c(k)} de ${n})`)}"/>`;
+      if (p(k) >= 9) s += `<text x="${x + w / 2}" y="${y + alt / 2 + 1}" text-anchor="middle" font-size="11" fill="${k === 1 || k === 5 ? "#fff" : COR.ink}" pointer-events="none">${Math.round(p(k))}%</text>`;
       x += w;
     }
   });
+  s += `<line x1="${cx}" x2="${cx}" y1="14" y2="${H - 22}" stroke="${COR.ink}" stroke-width="1.2"/>`;
   return s + "</svg>";
 }
-const legendaDiv = (rot = C.LIKERT_ROT) => `<div class="legenda">${[1, 2, 3, 4, 5].map(k => `<span><i style="background:${COR.div[k]}"></i>${esc(rot[k])}</span>`).join("")}</div>`;
-function svgCaixas(series, { titulo = "", yRot = "1 a 5" } = {}) {
-  const W = 520, H = 250, L = 34, B = 40, T = 12, plotW = W - L - 10, plotH = H - T - B, n = series.length, y = v => T + plotH * (5.4 - v) / 4.8;
+const legendaDiv = rot => `<div class="legenda">${[1, 2, 3, 4, 5].map(k => `<span><i style="background:${COR.div[k]}"></i>${esc(rot[k])}</span>`).join("")}</div>`;
+function svgCaixas(series) {
+  const W = 520, H = 240, L = 30, B = 40, T = 10, plotW = W - L - 6, plotH = H - T - B, n = series.length, y = v => T + plotH * (5.4 - v) / 4.8;
   let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
-  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 10}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text>`);
-  let semente = 7; const rnd = () => (semente = (semente * 9301 + 49297) % 233280) / 233280;
+  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 6}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text>`);
+  let sem = 7; const rnd = () => (sem = (sem * 9301 + 49297) % 233280) / 233280;
   series.forEach((se, i) => {
-    const cx = L + plotW * (i + 0.5) / n, bw = Math.min(56, plotW / n * 0.5), v = se.vals, q1 = S.quantil(v, .25), q3 = S.quantil(v, .75), md = S.mediana(v);
-    const iqr = q3 - q1, lo = Math.min(...v.filter(x => x >= q1 - 1.5 * iqr)), hi = Math.max(...v.filter(x => x <= q3 + 1.5 * iqr)), cor = se.cor || COR.azul;
+    const v = se.vals; if (!v.length) return;
+    const cx = L + plotW * (i + .5) / n, bw = Math.min(54, plotW / n * .5), q1 = S.quantil(v, .25), q3 = S.quantil(v, .75), md = S.mediana(v), iqr = q3 - q1;
+    const lo = Math.min(...v.filter(x => x >= q1 - 1.5 * iqr)), hi = Math.max(...v.filter(x => x <= q3 + 1.5 * iqr)), cor = se.cor || COR.azul;
+    v.forEach(val => s += `<circle cx="${cx + (rnd() - .5) * bw * 1.1}" cy="${y(val) + (rnd() - .5) * 9}" r="2.3" fill="${cor}" fill-opacity=".28" pointer-events="none"/>`);
     s += `<line x1="${cx}" x2="${cx}" y1="${y(hi)}" y2="${y(q3)}" stroke="${COR.ink2}"/><line x1="${cx}" x2="${cx}" y1="${y(q1)}" y2="${y(lo)}" stroke="${COR.ink2}"/>`;
-    s += `<rect x="${cx - bw / 2}" y="${y(q3)}" width="${bw}" height="${Math.max(y(q1) - y(q3), 1)}" fill="${cor}" fill-opacity=".18" stroke="${cor}" stroke-width="1.5" data-tip="${esc(se.r + ": mediana " + fmt(md) + " · IIQ " + fmt(q1) + "–" + fmt(q3) + " · n = " + v.length)}"/>`;
+    s += `<rect x="${cx - bw / 2}" y="${y(q3)}" width="${bw}" height="${Math.max(y(q1) - y(q3), 1.5)}" rx="3" fill="${cor}" fill-opacity=".14" stroke="${cor}" stroke-width="1.5" data-tip="${esc(`${se.r}: mediana ${fmt(md)} · IIQ ${fmt(q1)}–${fmt(q3)} · n = ${v.length}`)}"/>`;
     s += `<line x1="${cx - bw / 2}" x2="${cx + bw / 2}" y1="${y(md)}" y2="${y(md)}" stroke="${cor}" stroke-width="3"/>`;
-    v.forEach(val => s += `<circle cx="${cx + (rnd() - 0.5) * bw * 0.8}" cy="${y(val) + (rnd() - 0.5) * 8}" r="2.2" fill="${COR.ink}" fill-opacity=".35" pointer-events="none"/>`);
-    s += `<text x="${cx}" y="${H - B + 16}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(se.r)}</text><text x="${cx}" y="${H - B + 30}" text-anchor="middle" font-size="11" fill="${COR.muted}">n = ${v.length}</text>`;
+    s += `<text x="${cx}" y="${H - B + 17}" text-anchor="middle" font-size="12" fill="${COR.ink}">${esc(se.r)}</text><text x="${cx}" y="${H - B + 31}" text-anchor="middle" font-size="11" fill="${COR.muted}">mediana ${fmt(md, 1)}</text>`;
   });
   return s + "</svg>";
 }
 function svgBolhas(pares, xRot, yRot) {
-  const W = 520, H = 260, L = 40, B = 40, T = 10, plotW = W - L - 14, plotH = H - T - B, x = v => L + plotW * (v - 0.5) / 5, y = v => T + plotH * (5.5 - v) / 5;
-  const cont = new Map(); pares.forEach(([a, b]) => { const k = a + "|" + (Math.round(b * 100) / 100); cont.set(k, (cont.get(k) || 0) + 1); });
+  const W = 520, H = 250, L = 40, B = 40, T = 10, plotW = W - L - 14, plotH = H - T - B, x = v => L + plotW * (v - .5) / 5, y = v => T + plotH * (5.5 - v) / 5;
+  const cont = new Map(); pares.forEach(([a, b]) => { const k = a + "|" + Math.round(b * 100) / 100; cont.set(k, (cont.get(k) || 0) + 1); });
   let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
-  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 14}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text><text x="${x(v)}" y="${H - B + 16}" text-anchor="middle" font-size="11" fill="${COR.muted}">${v}</text>`);
-  cont.forEach((c, k) => { const [a, b] = k.split("|").map(Number); s += `<circle cx="${x(a)}" cy="${y(b)}" r="${4 + 4 * Math.sqrt(c)}" fill="${COR.azul}" fill-opacity=".6" stroke="#fff" stroke-width="1.5" data-tip="${esc(xRot + ": " + a + " · " + yRot + ": " + fmt(b) + " · " + c + " respondente(s)")}"/>`; });
-  s += `<text x="${L + plotW / 2}" y="${H - 6}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(xRot)}</text><text transform="translate(12 ${T + plotH / 2}) rotate(-90)" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(yRot)}</text>`;
+  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 14}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text><text x="${x(v)}" y="${H - B + 17}" text-anchor="middle" font-size="11" fill="${COR.muted}">${v}</text>`);
+  cont.forEach((c, k) => { const [a, b] = k.split("|").map(Number); s += `<circle cx="${x(a)}" cy="${y(b)}" r="${4 + 4.2 * Math.sqrt(c)}" fill="${COR.azul}" fill-opacity=".55" stroke="#fff" stroke-width="1.5" data-tip="${esc(`${xRot}: ${a} · ${yRot}: ${fmt(b)} · ${c} respondente(s)`)}"/>`; });
+  s += `<text x="${L + plotW / 2}" y="${H - 5}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(xRot)}</text><text transform="translate(12 ${T + plotH / 2}) rotate(-90)" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(yRot)}</text>`;
   return s + "</svg>";
 }
 function svgEmpilhada(tab, linhasT, colsT) {
-  const W = 520, H = 220, L = 40, B = 34, T = 10, plotH = H - T - B, bw = 120, cores = [COR.laranja, COR.azul];
+  const W = 520, H = 230, L = 36, B = 34, T = 10, plotH = H - T - B, bw = 120, cores = [COR.laranja, "#c9d6f5"];
   let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
-  [0, 50, 100].forEach(v => { const yy = T + plotH * (1 - v / 100); s += `<line x1="${L}" x2="${W - 140}" y1="${yy}" y2="${yy}" stroke="${COR.grid}"/><text x="${L - 6}" y="${yy + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}%</text>`; });
+  [0, 50, 100].forEach(v => { const yy = T + plotH * (1 - v / 100); s += `<line x1="${L}" x2="${L + 2 * (bw + 40) + 10}" y1="${yy}" y2="${yy}" stroke="${COR.grid}"/><text x="${L - 6}" y="${yy + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}%</text>`; });
   colsT.forEach((c, j) => {
-    const tot = tab[0][j] + tab[1][j], cx = L + 30 + j * (bw + 40); let acc = 0;
-    linhasT.forEach((l, i) => { const p = pct(tab[i][j], tot), h = plotH * p / 100, yy = T + plotH * (1 - (acc + p) / 100); s += `<rect x="${cx}" y="${yy}" width="${bw}" height="${Math.max(h - 1.5, 0)}" fill="${cores[i]}" data-tip="${esc(c + " · " + l + ": " + fmt(p, 0) + "% (" + tab[i][j] + " de " + tot + ")")}"/>`; if (p >= 8) s += `<text x="${cx + bw / 2}" y="${yy + h / 2 + 4}" text-anchor="middle" font-size="12" fill="#fff" pointer-events="none">${Math.round(p)}%</text>`; acc += p; });
-    s += `<text x="${cx + bw / 2}" y="${H - B + 16}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(c)} (n = ${tot})</text>`;
+    const tot = tab[0][j] + tab[1][j], cx = L + 20 + j * (bw + 40); let acc = 0;
+    linhasT.forEach((l, i) => { const p = pct(tab[i][j], tot), h = plotH * p / 100, yy = T + plotH * (1 - (acc + p) / 100); s += `<rect x="${cx}" y="${yy}" width="${bw}" height="${Math.max(h - 1.5, 0)}" rx="3" fill="${cores[i]}" data-tip="${esc(`${c} · ${l}: ${fmt(p, 0)}% (${tab[i][j]} de ${tot})`)}"/>`; if (p >= 8) s += `<text x="${cx + bw / 2}" y="${yy + h / 2 + 4}" text-anchor="middle" font-size="12" font-weight="600" fill="${i ? COR.ink : "#fff"}" pointer-events="none">${Math.round(p)}%</text>`; acc += p; });
+    s += `<text x="${cx + bw / 2}" y="${H - B + 17}" text-anchor="middle" font-size="12" fill="${COR.ink}">${esc(c)} (n = ${tot})</text>`;
   });
-  linhasT.forEach((l, i) => s += `<rect x="${W - 130}" y="${T + 10 + i * 20}" width="11" height="11" rx="2" fill="${cores[i]}"/><text x="${W - 114}" y="${T + 20 + i * 20}" font-size="12" fill="${COR.ink2}">${esc(l)}</text>`);
+  linhasT.forEach((l, i) => s += `<rect x="${W - 150}" y="${T + 12 + i * 22}" width="11" height="11" rx="2" fill="${cores[i]}"/><text x="${W - 133}" y="${T + 22 + i * 22}" font-size="12" fill="${COR.ink2}">${esc(l)}</text>`);
   return s + "</svg>";
 }
-function svgDia(d) {
-  const dias = [], ini = Math.min(...d.map(r => r.envio)), fim = Math.max(...d.map(r => r.envio));
-  for (let t = Math.floor((ini - 3 * 3600e3) / 86400e3) * 86400e3 + 3 * 3600e3; t <= fim; t += 86400e3) dias.push(diaBR(t));
-  const grupos = [["Válida", COR.azul, r => r.valida], ["Descartada", COR.laranja, r => r.motivo && r.motivo !== "E0"], ["Pré-teste", COR.muted, r => r.motivo === "E0"]];
-  const cont = dias.map(dd => grupos.map(([, , f]) => d.filter(r => diaBR(r.envio) === dd && f(r)).length));
-  const max = Math.max(...cont.map(c => S.soma(c)), 1), W = 760, H = 210, L = 30, B = 30, T = 8, plotH = H - T - B, bw = (W - L - 10) / dias.length;
-  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
-  [0, Math.ceil(max / 2), max].forEach(v => { const yy = T + plotH * (1 - v / max); s += `<line x1="${L}" x2="${W - 10}" y1="${yy}" y2="${yy}" stroke="${COR.grid}"/><text x="${L - 6}" y="${yy + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text>`; });
-  dias.forEach((dd, i) => {
-    let acc = 0; const x = L + i * bw + bw * 0.15;
-    grupos.forEach(([g, cor], j) => { const c = cont[i][j]; if (!c) return; const h = plotH * c / max, yy = T + plotH * (1 - (acc + c) / max); s += `<rect x="${x}" y="${yy}" width="${bw * 0.7}" height="${Math.max(h - 1.5, 0.5)}" fill="${cor}" data-tip="${esc(dd + ": " + c + " " + g.toLowerCase() + "(s)")}"/>`; acc += c; });
-    if (dias.length <= 20 || i % 2 === 0) s += `<text x="${x + bw * 0.35}" y="${H - 12}" text-anchor="middle" font-size="10" fill="${COR.muted}">${dd}</text>`;
-  });
-  return s + `</svg><div class="legenda">${grupos.map(([g, cor]) => `<span><i style="background:${cor}"></i>${g}</span>`).join("")}</div>`;
-}
 function svgHeat(m, nomes) {
-  const n = nomes.length, c = 52, L = 56, W = L + n * c + 4, H = 20 + n * c;
-  const cor = v => { const a = Math.min(1, Math.abs(v)); const [r, g, b] = v >= 0 ? [28, 92, 171] : [179, 48, 47]; return `rgba(${r},${g},${b},${0.08 + 0.85 * a})`; };
-  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W + 40}px" role="img">`;
-  nomes.forEach((nm, j) => s += `<text x="${L + j * c + c / 2}" y="13" text-anchor="middle" font-size="11" fill="${COR.ink2}">${nm}</text>`);
-  m.forEach((l, i) => { s += `<text x="${L - 6}" y="${20 + i * c + c / 2 + 4}" text-anchor="end" font-size="11" fill="${COR.ink2}">${nomes[i]}</text>`; l.forEach((v, j) => { s += `<rect x="${L + j * c + 1}" y="${20 + i * c + 1}" width="${c - 2}" height="${c - 2}" fill="${cor(v)}" data-tip="${nomes[i]} × ${nomes[j]}: ρ = ${fmt(v)}"/><text x="${L + j * c + c / 2}" y="${20 + i * c + c / 2 + 4}" text-anchor="middle" font-size="11" fill="${Math.abs(v) > 0.55 ? "#fff" : COR.ink}" pointer-events="none">${fmt(v)}</text>`; }); });
+  const n = nomes.length, c = 54, L = 58, W = L + n * c + 4, H = 22 + n * c;
+  const cor = v => { const a = Math.min(1, Math.abs(v)); const [r, g, b] = v >= 0 ? [28, 92, 171] : [179, 48, 47]; return `rgba(${r},${g},${b},${.06 + .84 * a})`; };
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W + 60}px" role="img">`;
+  nomes.forEach((nm, j) => s += `<text x="${L + j * c + c / 2}" y="14" text-anchor="middle" font-size="11.5" fill="${COR.ink2}">${nm}</text>`);
+  m.forEach((l, i) => { s += `<text x="${L - 8}" y="${22 + i * c + c / 2 + 4}" text-anchor="end" font-size="11.5" fill="${COR.ink2}">${nomes[i]}</text>`; l.forEach((v, j) => { s += `<rect x="${L + j * c + 1}" y="${22 + i * c + 1}" width="${c - 2}" height="${c - 2}" rx="4" fill="${cor(v)}" data-tip="${nomes[i]} × ${nomes[j]}: ρ = ${fmt(v)}"/><text x="${L + j * c + c / 2}" y="${22 + i * c + c / 2 + 4}" text-anchor="middle" font-size="11.5" fill="${Math.abs(v) > .55 ? "#fff" : COR.ink}" pointer-events="none">${fmt(v)}</text>`; }); });
+  return s + "</svg>";
+}
+// funil da limpeza: recebidas → coleta oficial → válidas → usuários de IA
+function svgFunil(etapas) {
+  const W = 620, alt = 40, H = etapas.length * alt + 4, max = etapas[0].n, L = 150, plotW = W - L - 150;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  etapas.forEach((e, i) => {
+    const y = i * alt + 2, w = plotW * e.n / max, x = L + (plotW - w) / 2;
+    s += `<text x="${L - 12}" y="${y + alt / 2 + 4}" text-anchor="end" font-size="12.5" fill="${COR.ink}">${esc(e.r)}</text>`;
+    s += `<rect x="${x}" y="${y + 6}" width="${w}" height="${alt - 12}" rx="5" fill="${e.cor || COR.azul}" data-tip="${esc(e.r + ": " + e.n)}"/>`;
+    s += `<text x="${L + plotW / 2}" y="${y + alt / 2 + 5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" pointer-events="none">${e.n}</text>`;
+    if (e.nota) s += `<text x="${L + plotW + 12}" y="${y + alt / 2 + 4}" font-size="12" fill="${COR.muted}">${esc(e.nota)}</text>`;
+  });
+  return s + "</svg>";
+}
+// α de Cronbach numa régua de 0 a 1 com as faixas do protocolo
+function svgAlfa(a, ic) {
+  const W = 460, H = 62, L = 10, plotW = W - 20, x = v => L + plotW * Math.max(0, Math.min(1, v));
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  s += `<rect x="${x(0)}" y="18" width="${x(.6) - x(0)}" height="12" fill="#f6dcd9"/><rect x="${x(.6)}" y="18" width="${x(.7) - x(.6)}" height="12" fill="#fbe7c6"/><rect x="${x(.7)}" y="18" width="${x(1) - x(.7)}" height="12" fill="#d7efdf"/>`;
+  [0, .6, .7, 1].forEach(t => s += `<text x="${x(t)}" y="46" text-anchor="middle" font-size="10.5" fill="${COR.muted}">${fmt(t, t % 1 ? 1 : 0)}</text>`);
+  if (isFinite(ic[0])) s += `<line x1="${x(ic[0])}" x2="${x(ic[1])}" y1="24" y2="24" stroke="${COR.ink}" stroke-width="1.5"/><line x1="${x(ic[0])}" x2="${x(ic[0])}" y1="19" y2="29" stroke="${COR.ink}"/><line x1="${x(ic[1])}" x2="${x(ic[1])}" y1="19" y2="29" stroke="${COR.ink}"/>`;
+  s += `<circle cx="${x(a)}" cy="24" r="7" fill="${COR.ink}" stroke="#fff" stroke-width="2" data-tip="α = ${fmt(a)} · IC 95% ${fmt(ic[0])} a ${fmt(ic[1])}"/>`;
+  s += `<text x="${x(.3)}" y="12" text-anchor="middle" font-size="10" fill="${COR.muted}">itens separados</text><text x="${x(.65)}" y="12" text-anchor="middle" font-size="10" fill="${COR.muted}">questionável</text><text x="${x(.85)}" y="12" text-anchor="middle" font-size="10" fill="${COR.muted}">aceitável</text>`;
   return s + "</svg>";
 }
 
-// ---------------- renderização ----------------
-const kpi = (r, v, n = "") => `<div class="kpi"><div class="r">${r}</div><div class="v">${v}</div><div class="n">${n}</div></div>`;
-function filtrar(d) {
-  return d.filter(r => r.valida && ["CUR", "SIT", "ATU", "MOM"].every(k => { const v = document.getElementById("f" + k).value; return !v || r[k + "_c"] === v; }));
+// ======================= veredito por hipótese =======================
+const RESUMO_H = { H2a: "conceitos acima da prática de escrita", H2b: "mais uso de IA ↔ mais aprendizado de conceitos", H2c: "mais uso de IA ↔ menos prática de escrita",
+  H3a: "quem busca código pronto pratica menos", H3b: "prática de escrita ↔ confiança para programar sem IA", H4a: "quem começou depois da IA pratica menos",
+  H4b: "quem atua na área × quem não atua", H4c: "finalidade de uso × situação (estudante ou formado)" };
+function veredito(base, hs) {
+  const t = hs.filter(h => h.base === base && h.familia === "confirmatória"), test = t.filter(h => h.status === "testada"), rej = test.filter(h => h.decisao === "Rejeita H0");
+  const efs = h => `${h.efNome.replace("δ de Cliff", "δ")} = ${fmt(h.ef)}`;
+  if (!test.length) return { chip: ["desc", "Só descritiva"], txt: "grupo pequeno demais para teste (regra iii)" };
+  if (rej.length && rej.length === test.length) {
+    const ef = test.map(h => h.ef); return { chip: ["ok", "Confirmada"], txt: test.length > 1 ? `significativa nos ${test.length} itens (${test[0].efNome.replace("δ de Cliff", "δ")} de ${fmt(Math.min(...ef))} a ${fmt(Math.max(...ef))}; p Holm ${pv(Math.max(...rej.map(h => h.pHolm)))})` : `${efs(rej[0])}; p Holm ${pv(rej[0].pHolm)}` };
+  }
+  if (rej.length) return { chip: ["parcial", "Parcial"], txt: `significativa só em ${rej.map(h => `${h.variavel} (${efs(h)}; p Holm ${pv(h.pHolm)})`).join(", ")}` };
+  const forte = [...test].sort((a, b) => Math.abs(b.ef) - Math.abs(a.ef))[0];
+  return { chip: ["nao", "Não confirmada"], txt: `sem evidência após Holm (maior efeito: ${forte.variavel ? forte.variavel + ", " : ""}${efs(forte)}, ${forte.mag}; p ${pv(forte.p)})` };
 }
+const chip = ([cl, t]) => `<span class="chip ${cl}">${t}</span>`;
+const linhaHip = (base, hs) => { const v = veredito(base, hs); return `<div class="hip">${chip(v.chip)}<div><b>${base}</b> · ${RESUMO_H[base]} — ${v.txt}</div></div>`; };
+
+// ======================= renderização =======================
+const kpi = (r, v, n = "", prog = null) => `<div class="card kpi"><div class="r">${r}</div><div class="v">${v}</div><div class="n">${n}</div>${prog != null ? `<div class="barra-prog"><i style="width:${Math.min(100, prog)}%"></i></div>` : ""}</div>`;
+const cab = (eyebrow, titulo, lead = "") => `<div class="eyebrow">${eyebrow}</div><h2>${titulo}</h2>${lead ? `<p class="lead">${lead}</p>` : ""}`;
+const FILTROS = ["CUR", "SIT", "ATU", "MOM"];
+function filtrar(d) { return d.filter(r => r.valida && FILTROS.every(k => { const v = $("f" + k).value; return !v || r[k + "_c"] === v; })); }
 function montarFiltros(d) {
   const val = d.filter(r => r.valida);
-  for (const k of ["CUR", "SIT", "ATU", "MOM"]) {
-    const sel = document.getElementById("f" + k), atual = sel.value, rot = C.ROT[k], cont = {};
+  for (const k of FILTROS) {
+    const sel = $("f" + k), atual = sel.value, rot = C.ROT[k], cont = {};
     val.forEach(r => cont[r[k + "_c"]] = (cont[r[k + "_c"]] || 0) + 1);
     const ocultos = Object.keys(rot).filter(c => cont[c] && cont[c] < MIN_SEG).map(c => rot[c]);
     sel.innerHTML = `<option value="">Todos (${val.length})</option>` + Object.keys(rot).filter(c => (cont[c] || 0) >= MIN_SEG).map(c => `<option value="${c}">${esc(rot[c])} (${cont[c]})</option>`).join("");
@@ -609,154 +679,161 @@ function montarFiltros(d) {
   }
 }
 function render() {
-  const d = BASE, v = filtrar(d), u = v.filter(r => r.USA_IA), filtrado = ["CUR", "SIT", "ATU", "MOM"].some(k => document.getElementById("f" + k).value);
-  const nVal = d.filter(r => r.valida).length;
-  const txtF = ["CUR", "SIT", "ATU", "MOM"].map(k => { const x = document.getElementById("f" + k); return x.value ? x.options[x.selectedIndex].text : null; }).filter(Boolean);
-  document.getElementById("filtrostxt").textContent = txtF.length ? "Filtro: " + txtF.join(" · ") : "Sem filtro (amostra completa)";
-  let al = "";
-  if (nVal < C.META) al += `<div class="aviso"><b>Coleta parcial:</b> ${nVal} respostas válidas, abaixo da meta de ${C.META}. Use “Carregar exportação do Forms” para recalcular com dados novos.</div>`;
-  if (filtrado) al += `<div class="info"><b>Filtro ativo</b> (${v.length} respondentes válidos): os testes são <b>exploratórios</b>. Os resultados confirmatórios são os da amostra completa.</div>`;
-  document.getElementById("alertas").innerHTML = al;
-  if (filtrado && v.length < MIN_SEG) { document.querySelectorAll("section").forEach(s => s.innerHTML = `<div class="aviso">O segmento tem ${v.length} respondente(s); por privacidade (n &lt; 5), os resultados não são exibidos.</div>`); return; }
+  const d = BASE, v = filtrar(d), u = v.filter(r => r.USA_IA), filtrado = FILTROS.some(k => $("f" + k).value);
+  const txtF = FILTROS.map(k => { const x = $("f" + k); return x.value ? x.options[x.selectedIndex].text : null; }).filter(Boolean);
+  $("filtrostxt").textContent = txtF.length ? "Filtro ativo: " + txtF.join(" · ") + " — resultados exploratórios." : "Sem filtro: amostra completa (resultados confirmatórios). Segmentos com n < 5 ficam ocultos.";
+  if (filtrado && v.length < MIN_SEG) { document.querySelectorAll("main section").forEach((s, i) => s.innerHTML = i ? "" : `<div class="aviso">O segmento tem ${v.length} respondente(s); por privacidade (n &lt; 5), os resultados não são exibidos.</div>`); return; }
   const hs = S.testar(v, filtrado ? 1000 : 5000), conf = S.confiabilidade(u);
-  renderPerfil(d, v); renderLikert(v, u); renderQP(v, u, hs, conf); renderAlfa(u, conf); renderABR(v); renderMet(d, hs); renderDados(d);
+  renderVisao(d, v, u, hs, filtrado); renderAmostra(d, v); renderLikert(v, u); renderQP(v, u, hs, conf); renderSens(hs); renderAlfa(u, conf); renderABR(v); renderMet(d, hs); renderDados(d);
 }
-function renderPerfil(d, v) {
-  const rec = d.length, pre = d.filter(r => r.motivo === "E0").length, des = d.filter(r => r.motivo && r.motivo !== "E0").length, nv = d.filter(r => r.valida).length;
-  let h = `<h2 class="tituloimp">Perfil e limpeza</h2><div class="kpis">${kpi("Respostas recebidas", rec, "IDs do Forms")}${kpi("Pré-teste (excluídas)", pre, "até 13/11/2026 23:59")}${kpi("Descartadas na limpeza", des, "regras E1 a E5")}${kpi("Válidas", nv, nv >= C.META ? "meta de 50 atingida" : `faltam ${C.META - nv} para a meta de 50`)}${kpi("Margem de erro", "±" + fmt(100 * S.margem(nv), 1) + " p.p.", "95%, p = 0,5 (nominal)")}</div>`;
-  h += `<h2>Descartes e motivo de cada um</h2><div class="card scroll"><table><tr><th>Regra</th><th>Motivo</th><th>Respostas</th><th>IDs no Forms</th></tr>` +
-    Object.entries(C.MOTIVOS).map(([k, m]) => { const ids = d.filter(r => r.motivo === k).map(r => r.id); return `<tr><td>${k}</td><td>${m}</td><td>${ids.length}</td><td>${ids.join(", ") || "—"}</td></tr>`; }).join("") +
-    `<tr><td colspan="2"><b>Válidas</b></td><td><b>${nv}</b></td><td>Meta: ${C.META}</td></tr></table><div class="cap">Ordem E0 → E5; cada resposta recebe o primeiro motivo que se aplica. E4 usa a mediana da coleta oficial (${fmt(d.mediana, 0)} s; limite de ${fmt(d.mediana / 3, 0)} s). Das ${nv} válidas, ${d.filter(r => r.valida && r.USA_IA).length} usam IA e entram em QP2 a QP4.</div></div>`;
-  h += `<h2>Respostas por dia</h2><div class="card">${svgDia(d)}<div class="cap">A taxa de resposta não é calculável (link aberto); relata-se o número de respostas por dia.</div></div>`;
-  h += `<h2>Perfil da amostra válida (n = ${v.length})</h2><div class="grid2">`;
+function renderVisao(d, v, u, hs, filtrado) {
+  const nv = d.filter(r => r.valida).length, n = v.length, alto = v.filter(r => r.IAF_n >= 4).length, mel = v.filter(r => r.AVG_n >= 4).length, icm = S.wilson(mel, n);
+  let h = cab("Resumo", "Visão geral", "Os números e as respostas às questões de pesquisa em uma tela. Os detalhes de cada teste estão nas seções abaixo.");
+  if (nv < C.META) h += `<div class="aviso"><b>Coleta parcial:</b> ${nv} respostas válidas, abaixo da meta de ${C.META}. Carregue a exportação mais recente do Forms para recalcular.</div>`;
+  if (filtrado) h += `<div class="info"><b>Filtro ativo</b> (${n} respondentes válidos): os testes desta tela são exploratórios.</div>`;
+  h += `<div class="grade g4">${kpi("Respostas válidas", `${n}${filtrado ? "" : ` <span style="font-size:15px;color:var(--muted);font-weight:500">/ ${C.META}</span>`}`, filtrado ? `de ${nv} válidas no total` : `${d.length} recebidas · ${d.length - nv} excluídas`, filtrado ? null : pct(nv, C.META))}
+    ${kpi("Margem de erro", `±${fmt(100 * S.margem(n), 1)} p.p.`, "95% de confiança, p = 0,5 (nominal)")}
+    ${kpi("Usam IA sempre ou com frequência", `${fmt(pct(alto, n), 0)}%`, `${alto} de ${n} respondentes`)}
+    ${kpi("Dizem que a IA melhorou o aprendizado", `${fmt(pct(mel, n), 0)}%`, `IC 95%: ${fmt(100 * icm[0], 0)}% a ${fmt(100 * icm[1], 0)}%`)}</div>`;
+  const qps = [["QP1", "Como a IA é usada para aprender programação e como o seu efeito é avaliado?", null],
+    ["QP2", "A IA favorece o aprendizado de conceitos em detrimento da prática de escrita? (central)", ["H2a", "H2b", "H2c"]],
+    ["QP3", "A finalidade de uso e a prática de escrita se associam à confiança para programar sem IA?", ["H3a", "H3b"]],
+    ["QP4", "Quem começou a aprender depois da popularização da IA pratica menos a escrita?", ["H4a", "H4b", "H4c"]]];
+  const top = Object.entries(C.IAU).map(([lab, cod]) => [C.ROT.IAU[cod], v.filter(r => r.IAU === lab).length]).sort((a, b) => b[1] - a[1])[0];
+  h += `<div class="card mt"><h3>Respostas às questões de pesquisa</h3>${qps.map(([q, p, bases]) => `<div class="achado"><div class="qp">${q}</div><div><div class="pergunta">${p}</div>${bases ? bases.map(b => linhaHip(b, hs)).join("") :
+    `<div class="hip">${chip(["desc", "Descritiva"])}<div>${fmt(pct(alto, n), 0)}% usam IA sempre ou com frequência; a finalidade mais citada é <b>${top[0].toLowerCase()}</b> (${fmt(pct(top[1], n), 0)}%); ${fmt(pct(mel, n), 0)}% dizem que a IA melhorou o aprendizado (±${fmt(100 * S.margem(n, mel / n), 1)} p.p.).</div></div>`}</div></div>`).join("")}
+    <div class="cap">α = 0,05 bilateral, com correção de Holm sobre ${hs.nTestes} testes. Resultados são associações (desenho transversal), não efeitos causais.</div></div>`;
+  $("s-visao").innerHTML = h;
+}
+function renderAmostra(d, v) {
+  const pre = d.filter(r => r.motivo === "E0").length, of = d.length - pre, nv = d.filter(r => r.valida).length, nu = d.filter(r => r.valida && r.USA_IA).length;
+  let h = cab("Dados", "Amostra e limpeza", "Quantas respostas chegaram, quantas foram descartadas e por quê, e o perfil de quem ficou.");
+  h += `<div class="grade g2"><div class="card"><h3>Da coleta à amostra analisada</h3>${svgFunil([
+    { r: "Recebidas no Forms", n: d.length, cor: "#94a3b8" }, { r: "Coleta oficial", n: of, nota: `−${pre} do pré-teste`, cor: "#64748b" },
+    { r: "Válidas", n: nv, nota: `−${of - nv} na limpeza`, cor: COR.azul }, { r: "Usam IA (QP2 a QP4)", n: nu, nota: `−${nv - nu} não usam IA`, cor: "#1d4ed8" }])}</div>
+    <div class="card"><h3>Motivo de cada descarte</h3><table><tr><th>Regra</th><th>Motivo</th><th>n</th><th>IDs</th></tr>` +
+    Object.entries(C.MOTIVOS).map(([k, m]) => { const ids = d.filter(r => r.motivo === k).map(r => r.id); return `<tr><td><b>${k}</b></td><td>${m}</td><td>${ids.length}</td><td>${ids.join(", ") || "—"}</td></tr>`; }).join("") +
+    `</table><div class="cap">Ordem E0 → E5; cada resposta recebe o primeiro motivo que se aplica. Limite de E4: ${fmt(d.mediana / 3, 0)} s (1/3 da mediana de ${fmt(d.mediana, 0)} s).</div></div></div>`;
+  h += `<div class="grade g2 mt">`;
   for (const [k, t] of [["CUR", "Curso"], ["SIT", "Situação"], ["ATU", "Atuação na área"], ["MOM", "Começou a aprender"]]) {
-    const itens = Object.keys(C.ROT[k]).filter(c => c !== "NENHUM").map(c => { const n = v.filter(r => r[k + "_c"] === c).length; return { r: C.ROT[k][c], v: n, rv: `${n} (${fmt(pct(n, v.length), 0)}%)` }; });
-    h += `<div class="card"><h3 style="margin-top:0">${t}</h3>${svgBarrasH(itens, { largura: 520, rotLarg: 190 })}</div>`;
+    const itens = Object.keys(C.ROT[k]).filter(c => c !== "NENHUM").map(c => { const n = v.filter(r => r[k + "_c"] === c).length; return { r: C.ROT[k][c], v: n, rv: `${n} · ${fmt(pct(n, v.length), 0)}%`, tip: `${C.ROT[k][c]}: ${n} de ${v.length}` }; });
+    h += `<div class="card"><h3>${t}</h3>${svgBarrasH(itens, { rotLarg: 190 })}</div>`;
   }
-  document.getElementById("s-perfil").innerHTML = h + `</div>`;
+  $("s-amostra").innerHTML = h + `</div>`;
 }
 function renderLikert(v, u) {
-  const curto = { CON1: "entender conceitos", CON2: "entender por que funciona/falha", CON3: "erros e documentação", PRA1: "escrevo a maior parte do código", PRA2: "consigo escrever do zero sem IA", PRA3: "pratico sem nenhuma IA", PRA4: "escrevo menos desde a IA" };
-  let h = `<h2 class="tituloimp">Itens Likert</h2><p>Barras divergentes: discordância à esquerda, concordância à direita e o neutro dividido ao meio. Base: usuários de IA válidos (n = ${u.length}).</p>`;
-  h += `<div class="card"><h3 style="margin-top:0">Aprendizado de conceitos com IA (CON)</h3>${legendaDiv()}${svgDivergente(C.CON.map(k => ({ r: k + " · " + curto[k], vals: u.map(r => r[k + "_n"]).filter(isFinite) })))}</div>`;
-  h += `<div class="card"><h3 style="margin-top:0">Prática de escrita de código (PRA), respostas originais</h3>${legendaDiv()}${svgDivergente(C.PRA.map(k => ({ r: k + " · " + curto[k], vals: u.map(r => r[k + "_n"]).filter(isFinite) })))}<div class="cap">PRA4 aparece como respondido; na análise é invertido (6 − x), porque concordar significa praticar menos. Ninguém marcou “Não uso IA” nas grades.</div></div>`;
-  const rAVG = ["", "Piorou muito", "Piorou um pouco", "Não mudou", "Melhorou um pouco", "Melhorou muito"], rCONF = ["", "Nada", "Pouco", "Razoavelmente", "Confiante", "Muito"];
-  h += `<div class="card"><h3 style="margin-top:0">Efeito geral da IA no aprendizado (AVG, todos os válidos, n = ${v.length})</h3>${legendaDiv(rAVG)}${svgDivergente([{ r: "AVG", vals: v.map(r => r.AVG_n).filter(isFinite) }], rAVG, { rotLarg: 80 })}</div>`;
-  h += `<div class="card"><h3 style="margin-top:0">Confiança para escrever um programa do zero sem IA (CONF, n = ${v.length})</h3>${legendaDiv(rCONF)}${svgDivergente([{ r: "CONF", vals: v.map(r => r.CONF_n).filter(isFinite) }], rCONF, { rotLarg: 80 })}</div>`;
-  h += `<div class="card"><h3 style="margin-top:0">Tabela de frequências e texto completo dos itens</h3><div class="scroll"><table><tr><th>Item</th><th>Texto</th>${[1, 2, 3, 4, 5].map(k => `<th>${k}</th>`).join("")}<th>Mediana</th><th>IIQ</th></tr>` +
-    [...C.CON, ...C.PRA].map(k => { const a = u.map(r => r[k + "_n"]).filter(isFinite); return `<tr><td>${k}</td><td>${esc(C.ITENS[k])}</td>${[1, 2, 3, 4, 5].map(x => `<td>${a.filter(y => y === x).length}</td>`).join("")}<td>${fmt(S.mediana(a), 1)}</td><td>${fmt(S.quantil(a, .25), 1)}–${fmt(S.quantil(a, .75), 1)}</td></tr>`; }).join("") + `</table></div><div class="cap">1 = Discordo totalmente … 5 = Concordo totalmente.</div></div>`;
-  document.getElementById("s-likert").innerHTML = h;
+  const curto = { CON1: "CON1 · entender conceitos", CON2: "CON2 · entender por que funciona ou falha", CON3: "CON3 · erros e documentação", PRA1: "PRA1 · escrevo a maior parte do código", PRA2: "PRA2 · consigo escrever do zero sem IA", PRA3: "PRA3 · pratico sem nenhuma IA", PRA4: "PRA4 · escrevo menos desde a IA" };
+  const lik = k => ({ r: curto[k], vals: u.map(r => r[k + "_n"]).filter(isFinite), rot: C.LIKERT_ROT });
+  const rAVG = ["", "Piorou muito", "Piorou um pouco", "Não mudou", "Melhorou um pouco", "Melhorou muito"], rCONF = ["", "Nada confiante", "Pouco", "Razoavelmente", "Confiante", "Muito confiante"];
+  let h = cab("Dados", "Itens Likert", `Barras divergentes centradas no zero: à esquerda, quem discorda; à direita, quem concorda; o neutro fica dividido ao meio. Os totais de cada lado estão nas pontas. Base: usuários de IA válidos (n = ${u.length}).`);
+  h += `<div class="card">${legendaDiv(C.LIKERT_ROT)}<h3 class="mt">Aprendizado de conceitos com IA (CON)</h3>${svgDivergente(C.CON.map(lik))}<h3 class="mt">Prática de escrita de código (PRA)</h3>${svgDivergente(C.PRA.map(lik))}
+    <div class="cap">PRA4 aparece como respondido; na análise ele é invertido (6 − x), porque concordar significa praticar menos.</div></div>`;
+  h += `<div class="grade g2 mt"><div class="card"><h3>Efeito geral da IA no aprendizado (n = ${v.length})</h3>${legendaDiv(rAVG)}${svgDivergente([{ r: "AVG", vals: v.map(r => r.AVG_n).filter(isFinite), rot: rAVG }], { rotLarg: 44, W: 520 })}</div>
+    <div class="card"><h3>Confiança para programar do zero sem IA (n = ${v.length})</h3>${legendaDiv(rCONF)}${svgDivergente([{ r: "CONF", vals: v.map(r => r.CONF_n).filter(isFinite), rot: rCONF }], { rotLarg: 44, W: 520 })}<div class="cap">Escala de confiança: “discorda” = pouca ou nenhuma confiança.</div></div></div>`;
+  h += `<details><summary>Texto completo dos itens e frequências</summary><div class="card scroll"><table><tr><th>Item</th><th>Texto</th>${[1, 2, 3, 4, 5].map(k => `<th>${k}</th>`).join("")}<th>Mediana</th><th>IIQ</th></tr>` +
+    [...C.CON, ...C.PRA].map(k => { const a = u.map(r => r[k + "_n"]).filter(isFinite); return `<tr><td><b>${k}</b></td><td>${esc(C.ITENS[k])}</td>${[1, 2, 3, 4, 5].map(x => `<td>${a.filter(y => y === x).length}</td>`).join("")}<td>${fmt(S.mediana(a), 1)}</td><td>${fmt(S.quantil(a, .25), 1)}–${fmt(S.quantil(a, .75), 1)}</td></tr>`; }).join("") + `</table><div class="cap">1 = Discordo totalmente … 5 = Concordo totalmente.</div></div></details>`;
+  $("s-likert").innerHTML = h;
 }
-function tabelaH(lista, extra = false) {
-  return `<div class="scroll"><table><tr><th>Hipótese</th><th>Teste</th><th>n</th><th>Estatística</th><th>p</th>${extra ? "" : "<th>p (Holm)</th>"}<th>Efeito [IC 95%]</th><th>Magnitude</th>${extra ? "<th>p (Holm), plano original</th><th>Decisão no plano original</th>" : "<th>Margem</th><th>Decisão</th>"}</tr>` +
-    lista.map(h => `<tr><td>${h.id}</td><td>${esc(h.teste)}</td><td>${h.n}</td><td>${esc(h.est || "—")}</td><td>${pv(h.p)}</td>${extra ? "" : `<td>${pv(h.pHolm)}</td>`}<td>${h.efNome} = ${fmt(h.ef)}${isFinite(h.ic?.[0]) ? ` [${fmt(h.ic[0])}; ${fmt(h.ic[1])}]` : ""}</td><td>${h.mag || "—"}</td>${extra ? `<td>${pv(h.pHolmOrig)}</td><td class="${h.pHolmOrig < C.ALFA ? "rej" : ""}">${h.pHolmOrig < C.ALFA ? "Rejeita H0" : "Não rejeita H0"}</td>` : `<td>±${fmt(h.me, 1)} p.p.</td><td class="${h.decisao === "Rejeita H0" ? "rej" : ""}">${h.decisao}</td>`}</tr>`).join("") + `</table></div>`;
+function tabelaH(lista) {
+  return `<div class="scroll"><table><tr><th>Hipótese</th><th>Teste</th><th>n</th><th>Estatística</th><th>p</th><th>p Holm</th><th>Efeito [IC 95%]</th><th>Magnitude</th><th>Margem</th><th>Decisão</th></tr>` +
+    lista.map(h => `<tr><td><b>${h.id}</b></td><td>${esc(h.teste)}</td><td>${h.n}</td><td>${esc(h.est || "—")}</td><td>${pv(h.p)}</td><td>${pv(h.pHolm)}</td><td>${h.efNome.replace("δ de Cliff", "δ")} = ${fmt(h.ef)}${isFinite(h.ic?.[0]) ? ` [${fmt(h.ic[0])}; ${fmt(h.ic[1])}]` : ""}</td><td>${h.mag || "—"}</td><td>±${fmt(h.me, 1)}</td><td class="${h.decisao === "Rejeita H0" ? "rej" : ""}">${h.decisao === "Rejeita H0" ? "Rejeita H0" : h.decisao === "Não rejeita H0" ? "Não rejeita" : "Descritiva"}</td></tr>`).join("") +
+    `</table></div><div class="cap">δ = δ de Cliff. Margem de erro em p.p. (95%). ${lista.some(h => h.regra) ? [...new Set(lista.filter(h => h.regra).map(h => h.regra))].join(" ") : ""}</div>`;
 }
-function leitura(h) {
-  if (h.status === "descritiva") return "Só descritiva (grupo pequeno).";
-  const dir = !h.esperado || h.esperado === "bilateral" ? "" : (h.obs === h.esperado || (h.esperado.startsWith("menor") && h.obs.startsWith("menor"))) ? " Direção igual à esperada." : " Direção oposta à esperada.";
-  return h.pHolm != null && h.pHolm < C.ALFA ? `<b>Significativa após Holm</b>: efeito ${h.mag}; ${h.obs}.${dir}` : `Sem evidência após Holm: efeito ${h.mag}; ${h.obs}.${dir}`;
+function blocoQP(id, eyebrow, titulo, bases, hs, graficos) {
+  const lista = hs.filter(h => h.familia === "confirmatória" && bases.includes(h.base));
+  $(id).innerHTML = cab(eyebrow, titulo) + `<div class="card">${bases.map(b => linhaHip(b, hs)).join("")}</div><div class="grade g2 mt">${graficos.map(([t, g, nota]) => `<div class="card"><h3>${t}</h3>${g}${nota ? `<div class="cap">${nota}</div>` : ""}</div>`).join("")}</div>
+    <details><summary>Ver todos os testes desta questão (${lista.length})</summary><div class="card">${tabelaH(lista)}</div></details>`;
 }
-const itensH = lista => `<ul>${lista.map(h => `<li><b>${h.id}</b> — ${esc(h.desc)}. Esperado: <i>${esc(h.esperado)}</i>. ${leitura(h)}${h.regra ? ` <span class="cap">${esc(h.regra)}</span>` : ""}</li>`).join("")}</ul>`;
 function renderQP(v, u, hs, conf) {
-  const cf = hs.filter(h => h.familia === "confirmatória"), qp = q => cf.filter(h => h.qp === q), sep = hs.separar;
-  let h = `<h2 class="tituloimp">Questões de pesquisa</h2><p>α = 0,05 bilateral · <b>correção de Holm</b> sobre ${hs.nTestes} testes confirmatórios · tamanhos de efeito com IC 95% por bootstrap · QP2 a QP4 usam só quem usa IA (n = ${u.length}).</p>`;
-  if (sep) h += `<div class="info">O α de Cronbach de PRA foi ${fmt(conf.PRA.alfa)} (&lt; 0,60). Pela regra do protocolo (§5), <b>os itens de PRA são analisados separadamente</b>: cada hipótese que usava o escore M4 vira um teste por item (PRA1, PRA2, PRA3, PRA4ᴿ), todos na mesma família de Holm. O escore M4 aparece na análise de sensibilidade.</div>`;
-  // QP1
-  const n = v.length, freq = (campo, mapa, rot) => Object.entries(mapa).map(([lab, cod]) => { const k = v.filter(r => r[campo] === lab).length, ic = S.wilson(k, n); return { r: rot ? rot[cod] : lab, v: pct(k, n), ic: [100 * ic[0], 100 * ic[1]], rv: `${fmt(pct(k, n), 0)}% (n = ${k})`, tip: `${rot ? rot[cod] : lab}: ${k} de ${n} = ${fmt(pct(k, n), 1)}% · IC 95% ${fmt(100 * ic[0], 1)}–${fmt(100 * ic[1], 1)}% · margem ±${fmt(100 * S.margem(n, k / n), 1)} p.p.` }; });
-  const iaf = freq("IAF", C.IAF), iau = freq("IAU", C.IAU, C.ROT.IAU), mel = v.filter(r => r.AVG_n >= 4).length, icm = S.wilson(mel, n), alto = v.filter(r => r.IAF_n >= 4).length;
-  h += `<h2>QP1 · Como a IA é usada para aprender programação e como o seu efeito é avaliado?</h2><p class="cap">Descritiva, com IC de Wilson (95%) e margem de erro de cada proporção. Base: todos os válidos (n = ${n}).</p>`;
-  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">Frequência de uso ao estudar</h3>${svgBarrasH(iaf, { max: 100, sufixo: "%", ic: true, rotLarg: 120 })}</div><div class="card"><h3 style="margin-top:0">Principal finalidade de uso</h3>${svgBarrasH(iau, { max: 100, sufixo: "%", ic: true, rotLarg: 190 })}</div></div>`;
-  h += `<div class="kpis">${kpi("Usam IA sempre ou frequentemente", fmt(pct(alto, n), 1) + "%", `${alto} de ${n}`)}${kpi("Dizem que a IA melhorou o aprendizado", fmt(pct(mel, n), 1) + "%", `IC 95%: ${fmt(100 * icm[0], 1)}–${fmt(100 * icm[1], 1)}%`)}${kpi("Margem de erro dessa proporção", "±" + fmt(100 * S.margem(n, mel / n), 1) + " p.p.", "")}${kpi("Conceitos (M3), mediana", fmt(S.mediana(u.map(r => r.M3).filter(isFinite))), "escala de 1 a 5")}</div>`;
-  // QP2
-  h += `<h2>QP2 (central) · A IA favorece o aprendizado de conceitos em detrimento da prática de escrita?</h2><div class="card">${tabelaH(qp("QP2"))}${itensH(qp("QP2"))}</div>`;
+  const n = v.length, sep = hs.separar;
+  const freq = (campo, mapa, rot) => Object.entries(mapa).map(([lab, cod]) => { const k = v.filter(r => r[campo] === lab).length, ic = S.wilson(k, n); return { r: rot ? rot[cod] : lab, v: pct(k, n), ic: [100 * ic[0], 100 * ic[1]], rv: `${fmt(pct(k, n), 0)}%`, tip: `${rot ? rot[cod] : lab}: ${k} de ${n} = ${fmt(pct(k, n), 1)}% · IC 95% ${fmt(100 * ic[0], 1)}–${fmt(100 * ic[1], 1)}% · margem ±${fmt(100 * S.margem(n, k / n), 1)} p.p.` }; });
+  $("s-qp1").innerHTML = cab("Questão de pesquisa 1 · descritiva", "Como a IA é usada para aprender programação e como o seu efeito é avaliado?", `Proporções com IC de Wilson (95%) nas barras finas; a margem de erro de cada proporção aparece ao passar o mouse. Base: todos os válidos (n = ${n}).`) +
+    `<div class="grade g2"><div class="card"><h3>Frequência de uso de IA ao estudar</h3>${svgBarrasH(freq("IAF", C.IAF), { max: 100, ic: true, rotLarg: 120 })}</div><div class="card"><h3>Principal finalidade de uso</h3>${svgBarrasH(freq("IAU", C.IAU, C.ROT.IAU), { max: 100, ic: true, rotLarg: 190 })}</div></div>`;
   const pra = sep ? Object.entries(S.PRA_ITENS) : [["M4", "M4"]];
-  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H2a · Conceitos × prática de escrita</h3>${svgCaixas([{ r: "Conceitos (M3)", vals: u.map(r => r.M3).filter(isFinite) }, ...pra.map(([r, c]) => ({ r, vals: u.map(x => x[c]).filter(isFinite), cor: COR.laranja }))])}<div class="cap">CON e PRA são itens diferentes: H2a indica um padrão relativo, não uma diferença na mesma régua.</div></div>`;
-  h += `<div class="card"><h3 style="margin-top:0">H2b · Frequência de uso × conceitos</h3>${svgBolhas(u.filter(r => isFinite(r.IAF_n) && isFinite(r.M3)).map(r => [r.IAF_n, r.M3]), "Frequência de uso (1 = nunca … 5 = sempre)", "Conceitos (M3)")}</div></div>`;
-  // QP3
-  const v3 = sep ? "PRA2_n" : "M4", n3 = sep ? "PRA2 (consigo escrever do zero)" : "Prática (M4)";
-  h += `<h2>QP3 · A finalidade de uso e a prática de escrita se associam à confiança para programar sem IA?</h2><div class="card">${tabelaH(qp("QP3"))}${itensH(qp("QP3"))}</div>`;
-  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H3b · ${n3} × confiança sem IA</h3>${svgBolhas(u.filter(r => isFinite(r[v3]) && isFinite(r.CONF_n)).map(r => [r[v3], r.CONF_n]), n3, "Confiança sem IA (CONF)")}</div>`;
-  h += `<div class="card"><h3 style="margin-top:0">H3a · ${n3} por finalidade</h3>${svgCaixas([{ r: "Código pronto", vals: u.filter(r => r.IAU_c === "CODIGO").map(r => r[v3]).filter(isFinite) }, { r: "Demais finalidades", vals: u.filter(r => r.IAU_c !== "CODIGO").map(r => r[v3]).filter(isFinite), cor: COR.laranja }])}</div></div>`;
-  // QP4
-  h += `<h2>QP4 · Quem começou a aprender depois da popularização da IA pratica menos a escrita?</h2><div class="card">${tabelaH(qp("QP4"))}${itensH(qp("QP4"))}</div>`;
+  const v3 = sep ? "PRA2_n" : "M4", n3 = sep ? "PRA2 · consigo escrever do zero" : "Prática (M4)";
+  const sepInfo = sep ? `Como o α de PRA foi ${fmt(conf.PRA.alfa)} (&lt; 0,60), cada item de prática é testado separadamente (regra do protocolo).` : "";
+  blocoQP("s-qp2", "Questão de pesquisa 2 · central", "A IA favorece o aprendizado de conceitos em detrimento da prática de escrita?", ["H2a", "H2b", "H2c"], hs, [
+    ["H2a · Conceitos (M3) × itens de prática", svgCaixas([{ r: "Conceitos", vals: u.map(r => r.M3).filter(isFinite) }, ...pra.map(([r, c]) => ({ r, vals: u.map(x => x[c]).filter(isFinite), cor: COR.laranja }))]), `Escala de 1 a 5. CON e PRA são itens diferentes: H2a mostra um padrão relativo. ${sepInfo}`],
+    ["H2b · Frequência de uso × conceitos", svgBolhas(u.filter(r => isFinite(r.IAF_n) && isFinite(r.M3)).map(r => [r.IAF_n, r.M3]), "Frequência de uso (1 = nunca … 5 = sempre)", "Conceitos (M3)"), "Cada bolha agrupa respondentes com a mesma combinação; o tamanho indica quantos."]]);
+  blocoQP("s-qp3", "Questão de pesquisa 3", "A finalidade de uso e a prática de escrita se associam à confiança para programar sem IA?", ["H3a", "H3b"], hs, [
+    [`H3b · ${n3} × confiança sem IA`, svgBolhas(u.filter(r => isFinite(r[v3]) && isFinite(r.CONF_n)).map(r => [r[v3], r.CONF_n]), n3, "Confiança sem IA (CONF)"), "Item com a associação mais forte."],
+    [`H3a · ${n3} por finalidade de uso`, svgCaixas([{ r: "Código pronto", vals: u.filter(r => r.IAU_c === "CODIGO").map(r => r[v3]).filter(isFinite), cor: COR.laranja }, { r: "Demais finalidades", vals: u.filter(r => r.IAU_c !== "CODIGO").map(r => r[v3]).filter(isFinite) }]), "Finalidades com n < 5 agrupadas (regra i)."]]);
   const h4c = hs.find(x => x.id === "H4c");
-  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H4a · ${n3}: antes × depois da IA</h3>${svgCaixas([{ r: "Antes (até 2022)", vals: u.filter(r => r.MOM_c === "ANTES").map(r => r[v3]).filter(isFinite) }, { r: "Depois (2023+)", vals: u.filter(r => r.MOM_c === "DEPOIS").map(r => r[v3]).filter(isFinite), cor: COR.laranja }])}</div>`;
-  h += `<div class="card"><h3 style="margin-top:0">H4c · Finalidade por situação</h3>${h4c && h4c.tabela ? svgEmpilhada(h4c.tabela, ["Código pronto", "Demais finalidades"], ["Estudante", "Formado"]) : "—"}</div></div>`;
-  // sensibilidade
+  blocoQP("s-qp4", "Questão de pesquisa 4", "Quem começou a aprender depois da popularização da IA pratica menos a escrita?", ["H4a", "H4b", "H4c"], hs, [
+    [`H4a · ${n3}: antes × depois da IA`, svgCaixas([{ r: "Antes (até 2022)", vals: u.filter(r => r.MOM_c === "ANTES").map(r => r[v3]).filter(isFinite) }, { r: "Depois (2023+)", vals: u.filter(r => r.MOM_c === "DEPOIS").map(r => r[v3]).filter(isFinite), cor: COR.laranja }]), "O grupo “depois” é pequeno: o efeito não resiste à correção de Holm."],
+    ["H4c · Finalidade por situação", h4c && h4c.tabela ? svgEmpilhada(h4c.tabela, ["Código pronto", "Demais finalidades"], ["Estudante", "Formado"]) : "—", "SIT e IAU agrupadas em duas categorias (regra ii)."]]);
+}
+function renderSens(hs) {
   const sens = hs.filter(x => x.pHolmOrig != null);
-  h += `<h2>Análise de sensibilidade · plano original (M4 como escore único)</h2><div class="card"><p class="cap">Holm aplicado à família original do protocolo, com M4 como escore. Mostra quanto a decisão depende da separação dos itens; <b>não substitui</b> a análise confirmatória acima.</p>${tabelaH(sens, true)}</div>`;
-  document.getElementById("s-qp").innerHTML = h;
+  $("s-sens").innerHTML = cab("Questões de pesquisa", "Análise de sensibilidade", "As mesmas hipóteses com o escore M4 e a família original de testes do protocolo. Serve para mostrar quanto as decisões dependem da separação dos itens de PRA; não substitui a análise confirmatória.") +
+    `<div class="card scroll"><table><tr><th>Hipótese</th><th>Teste</th><th>Efeito</th><th>p</th><th>p Holm (plano original)</th><th>Decisão no plano original</th></tr>${sens.map(h => `<tr><td><b>${h.id}</b></td><td>${esc(h.teste)}</td><td>${h.efNome.replace("δ de Cliff", "δ")} = ${fmt(h.ef)}</td><td>${pv(h.p)}</td><td>${pv(h.pHolmOrig)}</td><td class="${h.pHolmOrig < C.ALFA ? "rej" : ""}">${h.pHolmOrig < C.ALFA ? "Rejeita H0" : "Não rejeita"}</td></tr>`).join("")}</table><div class="cap">H4b fica só descritiva também neste cenário (regra iii).</div></div>`;
 }
 function renderAlfa(u, conf) {
-  let h = `<h2 class="tituloimp">Confiabilidade</h2><p>α de Cronbach dos construtos com vários itens, nos usuários de IA válidos (n = ${u.length}). Critério do protocolo: ≥ 0,70 aceitável; 0,60 a 0,70 questionável; &lt; 0,60, itens analisados separadamente.</p><div class="grid2">`;
-  for (const [k, t] of [["CON", "Aprendizado de conceitos com IA (CON1–CON3)"], ["PRA", "Prática de escrita (PRA1–PRA3, PRA4ᴿ)"]]) {
-    const r = conf[k];
-    h += `<div class="card"><h3 style="margin-top:0">${t}</h3><div class="kpis">${kpi("α de Cronbach", fmt(r.alfa), `IC 95% (bootstrap): ${fmt(r.ic[0])} a ${fmt(r.ic[1])}`)}</div><p>k = ${r.k} itens · n = ${r.n} · Avaliação: <b>${r.aval}</b></p><table><tr><th>Item removido</th><th>α sem o item</th></tr>${r.sem.map(([i, a]) => `<tr><td>${i}</td><td>${fmt(a)}</td></tr>`).join("")}</table></div>`;
+  let h = cab("Qualidade", "Confiabilidade dos construtos (α de Cronbach)", `Construtos medidos por vários itens, nos usuários de IA válidos (n = ${u.length}). Critério do protocolo: ≥ 0,70 aceitável; 0,60 a 0,70 questionável; abaixo de 0,60, os itens são analisados separadamente.`) + `<div class="grade g2">`;
+  for (const [k, t] of [["CON", "Aprendizado de conceitos (CON1–CON3)"], ["PRA", "Prática de escrita (PRA1–PRA3, PRA4ᴿ)"]]) {
+    const r = conf[k], cl = r.alfa >= .7 ? "ok" : r.alfa >= .6 ? "parcial" : "nao";
+    h += `<div class="card"><h3>${t}</h3><div style="display:flex;align-items:baseline;gap:10px"><div class="kpi"><div class="v">${fmt(r.alfa)}</div></div>${chip([cl, r.alfa >= .7 ? "Aceitável" : r.alfa >= .6 ? "Questionável" : "Insuficiente"])}</div>
+      ${svgAlfa(r.alfa, r.ic)}<div class="cap">IC 95% por bootstrap: ${fmt(r.ic[0])} a ${fmt(r.ic[1])} · k = ${r.k} itens · n = ${r.n}</div>
+      <table class="mt"><tr><th>Sem o item</th>${r.sem.map(([i]) => `<th>${i}</th>`).join("")}</tr><tr><td>α</td>${r.sem.map(([, a]) => `<td>${fmt(a)}</td>`).join("")}</tr></table></div>`;
   }
   const cols = ["CON1_n", "CON2_n", "CON3_n", "PRA1_n", "PRA2_n", "PRA3_n", "PRA4_inv"], nomes = ["CON1", "CON2", "CON3", "PRA1", "PRA2", "PRA3", "PRA4ᴿ"];
   const L = u.filter(r => cols.every(c => isFinite(r[c]))), m = cols.map(a => cols.map(b => S.spearman(L.map(r => r[a]), L.map(r => r[b])).rho));
-  h += `</div><div class="card"><h3 style="margin-top:0">Correlação de Spearman entre os itens</h3>${svgHeat(m, nomes)}<p><b>Leitura.</b> CON tem α questionável, em parte por efeito teto (quase todos concordam). Em PRA, PRA2 (“consigo escrever do zero”) quase não se correlaciona com os demais itens: mede mais <b>capacidade</b> do que <b>hábito</b> de praticar e se aproxima da confiança (CONF). Por isso PRA não forma um escore único confiável.</p></div>`;
-  document.getElementById("s-alfa").innerHTML = h;
+  h += `</div><div class="grade g2 mt"><div class="card"><h3>Correlação entre os itens (Spearman)</h3>${svgHeat(m, nomes)}</div><div class="card"><h3>Leitura</h3><p>CON tem α questionável, em parte por <b>efeito teto</b>: quase todos concordam.</p><p>Em PRA, <b>PRA2</b> (“consigo escrever do zero”) quase não se correlaciona com os outros itens: ele mede <b>capacidade</b>, enquanto PRA1, PRA3 e PRA4 medem <b>hábito</b> de escrever. Por isso PRA não forma um escore único confiável, e os itens são analisados separadamente.</p></div></div>`;
+  $("s-alfa").innerHTML = h;
 }
 function renderABR(v) {
-  let temas = {}; try { temas = JSON.parse(document.getElementById("temas").textContent); } catch (e) { }
-  const abr = v.filter(r => r.ABR.trim());
-  const cont = {}; abr.forEach(r => { const t = temas[r.id]; if (t) cont[t] = (cont[t] || 0) + 1; });
-  let h = `<h2 class="tituloimp">Resposta aberta</h2><p><b>${abr.length}</b> respostas abertas entre os válidos (${fmt(pct(abr.length, v.length), 0)}%). Análise temática indutiva (Braun e Clarke, 2006).</p>`;
-  h += `<div class="aviso"><b>Temas provisórios.</b> A dupla codificação com κ de Cohen, prevista no protocolo, está pendente; os temas abaixo são uma pré-codificação a validar pelos codificadores.</div>`;
-  const itens = Object.entries(cont).sort((a, b) => b[1] - a[1]).map(([t, c]) => ({ r: t, v: c, rv: String(c) }));
-  if (itens.length) h += `<div class="card">${svgBarrasH(itens, { rotLarg: 320, largura: 760 })}</div>`;
-  h += `<div class="card scroll"><table><tr><th>ID</th><th>Resposta</th><th>Tema provisório</th></tr>${abr.map(r => `<tr><td>${r.id}</td><td>${esc(r.ABR)}</td><td>${esc(temas[r.id] || "—")}</td></tr>`).join("")}</table></div>`;
-  document.getElementById("s-abr").innerHTML = h;
+  let temas = {}; try { temas = JSON.parse($("temas").textContent); } catch (e) { }
+  const abr = v.filter(r => r.ABR.trim()), cont = {}; abr.forEach(r => { const t = temas[r.id]; if (t) cont[t] = (cont[t] || 0) + 1; });
+  const itens = Object.entries(cont).sort((a, b) => b[1] - a[1]).map(([t, c]) => ({ r: t.replace(/^T\d /, ""), v: c, rv: String(c), tip: `${t}: ${c} resposta(s)` }));
+  let h = cab("Qualidade", "Resposta aberta", `${abr.length} respostas abertas entre os válidos (${fmt(pct(abr.length, v.length), 0)}%), em análise temática indutiva (Braun e Clarke, 2006). <b>Temas provisórios:</b> a dupla codificação com κ de Cohen está pendente.`);
+  h += `<div class="grade g2"><div class="card"><h3>Temas (tema principal de cada resposta)</h3>${itens.length ? svgBarrasH(itens, { rotLarg: 250 }) : "—"}</div><div class="card"><h3>Exemplos</h3>${abr.slice().sort((a, b) => b.ABR.length - a.ABR.length).filter((r, i, arr) => arr.findIndex(x => temas[x.id] === temas[r.id]) === i).slice(0, 3).map(r => `<div class="citacao">“${esc(r.ABR.length > 240 ? r.ABR.slice(0, 237) + "…" : r.ABR)}”<div class="t">Resposta ${r.id} · ${esc(temas[r.id] || "sem tema")}</div></div>`).join("")}</div></div>`;
+  h += `<details><summary>Ver todas as respostas abertas (${abr.length})</summary><div class="card">${abr.map(r => `<div class="citacao">${esc(r.ABR)}<div class="t">Resposta ${r.id} · ${esc(temas[r.id] || "—")}</div></div>`).join("")}</div></details>`;
+  $("s-abr").innerHTML = h;
 }
 function renderMet(d, hs) {
-  const nv = d.filter(r => r.valida).length, of = d.filter(r => r.motivo !== "E0");
+  const nv = d.filter(r => r.valida).length, of = d.filter(r => r.motivo !== "E0"), pre = d.length - of.length;
+  const porDia = {}; of.forEach(r => { const k = diaBR(r.envio); porDia[k] = (porDia[k] || 0) + 1; });
   const desvios = [
-    ["D1", "§4 Pré-teste", "4 participantes; respostas apagadas antes da coleta.", `As ${d.filter(r => r.motivo === "E0").length} respostas enviadas até 13/11 23:59 (prazo da Parte 1) foram tratadas como pré-teste: 3 formados e 2 estudantes do 5º período em diante, todos de ES e atuando na área (mediana de 3 min 9 s). Não foram apagadas: ficam no arquivo bruto e saem pela regra E0.`, "Critério definido antes de abrir os dados; manter os registros preserva a trilha de auditoria. Nenhum problema de clareza foi apontado; o instrumento não mudou."],
-    ["D2", "§8 Divulgação", "Coleta de 18/11 a 04/12, com lembretes em 25/11 e 02/12.", `2 respostas chegaram em 14/11 (antes do início planejado) e as demais concentraram-se em 25 e 26/11, após a divulgação ampla.`, "A coleta ficou concentrada em cerca de 26 horas, o que reforça o risco de rede homogênea (bola de neve)."],
-    ["D3", "§2 Amostra e §8 Período", "Exportação final em 04/12, com meta de 50 válidas.", `Análise com corte na exportação mais recente (${nv} válidas). O formulário segue aberto até 04/12; este painel recalcula ao carregar a exportação nova.`, nv < 50 ? "Abaixo da meta: aplica-se a contingência do protocolo (extensão até 11/12) se necessário." : "Meta atingida."],
-    ["D4", "§5 Confiabilidade", "α de PRA ≥ 0,70; abaixo de 0,60, itens separados.", `α de PRA abaixo de 0,60: PRA1, PRA2, PRA3 e PRA4ᴿ analisados separadamente; cada hipótese que usava M4 virou um teste por item, todos na mesma família de Holm (${hs.nTestes} testes, contra 7 no plano original).`, "A regra está no protocolo; a forma de expandir a família de Holm foi decidida após calcular o α, pela opção mais conservadora. A sensibilidade com M4 é mostrada."],
-    ["D5", "§5 Análise condicional", "Regras (i), (ii) e (iii) previstas.", "(i) “Gerar exemplos” com n < 5: H3a compara código pronto × demais. (ii) H4c com SIT e IAU em duas categorias (Fisher). (iii) “Não atua” com n < 10: H4b só descritiva.", "Aplicação de regras pré-registradas, registrada por transparência."],
-    ["D6", "§2 Metas por segmento", "8 respostas por curso e 10 de quem atua.", "Metas atingidas em ES e SI; não atingidas em CC, ADS e outros cursos.", "Comparações por curso ficam só descritivas; filtros ocultam segmentos com n < 5."],
-    ["D7", "§5 Respostas abertas", "Dupla codificação de 20%, com κ ≥ 0,60.", "Pendente; a aba Resposta aberta mostra temas provisórios.", "Os temas devem ser lidos como provisórios até a dupla codificação."],
-    ["D8", "§5 Limpeza (E4)", "Duração menor que 1/3 da mediana.", `Mediana calculada sobre a coleta oficial (${fmt(d.mediana, 0)} s; limite de ${fmt(d.mediana / 3, 0)} s).`, "O protocolo não dizia sobre qual conjunto; não muda o resultado."],
+    ["D1", "Pré-teste (§4)", `${pre} respostas, não 4, e filtradas pela regra E0 em vez de apagadas.`, `Todas as respostas enviadas até 13/11 23:59 (prazo da Parte 1) foram tratadas como pré-teste, critério definido antes de abrir os dados. Ficam no arquivo bruto, o que preserva a trilha de auditoria. Nenhum problema de clareza foi apontado e o instrumento não mudou.`],
+    ["D2", "Divulgação (§8)", "Coleta começou antes e se concentrou em dois dias.", "2 respostas chegaram em 14/11, antes do início planejado (18/11), e as demais em 25 e 26/11, após a divulgação ampla. Isso reforça o risco de rede homogênea (bola de neve)."],
+    ["D3", "Amostra e período (§2, §8)", `Análise com corte parcial: ${nv} válidas.`, `O formulário segue aberto até 04/12; este painel recalcula ao carregar a exportação nova. ${nv < C.META ? "Abaixo da meta, aplica-se a contingência do protocolo (extensão até 11/12)." : "Meta atingida."}`],
+    ["D4", "Confiabilidade (§5)", `α de PRA < 0,60: itens de PRA analisados separadamente; Holm sobre ${hs.nTestes} testes.`, "A regra está no protocolo; a forma de expandir a família de Holm foi decidida depois de calcular o α, pela opção mais conservadora. A análise de sensibilidade mostra o plano original."],
+    ["D5", "Análise condicional (§5)", "Regras (i), (ii) e (iii) aplicadas.", "(i) “Gerar exemplos” com n < 5: H3a compara código pronto × demais. (ii) H4c com SIT e IAU em duas categorias (Fisher). (iii) “Não atua” com n < 10: H4b só descritiva."],
+    ["D6", "Metas por segmento (§2)", "Metas atingidas só em ES e SI.", "CC, ADS e outros cursos ficaram abaixo de 8 respostas; comparações por curso são só descritivas e os filtros ocultam segmentos com n < 5."],
+    ["D7", "Respostas abertas (§5)", "Dupla codificação pendente.", "Os temas exibidos são provisórios até dois integrantes codificarem 20% das respostas e o κ atingir 0,60."],
+    ["D8", "Limpeza, E4 (§5)", "Mediana calculada sobre a coleta oficial.", `${fmt(d.mediana, 0)} s, com limite de ${fmt(d.mediana / 3, 0)} s. O protocolo não dizia sobre qual conjunto; não muda o resultado.`],
   ];
-  let h = `<h2 class="tituloimp">Metodologia e desvios</h2><h2>Metodologia</h2><div class="card"><ul>
-  <li><b>Desenho:</b> survey transversal, descritivo e correlacional, por questionário on-line anônimo (Microsoft Forms), sem ramificações; protocolo registrado em 13/11/2026.</li>
-  <li><b>Amostragem:</b> não probabilística, por conveniência com bola de neve; margem de erro <b>nominal</b> de ±${fmt(100 * S.margem(nv), 1)} p.p. para n = ${nv}.</li>
-  <li><b>Fonte dos dados:</b> ${esc(FONTE)}. Este painel lê a exportação bruta e recalcula tudo ao abrir ou ao carregar uma exportação nova.</li>
-  <li><b>Coleta oficial:</b> ${of.length} respostas, de ${of.length ? dataBR(Math.min(...of.map(r => r.envio))).slice(0, 10) : "—"} a ${of.length ? dataBR(Math.max(...of.map(r => r.envio))).slice(0, 10) : "—"} (horário de Brasília).</li>
-  <li><b>Limpeza:</b> E0 pré-teste → E1 não cursou tecnologia → E2 falhou em ATN1 → E3 PRA todo em 1 ou em 5 → E4 duração &lt; 1/3 da mediana → E5 duplicata.</li>
-  <li><b>Codificação:</b> Likert de 1 a 5, PRA4 invertido (6 − x), sem imputação; M3 = média de CON; M4 = média de PRA1–PRA3 e PRA4ᴿ; usuário de IA = frequência ≠ “nunca” e finalidade ≠ “não uso IA”.</li>
-  <li><b>Testes:</b> Wilcoxon pareado, Spearman, Mann-Whitney ou Kruskal-Wallis, Fisher ou χ²; α = 0,05 bilateral com correção de Holm; efeitos r, ρ, δ de Cliff, ε² e V de Cramér, com IC 95% por bootstrap (5.000 reamostragens, semente fixa).</li>
-  <li><b>Ética:</b> TCLE com aceite obrigatório; o formulário não coleta nome, e-mail nem IP (Resolução CNS 510/2016; LGPD).</li>
-  <li><b>Causalidade:</b> desenho transversal; os resultados são associações, não efeitos causais da IA.</li></ul></div>`;
-  h += `<h2>Desvios em relação ao protocolo</h2><div class="card scroll"><table><tr><th>#</th><th>Seção</th><th>Planejado</th><th>Feito</th><th>Justificativa e impacto</th></tr>${desvios.map(r => `<tr>${r.map((c, i) => `<td${i === 0 ? ' style="font-weight:600"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("")}</table></div>`;
-  h += `<h2>Ameaças à validade e limitações</h2><div class="card"><ul>
-  <li><b>Conclusão:</b> com n ≈ ${d.filter(r => r.valida && r.USA_IA).length}, só efeitos grandes são detectáveis; a família de ${hs.nTestes} testes torna a correção mais rígida; resultados não significativos não indicam ausência de efeito; α de PRA insuficiente.</li>
-  <li><b>Construto:</b> PRA mistura capacidade (PRA2) e hábito (PRA1, PRA3, PRA4); efeito teto em CON; PRA2 e CONF têm conteúdo próximo; desejabilidade social; só autorrelato.</li>
-  <li><b>Interna:</b> desenho transversal (sem causalidade); “começou depois de 2023” se confunde com menos experiência; viés de memória.</li>
-  <li><b>Externa:</b> amostra não probabilística, concentrada em ES e SI, em quem já atua e na rede do grupo; poucos iniciantes e poucos não usuários de IA; resultados válidos para o 2º semestre de 2026.</li></ul></div>`;
-  document.getElementById("s-met").innerHTML = h;
+  const met = [
+    ["Desenho", "Survey transversal, descritivo e correlacional, por questionário on-line anônimo (Microsoft Forms), sem ramificações; protocolo registrado em 13/11/2026."],
+    ["Amostragem", `Não probabilística, por conveniência com bola de neve; margem de erro nominal de ±${fmt(100 * S.margem(nv), 1)} p.p. para n = ${nv}.`],
+    ["Dados", `${esc(FONTE)}. O painel lê a exportação bruta e recalcula tudo ao abrir ou ao carregar uma exportação nova.`],
+    ["Coleta oficial", `${of.length} respostas; por dia: ${Object.entries(porDia).map(([k, c]) => `${k} (${c})`).join(", ")}. A taxa de resposta não é calculável (link aberto).`],
+    ["Limpeza", "E0 pré-teste → E1 não cursou tecnologia → E2 falhou em ATN1 → E3 PRA todo em 1 ou em 5 → E4 duração < 1/3 da mediana → E5 duplicata."],
+    ["Codificação", "Likert de 1 a 5, PRA4 invertido (6 − x), sem imputação; M3 = média de CON; M4 = média de PRA1–PRA3 e PRA4ᴿ; usuário de IA = frequência ≠ “nunca” e finalidade ≠ “não uso IA”."],
+    ["Testes", "Wilcoxon pareado, Spearman, Mann-Whitney ou Kruskal-Wallis, Fisher ou χ²; α = 0,05 bilateral, com Holm; efeitos r, ρ, δ de Cliff, ε² e V de Cramér, com IC 95% por bootstrap."],
+    ["Ética", "TCLE com aceite obrigatório; o formulário não coleta nome, e-mail nem IP (Resolução CNS 510/2016; LGPD)."],
+  ];
+  const ameacas = [["Conclusão", `Com n ≈ ${d.filter(r => r.valida && r.USA_IA).length}, só efeitos grandes são detectáveis; a família de ${hs.nTestes} testes torna a correção mais rígida; α de PRA insuficiente.`],
+    ["Construto", "PRA mistura capacidade (PRA2) e hábito; efeito teto em CON; PRA2 e CONF têm conteúdo próximo; desejabilidade social; só autorrelato."],
+    ["Interna", "Desenho transversal (sem causalidade); “começou depois de 2023” se confunde com menos experiência; viés de memória."],
+    ["Externa", "Amostra não probabilística, concentrada em ES e SI, em quem já atua e na rede do grupo; poucos iniciantes e poucos não usuários de IA."]];
+  $("s-met").innerHTML = cab("Método", "Metodologia, desvios e ameaças à validade", "O que foi feito, o que mudou em relação ao protocolo da Parte 1 e por quê, e os limites das conclusões.") +
+    `<div class="grade g2"><div class="card"><h3>Metodologia</h3><dl class="estat">${met.map(([k, t]) => `<dt>${k}</dt><dd>${t}</dd>`).join("")}</dl></div>
+     <div class="card"><h3>Ameaças à validade</h3><dl class="estat">${ameacas.map(([k, t]) => `<dt>${k}</dt><dd>${t}</dd>`).join("")}</dl></div></div>
+     <div class="card mt"><h3>Desvios em relação ao protocolo</h3>${desvios.map(([id, sec, res, det]) => `<div class="desvio"><b class="id">${id}</b> <b>${sec}</b> — ${res}<div class="cap" style="color:var(--ink2);font-size:12.5px">${det}</div></div>`).join("")}</div>`;
 }
 let TEXTO_ORIGINAL = false;
 function renderDados(d) {
-  const cod = r => ({ ACE: r.ACE ? "sim" : "—", CUR: r.CUR_c || "?", SIT: r.SIT_c || "?", ATU: r.ATU_c, MOM: r.MOM_c, IAF: r.IAF_n, IAU: r.IAU_c || "?",
-    CON1: r.CON1_n, CON2: r.CON2_n, CON3: r.CON3_n, PRA1: r.PRA1_n, PRA2: r.PRA2_n, PRA3: r.PRA3_n, PRA4: r.PRA4_n, ATN1: r.ATN1_n,
-    CONF: r.CONF_n, AVG: r.AVG_n, ABR: r.ABR.trim() ? "sim" : "—" });
+  const cod = r => ({ ACE: r.ACE ? "sim" : "—", CUR: r.CUR_c || "?", SIT: r.SIT_c || "?", ATU: r.ATU_c, MOM: r.MOM_c, IAF: r.IAF_n, IAU: r.IAU_c || "?", CON1: r.CON1_n, CON2: r.CON2_n, CON3: r.CON3_n, PRA1: r.PRA1_n, PRA2: r.PRA2_n, PRA3: r.PRA3_n, PRA4: r.PRA4_n, ATN1: r.ATN1_n, CONF: r.CONF_n, AVG: r.AVG_n, ABR: r.ABR.trim() ? "sim" : "—" });
   const cols = ["id", "envio", "dur", "motivo", ...C.CODIGOS];
   const cel = (r, c) => c === "envio" ? dataBR(r.envio) : c === "dur" ? fmt(r.dur, 0) : (c === "id" || c === "motivo") ? esc(r[c]) : esc(TEXTO_ORIGINAL ? r[c] : (cod(r)[c] ?? "—"));
-  const nota = TEXTO_ORIGINAL ? "Exibindo o texto original de cada resposta."
-    : "Exibindo os valores codificados (Likert e frequência de 1 a 5; categorias pelo código do codebook). O texto das respostas abertas está na aba Resposta aberta.";
-  document.getElementById("s-dados").innerHTML = `<h2 class="tituloimp">Dados brutos</h2>
-  <p>Exportação bruta como lida (horário de Brasília), com a duração e o motivo de descarte calculados. As respostas são anônimas: o formulário não coleta nome, e-mail nem IP. ${nota}</p>
-  <p class="soTela"><button id="btnTexto">${TEXTO_ORIGINAL ? "Mostrar valores codificados" : "Mostrar texto original"}</button></p>
-  <div class="card scroll"><table class="compacta"><tr>${cols.map(c => `<th>${c === "dur" ? "duração (s)" : c}</th>`).join("")}</tr>${d.map(r => `<tr>${cols.map(c => `<td>${cel(r, c)}</td>`).join("")}</tr>`).join("")}</table>
-  <div class="cap">Códigos: CUR = CC, ES, ADS, SI, OUTRO, NENHUM · SIT = EST14 (1º–4º), EST5 (5º+), FORM3 (formado até 3 anos), FORM3MAIS · ATU = SIM/NAO · MOM = ANTES/DEPOIS · IAU = CODIGO, ENTENDER, REVISAR, PRATICAR, NAOUSO.</div></div>`;
-  document.getElementById("btnTexto").onclick = () => { TEXTO_ORIGINAL = !TEXTO_ORIGINAL; renderDados(d); };
+  const aberto = $("s-dados").querySelector("details")?.open;
+  $("s-dados").innerHTML = cab("Método", "Dados brutos", `Exportação bruta como lida (horário de Brasília), com a duração e o motivo de descarte calculados. As respostas são anônimas: o formulário não coleta nome, e-mail nem IP.`) +
+    `<details${aberto ? " open" : ""}><summary>Ver as ${d.length} respostas</summary><div class="card"><p style="margin-top:0"><button id="btnTexto" style="width:auto">${TEXTO_ORIGINAL ? "Mostrar valores codificados" : "Mostrar texto original"}</button></p><div class="scroll"><table style="font-size:11.5px"><tr>${cols.map(c => `<th>${c === "dur" ? "duração (s)" : c}</th>`).join("")}</tr>${d.map(r => `<tr>${cols.map(c => `<td>${cel(r, c)}</td>`).join("")}</tr>`).join("")}</table></div>
+    <div class="cap">Códigos: CUR = CC, ES, ADS, SI, OUTRO, NENHUM · SIT = EST14 (1º–4º), EST5 (5º+), FORM3 (formado até 3 anos), FORM3MAIS · IAU = CODIGO, ENTENDER, REVISAR, PRATICAR, NAOUSO · Likert e frequências de 1 a 5.</div></div></details>`;
+  $("btnTexto").onclick = () => { TEXTO_ORIGINAL = !TEXTO_ORIGINAL; renderDados(d); };
 }
 
-// ---------------- leitura da planilha .xlsx do Forms (sem bibliotecas) ----------------
 async function lerXlsx(buf) {
   const dv = new DataView(buf), u8 = new Uint8Array(buf), td = new TextDecoder();
   let eocd = -1; for (let i = u8.length - 22; i >= Math.max(0, u8.length - 70000); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
@@ -772,29 +849,28 @@ async function lerXlsx(buf) {
   for (const row of doc.getElementsByTagName("row")) { const l = []; for (const c of row.getElementsByTagName("c")) { const t = c.getAttribute("t"), vEl = c.getElementsByTagName("v")[0]; let val = ""; if (t === "s") val = compart[+vEl.textContent]; else if (t === "inlineStr") val = [...c.getElementsByTagName("t")].map(x => x.textContent).join(""); else if (vEl) val = vEl.textContent; l[colIdx(c.getAttribute("r"))] = val; } linhas.push([...l].map(x => x ?? "")); }
   return linhas;
 }
-async function carregarArquivo(f) {
-  try {
-    const reg = f.name.toLowerCase().endsWith(".xlsx") ? S.lerTabela(await lerXlsx(await f.arrayBuffer())) : S.lerTexto(await f.text());
-    iniciar(reg, `${f.name} (carregado em ${dataBR(Date.now())})`);
-  } catch (e) { alert("Não foi possível ler a exportação: " + e.message); }
-}
 
-// ---------------- início ----------------
+
+async function carregarArquivo(f) {
+  try { const reg = f.name.toLowerCase().endsWith(".xlsx") ? S.lerTabela(await lerXlsx(await f.arrayBuffer())) : S.lerTexto(await f.text()); iniciar(reg, `${f.name} (carregado em ${dataBR(Date.now())})`); }
+  catch (e) { alert("Não foi possível ler a exportação: " + e.message); }
+}
 function iniciar(reg, fonte) {
   FONTE = fonte; BASE = S.limpar(S.codificar(reg));
-  document.getElementById("fonte").textContent = "Dados: " + fonte + ` · ${BASE.length} respostas · última em ${dataBR(Math.max(...BASE.map(r => r.envio)))}`;
+  $("fonte").textContent = `Dados: ${fonte} · ${BASE.length} respostas · última em ${dataBR(Math.max(...BASE.map(r => r.envio)))}`;
   montarFiltros(BASE); render();
 }
 (function () {
-  const abas = document.getElementById("abas");
-  document.querySelectorAll("section").forEach((s, i) => { const b = document.createElement("button"); b.textContent = s.dataset.nome; b.onclick = () => { document.querySelectorAll("section").forEach(x => x.classList.remove("ativo")); abas.querySelectorAll("button").forEach(x => x.classList.remove("ativo")); s.classList.add("ativo"); b.classList.add("ativo"); }; abas.appendChild(b); if (!i) { s.classList.add("ativo"); b.classList.add("ativo"); } });
-  ["CUR", "SIT", "ATU", "MOM"].forEach(k => document.getElementById("f" + k).addEventListener("change", render));
-  const inp = document.getElementById("arquivo");
-  document.getElementById("btnCarregar").onclick = () => inp.click();
-  inp.onchange = () => inp.files[0] && carregarArquivo(inp.files[0]);
-  const el = document.getElementById("dados");
-  iniciar(S.lerTexto(el.textContent.trim()), el.dataset.fonte);
+  const nav = $("indice"); let grupo = "";
+  document.querySelectorAll("main section").forEach(s => { if (s.dataset.grupo !== grupo) { grupo = s.dataset.grupo; nav.insertAdjacentHTML("beforeend", `<div class="grupo">${grupo}</div>`); } nav.insertAdjacentHTML("beforeend", `<a href="#${s.id}" data-alvo="${s.id}">${s.dataset.nome}</a>`); });
+  const links = [...nav.querySelectorAll("a")];
+  const obs = new IntersectionObserver(ents => ents.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle("ativo", a.dataset.alvo === e.target.id)); }), { rootMargin: "-20% 0px -70% 0px" });
+  document.querySelectorAll("main section").forEach(s => obs.observe(s));
+  FILTROS.forEach(k => $("f" + k).addEventListener("change", render));
+  const inp = $("arquivo"); $("btnCarregar").onclick = () => inp.click(); inp.onchange = () => inp.files[0] && carregarArquivo(inp.files[0]);
+  const el = $("dados"); iniciar(S.lerTexto(el.textContent.trim()), el.dataset.fonte);
 })();
+
 </script>
 </body>
 </html>
