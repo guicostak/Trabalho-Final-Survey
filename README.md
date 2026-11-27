@@ -69,6 +69,7 @@ Trabalho-Final-Survey/
 ## Parte 2: resultados e dashboard
 
 **Status (corte de 27/11/2026):** 56 respostas recebidas, 5 do pré-teste, 3 descartadas e **48 válidas, abaixo da meta de 50**. A coleta segue aberta até 04/12. O resumo escrito está em [`resultados/RESULTADOS.md`](resultados/RESULTADOS.md), e os desvios em [`DESVIOS.md`](DESVIOS.md).
+O relatório em PDF (ABNT) está em [`resultados/relatorio/relatorio.pdf`](resultados/relatorio/relatorio.pdf). Para regenerá-lo a partir dos dados: `.venv/bin/python analise/relatorio.py` e, em `resultados/relatorio/`, `tectonic relatorio.tex`.
 
 Para rodar o dashboard, que lê os dados brutos e recalcula tudo:
 
