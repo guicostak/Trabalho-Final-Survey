@@ -37,7 +37,7 @@ Os demais arquivos não são entregues no Canvas. Eles servem para montar o form
 Trabalho-Final-Survey/
 ├── README.md                      ← este arquivo
 ├── ENUNCIADO.md                   ← enunciado da disciplina
-├── DESVIOS.md                     ← registro de desvios (alimenta o dashboard na Parte 2)
+├── DESVIOS.md                     ← registro de desvios (também na aba de metodologia do dashboard)
 ├── protocolo/
 │   ├── protocolo.pdf              ← ENTREGÁVEL DA PARTE 1 (6 páginas)
 │   └── protocolo.tex              ← fonte LaTeX do PDF
@@ -45,7 +45,7 @@ Trabalho-Final-Survey/
 │   ├── survey.py                  ← limpeza (E0–E5), testes, Holm, α de Cronbach
 │   └── abr_codificacao.csv        ← codificação da pergunta aberta (κ)
 ├── dashboard/
-│   └── app.py                     ← dashboard Streamlit (Parte 2)
+│   └── dashboard.html             ← dashboard (Parte 2): arquivo único, abre no navegador
 ├── dados/
 │   ├── brutos/                    ← exportação bruta do Forms (fora do Git)
 │   └── respostas_anonimizadas.csv ← conjunto público
@@ -71,25 +71,22 @@ Trabalho-Final-Survey/
 **Status (corte de 27/11/2026):** 56 respostas recebidas, 5 do pré-teste, 3 descartadas e **48 válidas, abaixo da meta de 50**. A coleta segue aberta até 04/12. O resumo escrito está em [`resultados/RESULTADOS.md`](resultados/RESULTADOS.md), e os desvios em [`DESVIOS.md`](DESVIOS.md).
 O relatório em PDF (ABNT) está em [`resultados/relatorio/relatorio.pdf`](resultados/relatorio/relatorio.pdf). Para regenerá-lo a partir dos dados: `.venv/bin/python analise/relatorio.py` e, em `resultados/relatorio/`, `tectonic relatorio.tex`.
 
-Para rodar o dashboard, que lê os dados brutos e recalcula tudo:
+**Dashboard:** [`dashboard/dashboard.html`](dashboard/dashboard.html) é um arquivo único: abre com dois cliques em qualquer navegador, sem instalar nada. Ele traz os dados embutidos e faz todas as contas ao abrir (limpeza E0–E5, testes, Holm, tamanhos de efeito, α de Cronbach), com filtros por segmento e botão **Imprimir / PDF**. A versão do repositório usa o conjunto anonimizado, que dá exatamente os mesmos resultados que os dados brutos.
+
+- **Dados novos:** no próprio dashboard, o botão **Carregar exportação do Forms** lê a planilha `.xlsx` (ou `.csv`) e recalcula tudo.
+- **Versão da entrega, com os dados brutos embutidos:** coloque a exportação em `dados/brutos/` (pasta que **não** vai para o GitHub; protocolo, §6) e rode:
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python analise/survey.py --dashboard ~/Downloads/Dashboard-Survey.html
 ```
 
-```bash
-.venv/bin/streamlit run dashboard/app.py
-```
-
-Para regenerar os números (`resultados/resultados.json`) e o conjunto anonimizado:
+Para regenerar os números de conferência (`resultados/resultados.json`) e o conjunto anonimizado, com Python e as dependências de `requirements.txt`:
 
 ```bash
 .venv/bin/python analise/survey.py --anonimizar
 ```
 
-- **Dados brutos:** coloque a exportação do Forms (`.xlsx` do botão "Abrir no Excel" ou o `.csv` da coleta) em `dados/brutos/`. Essa pasta **não** vai para o GitHub (protocolo, §6). O script usa o arquivo mais recente.
-- **Sem dados brutos** (por exemplo, no repositório público), o dashboard usa `dados/respostas_anonimizadas.csv`, que dá exatamente os mesmos resultados.
-- **Resposta aberta:** dois integrantes preenchem `codificador_1` e `codificador_2` em `analise/abr_codificacao.csv`, e o dashboard calcula o κ de Cohen.
+- **Resposta aberta:** dois integrantes preenchem `codificador_1` e `codificador_2` em `analise/abr_codificacao.csv` e calculam o κ de Cohen.
 
 ## Como recompilar o PDF
 

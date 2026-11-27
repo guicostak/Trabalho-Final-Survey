@@ -1,6 +1,6 @@
 """Gera os números, quadros e figuras do relatório de resultados (PDF, ABNT).
 
-Tudo sai da exportação bruta, pelo mesmo pipeline do dashboard. Depois de rodar,
+Tudo sai da exportação bruta, pelo pipeline de analise/survey.py. Depois de rodar,
 compile `resultados/relatorio/relatorio.tex` com `tectonic`.
 
     .venv/bin/python analise/relatorio.py && (cd resultados/relatorio && tectonic relatorio.tex)

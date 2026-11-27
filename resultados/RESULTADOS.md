@@ -1,6 +1,6 @@
 # Resultados do survey (Parte 2), versão parcial com corte em 27/11/2026
 
-> **Fonte:** exportação bruta do Microsoft Forms, lida pelo dashboard (`dashboard/app.py`) e pelo script `analise/survey.py`. Todos os números abaixo saem desses arquivos; ao atualizar a exportação, eles mudam sozinhos no dashboard.
+> **Fonte:** exportação bruta do Microsoft Forms, lida pelo dashboard (`dashboard/dashboard.html`) e pelo script `analise/survey.py`, que chegam aos mesmos números. Ao carregar uma exportação nova no dashboard, tudo é recalculado.
 > **Status:** **48 respostas válidas, abaixo da meta de 50.** A coleta segue aberta até 04/12 (desvio D3). Leia tudo como resultado parcial.
 > **Linguagem:** o desenho é transversal; os resultados são **associações**, nunca efeitos causais da IA.
 
@@ -91,11 +91,11 @@ Pré-codificação sugerida, a validar por dois integrantes (κ ≥ 0,60; desvio
 
 | Exigência | Onde está |
 |---|---|
-| Lê os dados brutos | `dashboard/app.py` lê `dados/brutos/*.csv` ou `*.xlsx` (local) ou `dados/respostas_anonimizadas.csv` (público) |
+| Lê os dados brutos | `dashboard/dashboard.html` traz a exportação embutida, recalcula tudo ao abrir e carrega uma exportação nova (`.xlsx` ou `.csv`) pelo botão |
 | Perfil, recebidas, descartes e motivo | Aba "Perfil e limpeza" |
 | Likert em barras divergentes | Aba "Itens Likert" |
 | QP com teste, p, efeito e margem de erro | Aba "Questões de pesquisa" |
-| Filtros por segmento | Barra lateral (curso, situação, atuação, momento; n < 5 ocultado) |
+| Filtros por segmento | Topo do dashboard (curso, situação, atuação, momento; n < 5 ocultado) |
 | α de Cronbach | Aba "Confiabilidade" |
-| Metodologia e desvios | Aba "Metodologia e desvios" (lê `DESVIOS.md`) |
+| Metodologia e desvios | Aba "Metodologia e desvios" (resume `DESVIOS.md`) |
 | Evidências da coleta | Exportação bruta com data e hora (aba "Dados brutos"); **falta**: capturas datadas dos canais de divulgação |

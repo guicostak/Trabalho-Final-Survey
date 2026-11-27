@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard do Survey</title>
+<style>
+:root{--ink:#1d1d1b;--ink2:#52514e;--muted:#898781;--grid:#e4e3dd;--line:#c9c8c0;--bg:#f7f7f5;--card:#ffffff;
+--azul:#2a78d6;--laranja:#eb6834;--d1:#b3302f;--d2:#e8807f;--d3:#d6d5cf;--d4:#6da7ec;--d5:#1c5cab;--ok:#0c7a0c;--alerta:#a15c00;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--card);border-bottom:1px solid var(--grid);padding:20px 24px 12px}
+header h1{margin:0;font-size:22px;letter-spacing:-.01em}
+header .sub{color:var(--ink2);font-size:13px;margin-top:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.barra{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:12px}
+.barra label{font-size:12px;color:var(--ink2);display:flex;flex-direction:column;gap:2px}
+select,button{font:inherit;font-size:13px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+button{cursor:pointer}button:hover{background:#f0efea}
+.acoes{margin-left:auto;display:flex;gap:8px}
+nav{display:flex;flex-wrap:wrap;gap:2px;margin-top:14px}
+nav button{border:none;border-bottom:2px solid transparent;border-radius:0;background:none;padding:8px 12px;color:var(--ink2)}
+nav button.ativo{border-bottom-color:var(--ink);color:var(--ink);font-weight:600}
+main{padding:18px 0 40px}
+section{display:none}section.ativo{display:block}
+h2{font-size:19px;margin:22px 0 6px}h3{font-size:15px;margin:18px 0 6px}
+.card{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:14px 16px;margin:10px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--grid);border-radius:10px;padding:10px 14px}
+.kpi .r{font-size:12px;color:var(--ink2)}.kpi .v{font-size:26px;font-weight:600;line-height:1.2}.kpi .n{font-size:12px;color:var(--muted)}
+.aviso{border-left:4px solid var(--alerta);background:#fff8ec;padding:8px 12px;border-radius:6px;margin:10px 0;font-size:14px}
+.info{border-left:4px solid var(--azul);background:#eef5fd;padding:8px 12px;border-radius:6px;margin:10px 0;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{color:var(--ink2);font-weight:600;border-bottom:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:820px){.grid2{grid-template-columns:1fr}}
+.cap{font-size:12px;color:var(--ink2);margin-top:4px}
+.rej{font-weight:600}
+svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.legenda{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--ink2);margin:4px 0}
+.legenda i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.scroll{overflow-x:auto}
+#tip{position:fixed;pointer-events:none;background:#1d1d1b;color:#fff;font-size:12px;padding:5px 8px;border-radius:5px;display:none;z-index:9;max-width:280px}
+.tituloimp{display:none}
+@media print{
+  @page{size:A4;margin:12mm}
+  body{background:#fff;font-size:12px}
+  header{border:none;padding:0 0 6px}
+  .barra .acoes,nav,select,#tip{display:none!important}
+  .barra label{display:none}
+  #filtrostxt{display:block!important}
+  section{display:block!important;break-before:page}
+  section:first-of-type{break-before:auto}
+  .tituloimp{display:block;font-size:17px;font-weight:700;margin:0 0 6px;border-bottom:1px solid #999}
+  .card{border-color:#ccc;break-inside:auto}
+  .kpi,.card:has(svg),tr,li{break-inside:avoid}
+  table{font-size:9.5px}th,td{padding:3px 5px}p,li{font-size:11px}
+  .card{padding:8px 10px;margin:6px 0}
+  .scroll{overflow:visible}
+  .grid2{grid-template-columns:1fr 1fr!important}
+  .soTela{display:none!important}
+  table.compacta{font-size:8px}table.compacta th,table.compacta td{padding:2px 3px}
+  h2{font-size:15px;margin:12px 0 4px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <h1>Aprendizado de programação na era da IA generativa</h1>
+  <div class="sub">Survey pré-registrado · Medição e Experimentação em Engenharia de Software · PUC Minas, Unidade Lourdes · 2º/2026<br>
+  Grupo: Ana Luiza Santos Gomes, Bruna Barbosa Portilho Bernardes, Guilherme Augustto Costa Barros e Vinícius Dias</div>
+  <div class="sub" id="fonte"></div>
+  <div class="barra">
+   <label>Curso<select id="fCUR"></select></label>
+   <label>Situação<select id="fSIT"></select></label>
+   <label>Atuação na área<select id="fATU"></select></label>
+   <label>Começou a aprender<select id="fMOM"></select></label>
+   <span id="filtrostxt" class="cap" style="display:none"></span>
+   <div class="acoes">
+    <button id="btnCarregar" title="Lê uma nova exportação do Microsoft Forms (.xlsx ou .csv) e recalcula tudo">Carregar exportação do Forms</button>
+    <button onclick="window.print()" title="Gera a versão em PDF com todas as abas">Imprimir / PDF</button>
+    <input type="file" id="arquivo" accept=".xlsx,.csv" hidden>
+   </div>
+  </div>
+  <nav id="abas"></nav>
+ </div>
+</header>
+<main class="wrap">
+ <div id="alertas"></div>
+ <section id="s-perfil" data-nome="Perfil e limpeza"></section>
+ <section id="s-likert" data-nome="Itens Likert"></section>
+ <section id="s-qp" data-nome="Questões de pesquisa"></section>
+ <section id="s-alfa" data-nome="Confiabilidade"></section>
+ <section id="s-abr" data-nome="Resposta aberta"></section>
+ <section id="s-met" data-nome="Metodologia e desvios"></section>
+ <section id="s-dados" data-nome="Dados brutos"></section>
+</main>
+<div id="tip"></div>
+
+<!-- ======================= DADOS BRUTOS (exportação do Microsoft Forms) ======================= -->
+<script id="dados" type="text/plain" data-fonte="conjunto anonimizado (dados/respostas_anonimizadas.csv)">
+id,envio_local,duracao_s,ACE,CUR,SIT,ATU,MOM,IAF,IAU,CON1,CON2,CON3,PRA1,PRA2,PRA3,PRA4,ATN1,CONF,AVG,ABR
+1,2026-11-13 16:24:00,202,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Discordo,Discordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Nada confiante,Piorou muito,"Agora estou totalmente dependente da AI mas acredito que o mercado também, se por um motivo hipotético a AI sumisse, acredito que a velocidade de entrega também reduziria em tamanho e tempo"
+2,2026-11-13 16:43:00,421,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Piorou um pouco,
+3,2026-11-13 16:59:00,131,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Gerar exemplos ou exercícios para praticar,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+4,2026-11-13 17:45:00,106,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Concordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Pouco confiante,Melhorou muito,
+5,2026-11-13 21:00:00,189,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Discordo totalmente,Discordo totalmente,Concordo,Discordo totalmente,Nada confiante,Melhorou muito,
+6,2026-11-14 13:22:00,168,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+7,2026-11-14 16:16:00,183,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo totalmente,Concordo,Concordo totalmente,Discordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Piorou um pouco,
+8,2026-11-25 21:16:00,285,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Obter código pronto para a tarefa,Concordo,Concordo,Concordo totalmente,Discordo totalmente,Concordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Piorou um pouco,"Sim, no nível de ia atual para a maioria dos casos precisa-se entender pouco de coisas avançadas."
+9,2026-11-25 21:16:00,287,"Sim, concordo em participar",Análise e Desenvolvimento de Sistemas (ADS),"Estudante, do 5º período em diante","Não, ainda não atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo,Discordo,Concordo,Discordo,Concordo,Discordo totalmente,Pouco confiante,Melhorou muito,
+10,2026-11-25 21:26:00,207,"Sim, concordo em participar",Outro curso de tecnologia,"Estudante, do 1º ao 4º período","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Piorou um pouco,
+11,2026-11-25 21:27:00,227,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Concordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Muito confiante,Melhorou um pouco,
+12,2026-11-25 21:30:00,163,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Nunca,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Nada confiante,Melhorou um pouco,
+13,2026-11-25 21:42:00,179,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Às vezes,Obter código pronto para a tarefa,Concordo,Concordo,Discordo,Discordo,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Piorou um pouco,
+14,2026-11-25 21:55:00,326,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Nem concordo nem discordo,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+15,2026-11-25 22:04:00,132,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou muito,
+16,2026-11-25 22:25:00,95,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo,Discordo,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Concordo totalmente,Discordo totalmente,Confiante,Melhorou um pouco,
+17,2026-11-25 23:04:00,297,"Sim, concordo em participar",Sistemas de Informação,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Melhorou muito,
+18,2026-11-25 23:13:00,404,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo,Concordo,Concordo totalmente,Discordo totalmente,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,"Acredito que o maior benefício que a IA trás no processo de APRENDIZAGEM é de conseguir personalizar individualmente conceitos complexos, com analogias, exemplos e tons, facilitando o entendimento para aquele indíviduo."
+19,2026-11-26 09:23:00,165,"Sim, concordo em participar",Sistemas de Informação,"Estudante, do 1º ao 4º período","Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Revisar ou melhorar o meu próprio código,Concordo,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Discordo,Discordo totalmente,Concordo,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,"Mudou muita coisa, antes havia uma dificuldade muito maior para entender qual a raiz do problema do código com a IA eu consigo economizar muito tempo e aprender maneiras mais praticas de executar uma mesma ação. Embora a IA não subtitui 100%, uma pessoa que entende o minimo consegue usufruir o melhor dos dois mundos"
+20,2026-11-26 11:38:00,160,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo,Concordo,Concordo,Nem concordo nem discordo,Discordo,Discordo,Concordo,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,Te ajuda a entender melhor
+21,2026-11-26 11:47:00,137,"Sim, concordo em participar",Análise e Desenvolvimento de Sistemas (ADS),Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo,Discordo,Concordo,Nem concordo nem discordo,Concordo,Discordo totalmente,Confiante,Melhorou muito,
+22,2026-11-26 11:52:00,111,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Não uso IA para estudar programação,Concordo,Concordo totalmente,Concordo totalmente,Discordo totalmente,Concordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Confiante,Não mudou,
+23,2026-11-26 11:52:00,87,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Nada confiante,Melhorou muito,
+24,2026-11-26 11:57:00,345,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Concordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,"A IA é uma excelente ferramenta. Mas pune o profissional que esta começando agora, visto que com a chegada das IAs, a cobrança por soluções rápidas aumentaram drasticamente, e consequentemente acaba formando profissionais com pouco e\ou nenhum senso critico, visto que não é mais ele quem desenvolve boa parte das soluções."
+25,2026-11-26 11:57:00,239,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Discordo,Concordo,Discordo totalmente,Confiante,Melhorou muito,"A IA é uma ferramenta facilitadora, nao adianta usar para fazer coisas que voce nao sabe. Se fazer isso, nunca irá evoluir. A ideia é aprender, identificar o que precisa, identificar como irá resolver e usar a IA para facilitar e otimizar a entrega."
+26,2026-11-26 11:58:00,128,"Sim, concordo em participar",Outro curso de tecnologia,"Estudante, do 1º ao 4º período","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Melhorou muito,
+27,2026-11-26 12:04:00,235,"Sim, concordo em participar",Outro curso de tecnologia,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo,Concordo,Concordo,Discordo,Concordo,Discordo,Concordo,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,
+28,2026-11-26 12:33:00,422,"Sim, concordo em participar",Ciência da Computação,Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo totalmente,Concordo,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,
+29,2026-11-26 12:46:00,359,"Sim, concordo em participar",Ciência da Computação,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Às vezes,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Discordo,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Concordo,Discordo totalmente,Confiante,Piorou um pouco,"Sim, se a IA for utilizada para entregar código pronto, não há aprendizado algum. A prática da escrita de código ainda é essencial para o aprendizado e entendimento dos conceitos; na minha opinião, se não houver isso, o ""novo trabalho do programador"", que é aquele de revisar código feito pela IA, não tem nem mesmo a mínima base para avaliar a qualidade e a corretude do código feito, o programador vira um ""meat proxy""."
+30,2026-11-26 13:04:00,88,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Gerar exemplos ou exercícios para praticar,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Concordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,
+31,2026-11-26 13:10:00,208,"Sim, concordo em participar",Análise e Desenvolvimento de Sistemas (ADS),"Estudante, do 5º período em diante","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Frequentemente,Entender conceitos ou mensagens de erro,Concordo,Concordo,Nem concordo nem discordo,Nem concordo nem discordo,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Não mudou,
+32,2026-11-26 13:22:00,425,"Sim, concordo em participar",Outro curso de tecnologia,"Estudante, do 1º ao 4º período","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Frequentemente,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo,Nem concordo nem discordo,Nem concordo nem discordo,Concordo,Discordo,Discordo totalmente,Razoavelmente confiante,Melhorou muito,"A IA mudou muita coisa, por ser uma tecnologia que facilita todo o cotidiano, porem não desequilibrou a compreensão e pratica de códigos, pois a questão esta no modo de uso dela, particularmente acho que, em sua grande maioria, o uso é pedagogico."
+33,2026-11-26 13:42:00,320,"Sim, concordo em participar",Ciência da Computação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo,Discordo,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Confiante,Piorou um pouco,"Sim. A IA alterou a forma que aprendemos e isso culminou em aprendizados rasos que não fixam na mente. A busca pelo aprendizado exige esforço e é esse esforço que nos faz aprender, principalmente fundamentos. Linguagens específicas, documentações de código e peculiaridades de uma determinada tecnologia não entram nesse escopo, onde a IA realmente ajudou a entender, mas a base, conceitos fundamentais, lógica e problemas que exigem raciocínio e não habilidade técnica foram afetados negativamente pela IA, que fornece uma saída ""fácil"" desse aprendizado."
+34,2026-11-26 13:56:00,128,"Sim, concordo em participar",Sistemas de Informação,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo,Concordo totalmente,Discordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Muito confiante,Melhorou um pouco,"é uma linha perigosa entre te ajudar a entender e voce deixar ela fazer sozinha, eu como aprendi antes do boom da IA tenho uma base sólida e conhecimentos dos fundamentos, ja quando nao se tem isso e usa a IA para pular passos fundamentais sue conhecimento pode ficar defasado"
+35,2026-11-26 14:06:00,186,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo,Concordo,Concordo,Concordo,Concordo,Concordo,Discordo,Discordo totalmente,Razoavelmente confiante,Não mudou,
+36,2026-11-26 14:13:00,106,"Sim, concordo em participar",Engenharia de Software,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou muito,
+37,2026-11-26 14:32:00,411,"Sim, concordo em participar",Sistemas de Informação,Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo,Concordo,Concordo,Concordo,Concordo,Discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,"É necessário saber código pra entender os conceitos de programação assim como é necessário saber matemática pra entender conceitos de computação. Logo, a facilidade de escrever código com prompts simples no caso de iniciantes pode, irá e está afetando o aprendizado."
+38,2026-11-26 16:19:00,360,"Sim, concordo em participar",Análise e Desenvolvimento de Sistemas (ADS),Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo,Concordo totalmente,Concordo totalmente,Discordo,Nem concordo nem discordo,Nem concordo nem discordo,Concordo,Discordo totalmente,Razoavelmente confiante,Melhorou muito,
+39,2026-11-26 16:54:00,453,"Sim, concordo em participar",Não cursei curso de tecnologia,Formado(a) há mais de 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+40,2026-11-26 17:20:00,125,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Frequentemente,Gerar exemplos ou exercícios para praticar,Concordo totalmente,Concordo,Concordo totalmente,Discordo,Concordo,Concordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Piorou um pouco,
+41,2026-11-26 17:31:00,218,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Nem concordo nem discordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Pouco confiante,Piorou um pouco,"Atualmente é mais importante aprender conceitos, arquitetura, design de projeto do que a escrever codigo propriamente"
+42,2026-11-26 17:34:00,148,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo,Concordo,Concordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Piorou um pouco,
+43,2026-11-26 17:40:00,255,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Entender conceitos ou mensagens de erro,Nem concordo nem discordo,Concordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+44,2026-11-26 17:42:00,317,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Melhorou um pouco,"Sim, profissionalmente, praticar e aprender virou segundo plano"
+45,2026-11-26 18:03:00,112,"Sim, concordo em participar",Análise e Desenvolvimento de Sistemas (ADS),Formado(a) há até 3 anos,"Sim, já atuo na área",Antes (comecei a aprender até 2022),Nunca,Não uso IA para estudar programação,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Nada confiante,Piorou um pouco,
+46,2026-11-26 18:11:00,171,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Discordo totalmente,Discordo totalmente,Concordo totalmente,Discordo totalmente,Nada confiante,Melhorou muito,"Acredito que a IA mais atrapalhou a escrita de código do que qualquer outra coisa, sobre aprender conceitos e constuir as coisas ela é otima, principalmente pq ela faz as coisas errado e quem precisa resolver é voce mesmo, ai sim voce aprende a aplicar arquiteturas, comunicacoes, estruturacao e afins"
+47,2026-11-26 19:11:00,141,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Obter código pronto para a tarefa,Concordo,Concordo,Concordo,Discordo totalmente,Discordo totalmente,Discordo totalmente,Discordo totalmente,Discordo totalmente,Nada confiante,Melhorou muito,
+48,2026-11-26 19:12:00,243,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo,Concordo totalmente,Concordo totalmente,Discordo totalmente,Nada confiante,Melhorou muito,
+49,2026-11-26 19:12:00,174,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Discordo totalmente,Discordo totalmente,Discordo totalmente,Concordo totalmente,Discordo totalmente,Razoavelmente confiante,Piorou muito,
+50,2026-11-26 19:22:00,241,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Discordo,Concordo totalmente,Discordo totalmente,Discordo,Discordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Piorou um pouco,
+51,2026-11-26 19:50:00,118,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Frequentemente,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Discordo totalmente,Concordo,Concordo totalmente,Discordo totalmente,Pouco confiante,Melhorou um pouco,
+52,2026-11-26 19:54:00,181,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo,Concordo,Discordo totalmente,Discordo,Discordo totalmente,Concordo totalmente,Discordo totalmente,Pouco confiante,Melhorou muito,
+53,2026-11-26 21:19:00,91,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Frequentemente,Entender conceitos ou mensagens de erro,Concordo totalmente,Concordo totalmente,Concordo,Discordo,Nem concordo nem discordo,Concordo totalmente,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,
+54,2026-11-26 21:40:00,153,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Revisar ou melhorar o meu próprio código,Concordo,Concordo,Concordo,Discordo,Concordo,Nem concordo nem discordo,Concordo,Discordo totalmente,Confiante,Não mudou,
+55,2026-11-26 21:50:00,132,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Sim, já atuo na área",Antes (comecei a aprender até 2022),Sempre,Obter código pronto para a tarefa,Concordo totalmente,Concordo totalmente,Concordo totalmente,Nem concordo nem discordo,Nem concordo nem discordo,Nem concordo nem discordo,Concordo totalmente,Discordo totalmente,Confiante,Melhorou muito,Acredito que o equilíbrio mudou porque a gente deixou de ser digitador e passou a projetar e analisar mais por conta própria. Por consequência o nosso trabalho aumentou já que a parte operacional diminuiu agora cabe mais espaço para outros trabalhos de outros trabalhos de outras naturezas
+56,2026-11-26 22:49:00,233,"Sim, concordo em participar",Engenharia de Software,"Estudante, do 5º período em diante","Não, ainda não atuo na área",Depois (comecei a aprender a partir de 2023),Sempre,Gerar exemplos ou exercícios para praticar,Concordo,Concordo,Concordo,Discordo,Discordo,Nem concordo nem discordo,Concordo,Discordo totalmente,Pouco confiante,Melhorou um pouco,</script>
+
+<!-- Pré-codificação da resposta aberta (provisória; a validar por dois codificadores) -->
+<script id="temas" type="application/json">{"8": "T4 Mudança do papel do programador", "18": "T1 IA facilita entender conceitos e erros", "19": "T1 IA facilita entender conceitos e erros", "20": "T1 IA facilita entender conceitos e erros", "24": "T5 Pressão por produtividade e dependência", "25": "T3 Depende do modo de uso e da base prévia", "29": "T2 Risco à prática e aos fundamentos", "32": "T3 Depende do modo de uso e da base prévia", "33": "T2 Risco à prática e aos fundamentos", "34": "T3 Depende do modo de uso e da base prévia", "37": "T2 Risco à prática e aos fundamentos", "41": "T4 Mudança do papel do programador", "44": "T5 Pressão por produtividade e dependência", "46": "T2 Risco à prática e aos fundamentos", "55": "T4 Mudança do papel do programador"}</script>
+
+<!-- ======================= NÚCLEO: leitura, limpeza e estatística (sem interface) ======================= -->
+<script id="nucleo">
+"use strict";
+const S = {};
+(function () {
+  // ---------- distribuições ----------
+  function erfc(x) { // Numerical Recipes (erro relativo < 1,2e-7)
+    const z = Math.abs(x), t = 1 / (1 + 0.5 * z);
+    const r = t * Math.exp(-z * z - 1.26551223 + t * (1.00002368 + t * (0.37409196 + t * (0.09678418 + t * (-0.18628806 +
+      t * (0.27886807 + t * (-1.13520398 + t * (1.48851587 + t * (-0.82215223 + t * 0.17087277)))))))));
+    return x >= 0 ? r : 2 - r;
+  }
+  const normSf = z => 0.5 * erfc(z / Math.SQRT2);
+  function gammln(xx) {
+    const c = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5];
+    let x = xx, y = xx, tmp = x + 5.5; tmp -= (x + 0.5) * Math.log(tmp); let ser = 1.000000000190015;
+    for (let j = 0; j < 6; j++) ser += c[j] / ++y;
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+  function betacf(a, b, x) {
+    const MAXIT = 300, EPS = 3e-14, FPMIN = 1e-300;
+    let qab = a + b, qap = a + 1, qam = a - 1, c = 1, d = 1 - qab * x / qap;
+    if (Math.abs(d) < FPMIN) d = FPMIN; d = 1 / d; let h = d;
+    for (let m = 1; m <= MAXIT; m++) {
+      const m2 = 2 * m; let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+      d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN; c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN; d = 1 / d; h *= d * c;
+      aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+      d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN; c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN; d = 1 / d;
+      const del = d * c; h *= del; if (Math.abs(del - 1) < EPS) break;
+    }
+    return h;
+  }
+  function betai(a, b, x) {
+    if (x <= 0) return 0; if (x >= 1) return 1;
+    const bt = Math.exp(gammln(a + b) - gammln(a) - gammln(b) + a * Math.log(x) + b * Math.log(1 - x));
+    return x < (a + 1) / (a + b + 2) ? bt * betacf(a, b, x) / a : 1 - bt * betacf(b, a, 1 - x) / b;
+  }
+  const tP2 = (t, df) => betai(df / 2, 0.5, df / (df + t * t)); // p bilateral da t de Student
+  function gammq(a, x) { // 1 - P(a,x)
+    if (x <= 0) return 1;
+    const gln = gammln(a);
+    if (x < a + 1) { let ap = a, sum = 1 / a, del = sum; for (let n = 0; n < 500; n++) { ap++; del *= x / ap; sum += del; if (Math.abs(del) < Math.abs(sum) * 3e-14) break; } return 1 - sum * Math.exp(-x + a * Math.log(x) - gln); }
+    let b = x + 1 - a, c = 1 / 1e-300, d = 1 / b, h = d;
+    for (let i = 1; i < 500; i++) { const an = -i * (i - a); b += 2; d = an * d + b; if (Math.abs(d) < 1e-300) d = 1e-300; c = b + an / c; if (Math.abs(c) < 1e-300) c = 1e-300; d = 1 / d; const del = d * c; h *= del; if (Math.abs(del - 1) < 3e-14) break; }
+    return Math.exp(-x + a * Math.log(x) - gln) * h;
+  }
+  const chi2Sf = (x, df) => gammq(df / 2, x / 2);
+  // ---------- descritivas ----------
+  const soma = a => a.reduce((s, v) => s + v, 0);
+  const media = a => soma(a) / a.length;
+  const variancia = a => { const m = media(a); return soma(a.map(v => (v - m) ** 2)) / (a.length - 1); };
+  function quantil(a, q) { const s = [...a].sort((x, y) => x - y); if (!s.length) return NaN; const i = q * (s.length - 1), lo = Math.floor(i), hi = Math.ceil(i); return s[lo] + (s[hi] - s[lo]) * (i - lo); }
+  const mediana = a => quantil(a, 0.5);
+  function postos(a) {
+    const idx = a.map((v, i) => [v, i]).sort((x, y) => x[0] - y[0]); const r = new Array(a.length);
+    for (let i = 0; i < idx.length;) { let j = i; while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++; const m = (i + j) / 2 + 1; for (let k = i; k <= j; k++) r[idx[k][1]] = m; i = j + 1; }
+    return r;
+  }
+  function empates(a) { const c = new Map(); a.forEach(v => c.set(v, (c.get(v) || 0) + 1)); let s = 0; c.forEach(t => { if (t > 1) s += t ** 3 - t; }); return s; }
+  function pearson(x, y) { const mx = media(x), my = media(y); let sxy = 0, sxx = 0, syy = 0; for (let i = 0; i < x.length; i++) { sxy += (x[i] - mx) * (y[i] - my); sxx += (x[i] - mx) ** 2; syy += (y[i] - my) ** 2; } return sxy / Math.sqrt(sxx * syy); }
+  // ---------- testes ----------
+  function wilcoxon(x, y) { // pareado, zero_method="wilcox", aproximação normal sem correção de continuidade (como scipy)
+    const d = x.map((v, i) => v - y[i]); const nz = d.filter(v => v !== 0); const n = nz.length;
+    if (!n) return { W: NaN, p: NaN, r: NaN };
+    const r = postos(nz.map(Math.abs)); let rp = 0, rm = 0; nz.forEach((v, i) => { if (v > 0) rp += r[i]; else rm += r[i]; });
+    const W = Math.min(rp, rm), mn = n * (n + 1) / 4, se = Math.sqrt(n * (n + 1) * (2 * n + 1) / 24 - empates(nz.map(Math.abs)) / 48);
+    const z = (W - mn) / se, p = Math.min(1, 2 * normSf(Math.abs(z)));
+    const efeito = Math.abs(z) / Math.sqrt(n) * Math.sign(mediana(d) || 1);
+    return { W, p, r: efeito };
+  }
+  function spearman(x, y) { const rho = pearson(postos(x), postos(y)), n = x.length; if (!isFinite(rho)) return { rho: NaN, p: NaN }; const t = rho * Math.sqrt((n - 2) / ((rho + 1) * (1 - rho))); return { rho, p: Math.abs(rho) >= 1 ? 0 : tP2(Math.abs(t), n - 2) }; }
+  function mannWhitney(a, b) { // assintótico com correção de continuidade e de empates (como scipy)
+    const n1 = a.length, n2 = b.length, n = n1 + n2, r = postos([...a, ...b]);
+    const U1 = soma(r.slice(0, n1)) - n1 * (n1 + 1) / 2, U = Math.max(U1, n1 * n2 - U1), mu = n1 * n2 / 2;
+    const s = Math.sqrt(n1 * n2 / 12 * ((n + 1) - empates([...a, ...b]) / (n * (n - 1))));
+    return { U: U1, p: s > 0 ? Math.min(1, 2 * normSf((U - mu - 0.5) / s)) : 1 };
+  }
+  function kruskal(grupos) {
+    const todos = grupos.flat(), N = todos.length, r = postos(todos); let k = 0, s = 0;
+    grupos.forEach(g => { const rs = soma(r.slice(k, k + g.length)); s += rs * rs / g.length; k += g.length; });
+    let H = 12 / (N * (N + 1)) * s - 3 * (N + 1); H /= 1 - empates(todos) / (N ** 3 - N);
+    return { H, p: chi2Sf(H, grupos.length - 1) };
+  }
+  const lfat = n => gammln(n + 1);
+  function fisher(t) { // 2×2 bilateral (como scipy)
+    const [[a, b], [c, d]] = t, r1 = a + b, c1 = a + c, n = a + b + c + d;
+    const pmf = k => Math.exp(lfat(r1) + lfat(n - r1) + lfat(c1) + lfat(n - c1) - lfat(n) - lfat(k) - lfat(r1 - k) - lfat(c1 - k) - lfat(n - r1 - c1 + k));
+    const p0 = pmf(a); let p = 0;
+    for (let k = Math.max(0, r1 + c1 - n); k <= Math.min(r1, c1); k++) { const pk = pmf(k); if (pk <= p0 * (1 + 1e-7)) p += pk; }
+    return Math.min(1, p);
+  }
+  function esperados(t) { const n = soma(t.flat()), lin = t.map(soma), col = t[0].map((_, j) => soma(t.map(l => l[j]))); return t.map((l, i) => l.map((_, j) => lin[i] * col[j] / n)); }
+  function chi2(t) { const e = esperados(t); let x = 0; t.forEach((l, i) => l.forEach((o, j) => { x += (o - e[i][j]) ** 2 / e[i][j]; })); return { chi2: x, p: chi2Sf(x, (t.length - 1) * (t[0].length - 1)) }; }
+  function cramer(t) { const e = esperados(t); if (e.flat().some(v => !(v > 0))) return NaN; const n = soma(t.flat()); return Math.sqrt(chi2(t).chi2 / (n * (Math.min(t.length, t[0].length) - 1))); }
+  function cliff(a, b) { if (!a.length || !b.length) return NaN; let g = 0, l = 0; for (const x of a) for (const y of b) { if (x > y) g++; else if (x < y) l++; } return (g - l) / (a.length * b.length); }
+  function cronbach(linhas) { const L = linhas.filter(l => l.every(v => isFinite(v))); const k = L[0] ? L[0].length : 0; if (k < 2 || L.length < 3) return NaN; const vt = variancia(L.map(soma)); if (!vt) return NaN; let vi = 0; for (let j = 0; j < k; j++) vi += variancia(L.map(l => l[j])); return k / (k - 1) * (1 - vi / vt); }
+  function wilson(k, n, z = 1.96) { if (!n) return [NaN, NaN]; const p = k / n, den = 1 + z * z / n, c = (p + z * z / (2 * n)) / den, h = z * Math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / den; return [c - h, c + h]; }
+  const margem = (n, p = 0.5) => n ? 1.96 * Math.sqrt(p * (1 - p) / n) : NaN;
+  function holm(ps) { const it = Object.entries(ps).sort((a, b) => a[1] - b[1]), m = it.length, out = {}; let acc = 0; it.forEach(([k, p], i) => { acc = Math.max(acc, Math.min(1, (m - i) * p)); out[k] = acc; }); return out; }
+  function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function bootstrap(linhas, fn, nBoot, seed = 2026) {
+    const r = rng(seed), n = linhas.length, vals = [];
+    for (let b = 0; b < nBoot; b++) { const amostra = new Array(n); for (let i = 0; i < n; i++) amostra[i] = linhas[Math.floor(r() * n)]; const v = fn(amostra); if (isFinite(v)) vals.push(v); }
+    if (vals.length < nBoot / 2) return [NaN, NaN];
+    return [quantil(vals, 0.025), quantil(vals, 0.975)];
+  }
+  Object.assign(S, { normSf, tP2, chi2Sf, soma, media, variancia, quantil, mediana, postos, wilcoxon, spearman, mannWhitney, kruskal, fisher, esperados, chi2, cramer, cliff, cronbach, wilson, margem, holm, bootstrap });
+
+  // ---------- instrumento e codebook ----------
+  const C = S.C = {};
+  C.CODIGOS = ["ACE", "CUR", "SIT", "ATU", "MOM", "IAF", "IAU", "CON1", "CON2", "CON3", "PRA1", "PRA2", "PRA3", "PRA4", "ATN1", "CONF", "AVG", "ABR"];
+  C.CON = ["CON1", "CON2", "CON3"]; C.PRA = ["PRA1", "PRA2", "PRA3", "PRA4"];
+  C.LIKERT = { "Discordo totalmente": 1, "Discordo": 2, "Nem concordo nem discordo": 3, "Concordo": 4, "Concordo totalmente": 5 };
+  C.LIKERT_ROT = ["", "Discordo totalmente", "Discordo", "Nem concordo nem discordo", "Concordo", "Concordo totalmente"];
+  C.IAF = { "Nunca": 1, "Raramente": 2, "Às vezes": 3, "Frequentemente": 4, "Sempre": 5 };
+  C.CONF = { "Nada confiante": 1, "Pouco confiante": 2, "Razoavelmente confiante": 3, "Confiante": 4, "Muito confiante": 5 };
+  C.AVG = { "Piorou muito": 1, "Piorou um pouco": 2, "Não mudou": 3, "Melhorou um pouco": 4, "Melhorou muito": 5 };
+  C.CUR = { "Ciência da Computação": "CC", "Engenharia de Software": "ES", "Análise e Desenvolvimento de Sistemas (ADS)": "ADS", "Sistemas de Informação": "SI", "Outro curso de tecnologia": "OUTRO", "Não cursei curso de tecnologia": "NENHUM" };
+  C.SIT = { "Estudante, do 1º ao 4º período": "EST14", "Estudante, do 5º período em diante": "EST5", "Formado(a) há até 3 anos": "FORM3", "Formado(a) há mais de 3 anos": "FORM3MAIS" };
+  C.IAU = { "Obter código pronto para a tarefa": "CODIGO", "Entender conceitos ou mensagens de erro": "ENTENDER", "Revisar ou melhorar o meu próprio código": "REVISAR", "Gerar exemplos ou exercícios para praticar": "PRATICAR", "Não uso IA para estudar programação": "NAOUSO" };
+  C.ROT = {
+    CUR: { CC: "Ciência da Computação", ES: "Engenharia de Software", ADS: "ADS", SI: "Sistemas de Informação", OUTRO: "Outro curso", NENHUM: "Nenhum" },
+    SIT: { EST14: "Estudante 1º–4º", EST5: "Estudante 5º+", FORM3: "Formado até 3 anos", FORM3MAIS: "Formado há mais de 3 anos" },
+    ATU: { SIM: "Atua na área", NAO: "Não atua" },
+    MOM: { ANTES: "Antes da IA (até 2022)", DEPOIS: "Depois da IA (2023+)" },
+    IAU: { CODIGO: "Código pronto", ENTENDER: "Entender conceitos/erros", REVISAR: "Revisar o próprio código", PRATICAR: "Gerar exemplos/exercícios", NAOUSO: "Não uso IA" },
+  };
+  C.ITENS = {
+    CON1: "A IA me ajuda a entender conceitos de programação.", CON2: "Com a IA, entendo mais rápido por que um código funciona ou falha.",
+    CON3: "A IA me ajuda a compreender mensagens de erro e documentação.", PRA1: "Escrevo eu mesmo(a) a maior parte do código das minhas atividades.",
+    PRA2: "Consigo escrever do zero, sem IA, um código parecido com o que ela me ajudou a fazer.", PRA3: "Com frequência, pratico escrevendo código sem nenhuma ajuda de IA.",
+    PRA4: "Desde que passei a usar IA, escrevo menos código por conta própria. (invertido na análise)",
+  };
+  C.MOTIVOS = { E0: "Pré-teste (enviada até 13/11/2026 23:59)", E1: "Não cursou curso de tecnologia", E2: "Falhou na pergunta de atenção (ATN1)", E3: "PRA1–PRA4 todos em 1 ou todos em 5 (contradiz o item invertido)", E4: "Duração menor que 1/3 da mediana", E5: "Duplicata técnica (idêntica, < 5 min de diferença)" };
+  C.CORTE_PRETESTE = Date.UTC(2026, 10, 14, 2, 59, 59); // 13/11/2026 23:59:59 em Brasília (UTC−3)
+  C.META = 50; C.ALFA = 0.05;
+
+  // ---------- leitura (CSV da coleta, CSV anonimizado ou planilha do Forms) ----------
+  function lerCSV(txt) {
+    const linhas = []; let campo = "", linha = [], aspas = false;
+    for (let i = 0; i < txt.length; i++) {
+      const ch = txt[i];
+      if (aspas) { if (ch === '"') { if (txt[i + 1] === '"') { campo += '"'; i++; } else aspas = false; } else campo += ch; }
+      else if (ch === '"') aspas = true; else if (ch === ',') { linha.push(campo); campo = ""; }
+      else if (ch === "\n" || ch === "\r") { if (ch === "\r" && txt[i + 1] === "\n") i++; linha.push(campo); campo = ""; if (linha.some(c => c !== "")) linhas.push(linha); linha = []; }
+      else campo += ch;
+    }
+    if (campo !== "" || linha.length) { linha.push(campo); linhas.push(linha); }
+    return linhas;
+  }
+  const CHAVES = { ACE: "li o termo", CUR: "qual curso", SIT: "situação atual", ATU: "atua profissionalmente", MOM: "começou a aprender", IAF: "com que frequência", IAU: "principal finalidade", CON1: "entender conceitos de programação", CON2: "entendo mais rápido", CON3: "mensagens de erro e documentação", PRA1: "maior parte do código", PRA2: "consigo escrever do zero", PRA3: "pratico escrevendo", PRA4: "escrevo menos código", ATN1: "lendo com atenção", CONF: "quão confiante", AVG: "no geral", ABR: "equilíbrio" };
+  const BRT = 3 * 3600e3;
+  function dataLocal(v) { // horário de Brasília sem fuso -> ms UTC
+    if (typeof v === "number" || /^\d+(\.\d+)?$/.test(String(v).trim())) return Math.round((Number(v) - 25569) * 86400e3) + BRT;
+    const s = String(v).trim(); let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})[ T](\d{1,2}):(\d{2})(?::(\d{2}))?/);
+    if (m) return Date.UTC(+m[3], +m[1] - 1, +m[2], +m[4], +m[5], +(m[6] || 0)) + BRT;
+    m = s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?/);
+    if (m) return Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0)) + BRT;
+    return NaN;
+  }
+  const isoUTC = s => Date.parse(String(s).trim().replace(/(\.\d{3})\d+/, "$1"));
+  function deTabela(tab) { // tab = [cabeçalho, ...linhas] -> registros
+    const cab = tab[0].map(c => String(c).trim()), lc = cab.map(c => c.toLowerCase());
+    const reg = [];
+    if (lc.includes("inicio_utc")) { // CSV da coleta (API do Forms)
+      const ix = Object.fromEntries(cab.map((c, i) => [c, i]));
+      tab.slice(1).forEach(l => { const r = { id: +l[ix.id], inicio: isoUTC(l[ix.inicio_utc]), envio: isoUTC(l[ix.envio_utc]) }; C.CODIGOS.forEach(k => r[k] = (l[ix[k]] ?? "").trim()); reg.push(r); });
+      return reg;
+    }
+    if (lc.includes("envio_local")) { // CSV anonimizado (repositório público)
+      const ix = Object.fromEntries(cab.map((c, i) => [c, i]));
+      tab.slice(1).forEach(l => { const env = dataLocal(l[ix.envio_local]); const r = { id: +l[ix.id], envio: env, inicio: env - 1000 * +l[ix.duracao_s] }; C.CODIGOS.forEach(k => r[k] = (l[ix[k]] ?? "").trim()); reg.push(r); });
+      return reg;
+    }
+    const mapa = {}; // exportação do Forms (.xlsx ou .csv): reconhece as colunas pelo texto das perguntas
+    lc.forEach((c, i) => {
+      if (c === "id") mapa.id = i;
+      else if (/^(start time|hora de in[ií]cio)/.test(c)) mapa.inicio = i;
+      else if (/^(completion time|hora de conclus)/.test(c)) mapa.envio = i;
+      else for (const [k, ch] of Object.entries(CHAVES)) if (c.includes(ch) && !(k in mapa)) { mapa[k] = i; break; }
+    });
+    const falta = ["id", "inicio", "envio", ...C.CODIGOS].filter(k => !(k in mapa));
+    if (falta.length) throw new Error("Colunas não reconhecidas na exportação: " + falta.join(", "));
+    tab.slice(1).forEach(l => { if (l[mapa.id] === undefined || l[mapa.id] === "") return; const r = { id: +l[mapa.id], inicio: dataLocal(l[mapa.inicio]), envio: dataLocal(l[mapa.envio]) }; C.CODIGOS.forEach(k => r[k] = String(l[mapa[k]] ?? "").trim()); reg.push(r); });
+    return reg;
+  }
+  S.lerTexto = txt => deTabela(lerCSV(txt.replace(/^﻿/, "")));
+  S.lerTabela = deTabela;
+
+  // ---------- codificação e limpeza (protocolo, §5) ----------
+  S.codificar = function (reg) {
+    return reg.map(r => {
+      const d = { ...r };
+      d.dur = (r.envio - r.inicio) / 1000;
+      d.CUR_c = C.CUR[r.CUR]; d.SIT_c = C.SIT[r.SIT]; d.ATU_c = r.ATU.startsWith("Sim") ? "SIM" : "NAO"; d.MOM_c = r.MOM.startsWith("Antes") ? "ANTES" : "DEPOIS";
+      d.IAU_c = C.IAU[r.IAU]; d.IAF_n = C.IAF[r.IAF] ?? NaN; d.CONF_n = C.CONF[r.CONF] ?? NaN; d.AVG_n = C.AVG[r.AVG] ?? NaN;
+      [...C.CON, ...C.PRA, "ATN1"].forEach(k => d[k + "_n"] = C.LIKERT[r[k]] ?? NaN);
+      d.PRA4_inv = 6 - d.PRA4_n;
+      d.M3 = (d.CON1_n + d.CON2_n + d.CON3_n) / 3;
+      d.M4 = (d.PRA1_n + d.PRA2_n + d.PRA3_n + d.PRA4_inv) / 4;
+      d.USA_IA = d.IAF_n !== 1 && d.IAU_c !== "NAOUSO";
+      d.SIT_2 = String(d.SIT_c).startsWith("EST") ? "Estudante" : "Formado";
+      d.IAU_2 = d.IAU_c === "CODIGO" ? "Código pronto" : "Demais finalidades";
+      return d;
+    });
+  };
+  S.limpar = function (d) {
+    d = d.map(r => ({ ...r, motivo: "" })).sort((a, b) => a.id - b.id);
+    d.forEach(r => { if (!r.motivo && r.envio <= C.CORTE_PRETESTE) r.motivo = "E0"; });
+    d.forEach(r => { if (!r.motivo && r.CUR_c === "NENHUM") r.motivo = "E1"; });
+    d.forEach(r => { if (!r.motivo && r.ATN1_n !== 1) r.motivo = "E2"; });
+    d.forEach(r => { const p = C.PRA.map(k => r[k + "_n"]); if (!r.motivo && (p.every(v => v === 1) || p.every(v => v === 5))) r.motivo = "E3"; });
+    const med = mediana(d.filter(r => r.motivo !== "E0").map(r => r.dur));
+    d.forEach(r => { if (!r.motivo && r.dur < med / 3) r.motivo = "E4"; });
+    const ord = [...d].sort((a, b) => a.envio - b.envio);
+    ord.forEach(r => { if (r.motivo) return; if (ord.some(a => a !== r && a.envio < r.envio && a.envio >= r.envio - 300e3 && C.CODIGOS.every(k => a[k] === r[k]))) r.motivo = "E5"; });
+    d.forEach(r => r.valida = r.motivo === "");
+    d.mediana = med;
+    return d;
+  };
+
+  // ---------- testes pré-registrados ----------
+  const LIM = { r: [0.1, 0.3, 0.5], rho: [0.1, 0.3, 0.5], eps2: [0.01, 0.08, 0.26], delta: [0.147, 0.33, 0.474], V: [0.1, 0.3, 0.5] };
+  function magnitude(v, l) { if (!isFinite(v)) return "—"; const a = Math.abs(v); return a < l[0] ? "desprezível" : a < l[1] ? "pequeno" : a < l[2] ? "médio" : "grande"; }
+  const resumo = a => ({ n: a.length, med: mediana(a), q1: quantil(a, .25), q3: quantil(a, .75) });
+  const num = (u, k) => u.map(r => r[k]).filter(v => isFinite(v));
+  const PRA_ITENS = { PRA1: "PRA1_n", PRA2: "PRA2_n", PRA3: "PRA3_n", "PRA4ᴿ": "PRA4_inv" }, M4 = { M4: "M4" };
+  S.PRA_ITENS = PRA_ITENS;
+  S.testar = function (v, nBoot) {
+    const u = v.filter(r => r.USA_IA), hs = [];
+    const aPRA = cronbach(u.map(r => [r.PRA1_n, r.PRA2_n, r.PRA3_n, r.PRA4_inv]));
+    const separar = isFinite(aPRA) && aPRA < 0.6;
+    const conj = separar ? [[PRA_ITENS, "confirmatória"], [M4, "referência"]] : [[M4, "confirmatória"]];
+    const nome = (base, rot) => rot === "M4" ? base : base + "·" + rot;
+    const H = (o) => hs.push(Object.assign({ status: "testada", familia: "confirmatória", variavel: "", grupos: null }, o));
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) {
+      const x = u.filter(r => isFinite(r.M3) && isFinite(r[col]));
+      const w = wilcoxon(x.map(r => r.M3), x.map(r => r[col]));
+      H({ id: nome("H2a", rot), base: "H2a", qp: "QP2", variavel: rot, familia: fam, desc: `Conceitos (M3) × prática de escrita (${rot})`, esperado: "conceitos maior",
+        teste: "Wilcoxon pareado", n: x.length, est: `W = ${fmt(w.W, 1)}`, p: w.p, efNome: "r", ef: w.r, mag: magnitude(w.r, LIM.r),
+        ic: bootstrap(x, b => wilcoxon(b.map(r => r.M3), b.map(r => r[col])).r, nBoot), obs: w.r > 0 ? "conceitos maior" : "prática maior",
+        grupos: { "Conceitos (M3)": resumo(x.map(r => r.M3)), [rot]: resumo(x.map(r => r[col])) } });
+    }
+    const sp = (id, base, qp, a, b, rot, desc, esp, fam) => {
+      const x = u.filter(r => isFinite(r[a]) && isFinite(r[b])); const s = spearman(x.map(r => r[a]), x.map(r => r[b]));
+      H({ id, base, qp, variavel: rot, familia: fam, desc, esperado: esp, teste: "Spearman", n: x.length, est: `ρ = ${fmt(s.rho, 3)}`, p: s.p, efNome: "ρ", ef: s.rho,
+        mag: magnitude(s.rho, LIM.rho), ic: bootstrap(x, bb => spearman(bb.map(r => r[a]), bb.map(r => r[b])).rho, nBoot), obs: s.rho > 0 ? "positiva" : "negativa" });
+    };
+    sp("H2b", "H2b", "QP2", "IAF_n", "M3", "", "Frequência de uso (M1) × conceitos (M3)", "positiva", "confirmatória");
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) sp(nome("H2c", rot), "H2c", "QP2", "IAF_n", col, rot, `Frequência de uso (M1) × prática de escrita (${rot})`, "negativa", fam);
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) {
+      const x = u.filter(r => isFinite(r[col]) && r.IAU_c), cont = {}; x.forEach(r => cont[r.IAU_c] = (cont[r.IAU_c] || 0) + 1);
+      const pequenos = Object.entries(cont).filter(([, c]) => c < 5);
+      if (pequenos.length) {
+        const a = x.filter(r => r.IAU_c === "CODIGO").map(r => r[col]), b = x.filter(r => r.IAU_c !== "CODIGO").map(r => r[col]);
+        const m = a.length && b.length ? mannWhitney(a, b) : { U: NaN, p: NaN }, dl = cliff(a, b);
+        H({ id: nome("H3a", rot), base: "H3a", qp: "QP3", variavel: rot, familia: fam, desc: `Prática de escrita (${rot}) por finalidade de uso (M2)`, esperado: "menor em código pronto",
+          teste: "Mann-Whitney (código pronto × demais)", regra: `Regra (i): finalidade com n < 5 (${pequenos.map(([k, c]) => C.ROT.IAU[k] + " = " + c).join(", ")}); comparação código pronto × demais.`,
+          n: x.length, est: `U = ${fmt(m.U, 1)}`, p: m.p, efNome: "δ de Cliff", ef: dl, mag: magnitude(dl, LIM.delta), obs: dl < 0 ? "menor em código pronto" : "maior em código pronto",
+          ic: bootstrap(x, bb => cliff(bb.filter(r => r.IAU_c === "CODIGO").map(r => r[col]), bb.filter(r => r.IAU_c !== "CODIGO").map(r => r[col])), nBoot),
+          grupos: { "Código pronto": resumo(a), "Demais finalidades": resumo(b) } });
+      } else {
+        const gs = Object.keys(cont).map(g => x.filter(r => r.IAU_c === g).map(r => r[col])), k = kruskal(gs), eps = k.H / (x.length - 1);
+        H({ id: nome("H3a", rot), base: "H3a", qp: "QP3", variavel: rot, familia: fam, desc: `Prática de escrita (${rot}) por finalidade de uso (M2)`, esperado: "menor em código pronto",
+          teste: "Kruskal-Wallis", n: x.length, est: `H = ${fmt(k.H)}`, p: k.p, efNome: "ε²", ef: eps, mag: magnitude(eps, LIM.eps2), ic: [NaN, NaN], obs: "" });
+      }
+    }
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) sp(nome("H3b", rot), "H3b", "QP3", col, "CONF_n", rot, `Prática de escrita (${rot}) × confiança sem IA (M5)`, "positiva", fam);
+    const grupo2 = (base, rot, col, vr, g1, g2, desc, esp, fam) => {
+      const x = u.filter(r => isFinite(r[col])), a = x.filter(r => r[vr] === g1).map(r => r[col]), b = x.filter(r => r[vr] === g2).map(r => r[col]);
+      const rt = C.ROT[vr.slice(0, 3)], dl = cliff(a, b);
+      const h = { id: nome(base, rot), base, qp: "QP4", variavel: rot, familia: fam, desc, esperado: esp, teste: "Mann-Whitney", n: x.length, est: "", p: null,
+        efNome: "δ de Cliff", ef: dl, mag: magnitude(dl, LIM.delta), ic: [NaN, NaN], obs: (dl < 0 ? "menor em " : "maior em ") + rt[g1],
+        grupos: { [rt[g1]]: resumo(a), [rt[g2]]: resumo(b) } };
+      if (Math.min(a.length, b.length) < 10) { h.status = "descritiva"; h.teste = "Descritiva (regra iii)"; h.regra = `Regra (iii): grupo com n < 10 (${rt[g1]} = ${a.length}, ${rt[g2]} = ${b.length}); só descritiva, fora da correção de Holm.`; }
+      else { const m = mannWhitney(a, b); h.est = `U = ${fmt(m.U, 1)}`; h.p = m.p; h.ic = bootstrap(x, bb => cliff(bb.filter(r => r[vr] === g1).map(r => r[col]), bb.filter(r => r[vr] === g2).map(r => r[col])), nBoot); }
+      H(h);
+    };
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) grupo2("H4a", rot, col, "MOM_c", "DEPOIS", "ANTES", `Prática de escrita (${rot}): começou depois × antes da IA`, "menor depois", fam);
+    for (const [itens, fam] of conj) for (const [rot, col] of Object.entries(itens)) grupo2("H4b", rot, col, "ATU_c", "SIM", "NAO", `Prática de escrita (${rot}): atua × não atua na área`, "bilateral", fam);
+    { // H4c
+      const linhasT = ["Código pronto", "Demais finalidades"], colsT = ["Estudante", "Formado"];
+      const tab = linhasT.map(l => colsT.map(c => u.filter(r => r.IAU_2 === l && r.SIT_2 === c).length));
+      const vazia = tab.some(l => soma(l) === 0) || colsT.some((_, j) => tab[0][j] + tab[1][j] === 0);
+      if (vazia) H({ id: "H4c", base: "H4c", qp: "QP4", desc: "Finalidade de uso (M2) × situação (M7)", esperado: "bilateral", teste: "Descritiva", n: u.length, status: "descritiva", p: null, ef: NaN, efNome: "V de Cramér", ic: [NaN, NaN], regra: "Tabela sem as duas categorias.", tabela: tab });
+      else {
+        const e = esperados(tab), V = cramer(tab), minE = Math.min(...e.flat()); let p, teste, est;
+        if (minE < 5) { p = fisher(tab); teste = "Exato de Fisher (2 × 2)"; est = `esperado mínimo = ${fmt(minE, 1)}`; } else { const c = chi2(tab); p = c.p; teste = "χ² (2 × 2)"; est = `χ² = ${fmt(c.chi2)}`; }
+        const pe = tab[0][0] / (tab[0][0] + tab[1][0]), pf = tab[0][1] / (tab[0][1] + tab[1][1]);
+        H({ id: "H4c", base: "H4c", qp: "QP4", desc: "Finalidade de uso (M2) × situação (M7)", esperado: "bilateral", teste, n: u.length, est, p, efNome: "V de Cramér", ef: V, mag: magnitude(V, LIM.V),
+          ic: bootstrap(u, bb => cramer(linhasT.map(l => colsT.map(c => bb.filter(r => r.IAU_2 === l && r.SIT_2 === c).length))), nBoot),
+          obs: `código pronto: ${Math.round(100 * pe)}% dos estudantes × ${Math.round(100 * pf)}% dos formados`,
+          regra: "Regra (ii): SIT agrupada em estudante × formado e IAU em código pronto × demais.", tabela: tab });
+      }
+    }
+    const aj = holm(Object.fromEntries(hs.filter(h => h.familia === "confirmatória" && h.status === "testada" && h.p != null).map(h => [h.id, h.p])));
+    const orig = hs.filter(h => h.status === "testada" && h.p != null && (separar ? (h.variavel === "M4" || h.variavel === "") : h.familia === "confirmatória"));
+    const ajO = holm(Object.fromEntries(orig.map(h => [h.id, h.p])));
+    hs.forEach(h => {
+      h.pHolm = h.familia === "referência" ? (ajO[h.id] ?? null) : (aj[h.id] ?? null); h.pHolmOrig = ajO[h.id] ?? null;
+      h.decisao = h.status === "descritiva" ? "Sem teste (descritiva)" : h.familia === "referência" ? "Referência" : (h.pHolm < C.ALFA ? "Rejeita H0" : "Não rejeita H0");
+      h.me = 100 * margem(h.n);
+    });
+    hs.separar = separar; hs.nTestes = Object.keys(aj).length;
+    return hs;
+  };
+  S.confiabilidade = function (u) {
+    const out = {};
+    for (const [nome, cols, rots] of [["CON", ["CON1_n", "CON2_n", "CON3_n"], ["CON1", "CON2", "CON3"]], ["PRA", ["PRA1_n", "PRA2_n", "PRA3_n", "PRA4_inv"], ["PRA1", "PRA2", "PRA3", "PRA4ᴿ"]]]) {
+      const L = u.map(r => cols.map(c => r[c])).filter(l => l.every(isFinite)); const a = cronbach(L);
+      out[nome] = { alfa: a, n: L.length, k: cols.length, ic: bootstrap(L, b => cronbach(b), 5000),
+        sem: rots.map((rt, j) => [rt, cronbach(L.map(l => l.filter((_, i) => i !== j)))]),
+        aval: a >= 0.7 ? "aceitável (≥ 0,70)" : a >= 0.6 ? "questionável (0,60 a 0,70)" : "insuficiente (< 0,60): itens analisados separadamente" };
+    }
+    return out;
+  };
+  function fmt(x, nd = 2) { if (x == null || !isFinite(x)) return "—"; let s = x.toFixed(nd); if (/^-0[.,]0*$/.test(s)) s = s.slice(1); return s.replace(".", ","); }
+  S.fmt = fmt;
+})();
+if (typeof module !== "undefined") module.exports = S;
+</script>
+
+<!-- ======================= INTERFACE ======================= -->
+<script>
+"use strict";
+const C = S.C, fmt = S.fmt;
+const COR = { azul: "#2a78d6", laranja: "#eb6834", ink: "#1d1d1b", ink2: "#52514e", muted: "#898781", grid: "#e4e3dd", div: ["", "#b3302f", "#e8807f", "#d6d5cf", "#6da7ec", "#1c5cab"] };
+const MIN_SEG = 5;
+let BASE = null, FONTE = "";
+const pv = p => p == null ? "—" : p < 0.001 ? "< 0,001" : fmt(p, 3);
+const pct = (k, n) => n ? 100 * k / n : 0;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const dataBR = ms => { const d = new Date(ms - 3 * 3600e3); const z = n => String(n).padStart(2, "0"); return `${z(d.getUTCDate())}/${z(d.getUTCMonth() + 1)}/${d.getUTCFullYear()} ${z(d.getUTCHours())}:${z(d.getUTCMinutes())}`; };
+const diaBR = ms => dataBR(ms).slice(0, 5);
+const tip = document.getElementById("tip");
+document.addEventListener("mousemove", e => { const t = e.target.closest("[data-tip]"); if (t) { tip.textContent = t.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.min(e.clientX + 12, innerWidth - 290) + "px"; tip.style.top = (e.clientY + 12) + "px"; } else tip.style.display = "none"; });
+
+// ---------------- gráficos SVG ----------------
+function svgBarrasH(itens, { largura = 520, max = null, cor = COR.azul, sufixo = "", rotLarg = 170, ic = null, alt = 26 } = {}) {
+  const m = max ?? Math.max(...itens.map(i => i.v), 1) * 1.25, W = largura, plotW = W - rotLarg - 70, H = itens.length * alt + 10;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  itens.forEach((it, i) => {
+    const y = 5 + i * alt, w = plotW * it.v / m;
+    s += `<text x="${rotLarg - 8}" y="${y + alt / 2 + 4}" text-anchor="end" font-size="12" fill="${COR.ink2}">${esc(it.r)}</text>`;
+    s += `<rect x="${rotLarg}" y="${y + 4}" width="${Math.max(w, 0.5)}" height="${alt - 9}" rx="3" fill="${cor}" data-tip="${esc(it.tip || it.r + ": " + fmt(it.v, 1) + sufixo)}"/>`;
+    let fim = rotLarg + w;
+    if (ic && it.ic) { const x1 = rotLarg + plotW * it.ic[0] / m, x2 = rotLarg + plotW * it.ic[1] / m, yc = y + alt / 2; s += `<line x1="${x1}" x2="${x2}" y1="${yc}" y2="${yc}" stroke="${COR.ink}" stroke-width="1.2"/><line x1="${x1}" x2="${x1}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}"/><line x1="${x2}" x2="${x2}" y1="${yc - 4}" y2="${yc + 4}" stroke="${COR.ink}"/>`; fim = Math.max(fim, x2); }
+    s += `<text x="${fim + 6}" y="${y + alt / 2 + 4}" font-size="12" fill="${COR.ink}">${esc(it.rv ?? fmt(it.v, 0) + sufixo)}</text>`;
+  });
+  return s + "</svg>";
+}
+function svgDivergente(linhas, rotulos = C.LIKERT_ROT, { rotLarg = 280 } = {}) {
+  const W = 760, plotW = W - rotLarg - 10, alt = 30, H = linhas.length * alt + 28, cx = rotLarg + plotW / 2, esc1 = plotW / 200;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  [-100, -50, 0, 50, 100].forEach(t => { const x = cx + t * esc1; s += `<line x1="${x}" x2="${x}" y1="0" y2="${H - 20}" stroke="${t ? COR.grid : "#9a9990"}" stroke-width="${t ? 1 : 1.2}"/><text x="${x}" y="${H - 6}" text-anchor="middle" font-size="11" fill="${COR.muted}">${Math.abs(t)}%</text>`; });
+  linhas.forEach((l, i) => {
+    const y = i * alt + 4, n = l.vals.length, p = k => pct(l.vals.filter(v => v === k).length, n);
+    s += `<text x="${rotLarg - 8}" y="${y + alt / 2 + 2}" text-anchor="end" font-size="12" fill="${COR.ink2}">${esc(l.r)}</text>`;
+    let x = cx - (p(1) + p(2) + p(3) / 2) * esc1;
+    for (let k = 1; k <= 5; k++) {
+      const w = p(k) * esc1; if (w <= 0) continue;
+      s += `<rect x="${x}" y="${y + 3}" width="${Math.max(w - 1.5, 0.5)}" height="${alt - 10}" fill="${COR.div[k]}" data-tip="${esc(l.r + " · " + rotulos[k] + ": " + fmt(p(k), 1) + "% (" + l.vals.filter(v => v === k).length + " de " + n + ")")}"/>`;
+      if (p(k) >= 8) s += `<text x="${x + w / 2}" y="${y + alt / 2 + 2}" text-anchor="middle" font-size="11" fill="${k === 1 || k === 5 ? "#fff" : COR.ink}" pointer-events="none">${Math.round(p(k))}%</text>`;
+      x += w;
+    }
+  });
+  return s + "</svg>";
+}
+const legendaDiv = (rot = C.LIKERT_ROT) => `<div class="legenda">${[1, 2, 3, 4, 5].map(k => `<span><i style="background:${COR.div[k]}"></i>${esc(rot[k])}</span>`).join("")}</div>`;
+function svgCaixas(series, { titulo = "", yRot = "1 a 5" } = {}) {
+  const W = 520, H = 250, L = 34, B = 40, T = 12, plotW = W - L - 10, plotH = H - T - B, n = series.length, y = v => T + plotH * (5.4 - v) / 4.8;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 10}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text>`);
+  let semente = 7; const rnd = () => (semente = (semente * 9301 + 49297) % 233280) / 233280;
+  series.forEach((se, i) => {
+    const cx = L + plotW * (i + 0.5) / n, bw = Math.min(56, plotW / n * 0.5), v = se.vals, q1 = S.quantil(v, .25), q3 = S.quantil(v, .75), md = S.mediana(v);
+    const iqr = q3 - q1, lo = Math.min(...v.filter(x => x >= q1 - 1.5 * iqr)), hi = Math.max(...v.filter(x => x <= q3 + 1.5 * iqr)), cor = se.cor || COR.azul;
+    s += `<line x1="${cx}" x2="${cx}" y1="${y(hi)}" y2="${y(q3)}" stroke="${COR.ink2}"/><line x1="${cx}" x2="${cx}" y1="${y(q1)}" y2="${y(lo)}" stroke="${COR.ink2}"/>`;
+    s += `<rect x="${cx - bw / 2}" y="${y(q3)}" width="${bw}" height="${Math.max(y(q1) - y(q3), 1)}" fill="${cor}" fill-opacity=".18" stroke="${cor}" stroke-width="1.5" data-tip="${esc(se.r + ": mediana " + fmt(md) + " · IIQ " + fmt(q1) + "–" + fmt(q3) + " · n = " + v.length)}"/>`;
+    s += `<line x1="${cx - bw / 2}" x2="${cx + bw / 2}" y1="${y(md)}" y2="${y(md)}" stroke="${cor}" stroke-width="3"/>`;
+    v.forEach(val => s += `<circle cx="${cx + (rnd() - 0.5) * bw * 0.8}" cy="${y(val) + (rnd() - 0.5) * 8}" r="2.2" fill="${COR.ink}" fill-opacity=".35" pointer-events="none"/>`);
+    s += `<text x="${cx}" y="${H - B + 16}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(se.r)}</text><text x="${cx}" y="${H - B + 30}" text-anchor="middle" font-size="11" fill="${COR.muted}">n = ${v.length}</text>`;
+  });
+  return s + "</svg>";
+}
+function svgBolhas(pares, xRot, yRot) {
+  const W = 520, H = 260, L = 40, B = 40, T = 10, plotW = W - L - 14, plotH = H - T - B, x = v => L + plotW * (v - 0.5) / 5, y = v => T + plotH * (5.5 - v) / 5;
+  const cont = new Map(); pares.forEach(([a, b]) => { const k = a + "|" + (Math.round(b * 100) / 100); cont.set(k, (cont.get(k) || 0) + 1); });
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  [1, 2, 3, 4, 5].forEach(v => s += `<line x1="${L}" x2="${W - 14}" y1="${y(v)}" y2="${y(v)}" stroke="${COR.grid}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text><text x="${x(v)}" y="${H - B + 16}" text-anchor="middle" font-size="11" fill="${COR.muted}">${v}</text>`);
+  cont.forEach((c, k) => { const [a, b] = k.split("|").map(Number); s += `<circle cx="${x(a)}" cy="${y(b)}" r="${4 + 4 * Math.sqrt(c)}" fill="${COR.azul}" fill-opacity=".6" stroke="#fff" stroke-width="1.5" data-tip="${esc(xRot + ": " + a + " · " + yRot + ": " + fmt(b) + " · " + c + " respondente(s)")}"/>`; });
+  s += `<text x="${L + plotW / 2}" y="${H - 6}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(xRot)}</text><text transform="translate(12 ${T + plotH / 2}) rotate(-90)" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(yRot)}</text>`;
+  return s + "</svg>";
+}
+function svgEmpilhada(tab, linhasT, colsT) {
+  const W = 520, H = 220, L = 40, B = 34, T = 10, plotH = H - T - B, bw = 120, cores = [COR.laranja, COR.azul];
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  [0, 50, 100].forEach(v => { const yy = T + plotH * (1 - v / 100); s += `<line x1="${L}" x2="${W - 140}" y1="${yy}" y2="${yy}" stroke="${COR.grid}"/><text x="${L - 6}" y="${yy + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}%</text>`; });
+  colsT.forEach((c, j) => {
+    const tot = tab[0][j] + tab[1][j], cx = L + 30 + j * (bw + 40); let acc = 0;
+    linhasT.forEach((l, i) => { const p = pct(tab[i][j], tot), h = plotH * p / 100, yy = T + plotH * (1 - (acc + p) / 100); s += `<rect x="${cx}" y="${yy}" width="${bw}" height="${Math.max(h - 1.5, 0)}" fill="${cores[i]}" data-tip="${esc(c + " · " + l + ": " + fmt(p, 0) + "% (" + tab[i][j] + " de " + tot + ")")}"/>`; if (p >= 8) s += `<text x="${cx + bw / 2}" y="${yy + h / 2 + 4}" text-anchor="middle" font-size="12" fill="#fff" pointer-events="none">${Math.round(p)}%</text>`; acc += p; });
+    s += `<text x="${cx + bw / 2}" y="${H - B + 16}" text-anchor="middle" font-size="12" fill="${COR.ink2}">${esc(c)} (n = ${tot})</text>`;
+  });
+  linhasT.forEach((l, i) => s += `<rect x="${W - 130}" y="${T + 10 + i * 20}" width="11" height="11" rx="2" fill="${cores[i]}"/><text x="${W - 114}" y="${T + 20 + i * 20}" font-size="12" fill="${COR.ink2}">${esc(l)}</text>`);
+  return s + "</svg>";
+}
+function svgDia(d) {
+  const dias = [], ini = Math.min(...d.map(r => r.envio)), fim = Math.max(...d.map(r => r.envio));
+  for (let t = Math.floor((ini - 3 * 3600e3) / 86400e3) * 86400e3 + 3 * 3600e3; t <= fim; t += 86400e3) dias.push(diaBR(t));
+  const grupos = [["Válida", COR.azul, r => r.valida], ["Descartada", COR.laranja, r => r.motivo && r.motivo !== "E0"], ["Pré-teste", COR.muted, r => r.motivo === "E0"]];
+  const cont = dias.map(dd => grupos.map(([, , f]) => d.filter(r => diaBR(r.envio) === dd && f(r)).length));
+  const max = Math.max(...cont.map(c => S.soma(c)), 1), W = 760, H = 210, L = 30, B = 30, T = 8, plotH = H - T - B, bw = (W - L - 10) / dias.length;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">`;
+  [0, Math.ceil(max / 2), max].forEach(v => { const yy = T + plotH * (1 - v / max); s += `<line x1="${L}" x2="${W - 10}" y1="${yy}" y2="${yy}" stroke="${COR.grid}"/><text x="${L - 6}" y="${yy + 4}" text-anchor="end" font-size="11" fill="${COR.muted}">${v}</text>`; });
+  dias.forEach((dd, i) => {
+    let acc = 0; const x = L + i * bw + bw * 0.15;
+    grupos.forEach(([g, cor], j) => { const c = cont[i][j]; if (!c) return; const h = plotH * c / max, yy = T + plotH * (1 - (acc + c) / max); s += `<rect x="${x}" y="${yy}" width="${bw * 0.7}" height="${Math.max(h - 1.5, 0.5)}" fill="${cor}" data-tip="${esc(dd + ": " + c + " " + g.toLowerCase() + "(s)")}"/>`; acc += c; });
+    if (dias.length <= 20 || i % 2 === 0) s += `<text x="${x + bw * 0.35}" y="${H - 12}" text-anchor="middle" font-size="10" fill="${COR.muted}">${dd}</text>`;
+  });
+  return s + `</svg><div class="legenda">${grupos.map(([g, cor]) => `<span><i style="background:${cor}"></i>${g}</span>`).join("")}</div>`;
+}
+function svgHeat(m, nomes) {
+  const n = nomes.length, c = 52, L = 56, W = L + n * c + 4, H = 20 + n * c;
+  const cor = v => { const a = Math.min(1, Math.abs(v)); const [r, g, b] = v >= 0 ? [28, 92, 171] : [179, 48, 47]; return `rgba(${r},${g},${b},${0.08 + 0.85 * a})`; };
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W + 40}px" role="img">`;
+  nomes.forEach((nm, j) => s += `<text x="${L + j * c + c / 2}" y="13" text-anchor="middle" font-size="11" fill="${COR.ink2}">${nm}</text>`);
+  m.forEach((l, i) => { s += `<text x="${L - 6}" y="${20 + i * c + c / 2 + 4}" text-anchor="end" font-size="11" fill="${COR.ink2}">${nomes[i]}</text>`; l.forEach((v, j) => { s += `<rect x="${L + j * c + 1}" y="${20 + i * c + 1}" width="${c - 2}" height="${c - 2}" fill="${cor(v)}" data-tip="${nomes[i]} × ${nomes[j]}: ρ = ${fmt(v)}"/><text x="${L + j * c + c / 2}" y="${20 + i * c + c / 2 + 4}" text-anchor="middle" font-size="11" fill="${Math.abs(v) > 0.55 ? "#fff" : COR.ink}" pointer-events="none">${fmt(v)}</text>`; }); });
+  return s + "</svg>";
+}
+
+// ---------------- renderização ----------------
+const kpi = (r, v, n = "") => `<div class="kpi"><div class="r">${r}</div><div class="v">${v}</div><div class="n">${n}</div></div>`;
+function filtrar(d) {
+  return d.filter(r => r.valida && ["CUR", "SIT", "ATU", "MOM"].every(k => { const v = document.getElementById("f" + k).value; return !v || r[k + "_c"] === v; }));
+}
+function montarFiltros(d) {
+  const val = d.filter(r => r.valida);
+  for (const k of ["CUR", "SIT", "ATU", "MOM"]) {
+    const sel = document.getElementById("f" + k), atual = sel.value, rot = C.ROT[k], cont = {};
+    val.forEach(r => cont[r[k + "_c"]] = (cont[r[k + "_c"]] || 0) + 1);
+    const ocultos = Object.keys(rot).filter(c => cont[c] && cont[c] < MIN_SEG).map(c => rot[c]);
+    sel.innerHTML = `<option value="">Todos (${val.length})</option>` + Object.keys(rot).filter(c => (cont[c] || 0) >= MIN_SEG).map(c => `<option value="${c}">${esc(rot[c])} (${cont[c]})</option>`).join("");
+    sel.title = ocultos.length ? "Ocultos por terem n < 5: " + ocultos.join(", ") : "";
+    sel.value = [...sel.options].some(o => o.value === atual) ? atual : "";
+  }
+}
+function render() {
+  const d = BASE, v = filtrar(d), u = v.filter(r => r.USA_IA), filtrado = ["CUR", "SIT", "ATU", "MOM"].some(k => document.getElementById("f" + k).value);
+  const nVal = d.filter(r => r.valida).length;
+  const txtF = ["CUR", "SIT", "ATU", "MOM"].map(k => { const x = document.getElementById("f" + k); return x.value ? x.options[x.selectedIndex].text : null; }).filter(Boolean);
+  document.getElementById("filtrostxt").textContent = txtF.length ? "Filtro: " + txtF.join(" · ") : "Sem filtro (amostra completa)";
+  let al = "";
+  if (nVal < C.META) al += `<div class="aviso"><b>Coleta parcial:</b> ${nVal} respostas válidas, abaixo da meta de ${C.META}. Use “Carregar exportação do Forms” para recalcular com dados novos.</div>`;
+  if (filtrado) al += `<div class="info"><b>Filtro ativo</b> (${v.length} respondentes válidos): os testes são <b>exploratórios</b>. Os resultados confirmatórios são os da amostra completa.</div>`;
+  document.getElementById("alertas").innerHTML = al;
+  if (filtrado && v.length < MIN_SEG) { document.querySelectorAll("section").forEach(s => s.innerHTML = `<div class="aviso">O segmento tem ${v.length} respondente(s); por privacidade (n &lt; 5), os resultados não são exibidos.</div>`); return; }
+  const hs = S.testar(v, filtrado ? 1000 : 5000), conf = S.confiabilidade(u);
+  renderPerfil(d, v); renderLikert(v, u); renderQP(v, u, hs, conf); renderAlfa(u, conf); renderABR(v); renderMet(d, hs); renderDados(d);
+}
+function renderPerfil(d, v) {
+  const rec = d.length, pre = d.filter(r => r.motivo === "E0").length, des = d.filter(r => r.motivo && r.motivo !== "E0").length, nv = d.filter(r => r.valida).length;
+  let h = `<h2 class="tituloimp">Perfil e limpeza</h2><div class="kpis">${kpi("Respostas recebidas", rec, "IDs do Forms")}${kpi("Pré-teste (excluídas)", pre, "até 13/11/2026 23:59")}${kpi("Descartadas na limpeza", des, "regras E1 a E5")}${kpi("Válidas", nv, nv >= C.META ? "meta de 50 atingida" : `faltam ${C.META - nv} para a meta de 50`)}${kpi("Margem de erro", "±" + fmt(100 * S.margem(nv), 1) + " p.p.", "95%, p = 0,5 (nominal)")}</div>`;
+  h += `<h2>Descartes e motivo de cada um</h2><div class="card scroll"><table><tr><th>Regra</th><th>Motivo</th><th>Respostas</th><th>IDs no Forms</th></tr>` +
+    Object.entries(C.MOTIVOS).map(([k, m]) => { const ids = d.filter(r => r.motivo === k).map(r => r.id); return `<tr><td>${k}</td><td>${m}</td><td>${ids.length}</td><td>${ids.join(", ") || "—"}</td></tr>`; }).join("") +
+    `<tr><td colspan="2"><b>Válidas</b></td><td><b>${nv}</b></td><td>Meta: ${C.META}</td></tr></table><div class="cap">Ordem E0 → E5; cada resposta recebe o primeiro motivo que se aplica. E4 usa a mediana da coleta oficial (${fmt(d.mediana, 0)} s; limite de ${fmt(d.mediana / 3, 0)} s). Das ${nv} válidas, ${d.filter(r => r.valida && r.USA_IA).length} usam IA e entram em QP2 a QP4.</div></div>`;
+  h += `<h2>Respostas por dia</h2><div class="card">${svgDia(d)}<div class="cap">A taxa de resposta não é calculável (link aberto); relata-se o número de respostas por dia.</div></div>`;
+  h += `<h2>Perfil da amostra válida (n = ${v.length})</h2><div class="grid2">`;
+  for (const [k, t] of [["CUR", "Curso"], ["SIT", "Situação"], ["ATU", "Atuação na área"], ["MOM", "Começou a aprender"]]) {
+    const itens = Object.keys(C.ROT[k]).filter(c => c !== "NENHUM").map(c => { const n = v.filter(r => r[k + "_c"] === c).length; return { r: C.ROT[k][c], v: n, rv: `${n} (${fmt(pct(n, v.length), 0)}%)` }; });
+    h += `<div class="card"><h3 style="margin-top:0">${t}</h3>${svgBarrasH(itens, { largura: 520, rotLarg: 190 })}</div>`;
+  }
+  document.getElementById("s-perfil").innerHTML = h + `</div>`;
+}
+function renderLikert(v, u) {
+  const curto = { CON1: "entender conceitos", CON2: "entender por que funciona/falha", CON3: "erros e documentação", PRA1: "escrevo a maior parte do código", PRA2: "consigo escrever do zero sem IA", PRA3: "pratico sem nenhuma IA", PRA4: "escrevo menos desde a IA" };
+  let h = `<h2 class="tituloimp">Itens Likert</h2><p>Barras divergentes: discordância à esquerda, concordância à direita e o neutro dividido ao meio. Base: usuários de IA válidos (n = ${u.length}).</p>`;
+  h += `<div class="card"><h3 style="margin-top:0">Aprendizado de conceitos com IA (CON)</h3>${legendaDiv()}${svgDivergente(C.CON.map(k => ({ r: k + " · " + curto[k], vals: u.map(r => r[k + "_n"]).filter(isFinite) })))}</div>`;
+  h += `<div class="card"><h3 style="margin-top:0">Prática de escrita de código (PRA), respostas originais</h3>${legendaDiv()}${svgDivergente(C.PRA.map(k => ({ r: k + " · " + curto[k], vals: u.map(r => r[k + "_n"]).filter(isFinite) })))}<div class="cap">PRA4 aparece como respondido; na análise é invertido (6 − x), porque concordar significa praticar menos. Ninguém marcou “Não uso IA” nas grades.</div></div>`;
+  const rAVG = ["", "Piorou muito", "Piorou um pouco", "Não mudou", "Melhorou um pouco", "Melhorou muito"], rCONF = ["", "Nada", "Pouco", "Razoavelmente", "Confiante", "Muito"];
+  h += `<div class="card"><h3 style="margin-top:0">Efeito geral da IA no aprendizado (AVG, todos os válidos, n = ${v.length})</h3>${legendaDiv(rAVG)}${svgDivergente([{ r: "AVG", vals: v.map(r => r.AVG_n).filter(isFinite) }], rAVG, { rotLarg: 80 })}</div>`;
+  h += `<div class="card"><h3 style="margin-top:0">Confiança para escrever um programa do zero sem IA (CONF, n = ${v.length})</h3>${legendaDiv(rCONF)}${svgDivergente([{ r: "CONF", vals: v.map(r => r.CONF_n).filter(isFinite) }], rCONF, { rotLarg: 80 })}</div>`;
+  h += `<div class="card"><h3 style="margin-top:0">Tabela de frequências e texto completo dos itens</h3><div class="scroll"><table><tr><th>Item</th><th>Texto</th>${[1, 2, 3, 4, 5].map(k => `<th>${k}</th>`).join("")}<th>Mediana</th><th>IIQ</th></tr>` +
+    [...C.CON, ...C.PRA].map(k => { const a = u.map(r => r[k + "_n"]).filter(isFinite); return `<tr><td>${k}</td><td>${esc(C.ITENS[k])}</td>${[1, 2, 3, 4, 5].map(x => `<td>${a.filter(y => y === x).length}</td>`).join("")}<td>${fmt(S.mediana(a), 1)}</td><td>${fmt(S.quantil(a, .25), 1)}–${fmt(S.quantil(a, .75), 1)}</td></tr>`; }).join("") + `</table></div><div class="cap">1 = Discordo totalmente … 5 = Concordo totalmente.</div></div>`;
+  document.getElementById("s-likert").innerHTML = h;
+}
+function tabelaH(lista, extra = false) {
+  return `<div class="scroll"><table><tr><th>Hipótese</th><th>Teste</th><th>n</th><th>Estatística</th><th>p</th>${extra ? "" : "<th>p (Holm)</th>"}<th>Efeito [IC 95%]</th><th>Magnitude</th>${extra ? "<th>p (Holm), plano original</th><th>Decisão no plano original</th>" : "<th>Margem</th><th>Decisão</th>"}</tr>` +
+    lista.map(h => `<tr><td>${h.id}</td><td>${esc(h.teste)}</td><td>${h.n}</td><td>${esc(h.est || "—")}</td><td>${pv(h.p)}</td>${extra ? "" : `<td>${pv(h.pHolm)}</td>`}<td>${h.efNome} = ${fmt(h.ef)}${isFinite(h.ic?.[0]) ? ` [${fmt(h.ic[0])}; ${fmt(h.ic[1])}]` : ""}</td><td>${h.mag || "—"}</td>${extra ? `<td>${pv(h.pHolmOrig)}</td><td class="${h.pHolmOrig < C.ALFA ? "rej" : ""}">${h.pHolmOrig < C.ALFA ? "Rejeita H0" : "Não rejeita H0"}</td>` : `<td>±${fmt(h.me, 1)} p.p.</td><td class="${h.decisao === "Rejeita H0" ? "rej" : ""}">${h.decisao}</td>`}</tr>`).join("") + `</table></div>`;
+}
+function leitura(h) {
+  if (h.status === "descritiva") return "Só descritiva (grupo pequeno).";
+  const dir = !h.esperado || h.esperado === "bilateral" ? "" : (h.obs === h.esperado || (h.esperado.startsWith("menor") && h.obs.startsWith("menor"))) ? " Direção igual à esperada." : " Direção oposta à esperada.";
+  return h.pHolm != null && h.pHolm < C.ALFA ? `<b>Significativa após Holm</b>: efeito ${h.mag}; ${h.obs}.${dir}` : `Sem evidência após Holm: efeito ${h.mag}; ${h.obs}.${dir}`;
+}
+const itensH = lista => `<ul>${lista.map(h => `<li><b>${h.id}</b> — ${esc(h.desc)}. Esperado: <i>${esc(h.esperado)}</i>. ${leitura(h)}${h.regra ? ` <span class="cap">${esc(h.regra)}</span>` : ""}</li>`).join("")}</ul>`;
+function renderQP(v, u, hs, conf) {
+  const cf = hs.filter(h => h.familia === "confirmatória"), qp = q => cf.filter(h => h.qp === q), sep = hs.separar;
+  let h = `<h2 class="tituloimp">Questões de pesquisa</h2><p>α = 0,05 bilateral · <b>correção de Holm</b> sobre ${hs.nTestes} testes confirmatórios · tamanhos de efeito com IC 95% por bootstrap · QP2 a QP4 usam só quem usa IA (n = ${u.length}).</p>`;
+  if (sep) h += `<div class="info">O α de Cronbach de PRA foi ${fmt(conf.PRA.alfa)} (&lt; 0,60). Pela regra do protocolo (§5), <b>os itens de PRA são analisados separadamente</b>: cada hipótese que usava o escore M4 vira um teste por item (PRA1, PRA2, PRA3, PRA4ᴿ), todos na mesma família de Holm. O escore M4 aparece na análise de sensibilidade.</div>`;
+  // QP1
+  const n = v.length, freq = (campo, mapa, rot) => Object.entries(mapa).map(([lab, cod]) => { const k = v.filter(r => r[campo] === lab).length, ic = S.wilson(k, n); return { r: rot ? rot[cod] : lab, v: pct(k, n), ic: [100 * ic[0], 100 * ic[1]], rv: `${fmt(pct(k, n), 0)}% (n = ${k})`, tip: `${rot ? rot[cod] : lab}: ${k} de ${n} = ${fmt(pct(k, n), 1)}% · IC 95% ${fmt(100 * ic[0], 1)}–${fmt(100 * ic[1], 1)}% · margem ±${fmt(100 * S.margem(n, k / n), 1)} p.p.` }; });
+  const iaf = freq("IAF", C.IAF), iau = freq("IAU", C.IAU, C.ROT.IAU), mel = v.filter(r => r.AVG_n >= 4).length, icm = S.wilson(mel, n), alto = v.filter(r => r.IAF_n >= 4).length;
+  h += `<h2>QP1 · Como a IA é usada para aprender programação e como o seu efeito é avaliado?</h2><p class="cap">Descritiva, com IC de Wilson (95%) e margem de erro de cada proporção. Base: todos os válidos (n = ${n}).</p>`;
+  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">Frequência de uso ao estudar</h3>${svgBarrasH(iaf, { max: 100, sufixo: "%", ic: true, rotLarg: 120 })}</div><div class="card"><h3 style="margin-top:0">Principal finalidade de uso</h3>${svgBarrasH(iau, { max: 100, sufixo: "%", ic: true, rotLarg: 190 })}</div></div>`;
+  h += `<div class="kpis">${kpi("Usam IA sempre ou frequentemente", fmt(pct(alto, n), 1) + "%", `${alto} de ${n}`)}${kpi("Dizem que a IA melhorou o aprendizado", fmt(pct(mel, n), 1) + "%", `IC 95%: ${fmt(100 * icm[0], 1)}–${fmt(100 * icm[1], 1)}%`)}${kpi("Margem de erro dessa proporção", "±" + fmt(100 * S.margem(n, mel / n), 1) + " p.p.", "")}${kpi("Conceitos (M3), mediana", fmt(S.mediana(u.map(r => r.M3).filter(isFinite))), "escala de 1 a 5")}</div>`;
+  // QP2
+  h += `<h2>QP2 (central) · A IA favorece o aprendizado de conceitos em detrimento da prática de escrita?</h2><div class="card">${tabelaH(qp("QP2"))}${itensH(qp("QP2"))}</div>`;
+  const pra = sep ? Object.entries(S.PRA_ITENS) : [["M4", "M4"]];
+  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H2a · Conceitos × prática de escrita</h3>${svgCaixas([{ r: "Conceitos (M3)", vals: u.map(r => r.M3).filter(isFinite) }, ...pra.map(([r, c]) => ({ r, vals: u.map(x => x[c]).filter(isFinite), cor: COR.laranja }))])}<div class="cap">CON e PRA são itens diferentes: H2a indica um padrão relativo, não uma diferença na mesma régua.</div></div>`;
+  h += `<div class="card"><h3 style="margin-top:0">H2b · Frequência de uso × conceitos</h3>${svgBolhas(u.filter(r => isFinite(r.IAF_n) && isFinite(r.M3)).map(r => [r.IAF_n, r.M3]), "Frequência de uso (1 = nunca … 5 = sempre)", "Conceitos (M3)")}</div></div>`;
+  // QP3
+  const v3 = sep ? "PRA2_n" : "M4", n3 = sep ? "PRA2 (consigo escrever do zero)" : "Prática (M4)";
+  h += `<h2>QP3 · A finalidade de uso e a prática de escrita se associam à confiança para programar sem IA?</h2><div class="card">${tabelaH(qp("QP3"))}${itensH(qp("QP3"))}</div>`;
+  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H3b · ${n3} × confiança sem IA</h3>${svgBolhas(u.filter(r => isFinite(r[v3]) && isFinite(r.CONF_n)).map(r => [r[v3], r.CONF_n]), n3, "Confiança sem IA (CONF)")}</div>`;
+  h += `<div class="card"><h3 style="margin-top:0">H3a · ${n3} por finalidade</h3>${svgCaixas([{ r: "Código pronto", vals: u.filter(r => r.IAU_c === "CODIGO").map(r => r[v3]).filter(isFinite) }, { r: "Demais finalidades", vals: u.filter(r => r.IAU_c !== "CODIGO").map(r => r[v3]).filter(isFinite), cor: COR.laranja }])}</div></div>`;
+  // QP4
+  h += `<h2>QP4 · Quem começou a aprender depois da popularização da IA pratica menos a escrita?</h2><div class="card">${tabelaH(qp("QP4"))}${itensH(qp("QP4"))}</div>`;
+  const h4c = hs.find(x => x.id === "H4c");
+  h += `<div class="grid2"><div class="card"><h3 style="margin-top:0">H4a · ${n3}: antes × depois da IA</h3>${svgCaixas([{ r: "Antes (até 2022)", vals: u.filter(r => r.MOM_c === "ANTES").map(r => r[v3]).filter(isFinite) }, { r: "Depois (2023+)", vals: u.filter(r => r.MOM_c === "DEPOIS").map(r => r[v3]).filter(isFinite), cor: COR.laranja }])}</div>`;
+  h += `<div class="card"><h3 style="margin-top:0">H4c · Finalidade por situação</h3>${h4c && h4c.tabela ? svgEmpilhada(h4c.tabela, ["Código pronto", "Demais finalidades"], ["Estudante", "Formado"]) : "—"}</div></div>`;
+  // sensibilidade
+  const sens = hs.filter(x => x.pHolmOrig != null);
+  h += `<h2>Análise de sensibilidade · plano original (M4 como escore único)</h2><div class="card"><p class="cap">Holm aplicado à família original do protocolo, com M4 como escore. Mostra quanto a decisão depende da separação dos itens; <b>não substitui</b> a análise confirmatória acima.</p>${tabelaH(sens, true)}</div>`;
+  document.getElementById("s-qp").innerHTML = h;
+}
+function renderAlfa(u, conf) {
+  let h = `<h2 class="tituloimp">Confiabilidade</h2><p>α de Cronbach dos construtos com vários itens, nos usuários de IA válidos (n = ${u.length}). Critério do protocolo: ≥ 0,70 aceitável; 0,60 a 0,70 questionável; &lt; 0,60, itens analisados separadamente.</p><div class="grid2">`;
+  for (const [k, t] of [["CON", "Aprendizado de conceitos com IA (CON1–CON3)"], ["PRA", "Prática de escrita (PRA1–PRA3, PRA4ᴿ)"]]) {
+    const r = conf[k];
+    h += `<div class="card"><h3 style="margin-top:0">${t}</h3><div class="kpis">${kpi("α de Cronbach", fmt(r.alfa), `IC 95% (bootstrap): ${fmt(r.ic[0])} a ${fmt(r.ic[1])}`)}</div><p>k = ${r.k} itens · n = ${r.n} · Avaliação: <b>${r.aval}</b></p><table><tr><th>Item removido</th><th>α sem o item</th></tr>${r.sem.map(([i, a]) => `<tr><td>${i}</td><td>${fmt(a)}</td></tr>`).join("")}</table></div>`;
+  }
+  const cols = ["CON1_n", "CON2_n", "CON3_n", "PRA1_n", "PRA2_n", "PRA3_n", "PRA4_inv"], nomes = ["CON1", "CON2", "CON3", "PRA1", "PRA2", "PRA3", "PRA4ᴿ"];
+  const L = u.filter(r => cols.every(c => isFinite(r[c]))), m = cols.map(a => cols.map(b => S.spearman(L.map(r => r[a]), L.map(r => r[b])).rho));
+  h += `</div><div class="card"><h3 style="margin-top:0">Correlação de Spearman entre os itens</h3>${svgHeat(m, nomes)}<p><b>Leitura.</b> CON tem α questionável, em parte por efeito teto (quase todos concordam). Em PRA, PRA2 (“consigo escrever do zero”) quase não se correlaciona com os demais itens: mede mais <b>capacidade</b> do que <b>hábito</b> de praticar e se aproxima da confiança (CONF). Por isso PRA não forma um escore único confiável.</p></div>`;
+  document.getElementById("s-alfa").innerHTML = h;
+}
+function renderABR(v) {
+  let temas = {}; try { temas = JSON.parse(document.getElementById("temas").textContent); } catch (e) { }
+  const abr = v.filter(r => r.ABR.trim());
+  const cont = {}; abr.forEach(r => { const t = temas[r.id]; if (t) cont[t] = (cont[t] || 0) + 1; });
+  let h = `<h2 class="tituloimp">Resposta aberta</h2><p><b>${abr.length}</b> respostas abertas entre os válidos (${fmt(pct(abr.length, v.length), 0)}%). Análise temática indutiva (Braun e Clarke, 2006).</p>`;
+  h += `<div class="aviso"><b>Temas provisórios.</b> A dupla codificação com κ de Cohen, prevista no protocolo, está pendente; os temas abaixo são uma pré-codificação a validar pelos codificadores.</div>`;
+  const itens = Object.entries(cont).sort((a, b) => b[1] - a[1]).map(([t, c]) => ({ r: t, v: c, rv: String(c) }));
+  if (itens.length) h += `<div class="card">${svgBarrasH(itens, { rotLarg: 320, largura: 760 })}</div>`;
+  h += `<div class="card scroll"><table><tr><th>ID</th><th>Resposta</th><th>Tema provisório</th></tr>${abr.map(r => `<tr><td>${r.id}</td><td>${esc(r.ABR)}</td><td>${esc(temas[r.id] || "—")}</td></tr>`).join("")}</table></div>`;
+  document.getElementById("s-abr").innerHTML = h;
+}
+function renderMet(d, hs) {
+  const nv = d.filter(r => r.valida).length, of = d.filter(r => r.motivo !== "E0");
+  const desvios = [
+    ["D1", "§4 Pré-teste", "4 participantes; respostas apagadas antes da coleta.", `As ${d.filter(r => r.motivo === "E0").length} respostas enviadas até 13/11 23:59 (prazo da Parte 1) foram tratadas como pré-teste: 3 formados e 2 estudantes do 5º período em diante, todos de ES e atuando na área (mediana de 3 min 9 s). Não foram apagadas: ficam no arquivo bruto e saem pela regra E0.`, "Critério definido antes de abrir os dados; manter os registros preserva a trilha de auditoria. Nenhum problema de clareza foi apontado; o instrumento não mudou."],
+    ["D2", "§8 Divulgação", "Coleta de 18/11 a 04/12, com lembretes em 25/11 e 02/12.", `2 respostas chegaram em 14/11 (antes do início planejado) e as demais concentraram-se em 25 e 26/11, após a divulgação ampla.`, "A coleta ficou concentrada em cerca de 26 horas, o que reforça o risco de rede homogênea (bola de neve)."],
+    ["D3", "§2 Amostra e §8 Período", "Exportação final em 04/12, com meta de 50 válidas.", `Análise com corte na exportação mais recente (${nv} válidas). O formulário segue aberto até 04/12; este painel recalcula ao carregar a exportação nova.`, nv < 50 ? "Abaixo da meta: aplica-se a contingência do protocolo (extensão até 11/12) se necessário." : "Meta atingida."],
+    ["D4", "§5 Confiabilidade", "α de PRA ≥ 0,70; abaixo de 0,60, itens separados.", `α de PRA abaixo de 0,60: PRA1, PRA2, PRA3 e PRA4ᴿ analisados separadamente; cada hipótese que usava M4 virou um teste por item, todos na mesma família de Holm (${hs.nTestes} testes, contra 7 no plano original).`, "A regra está no protocolo; a forma de expandir a família de Holm foi decidida após calcular o α, pela opção mais conservadora. A sensibilidade com M4 é mostrada."],
+    ["D5", "§5 Análise condicional", "Regras (i), (ii) e (iii) previstas.", "(i) “Gerar exemplos” com n < 5: H3a compara código pronto × demais. (ii) H4c com SIT e IAU em duas categorias (Fisher). (iii) “Não atua” com n < 10: H4b só descritiva.", "Aplicação de regras pré-registradas, registrada por transparência."],
+    ["D6", "§2 Metas por segmento", "8 respostas por curso e 10 de quem atua.", "Metas atingidas em ES e SI; não atingidas em CC, ADS e outros cursos.", "Comparações por curso ficam só descritivas; filtros ocultam segmentos com n < 5."],
+    ["D7", "§5 Respostas abertas", "Dupla codificação de 20%, com κ ≥ 0,60.", "Pendente; a aba Resposta aberta mostra temas provisórios.", "Os temas devem ser lidos como provisórios até a dupla codificação."],
+    ["D8", "§5 Limpeza (E4)", "Duração menor que 1/3 da mediana.", `Mediana calculada sobre a coleta oficial (${fmt(d.mediana, 0)} s; limite de ${fmt(d.mediana / 3, 0)} s).`, "O protocolo não dizia sobre qual conjunto; não muda o resultado."],
+  ];
+  let h = `<h2 class="tituloimp">Metodologia e desvios</h2><h2>Metodologia</h2><div class="card"><ul>
+  <li><b>Desenho:</b> survey transversal, descritivo e correlacional, por questionário on-line anônimo (Microsoft Forms), sem ramificações; protocolo registrado em 13/11/2026.</li>
+  <li><b>Amostragem:</b> não probabilística, por conveniência com bola de neve; margem de erro <b>nominal</b> de ±${fmt(100 * S.margem(nv), 1)} p.p. para n = ${nv}.</li>
+  <li><b>Fonte dos dados:</b> ${esc(FONTE)}. Este painel lê a exportação bruta e recalcula tudo ao abrir ou ao carregar uma exportação nova.</li>
+  <li><b>Coleta oficial:</b> ${of.length} respostas, de ${of.length ? dataBR(Math.min(...of.map(r => r.envio))).slice(0, 10) : "—"} a ${of.length ? dataBR(Math.max(...of.map(r => r.envio))).slice(0, 10) : "—"} (horário de Brasília).</li>
+  <li><b>Limpeza:</b> E0 pré-teste → E1 não cursou tecnologia → E2 falhou em ATN1 → E3 PRA todo em 1 ou em 5 → E4 duração &lt; 1/3 da mediana → E5 duplicata.</li>
+  <li><b>Codificação:</b> Likert de 1 a 5, PRA4 invertido (6 − x), sem imputação; M3 = média de CON; M4 = média de PRA1–PRA3 e PRA4ᴿ; usuário de IA = frequência ≠ “nunca” e finalidade ≠ “não uso IA”.</li>
+  <li><b>Testes:</b> Wilcoxon pareado, Spearman, Mann-Whitney ou Kruskal-Wallis, Fisher ou χ²; α = 0,05 bilateral com correção de Holm; efeitos r, ρ, δ de Cliff, ε² e V de Cramér, com IC 95% por bootstrap (5.000 reamostragens, semente fixa).</li>
+  <li><b>Ética:</b> TCLE com aceite obrigatório; o formulário não coleta nome, e-mail nem IP (Resolução CNS 510/2016; LGPD).</li>
+  <li><b>Causalidade:</b> desenho transversal; os resultados são associações, não efeitos causais da IA.</li></ul></div>`;
+  h += `<h2>Desvios em relação ao protocolo</h2><div class="card scroll"><table><tr><th>#</th><th>Seção</th><th>Planejado</th><th>Feito</th><th>Justificativa e impacto</th></tr>${desvios.map(r => `<tr>${r.map((c, i) => `<td${i === 0 ? ' style="font-weight:600"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  h += `<h2>Ameaças à validade e limitações</h2><div class="card"><ul>
+  <li><b>Conclusão:</b> com n ≈ ${d.filter(r => r.valida && r.USA_IA).length}, só efeitos grandes são detectáveis; a família de ${hs.nTestes} testes torna a correção mais rígida; resultados não significativos não indicam ausência de efeito; α de PRA insuficiente.</li>
+  <li><b>Construto:</b> PRA mistura capacidade (PRA2) e hábito (PRA1, PRA3, PRA4); efeito teto em CON; PRA2 e CONF têm conteúdo próximo; desejabilidade social; só autorrelato.</li>
+  <li><b>Interna:</b> desenho transversal (sem causalidade); “começou depois de 2023” se confunde com menos experiência; viés de memória.</li>
+  <li><b>Externa:</b> amostra não probabilística, concentrada em ES e SI, em quem já atua e na rede do grupo; poucos iniciantes e poucos não usuários de IA; resultados válidos para o 2º semestre de 2026.</li></ul></div>`;
+  document.getElementById("s-met").innerHTML = h;
+}
+let TEXTO_ORIGINAL = false;
+function renderDados(d) {
+  const cod = r => ({ ACE: r.ACE ? "sim" : "—", CUR: r.CUR_c || "?", SIT: r.SIT_c || "?", ATU: r.ATU_c, MOM: r.MOM_c, IAF: r.IAF_n, IAU: r.IAU_c || "?",
+    CON1: r.CON1_n, CON2: r.CON2_n, CON3: r.CON3_n, PRA1: r.PRA1_n, PRA2: r.PRA2_n, PRA3: r.PRA3_n, PRA4: r.PRA4_n, ATN1: r.ATN1_n,
+    CONF: r.CONF_n, AVG: r.AVG_n, ABR: r.ABR.trim() ? "sim" : "—" });
+  const cols = ["id", "envio", "dur", "motivo", ...C.CODIGOS];
+  const cel = (r, c) => c === "envio" ? dataBR(r.envio) : c === "dur" ? fmt(r.dur, 0) : (c === "id" || c === "motivo") ? esc(r[c]) : esc(TEXTO_ORIGINAL ? r[c] : (cod(r)[c] ?? "—"));
+  const nota = TEXTO_ORIGINAL ? "Exibindo o texto original de cada resposta."
+    : "Exibindo os valores codificados (Likert e frequência de 1 a 5; categorias pelo código do codebook). O texto das respostas abertas está na aba Resposta aberta.";
+  document.getElementById("s-dados").innerHTML = `<h2 class="tituloimp">Dados brutos</h2>
+  <p>Exportação bruta como lida (horário de Brasília), com a duração e o motivo de descarte calculados. As respostas são anônimas: o formulário não coleta nome, e-mail nem IP. ${nota}</p>
+  <p class="soTela"><button id="btnTexto">${TEXTO_ORIGINAL ? "Mostrar valores codificados" : "Mostrar texto original"}</button></p>
+  <div class="card scroll"><table class="compacta"><tr>${cols.map(c => `<th>${c === "dur" ? "duração (s)" : c}</th>`).join("")}</tr>${d.map(r => `<tr>${cols.map(c => `<td>${cel(r, c)}</td>`).join("")}</tr>`).join("")}</table>
+  <div class="cap">Códigos: CUR = CC, ES, ADS, SI, OUTRO, NENHUM · SIT = EST14 (1º–4º), EST5 (5º+), FORM3 (formado até 3 anos), FORM3MAIS · ATU = SIM/NAO · MOM = ANTES/DEPOIS · IAU = CODIGO, ENTENDER, REVISAR, PRATICAR, NAOUSO.</div></div>`;
+  document.getElementById("btnTexto").onclick = () => { TEXTO_ORIGINAL = !TEXTO_ORIGINAL; renderDados(d); };
+}
+
+// ---------------- leitura da planilha .xlsx do Forms (sem bibliotecas) ----------------
+async function lerXlsx(buf) {
+  const dv = new DataView(buf), u8 = new Uint8Array(buf), td = new TextDecoder();
+  let eocd = -1; for (let i = u8.length - 22; i >= Math.max(0, u8.length - 70000); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+  if (eocd < 0) throw new Error("Arquivo .xlsx inválido.");
+  const total = dv.getUint16(eocd + 10, true); let p = dv.getUint32(eocd + 16, true); const arqs = {};
+  for (let i = 0; i < total; i++) { const met = dv.getUint16(p + 10, true), tam = dv.getUint32(p + 20, true), nl = dv.getUint16(p + 28, true), el = dv.getUint16(p + 30, true), cl = dv.getUint16(p + 32, true), off = dv.getUint32(p + 42, true); arqs[td.decode(u8.subarray(p + 46, p + 46 + nl))] = { met, tam, off }; p += 46 + nl + el + cl; }
+  async function ler(nome) { const f = arqs[nome]; if (!f) return null; const ini = f.off + 30 + dv.getUint16(f.off + 26, true) + dv.getUint16(f.off + 28, true), dados = u8.subarray(ini, ini + f.tam); if (f.met === 0) return td.decode(dados); const out = await new Response(new Blob([dados]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer(); return td.decode(out); }
+  const xml = s => new DOMParser().parseFromString(s, "application/xml");
+  const ss = await ler("xl/sharedStrings.xml"), compart = ss ? [...xml(ss).getElementsByTagName("si")].map(si => [...si.getElementsByTagName("t")].map(t => t.textContent).join("")) : [];
+  const planilha = Object.keys(arqs).filter(n => /^xl\/worksheets\/sheet\d+\.xml$/.test(n)).sort()[0];
+  const doc = xml(await ler(planilha)), linhas = [];
+  const colIdx = ref => { const m = ref.match(/^[A-Z]+/)[0]; let n = 0; for (const ch of m) n = n * 26 + ch.charCodeAt(0) - 64; return n - 1; };
+  for (const row of doc.getElementsByTagName("row")) { const l = []; for (const c of row.getElementsByTagName("c")) { const t = c.getAttribute("t"), vEl = c.getElementsByTagName("v")[0]; let val = ""; if (t === "s") val = compart[+vEl.textContent]; else if (t === "inlineStr") val = [...c.getElementsByTagName("t")].map(x => x.textContent).join(""); else if (vEl) val = vEl.textContent; l[colIdx(c.getAttribute("r"))] = val; } linhas.push([...l].map(x => x ?? "")); }
+  return linhas;
+}
+async function carregarArquivo(f) {
+  try {
+    const reg = f.name.toLowerCase().endsWith(".xlsx") ? S.lerTabela(await lerXlsx(await f.arrayBuffer())) : S.lerTexto(await f.text());
+    iniciar(reg, `${f.name} (carregado em ${dataBR(Date.now())})`);
+  } catch (e) { alert("Não foi possível ler a exportação: " + e.message); }
+}
+
+// ---------------- início ----------------
+function iniciar(reg, fonte) {
+  FONTE = fonte; BASE = S.limpar(S.codificar(reg));
+  document.getElementById("fonte").textContent = "Dados: " + fonte + ` · ${BASE.length} respostas · última em ${dataBR(Math.max(...BASE.map(r => r.envio)))}`;
+  montarFiltros(BASE); render();
+}
+(function () {
+  const abas = document.getElementById("abas");
+  document.querySelectorAll("section").forEach((s, i) => { const b = document.createElement("button"); b.textContent = s.dataset.nome; b.onclick = () => { document.querySelectorAll("section").forEach(x => x.classList.remove("ativo")); abas.querySelectorAll("button").forEach(x => x.classList.remove("ativo")); s.classList.add("ativo"); b.classList.add("ativo"); }; abas.appendChild(b); if (!i) { s.classList.add("ativo"); b.classList.add("ativo"); } });
+  ["CUR", "SIT", "ATU", "MOM"].forEach(k => document.getElementById("f" + k).addEventListener("change", render));
+  const inp = document.getElementById("arquivo");
+  document.getElementById("btnCarregar").onclick = () => inp.click();
+  inp.onchange = () => inp.files[0] && carregarArquivo(inp.files[0]);
+  const el = document.getElementById("dados");
+  iniciar(S.lerTexto(el.textContent.trim()), el.dataset.fonte);
+})();
+</script>
+</body>
+</html>

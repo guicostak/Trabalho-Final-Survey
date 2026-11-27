@@ -8,6 +8,9 @@ margem de erro.
 
 Uso em linha de comando (gera resultados/resultados.json e imprime o resumo):
     .venv/bin/python analise/survey.py
+
+Para gerar o dashboard da entrega com os dados brutos mais recentes embutidos:
+    .venv/bin/python analise/survey.py --dashboard ~/Downloads/Dashboard-Survey.html
 """
 from __future__ import annotations
 
@@ -571,10 +574,37 @@ def exportar_anonimizado() -> None:
     pub.to_csv(ARQ_ANONIMIZADO, index=False, encoding="utf-8")
 
 
+def embutir_no_dashboard(saida: Path) -> None:
+    """Grava uma cópia de dashboard/dashboard.html com a exportação bruta mais recente embutida."""
+    import csv
+    import io
+    import re
+    bruto, origem = ler_bruto()
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(["id", "inicio_utc", "envio_utc", *CODIGOS])
+    for _, r in bruto.iterrows():
+        utc = lambda t: t.tz_convert("UTC").strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z"
+        w.writerow([r["id"], utc(r["inicio"]), utc(r["envio"]), *[r[c] for c in CODIGOS]])
+    txt = buf.getvalue().strip()
+    html = (RAIZ / "dashboard" / "dashboard.html").read_text(encoding="utf-8")
+    fonte = f"exportação bruta do Microsoft Forms ({Path(origem).name})"
+    html, n = re.subn(r'(<script id="dados" type="text/plain" data-fonte=")[^"]*(">\n).*?(</script>)',
+                      lambda m: m.group(1) + fonte + m.group(2) + txt + m.group(3), html, count=1, flags=re.S)
+    if n != 1:
+        raise SystemExit("Bloco de dados não encontrado em dashboard/dashboard.html")
+    Path(saida).write_text(html, encoding="utf-8")
+
+
 if __name__ == "__main__":
     if "--anonimizar" in sys.argv:
         exportar_anonimizado()
         print("Conjunto anonimizado gravado em", ARQ_ANONIMIZADO.relative_to(RAIZ))
+    if "--dashboard" in sys.argv:
+        destino = Path(sys.argv[sys.argv.index("--dashboard") + 1]).expanduser()
+        embutir_no_dashboard(destino)
+        print("Dashboard com os dados brutos gravado em", destino)
+        sys.exit(0)
     r = gerar_json()
     print(f"Origem: {r['origem']}")
     print(f"Recebidas: {r['recebidas']} | pré-teste: {r['preteste']} | coleta oficial: {r['coleta_oficial']}")
