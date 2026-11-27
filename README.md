@@ -41,6 +41,17 @@ Trabalho-Final-Survey/
 ├── protocolo/
 │   ├── protocolo.pdf              ← ENTREGÁVEL DA PARTE 1 (6 páginas)
 │   └── protocolo.tex              ← fonte LaTeX do PDF
+├── analise/
+│   ├── survey.py                  ← limpeza (E0–E5), testes, Holm, α de Cronbach
+│   └── abr_codificacao.csv        ← codificação da pergunta aberta (κ)
+├── dashboard/
+│   └── app.py                     ← dashboard Streamlit (Parte 2)
+├── dados/
+│   ├── brutos/                    ← exportação bruta do Forms (fora do Git)
+│   └── respostas_anonimizadas.csv ← conjunto público
+├── resultados/
+│   ├── RESULTADOS.md              ← resultados escritos (Parte 2)
+│   └── resultados.json            ← números gerados pelo script
 ├── docs/
 │   ├── 01-guia-padroes-survey.md  ← como surveys científicos são planejados e escritos (pesquisa)
 │   └── 02-lista-de-requisitos.md  ← requisitos (enunciado + padrões) × onde são atendidos
@@ -52,6 +63,32 @@ Trabalho-Final-Survey/
 └── pre-teste/
     └── roteiro-pre-teste.md       ← procedimento e formulário de registro do pré-teste
 ```
+
+---
+
+## Parte 2: resultados e dashboard
+
+**Status (corte de 27/11/2026):** 56 respostas recebidas, 5 do pré-teste, 3 descartadas e **48 válidas, abaixo da meta de 50**. A coleta segue aberta até 04/12. O resumo escrito está em [`resultados/RESULTADOS.md`](resultados/RESULTADOS.md), e os desvios em [`DESVIOS.md`](DESVIOS.md).
+
+Para rodar o dashboard, que lê os dados brutos e recalcula tudo:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+```
+
+```bash
+.venv/bin/streamlit run dashboard/app.py
+```
+
+Para regenerar os números (`resultados/resultados.json`) e o conjunto anonimizado:
+
+```bash
+.venv/bin/python analise/survey.py --anonimizar
+```
+
+- **Dados brutos:** coloque a exportação do Forms (`.xlsx` do botão "Abrir no Excel" ou o `.csv` da coleta) em `dados/brutos/`. Essa pasta **não** vai para o GitHub (protocolo, §6). O script usa o arquivo mais recente.
+- **Sem dados brutos** (por exemplo, no repositório público), o dashboard usa `dados/respostas_anonimizadas.csv`, que dá exatamente os mesmos resultados.
+- **Resposta aberta:** dois integrantes preenchem `codificador_1` e `codificador_2` em `analise/abr_codificacao.csv`, e o dashboard calcula o κ de Cohen.
 
 ## Como recompilar o PDF
 

@@ -1,0 +1,1611 @@
+{
+  "origem": "dados/brutos/respostas_forms_2026-11-27.csv",
+  "gerado_em": "2026-11-27T09:05:38-03:00",
+  "recebidas": 56,
+  "preteste": 5,
+  "coleta_oficial": 51,
+  "descartes": {
+    "E0": 5,
+    "E1": 1,
+    "E2": 1,
+    "E3": 1,
+    "E4": 0,
+    "E5": 0
+  },
+  "ids_descartados": {
+    "E0": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "E1": [
+      39
+    ],
+    "E2": [
+      45
+    ],
+    "E3": [
+      47
+    ],
+    "E4": [],
+    "E5": []
+  },
+  "validas": 48,
+  "usuarios_ia": 46,
+  "meta": 50,
+  "mediana_duracao_s": 183.482,
+  "primeira_oficial": "2026-11-14T13:22:10.161511300-03:00",
+  "ultima_oficial": "2026-11-26T22:49:54.739803500-03:00",
+  "descritivas": {
+    "n": 48,
+    "margem_erro_pp": 14.1,
+    "IAF": [
+      {
+        "categoria": "Nunca",
+        "n": 1,
+        "pct": 2.1,
+        "ic95": [
+          0.4,
+          10.9
+        ],
+        "margem_pp": 4.0
+      },
+      {
+        "categoria": "Raramente",
+        "n": 0,
+        "pct": 0.0,
+        "ic95": [
+          0.0,
+          7.4
+        ],
+        "margem_pp": 0.0
+      },
+      {
+        "categoria": "Às vezes",
+        "n": 2,
+        "pct": 4.2,
+        "ic95": [
+          1.2,
+          14.0
+        ],
+        "margem_pp": 5.7
+      },
+      {
+        "categoria": "Frequentemente",
+        "n": 16,
+        "pct": 33.3,
+        "ic95": [
+          21.7,
+          47.5
+        ],
+        "margem_pp": 13.3
+      },
+      {
+        "categoria": "Sempre",
+        "n": 29,
+        "pct": 60.4,
+        "ic95": [
+          46.3,
+          73.0
+        ],
+        "margem_pp": 13.8
+      }
+    ],
+    "IAU": [
+      {
+        "categoria": "CODIGO",
+        "n": 8,
+        "pct": 16.7,
+        "ic95": [
+          8.7,
+          29.6
+        ],
+        "margem_pp": 10.5
+      },
+      {
+        "categoria": "ENTENDER",
+        "n": 24,
+        "pct": 50.0,
+        "ic95": [
+          36.4,
+          63.6
+        ],
+        "margem_pp": 14.1
+      },
+      {
+        "categoria": "REVISAR",
+        "n": 12,
+        "pct": 25.0,
+        "ic95": [
+          14.9,
+          38.8
+        ],
+        "margem_pp": 12.2
+      },
+      {
+        "categoria": "PRATICAR",
+        "n": 3,
+        "pct": 6.2,
+        "ic95": [
+          2.1,
+          16.8
+        ],
+        "margem_pp": 6.8
+      },
+      {
+        "categoria": "NAOUSO",
+        "n": 1,
+        "pct": 2.1,
+        "ic95": [
+          0.4,
+          10.9
+        ],
+        "margem_pp": 4.0
+      }
+    ],
+    "AVG": [
+      {
+        "categoria": "Piorou muito",
+        "n": 1,
+        "pct": 2.1,
+        "ic95": [
+          0.4,
+          10.9
+        ],
+        "margem_pp": 4.0
+      },
+      {
+        "categoria": "Piorou um pouco",
+        "n": 10,
+        "pct": 20.8,
+        "ic95": [
+          11.7,
+          34.3
+        ],
+        "margem_pp": 11.5
+      },
+      {
+        "categoria": "Não mudou",
+        "n": 4,
+        "pct": 8.3,
+        "ic95": [
+          3.3,
+          19.6
+        ],
+        "margem_pp": 7.8
+      },
+      {
+        "categoria": "Melhorou um pouco",
+        "n": 14,
+        "pct": 29.2,
+        "ic95": [
+          18.2,
+          43.2
+        ],
+        "margem_pp": 12.9
+      },
+      {
+        "categoria": "Melhorou muito",
+        "n": 19,
+        "pct": 39.6,
+        "ic95": [
+          27.0,
+          53.7
+        ],
+        "margem_pp": 13.8
+      },
+      {
+        "categoria": "Não uso IA",
+        "n": 0,
+        "pct": 0.0,
+        "ic95": [
+          0.0,
+          7.4
+        ],
+        "margem_pp": 0.0
+      }
+    ],
+    "CONF": [
+      {
+        "categoria": "Nada confiante",
+        "n": 4,
+        "pct": 8.3,
+        "ic95": [
+          3.3,
+          19.6
+        ],
+        "margem_pp": 7.8
+      },
+      {
+        "categoria": "Pouco confiante",
+        "n": 11,
+        "pct": 22.9,
+        "ic95": [
+          13.3,
+          36.5
+        ],
+        "margem_pp": 11.9
+      },
+      {
+        "categoria": "Razoavelmente confiante",
+        "n": 17,
+        "pct": 35.4,
+        "ic95": [
+          23.4,
+          49.6
+        ],
+        "margem_pp": 13.5
+      },
+      {
+        "categoria": "Confiante",
+        "n": 14,
+        "pct": 29.2,
+        "ic95": [
+          18.2,
+          43.2
+        ],
+        "margem_pp": 12.9
+      },
+      {
+        "categoria": "Muito confiante",
+        "n": 2,
+        "pct": 4.2,
+        "ic95": [
+          1.2,
+          14.0
+        ],
+        "margem_pp": 5.7
+      }
+    ],
+    "pct_melhorou": {
+      "n": 33,
+      "pct": 68.8,
+      "ic95": [
+        54.7,
+        80.1
+      ],
+      "margem_pp": 13.1
+    }
+  },
+  "confiabilidade": {
+    "CON": {
+      "alfa": 0.6266878474980144,
+      "ic95": [
+        0.41310003277203705,
+        0.8013987510892132
+      ],
+      "n": 46,
+      "k": 3,
+      "alfa_sem_item": {
+        "CON1": 0.42721088435374166,
+        "CON2": 0.6062500000000006,
+        "CON3": 0.5672609400324151
+      },
+      "avaliacao": "questionável (0,60–0,70)"
+    },
+    "PRA": {
+      "alfa": 0.3674250901404948,
+      "ic95": [
+        -0.14094324890086724,
+        0.6077302563259737
+      ],
+      "n": 46,
+      "k": 4,
+      "alfa_sem_item": {
+        "PRA1": 0.20378364652107683,
+        "PRA2": 0.610694698354662,
+        "PRA3": -0.00041899441340775834,
+        "PRA4ᴿ": 0.2654338549075391
+      },
+      "avaliacao": "insuficiente (< 0,60): itens analisados separadamente"
+    }
+  },
+  "hipoteses": [
+    {
+      "id": "H2a·PRA1",
+      "base": "H2a",
+      "qp": "QP2",
+      "descricao": "Conceitos (M3) difere da prática de escrita (PRA1)",
+      "direcao_esperada": "conceitos maior",
+      "teste": "Wilcoxon pareado",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "W = 8.5",
+      "p": 2.5966835403684892e-08,
+      "p_holm": 5.193367080736978e-07,
+      "p_holm_plano_original": null,
+      "efeito_nome": "r",
+      "efeito": 0.8589542859236803,
+      "efeito_ic": [
+        0.8086420602855046,
+        0.8815485862216682
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Rejeita H0",
+      "direcao_observada": "conceitos maior",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (conceitos maior). Direção igual à esperada.",
+      "grupos": {
+        "Conceitos (M3)": {
+          "n": 46,
+          "mediana": 4.666666666666667,
+          "q1": 4.0,
+          "q3": 5.0
+        },
+        "PRA1": {
+          "n": 46,
+          "mediana": 2.0,
+          "q1": 1.25,
+          "q3": 3.0
+        }
+      }
+    },
+    {
+      "id": "H2a·PRA2",
+      "base": "H2a",
+      "qp": "QP2",
+      "descricao": "Conceitos (M3) difere da prática de escrita (PRA2)",
+      "direcao_esperada": "conceitos maior",
+      "teste": "Wilcoxon pareado",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "W = 63.0",
+      "p": 1.2904983801236064e-05,
+      "p_holm": 0.0002451946922234852,
+      "p_holm_plano_original": null,
+      "efeito_nome": "r",
+      "efeito": 0.7170607099653848,
+      "efeito_ic": [
+        0.5344901089137102,
+        0.8342454782349406
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Rejeita H0",
+      "direcao_observada": "conceitos maior",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (conceitos maior). Direção igual à esperada.",
+      "grupos": {
+        "Conceitos (M3)": {
+          "n": 46,
+          "mediana": 4.666666666666667,
+          "q1": 4.0,
+          "q3": 5.0
+        },
+        "PRA2": {
+          "n": 46,
+          "mediana": 4.0,
+          "q1": 2.0,
+          "q3": 4.0
+        }
+      }
+    },
+    {
+      "id": "H2a·PRA3",
+      "base": "H2a",
+      "qp": "QP2",
+      "descricao": "Conceitos (M3) difere da prática de escrita (PRA3)",
+      "direcao_esperada": "conceitos maior",
+      "teste": "Wilcoxon pareado",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "W = 11.5",
+      "p": 2.2474934404449772e-08,
+      "p_holm": 4.719736224934452e-07,
+      "p_holm_plano_original": null,
+      "efeito_nome": "r",
+      "efeito": 0.8527389434656464,
+      "efeito_ic": [
+        0.7951328543393975,
+        0.8774095245209036
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Rejeita H0",
+      "direcao_observada": "conceitos maior",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (conceitos maior). Direção igual à esperada.",
+      "grupos": {
+        "Conceitos (M3)": {
+          "n": 46,
+          "mediana": 4.666666666666667,
+          "q1": 4.0,
+          "q3": 5.0
+        },
+        "PRA3": {
+          "n": 46,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        }
+      }
+    },
+    {
+      "id": "H2a·PRA4ᴿ",
+      "base": "H2a",
+      "qp": "QP2",
+      "descricao": "Conceitos (M3) difere da prática de escrita (PRA4ᴿ)",
+      "direcao_esperada": "conceitos maior",
+      "teste": "Wilcoxon pareado",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "W = 0.0",
+      "p": 5.563305204940786e-09,
+      "p_holm": 1.2239271450869728e-07,
+      "p_holm_plano_original": null,
+      "efeito_nome": "r",
+      "efeito": 0.8788123877225703,
+      "efeito_ic": [
+        0.8745333373929963,
+        0.8901774265825539
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Rejeita H0",
+      "direcao_observada": "conceitos maior",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (conceitos maior). Direção igual à esperada.",
+      "grupos": {
+        "Conceitos (M3)": {
+          "n": 46,
+          "mediana": 4.666666666666667,
+          "q1": 4.0,
+          "q3": 5.0
+        },
+        "PRA4ᴿ": {
+          "n": 46,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.75
+        }
+      }
+    },
+    {
+      "id": "H2a",
+      "base": "H2a",
+      "qp": "QP2",
+      "descricao": "Conceitos (M3) difere da prática de escrita (M4)",
+      "direcao_esperada": "conceitos maior",
+      "teste": "Wilcoxon pareado",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "W = 1.0",
+      "p": 5.459351238181245e-09,
+      "p_holm": 3.8215458667268715e-08,
+      "p_holm_plano_original": 3.8215458667268715e-08,
+      "efeito_nome": "r",
+      "efeito": 0.8694620883972983,
+      "efeito_ic": [
+        0.8606694760540375,
+        0.8721146543188848
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Referência (α de PRA insuficiente)",
+      "direcao_observada": "conceitos maior",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (conceitos maior). Direção igual à esperada.",
+      "grupos": {
+        "Conceitos (M3)": {
+          "n": 46,
+          "mediana": 4.666666666666667,
+          "q1": 4.0,
+          "q3": 5.0
+        },
+        "M4": {
+          "n": 46,
+          "mediana": 2.375,
+          "q1": 2.0625,
+          "q3": 2.75
+        }
+      }
+    },
+    {
+      "id": "H2b",
+      "base": "H2b",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × conceitos (M3)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "",
+      "familia": "confirmatória",
+      "estatistica": "ρ = 0.401",
+      "p": 0.005777883664831939,
+      "p_holm": 0.09244613863731102,
+      "p_holm_plano_original": 0.034667301988991636,
+      "efeito_nome": "ρ",
+      "efeito": 0.40077502325079184,
+      "efeito_ic": [
+        0.09963530795946786,
+        0.6606088749559865
+      ],
+      "magnitude": "médio",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "positiva",
+      "leitura": "Sem evidência após Holm (efeito médio, positiva). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H2c·PRA1",
+      "base": "H2c",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × prática de escrita (PRA1)",
+      "direcao_esperada": "negativa",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "ρ = -0.296",
+      "p": 0.046127473786068934,
+      "p_holm": 0.691912106791034,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": -0.2955609761770588,
+      "efeito_ic": [
+        -0.5566846898988352,
+        -0.012990218902203117
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "negativa",
+      "leitura": "Sem evidência após Holm (efeito pequeno, negativa). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H2c·PRA2",
+      "base": "H2c",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × prática de escrita (PRA2)",
+      "direcao_esperada": "negativa",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "ρ = 0.048",
+      "p": 0.7494680648110805,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": 0.048388320135916554,
+      "efeito_ic": [
+        -0.2525024573243706,
+        0.3348436083566491
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "positiva",
+      "leitura": "Sem evidência após Holm (efeito desprezível, positiva). Direção oposta à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H2c·PRA3",
+      "base": "H2c",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × prática de escrita (PRA3)",
+      "direcao_esperada": "negativa",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "ρ = -0.206",
+      "p": 0.16913827357699238,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": -0.2062180074919378,
+      "efeito_ic": [
+        -0.47756002668887404,
+        0.10008835624955342
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "negativa",
+      "leitura": "Sem evidência após Holm (efeito pequeno, negativa). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H2c·PRA4ᴿ",
+      "base": "H2c",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × prática de escrita (PRA4ᴿ)",
+      "direcao_esperada": "negativa",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "ρ = -0.257",
+      "p": 0.08453707085842284,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": -0.2571101731704304,
+      "efeito_ic": [
+        -0.5307227299089015,
+        0.05450230049045716
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "negativa",
+      "leitura": "Sem evidência após Holm (efeito pequeno, negativa). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H2c",
+      "base": "H2c",
+      "qp": "QP2",
+      "descricao": "Frequência de uso (M1) × prática de escrita (M4)",
+      "direcao_esperada": "negativa",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "ρ = -0.278",
+      "p": 0.06187784755428672,
+      "p_holm": 0.24751139021714688,
+      "p_holm_plano_original": 0.24751139021714688,
+      "efeito_nome": "ρ",
+      "efeito": -0.27750186445036845,
+      "efeito_ic": [
+        -0.5438174776475033,
+        0.017449594091105795
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Referência (α de PRA insuficiente)",
+      "direcao_observada": "negativa",
+      "leitura": "Sem evidência após Holm (efeito pequeno, negativa). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H3a·PRA1",
+      "base": "H3a",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA1) difere entre finalidades de uso (M2)",
+      "direcao_esperada": "menor em quem busca código pronto",
+      "teste": "Mann-Whitney (código pronto × demais)",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "U = 132.0",
+      "p": 0.5589685187986004,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.13157894736842105,
+      "efeito_ic": [
+        -0.6754976930963773,
+        0.46354864647547545
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (i): finalidade com n < 5 (Gerar exemplos/exercícios = 3); IAU agrupada em código pronto × demais.",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em código pronto",
+      "leitura": "Sem evidência após Holm (efeito desprezível, menor em código pronto). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Código pronto": {
+          "n": 8,
+          "mediana": 1.5,
+          "q1": 1.0,
+          "q3": 3.5
+        },
+        "Demais finalidades": {
+          "n": 38,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "(detalhe) Entender conceitos/erros": {
+          "n": 23,
+          "mediana": 3.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "(detalhe) Revisar o próprio código": {
+          "n": 12,
+          "mediana": 2.0,
+          "q1": 1.75,
+          "q3": 3.0
+        },
+        "(detalhe) Código pronto": {
+          "n": 8,
+          "mediana": 1.5,
+          "q1": 1.0,
+          "q3": 3.5
+        },
+        "(detalhe) Gerar exemplos/exercícios": {
+          "n": 3,
+          "mediana": 2.0,
+          "q1": 1.5,
+          "q3": 2.0
+        }
+      }
+    },
+    {
+      "id": "H3a·PRA2",
+      "base": "H3a",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA2) difere entre finalidades de uso (M2)",
+      "direcao_esperada": "menor em quem busca código pronto",
+      "teste": "Mann-Whitney (código pronto × demais)",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "U = 95.0",
+      "p": 0.09068543994516777,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.375,
+      "efeito_ic": [
+        -0.7669715700965701,
+        0.10644189144189092
+      ],
+      "magnitude": "médio",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (i): finalidade com n < 5 (Gerar exemplos/exercícios = 3); IAU agrupada em código pronto × demais.",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em código pronto",
+      "leitura": "Sem evidência após Holm (efeito médio, menor em código pronto). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Código pronto": {
+          "n": 8,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.25
+        },
+        "Demais finalidades": {
+          "n": 38,
+          "mediana": 4.0,
+          "q1": 2.25,
+          "q3": 4.0
+        },
+        "(detalhe) Entender conceitos/erros": {
+          "n": 23,
+          "mediana": 4.0,
+          "q1": 2.5,
+          "q3": 4.0
+        },
+        "(detalhe) Revisar o próprio código": {
+          "n": 12,
+          "mediana": 3.5,
+          "q1": 2.75,
+          "q3": 4.25
+        },
+        "(detalhe) Código pronto": {
+          "n": 8,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.25
+        },
+        "(detalhe) Gerar exemplos/exercícios": {
+          "n": 3,
+          "mediana": 4.0,
+          "q1": 3.0,
+          "q3": 4.0
+        }
+      }
+    },
+    {
+      "id": "H3a·PRA3",
+      "base": "H3a",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA3) difere entre finalidades de uso (M2)",
+      "direcao_esperada": "menor em quem busca código pronto",
+      "teste": "Mann-Whitney (código pronto × demais)",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "U = 126.5",
+      "p": 0.44533344669836794,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.16776315789473684,
+      "efeito_ic": [
+        -0.6592126623376623,
+        0.36273122710622685
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (i): finalidade com n < 5 (Gerar exemplos/exercícios = 3); IAU agrupada em código pronto × demais.",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em código pronto",
+      "leitura": "Sem evidência após Holm (efeito pequeno, menor em código pronto). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Código pronto": {
+          "n": 8,
+          "mediana": 2.0,
+          "q1": 1.0,
+          "q3": 3.0
+        },
+        "Demais finalidades": {
+          "n": 38,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "(detalhe) Entender conceitos/erros": {
+          "n": 23,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "(detalhe) Revisar o próprio código": {
+          "n": 12,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "(detalhe) Código pronto": {
+          "n": 8,
+          "mediana": 2.0,
+          "q1": 1.0,
+          "q3": 3.0
+        },
+        "(detalhe) Gerar exemplos/exercícios": {
+          "n": 3,
+          "mediana": 3.0,
+          "q1": 3.0,
+          "q3": 3.5
+        }
+      }
+    },
+    {
+      "id": "H3a·PRA4ᴿ",
+      "base": "H3a",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA4ᴿ) difere entre finalidades de uso (M2)",
+      "direcao_esperada": "menor em quem busca código pronto",
+      "teste": "Mann-Whitney (código pronto × demais)",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "U = 104.0",
+      "p": 0.07216776592327505,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.3157894736842105,
+      "efeito_ic": [
+        -0.47058823529411764,
+        -0.17142857142857143
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (i): finalidade com n < 5 (Gerar exemplos/exercícios = 3); IAU agrupada em código pronto × demais.",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em código pronto",
+      "leitura": "Sem evidência após Holm (efeito pequeno, menor em código pronto). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Código pronto": {
+          "n": 8,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "Demais finalidades": {
+          "n": 38,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 2.0
+        },
+        "(detalhe) Entender conceitos/erros": {
+          "n": 23,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "(detalhe) Revisar o próprio código": {
+          "n": 12,
+          "mediana": 2.0,
+          "q1": 1.0,
+          "q3": 2.0
+        },
+        "(detalhe) Código pronto": {
+          "n": 8,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "(detalhe) Gerar exemplos/exercícios": {
+          "n": 3,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.5
+        }
+      }
+    },
+    {
+      "id": "H3a",
+      "base": "H3a",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (M4) difere entre finalidades de uso (M2)",
+      "direcao_esperada": "menor em quem busca código pronto",
+      "teste": "Mann-Whitney (código pronto × demais)",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "U = 114.0",
+      "p": 0.27105650892081934,
+      "p_holm": 0.813169526762458,
+      "p_holm_plano_original": 0.813169526762458,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.25,
+      "efeito_ic": [
+        -0.7583333333333333,
+        0.30938120039682526
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (i): finalidade com n < 5 (Gerar exemplos/exercícios = 3); IAU agrupada em código pronto × demais.",
+      "decisao": "Referência (α de PRA insuficiente)",
+      "direcao_observada": "menor em código pronto",
+      "leitura": "Sem evidência após Holm (efeito pequeno, menor em código pronto). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Código pronto": {
+          "n": 8,
+          "mediana": 2.125,
+          "q1": 1.4375,
+          "q3": 2.5625
+        },
+        "Demais finalidades": {
+          "n": 38,
+          "mediana": 2.375,
+          "q1": 2.25,
+          "q3": 2.75
+        },
+        "(detalhe) Entender conceitos/erros": {
+          "n": 23,
+          "mediana": 2.25,
+          "q1": 2.25,
+          "q3": 2.75
+        },
+        "(detalhe) Revisar o próprio código": {
+          "n": 12,
+          "mediana": 2.5,
+          "q1": 2.1875,
+          "q3": 2.8125
+        },
+        "(detalhe) Código pronto": {
+          "n": 8,
+          "mediana": 2.125,
+          "q1": 1.4375,
+          "q3": 2.5625
+        },
+        "(detalhe) Gerar exemplos/exercícios": {
+          "n": 3,
+          "mediana": 2.25,
+          "q1": 2.25,
+          "q3": 2.5
+        }
+      }
+    },
+    {
+      "id": "H3b·PRA1",
+      "base": "H3b",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA1) × confiança sem IA (M5)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "ρ = -0.075",
+      "p": 0.620943201547439,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": -0.07487010458396577,
+      "efeito_ic": [
+        -0.3586869671825047,
+        0.2175463327956709
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "negativa",
+      "leitura": "Sem evidência após Holm (efeito desprezível, negativa). Direção oposta à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H3b·PRA2",
+      "base": "H3b",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA2) × confiança sem IA (M5)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "ρ = 0.569",
+      "p": 3.642109576091624e-05,
+      "p_holm": 0.0006555797236964924,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": 0.5693310806334785,
+      "efeito_ic": [
+        0.3568428519819963,
+        0.7329097777287069
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Rejeita H0",
+      "direcao_observada": "positiva",
+      "leitura": "Diferença/associação significativa após Holm, efeito grande (positiva). Direção igual à esperada.",
+      "grupos": {}
+    },
+    {
+      "id": "H3b·PRA3",
+      "base": "H3b",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA3) × confiança sem IA (M5)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "ρ = 0.166",
+      "p": 0.26981762594094183,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": 0.16613794739853338,
+      "efeito_ic": [
+        -0.1317437127207718,
+        0.44385452971264827
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "positiva",
+      "leitura": "Sem evidência após Holm (efeito pequeno, positiva). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H3b·PRA4ᴿ",
+      "base": "H3b",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (PRA4ᴿ) × confiança sem IA (M5)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "ρ = 0.095",
+      "p": 0.5281930621680654,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "ρ",
+      "efeito": 0.09541478670136583,
+      "efeito_ic": [
+        -0.15531740400969826,
+        0.3358046824204931
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "positiva",
+      "leitura": "Sem evidência após Holm (efeito desprezível, positiva). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H3b",
+      "base": "H3b",
+      "qp": "QP3",
+      "descricao": "Prática de escrita (M4) × confiança sem IA (M5)",
+      "direcao_esperada": "positiva",
+      "teste": "Correlação de Spearman",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "ρ = 0.320",
+      "p": 0.03026473294766854,
+      "p_holm": 0.1513236647383427,
+      "p_holm_plano_original": 0.1513236647383427,
+      "efeito_nome": "ρ",
+      "efeito": 0.3198083978245313,
+      "efeito_ic": [
+        0.027545571069582147,
+        0.5752228291449474
+      ],
+      "magnitude": "médio",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Referência (α de PRA insuficiente)",
+      "direcao_observada": "positiva",
+      "leitura": "Sem evidência após Holm (efeito médio, positiva). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {}
+    },
+    {
+      "id": "H4a·PRA1",
+      "base": "H4a",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA1): começou depois × antes da IA",
+      "direcao_esperada": "menor depois",
+      "teste": "Mann-Whitney",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "U = 213.0",
+      "p": 0.3707844903571551,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": 0.18333333333333332,
+      "efeito_ic": [
+        -0.22612888755980862,
+        0.5675675675675675
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "maior em «Depois da IA (2023+)»",
+      "leitura": "Sem evidência após Holm (efeito pequeno, maior em «Depois da IA (2023+)»). Direção oposta à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Depois da IA (2023+)": {
+          "n": 10,
+          "mediana": 3.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "Antes da IA (até 2022)": {
+          "n": 36,
+          "mediana": 2.0,
+          "q1": 1.0,
+          "q3": 3.0
+        }
+      }
+    },
+    {
+      "id": "H4a·PRA2",
+      "base": "H4a",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA2): começou depois × antes da IA",
+      "direcao_esperada": "menor depois",
+      "teste": "Mann-Whitney",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "U = 75.5",
+      "p": 0.004214319234199246,
+      "p_holm": 0.07164342698138719,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.5805555555555556,
+      "efeito_ic": [
+        -0.8536585365853658,
+        -0.24443089430894327
+      ],
+      "magnitude": "grande",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em «Depois da IA (2023+)»",
+      "leitura": "Sem evidência após Holm (efeito grande, menor em «Depois da IA (2023+)»). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Depois da IA (2023+)": {
+          "n": 10,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 2.75
+        },
+        "Antes da IA (até 2022)": {
+          "n": 36,
+          "mediana": 4.0,
+          "q1": 3.0,
+          "q3": 4.25
+        }
+      }
+    },
+    {
+      "id": "H4a·PRA3",
+      "base": "H4a",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA3): começou depois × antes da IA",
+      "direcao_esperada": "menor depois",
+      "teste": "Mann-Whitney",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "U = 211.0",
+      "p": 0.39219383210063785,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": 0.17222222222222222,
+      "efeito_ic": [
+        -0.28803005013942506,
+        0.6000150150150148
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "maior em «Depois da IA (2023+)»",
+      "leitura": "Sem evidência após Holm (efeito pequeno, maior em «Depois da IA (2023+)»). Direção oposta à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Depois da IA (2023+)": {
+          "n": 10,
+          "mediana": 2.5,
+          "q1": 2.0,
+          "q3": 4.0
+        },
+        "Antes da IA (até 2022)": {
+          "n": 36,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        }
+      }
+    },
+    {
+      "id": "H4a·PRA4ᴿ",
+      "base": "H4a",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA4ᴿ): começou depois × antes da IA",
+      "direcao_esperada": "menor depois",
+      "teste": "Mann-Whitney",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "U = 170.0",
+      "p": 0.7410521744011132,
+      "p_holm": 1.0,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.05555555555555555,
+      "efeito_ic": [
+        -0.35135135135135137,
+        0.2777777777777778
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "menor em «Depois da IA (2023+)»",
+      "leitura": "Sem evidência após Holm (efeito desprezível, menor em «Depois da IA (2023+)»). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Depois da IA (2023+)": {
+          "n": 10,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "Antes da IA (até 2022)": {
+          "n": 36,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 2.0
+        }
+      }
+    },
+    {
+      "id": "H4a",
+      "base": "H4a",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (M4): começou depois × antes da IA",
+      "direcao_esperada": "menor depois",
+      "teste": "Mann-Whitney",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "U = 163.5",
+      "p": 0.6660789196967909,
+      "p_holm": 1.0,
+      "p_holm_plano_original": 1.0,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.09166666666666666,
+      "efeito_ic": [
+        -0.5436062707444286,
+        0.3754232254232247
+      ],
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "",
+      "decisao": "Referência (α de PRA insuficiente)",
+      "direcao_observada": "menor em «Depois da IA (2023+)»",
+      "leitura": "Sem evidência após Holm (efeito desprezível, menor em «Depois da IA (2023+)»). Direção igual à esperada. Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "Depois da IA (2023+)": {
+          "n": 10,
+          "mediana": 2.25,
+          "q1": 2.0625,
+          "q3": 2.6875
+        },
+        "Antes da IA (até 2022)": {
+          "n": 36,
+          "mediana": 2.5,
+          "q1": 2.1875,
+          "q3": 2.75
+        }
+      }
+    },
+    {
+      "id": "H4b·PRA1",
+      "base": "H4b",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA1): atua × não atua na área",
+      "direcao_esperada": "bilateral",
+      "teste": "Descritiva (regra iii)",
+      "n": 46,
+      "variavel": "PRA1",
+      "familia": "confirmatória",
+      "estatistica": "",
+      "p": null,
+      "p_holm": null,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.3333333333333333,
+      "efeito_ic": null,
+      "magnitude": "médio",
+      "margem_erro_pp": 14.4,
+      "status": "descritiva",
+      "regra_condicional": "Regra (iii): grupo com n < 10 (Atua na área = 39, Não atua = 7); só descritiva, fora da correção de Holm.",
+      "decisao": "Sem teste (descritiva)",
+      "direcao_observada": "menor em «Atua na área»",
+      "leitura": "Grupo pequeno demais para teste confirmatório; ver medianas por grupo.",
+      "grupos": {
+        "Atua na área": {
+          "n": 39,
+          "mediana": 2.0,
+          "q1": 1.0,
+          "q3": 3.0
+        },
+        "Não atua": {
+          "n": 7,
+          "mediana": 3.0,
+          "q1": 2.5,
+          "q3": 3.0
+        }
+      }
+    },
+    {
+      "id": "H4b·PRA2",
+      "base": "H4b",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA2): atua × não atua na área",
+      "direcao_esperada": "bilateral",
+      "teste": "Descritiva (regra iii)",
+      "n": 46,
+      "variavel": "PRA2",
+      "familia": "confirmatória",
+      "estatistica": "",
+      "p": null,
+      "p_holm": null,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": 0.40293040293040294,
+      "efeito_ic": null,
+      "magnitude": "médio",
+      "margem_erro_pp": 14.4,
+      "status": "descritiva",
+      "regra_condicional": "Regra (iii): grupo com n < 10 (Atua na área = 39, Não atua = 7); só descritiva, fora da correção de Holm.",
+      "decisao": "Sem teste (descritiva)",
+      "direcao_observada": "maior em «Atua na área»",
+      "leitura": "Grupo pequeno demais para teste confirmatório; ver medianas por grupo.",
+      "grupos": {
+        "Atua na área": {
+          "n": 39,
+          "mediana": 4.0,
+          "q1": 2.0,
+          "q3": 4.0
+        },
+        "Não atua": {
+          "n": 7,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.5
+        }
+      }
+    },
+    {
+      "id": "H4b·PRA3",
+      "base": "H4b",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA3): atua × não atua na área",
+      "direcao_esperada": "bilateral",
+      "teste": "Descritiva (regra iii)",
+      "n": 46,
+      "variavel": "PRA3",
+      "familia": "confirmatória",
+      "estatistica": "",
+      "p": null,
+      "p_holm": null,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.18315018315018314,
+      "efeito_ic": null,
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "descritiva",
+      "regra_condicional": "Regra (iii): grupo com n < 10 (Atua na área = 39, Não atua = 7); só descritiva, fora da correção de Holm.",
+      "decisao": "Sem teste (descritiva)",
+      "direcao_observada": "menor em «Atua na área»",
+      "leitura": "Grupo pequeno demais para teste confirmatório; ver medianas por grupo.",
+      "grupos": {
+        "Atua na área": {
+          "n": 39,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.0
+        },
+        "Não atua": {
+          "n": 7,
+          "mediana": 2.0,
+          "q1": 2.0,
+          "q3": 3.5
+        }
+      }
+    },
+    {
+      "id": "H4b·PRA4ᴿ",
+      "base": "H4b",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (PRA4ᴿ): atua × não atua na área",
+      "direcao_esperada": "bilateral",
+      "teste": "Descritiva (regra iii)",
+      "n": 46,
+      "variavel": "PRA4ᴿ",
+      "familia": "confirmatória",
+      "estatistica": "",
+      "p": null,
+      "p_holm": null,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": -0.21978021978021978,
+      "efeito_ic": null,
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "descritiva",
+      "regra_condicional": "Regra (iii): grupo com n < 10 (Atua na área = 39, Não atua = 7); só descritiva, fora da correção de Holm.",
+      "decisao": "Sem teste (descritiva)",
+      "direcao_observada": "menor em «Atua na área»",
+      "leitura": "Grupo pequeno demais para teste confirmatório; ver medianas por grupo.",
+      "grupos": {
+        "Atua na área": {
+          "n": 39,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "Não atua": {
+          "n": 7,
+          "mediana": 1.0,
+          "q1": 1.0,
+          "q3": 2.0
+        }
+      }
+    },
+    {
+      "id": "H4b",
+      "base": "H4b",
+      "qp": "QP4",
+      "descricao": "Prática de escrita (M4): atua × não atua na área",
+      "direcao_esperada": "bilateral",
+      "teste": "Descritiva (regra iii)",
+      "n": 46,
+      "variavel": "M4",
+      "familia": "referência",
+      "estatistica": "",
+      "p": null,
+      "p_holm": null,
+      "p_holm_plano_original": null,
+      "efeito_nome": "δ de Cliff",
+      "efeito": 0.007326007326007326,
+      "efeito_ic": null,
+      "magnitude": "desprezível",
+      "margem_erro_pp": 14.4,
+      "status": "descritiva",
+      "regra_condicional": "Regra (iii): grupo com n < 10 (Atua na área = 39, Não atua = 7); só descritiva, fora da correção de Holm.",
+      "decisao": "Sem teste (descritiva)",
+      "direcao_observada": "maior em «Atua na área»",
+      "leitura": "Grupo pequeno demais para teste confirmatório; ver medianas por grupo.",
+      "grupos": {
+        "Atua na área": {
+          "n": 39,
+          "mediana": 2.5,
+          "q1": 2.0,
+          "q3": 2.75
+        },
+        "Não atua": {
+          "n": 7,
+          "mediana": 2.25,
+          "q1": 2.25,
+          "q3": 2.5
+        }
+      }
+    },
+    {
+      "id": "H4c",
+      "base": "H4c",
+      "qp": "QP4",
+      "descricao": "Finalidade de uso (M2) × situação (M7)",
+      "direcao_esperada": "bilateral",
+      "teste": "Exato de Fisher (2 × 2)",
+      "n": 46,
+      "variavel": "",
+      "familia": "confirmatória",
+      "estatistica": "esperado mínimo = 3.0",
+      "p": 0.6905203356657152,
+      "p_holm": 1.0,
+      "p_holm_plano_original": 1.0,
+      "efeito_nome": "V de Cramér",
+      "efeito": 0.11365601507148743,
+      "efeito_ic": [
+        0.006886006531846995,
+        0.35539526301353486
+      ],
+      "magnitude": "pequeno",
+      "margem_erro_pp": 14.4,
+      "status": "testada",
+      "regra_condicional": "Regra (ii): SIT agrupada em estudante × formado e IAU em código pronto × demais.",
+      "decisao": "Não rejeita H0",
+      "direcao_observada": "código pronto: 21% dos estudantes × 12% dos formados",
+      "leitura": "Sem evidência após Holm (efeito pequeno, código pronto: 21% dos estudantes × 12% dos formados). Com n = 46, só efeitos grandes eram detectáveis.",
+      "grupos": {
+        "tabela": {
+          "Código pronto": {
+            "Estudante": 6,
+            "Formado": 2
+          },
+          "Demais finalidades": {
+            "Estudante": 23,
+            "Formado": 15
+          }
+        }
+      }
+    }
+  ]
+}

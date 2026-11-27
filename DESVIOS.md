@@ -1,18 +1,21 @@
 # Registro de desvios em relação ao protocolo
 
-> Protocolo de referência: `protocolo/protocolo.pdf`, versão 1.0, tag `protocolo-v1.0`, registrado em 13/11/2026.
-> **Regra (Registered Reports, ACM SIGSOFT):** todo desvio é aceitável se for **datado, justificado e não motivado pelos dados** (não *postdictive*). Registre-o **no momento em que ocorrer**, nunca depois de ver os resultados. Análises não previstas no protocolo devem ser rotuladas como **exploratórias**.
-> Este arquivo alimenta a **página de metodologia e desvios** do dashboard (Parte 2).
+> Protocolo de referência: `protocolo/protocolo.pdf`, versão 1.0, registrado em 13/11/2026.
+> **Regra (Registered Reports, ACM SIGSOFT):** todo desvio é aceitável se for **datado, justificado e transparente**. Análises não previstas no protocolo são rotuladas como **exploratórias**. A coluna "Ciência dos dados" diz se o grupo já tinha visto os resultados quando decidiu.
+> Este arquivo é lido pela aba **Metodologia e desvios** do dashboard.
 
-| # | Data | Seção do protocolo | O que foi planejado | O que foi feito | Justificativa | Impacto esperado na análise |
-|---|---|---|---|---|---|---|
-| D1 | | | | | | |
+| # | Data | Seção do protocolo | O que foi planejado | O que foi feito | Justificativa | Ciência dos dados | Impacto na análise |
+|---|---|---|---|---|---|---|---|
+| D1 | 27/11/2026 | §4 Pré-teste | 4 participantes (2 estudantes do 5º período em diante e 2 formados), mediana de 2 min 47 s; respostas apagadas antes da coleta | 5 respostas enviadas até 13/11 23:59 (prazo da Parte 1) foram tratadas como pré-teste: 3 formados há até 3 anos e 2 estudantes do 5º período em diante, todos de ES e atuando na área; mediana de 3 min 9 s (de 1 min 46 s a 7 min 1 s). As respostas **não foram apagadas**: ficaram no arquivo bruto e são excluídas pela regra **E0** | O critério "tudo o que chegou até o prazo da Parte 1 é pré-teste" foi definido pelo grupo antes de abrir os dados. A 5ª resposta (13/11, 21:00) chegou depois de o texto do protocolo ser fechado. Manter os registros no bruto preserva a trilha de auditoria (o roteiro já previa filtrar por horário) | Não: o critério foi fixado antes de ver as respostas | Nenhum no instrumento (nenhum problema apontado). Ainda dentro da faixa de 3 a 5 participantes do enunciado |
+| D2 | 27/11/2026 | §8 Divulgação | Coleta de 18/11 a 04/12, com lembretes em 25/11 e 02/12 | 2 respostas oficiais chegaram em 14/11 (antes do início planejado) e as outras 49 entre 25/11 21h e 26/11 23h, após a divulgação ampla. Não houve respostas entre 15/11 e 25/11 | A divulgação efetiva começou mais tarde do que o planejado | Não altera regras de análise | A coleta ficou concentrada em ~26 horas, o que reforça o risco de rede homogênea (bola de neve a partir dos contatos do grupo; ver Quadro 5) |
+| D3 | 27/11/2026 | §2 Amostra e §8 Período | Exportação final em 04/12, com meta de 50 válidas | Análise feita com **corte em 27/11** (56 recebidas, 48 válidas). O formulário segue aberto até 04/12; o dashboard relê o bruto, então basta atualizar a exportação | Preparar a Parte 2 com os dados disponíveis | Sim (os números são da coleta parcial) | **48 válidas < 50**: se a meta não for atingida até 04/12, aplica-se a contingência do protocolo (extensão até 11/12). Os resultados devem ser lidos como parciais até a exportação final |
+| D4 | 27/11/2026 | §5 Confiabilidade | α de PRA ≥ 0,70; abaixo de 0,60, itens analisados separadamente | α de PRA = 0,37 (IC 95% de −0,14 a 0,61): os itens PRA1, PRA2, PRA3 e PRA4ᴿ foram analisados **separadamente**. Cada hipótese que usava M4 (H2a, H2c, H3a, H3b, H4a, H4b) virou um teste por item, todos na mesma família de Holm (22 testes, contra 7 no plano original). O escore M4 é relatado como referência, com uma análise de sensibilidade na família original | A regra está no protocolo; a forma de expandir a família de Holm não estava e foi decidida aqui, pela opção mais conservadora | Sim (a decisão de expandir a família foi tomada depois de calcular o α) | A correção ficou mais rígida: H2b (ρ = 0,40) é significativa na família original (p Holm = 0,035), mas não na expandida (p Holm = 0,092). Os dois resultados são mostrados |
+| D5 | 27/11/2026 | §5 Análise condicional | Regras (i), (ii) e (iii) previstas no protocolo | (i) "Gerar exemplos ou exercícios" teve n = 3: H3a usou Mann-Whitney com código pronto × demais. (ii) H4c agrupou SIT em estudante × formado e IAU em código pronto × demais; usou Fisher (esperado mínimo = 3). (iii) "Não atua na área" teve n = 7: **H4b ficou só descritiva** e fora de Holm | Aplicação de regras pré-registradas; registrada aqui por transparência | As regras foram fixadas antes; os n só se conhecem depois | QP4 fica parcialmente respondida |
+| D6 | 27/11/2026 | §2 Metas por segmento | 8 respostas por curso e 10 de quem atua na área, conferidas em 25/11 | Válidas por curso: ES 24, SI 13, ADS 4, Outro 4, CC 3. Quem atua: 41; quem não atua: 7 | Rede de divulgação concentrada em ES e SI | Sim | Comparações por curso ficam só descritivas (exploratórias); os filtros do dashboard ocultam segmentos com n < 5 |
+| D7 | 27/11/2026 | §5 Respostas abertas | Dois integrantes codificam 20% de forma independente; κ ≥ 0,60 | **Pendente.** `analise/abr_codificacao.csv` traz uma pré-codificação sugerida (5 temas), que não conta como codificador. Os integrantes preenchem `codificador_1` e `codificador_2`; o dashboard calcula o κ | O livro de códigos inicial foi proposto a partir das 15 respostas válidas | Sim (análise indutiva, por natureza) | Até a dupla codificação, os temas são provisórios |
+| D8 | 27/11/2026 | §5 Limpeza (E4) | "Duração menor que 1/3 da mediana" | A mediana foi calculada sobre a coleta oficial (51 respostas, sem o pré-teste): 183 s, com limite de 61 s. Nenhuma resposta foi descartada por E4 | O protocolo não dizia sobre qual conjunto calcular a mediana | Não muda o resultado: a resposta mais rápida levou 87 s | Nenhum |
 
-### Exemplos do que deve ser registrado
+### O que ainda pode gerar desvio
 
-- Mudança no instrumento após a abertura da coleta.
-- Canais de divulgação novos ou diferentes dos previstos no §8 do protocolo.
-- Extensão do período de coleta (contingência: até 11/12).
-- Item ou construto com α < 0,60 analisado separadamente.
-- Agrupamento de finalidades de uso ou de situações (análise condicional i e ii).
-- Qualquer mudança de teste estatístico, limiar ou regra de exclusão.
+- Extensão do período de coleta (contingência: até 11/12), se a meta de 50 válidas não for atingida em 04/12.
+- Canais de divulgação efetivamente usados e suas datas: **o grupo deve completar com as capturas de tela datadas** (evidência exigida no enunciado).
